@@ -9,3 +9,5 @@ sudo: false
 matrix:
   allow_failures:
     - rvm: jruby
+env:
+    - VCR_OFF="true"
