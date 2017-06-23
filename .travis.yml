@@ -3,3 +3,6 @@ rvm:
   - 2.2
   - jruby
 sudo: false
+matrix:
+  allow_failures:
+    - rvm: jruby
