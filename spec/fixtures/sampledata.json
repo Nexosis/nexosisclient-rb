@@ -1,0 +1,3503 @@
+{
+    "data": [{
+            "timestamp": "2012-12-31T00:00:00+00:00",
+            "values": {
+                "sales": "2919.51",
+                "transactions": "431"
+            }
+        },
+        {
+            "timestamp": "2013-01-01T00:00:00+00:00",
+            "values": {
+                "sales": "1288.6",
+                "transactions": "191"
+            }
+        },
+        {
+            "timestamp": "2013-01-02T00:00:00+00:00",
+            "values": {
+                "sales": "2895.62",
+                "transactions": "443"
+            }
+        },
+        {
+            "timestamp": "2013-01-03T00:00:00+00:00",
+            "values": {
+                "sales": "2997.13",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2013-01-04T00:00:00+00:00",
+            "values": {
+                "sales": "3340.63",
+                "transactions": "499"
+            }
+        },
+        {
+            "timestamp": "2013-01-05T00:00:00+00:00",
+            "values": {
+                "sales": "2254.3",
+                "transactions": "354"
+            }
+        },
+        {
+            "timestamp": "2013-01-06T00:00:00+00:00",
+            "values": {
+                "sales": "1946.88",
+                "transactions": "302"
+            }
+        },
+        {
+            "timestamp": "2013-01-07T00:00:00+00:00",
+            "values": {
+                "sales": "2830.84",
+                "transactions": "461"
+            }
+        },
+        {
+            "timestamp": "2013-01-08T00:00:00+00:00",
+            "values": {
+                "sales": "2833.66",
+                "transactions": "465"
+            }
+        },
+        {
+            "timestamp": "2013-01-09T00:00:00+00:00",
+            "values": {
+                "sales": "2978.66",
+                "transactions": "480"
+            }
+        },
+        {
+            "timestamp": "2013-01-10T00:00:00+00:00",
+            "values": {
+                "sales": "3127.26",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2013-01-11T00:00:00+00:00",
+            "values": {
+                "sales": "3638.69",
+                "transactions": "541"
+            }
+        },
+        {
+            "timestamp": "2013-01-12T00:00:00+00:00",
+            "values": {
+                "sales": "2277.96",
+                "transactions": "368"
+            }
+        },
+        {
+            "timestamp": "2013-01-13T00:00:00+00:00",
+            "values": {
+                "sales": "1749.19",
+                "transactions": "281"
+            }
+        },
+        {
+            "timestamp": "2013-01-14T00:00:00+00:00",
+            "values": {
+                "sales": "2754.11",
+                "transactions": "449"
+            }
+        },
+        {
+            "timestamp": "2013-01-15T00:00:00+00:00",
+            "values": {
+                "sales": "2899.2",
+                "transactions": "487"
+            }
+        },
+        {
+            "timestamp": "2013-01-16T00:00:00+00:00",
+            "values": {
+                "sales": "4164.13",
+                "transactions": "596"
+            }
+        },
+        {
+            "timestamp": "2013-01-17T00:00:00+00:00",
+            "values": {
+                "sales": "3177.56",
+                "transactions": "507"
+            }
+        },
+        {
+            "timestamp": "2013-01-18T00:00:00+00:00",
+            "values": {
+                "sales": "3785.51",
+                "transactions": "579"
+            }
+        },
+        {
+            "timestamp": "2013-01-19T00:00:00+00:00",
+            "values": {
+                "sales": "2693.33",
+                "transactions": "387"
+            }
+        },
+        {
+            "timestamp": "2013-01-20T00:00:00+00:00",
+            "values": {
+                "sales": "1822.92",
+                "transactions": "259"
+            }
+        },
+        {
+            "timestamp": "2013-01-21T00:00:00+00:00",
+            "values": {
+                "sales": "2189.45",
+                "transactions": "371"
+            }
+        },
+        {
+            "timestamp": "2013-01-22T00:00:00+00:00",
+            "values": {
+                "sales": "2473.25",
+                "transactions": "422"
+            }
+        },
+        {
+            "timestamp": "2013-01-23T00:00:00+00:00",
+            "values": {
+                "sales": "2904.55",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-01-24T00:00:00+00:00",
+            "values": {
+                "sales": "3365.76",
+                "transactions": "527"
+            }
+        },
+        {
+            "timestamp": "2013-01-25T00:00:00+00:00",
+            "values": {
+                "sales": "3664.27",
+                "transactions": "574"
+            }
+        },
+        {
+            "timestamp": "2013-01-26T00:00:00+00:00",
+            "values": {
+                "sales": "2501.75",
+                "transactions": "367"
+            }
+        },
+        {
+            "timestamp": "2013-01-27T00:00:00+00:00",
+            "values": {
+                "sales": "1923.3",
+                "transactions": "318"
+            }
+        },
+        {
+            "timestamp": "2013-01-28T00:00:00+00:00",
+            "values": {
+                "sales": "3052.95",
+                "transactions": "475"
+            }
+        },
+        {
+            "timestamp": "2013-01-29T00:00:00+00:00",
+            "values": {
+                "sales": "2617.65",
+                "transactions": "461"
+            }
+        },
+        {
+            "timestamp": "2013-01-30T00:00:00+00:00",
+            "values": {
+                "sales": "3142.97",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2013-01-31T00:00:00+00:00",
+            "values": {
+                "sales": "3390.82",
+                "transactions": "539"
+            }
+        },
+        {
+            "timestamp": "2013-02-01T00:00:00+00:00",
+            "values": {
+                "sales": "3845.82",
+                "transactions": "602"
+            }
+        },
+        {
+            "timestamp": "2013-02-02T00:00:00+00:00",
+            "values": {
+                "sales": "2822.97",
+                "transactions": "423"
+            }
+        },
+        {
+            "timestamp": "2013-02-03T00:00:00+00:00",
+            "values": {
+                "sales": "1636",
+                "transactions": "261"
+            }
+        },
+        {
+            "timestamp": "2013-02-04T00:00:00+00:00",
+            "values": {
+                "sales": "3042.26",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2013-02-05T00:00:00+00:00",
+            "values": {
+                "sales": "3111.73",
+                "transactions": "493"
+            }
+        },
+        {
+            "timestamp": "2013-02-06T00:00:00+00:00",
+            "values": {
+                "sales": "2924.14",
+                "transactions": "484"
+            }
+        },
+        {
+            "timestamp": "2013-02-07T00:00:00+00:00",
+            "values": {
+                "sales": "3387.96",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-02-08T00:00:00+00:00",
+            "values": {
+                "sales": "3092.96",
+                "transactions": "493"
+            }
+        },
+        {
+            "timestamp": "2013-02-09T00:00:00+00:00",
+            "values": {
+                "sales": "2898.58",
+                "transactions": "423"
+            }
+        },
+        {
+            "timestamp": "2013-02-10T00:00:00+00:00",
+            "values": {
+                "sales": "1762.14",
+                "transactions": "272"
+            }
+        },
+        {
+            "timestamp": "2013-02-11T00:00:00+00:00",
+            "values": {
+                "sales": "3402.92",
+                "transactions": "511"
+            }
+        },
+        {
+            "timestamp": "2013-02-12T00:00:00+00:00",
+            "values": {
+                "sales": "3047.72",
+                "transactions": "486"
+            }
+        },
+        {
+            "timestamp": "2013-02-13T00:00:00+00:00",
+            "values": {
+                "sales": "3166.07",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-02-14T00:00:00+00:00",
+            "values": {
+                "sales": "2971.14",
+                "transactions": "462"
+            }
+        },
+        {
+            "timestamp": "2013-02-15T00:00:00+00:00",
+            "values": {
+                "sales": "3582.68",
+                "transactions": "528"
+            }
+        },
+        {
+            "timestamp": "2013-02-16T00:00:00+00:00",
+            "values": {
+                "sales": "3016.86",
+                "transactions": "416"
+            }
+        },
+        {
+            "timestamp": "2013-02-17T00:00:00+00:00",
+            "values": {
+                "sales": "2360.59",
+                "transactions": "330"
+            }
+        },
+        {
+            "timestamp": "2013-02-18T00:00:00+00:00",
+            "values": {
+                "sales": "2603.96",
+                "transactions": "384"
+            }
+        },
+        {
+            "timestamp": "2013-02-19T00:00:00+00:00",
+            "values": {
+                "sales": "3227.86",
+                "transactions": "483"
+            }
+        },
+        {
+            "timestamp": "2013-02-20T00:00:00+00:00",
+            "values": {
+                "sales": "3248.58",
+                "transactions": "505"
+            }
+        },
+        {
+            "timestamp": "2013-02-22T00:00:00+00:00",
+            "values": {
+                "sales": "3803.18",
+                "transactions": "539"
+            }
+        },
+        {
+            "timestamp": "2013-02-23T00:00:00+00:00",
+            "values": {
+                "sales": "2748.47",
+                "transactions": "404"
+            }
+        },
+        {
+            "timestamp": "2013-02-24T00:00:00+00:00",
+            "values": {
+                "sales": "2261.86",
+                "transactions": "295"
+            }
+        },
+        {
+            "timestamp": "2013-02-25T00:00:00+00:00",
+            "values": {
+                "sales": "3357.12",
+                "transactions": "511"
+            }
+        },
+        {
+            "timestamp": "2013-02-26T00:00:00+00:00",
+            "values": {
+                "sales": "3237.86",
+                "transactions": "486"
+            }
+        },
+        {
+            "timestamp": "2013-02-27T00:00:00+00:00",
+            "values": {
+                "sales": "3588.19",
+                "transactions": "542"
+            }
+        },
+        {
+            "timestamp": "2013-02-28T00:00:00+00:00",
+            "values": {
+                "sales": "3886.5",
+                "transactions": "571"
+            }
+        },
+        {
+            "timestamp": "2013-03-01T00:00:00+00:00",
+            "values": {
+                "sales": "4292.37",
+                "transactions": "606"
+            }
+        },
+        {
+            "timestamp": "2013-03-02T00:00:00+00:00",
+            "values": {
+                "sales": "2897.8",
+                "transactions": "416"
+            }
+        },
+        {
+            "timestamp": "2013-03-03T00:00:00+00:00",
+            "values": {
+                "sales": "2182.29",
+                "transactions": "308"
+            }
+        },
+        {
+            "timestamp": "2013-03-04T00:00:00+00:00",
+            "values": {
+                "sales": "2845.85",
+                "transactions": "448"
+            }
+        },
+        {
+            "timestamp": "2013-03-05T00:00:00+00:00",
+            "values": {
+                "sales": "3365.91",
+                "transactions": "512"
+            }
+        },
+        {
+            "timestamp": "2013-03-06T00:00:00+00:00",
+            "values": {
+                "sales": "3417.66",
+                "transactions": "544"
+            }
+        },
+        {
+            "timestamp": "2013-03-07T00:00:00+00:00",
+            "values": {
+                "sales": "3213.31",
+                "transactions": "503"
+            }
+        },
+        {
+            "timestamp": "2013-03-08T00:00:00+00:00",
+            "values": {
+                "sales": "3408.38",
+                "transactions": "504"
+            }
+        },
+        {
+            "timestamp": "2013-03-09T00:00:00+00:00",
+            "values": {
+                "sales": "2463.5",
+                "transactions": "364"
+            }
+        },
+        {
+            "timestamp": "2013-03-10T00:00:00+00:00",
+            "values": {
+                "sales": "1801.93",
+                "transactions": "260"
+            }
+        },
+        {
+            "timestamp": "2013-03-11T00:00:00+00:00",
+            "values": {
+                "sales": "3122.25",
+                "transactions": "481"
+            }
+        },
+        {
+            "timestamp": "2013-03-12T00:00:00+00:00",
+            "values": {
+                "sales": "3179.96",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-03-13T00:00:00+00:00",
+            "values": {
+                "sales": "3173.17",
+                "transactions": "488"
+            }
+        },
+        {
+            "timestamp": "2013-03-14T00:00:00+00:00",
+            "values": {
+                "sales": "3260.06",
+                "transactions": "496"
+            }
+        },
+        {
+            "timestamp": "2013-03-15T00:00:00+00:00",
+            "values": {
+                "sales": "3702.46",
+                "transactions": "535"
+            }
+        },
+        {
+            "timestamp": "2013-03-16T00:00:00+00:00",
+            "values": {
+                "sales": "2804.22",
+                "transactions": "404"
+            }
+        },
+        {
+            "timestamp": "2013-03-17T00:00:00+00:00",
+            "values": {
+                "sales": "2278.72",
+                "transactions": "327"
+            }
+        },
+        {
+            "timestamp": "2013-03-18T00:00:00+00:00",
+            "values": {
+                "sales": "2837.09",
+                "transactions": "461"
+            }
+        },
+        {
+            "timestamp": "2013-03-19T00:00:00+00:00",
+            "values": {
+                "sales": "2698.6",
+                "transactions": "446"
+            }
+        },
+        {
+            "timestamp": "2013-03-20T00:00:00+00:00",
+            "values": {
+                "sales": "2877.66",
+                "transactions": "457"
+            }
+        },
+        {
+            "timestamp": "2013-03-21T00:00:00+00:00",
+            "values": {
+                "sales": "3353.69",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2013-03-22T00:00:00+00:00",
+            "values": {
+                "sales": "3656.26",
+                "transactions": "513"
+            }
+        },
+        {
+            "timestamp": "2013-03-23T00:00:00+00:00",
+            "values": {
+                "sales": "2844.49",
+                "transactions": "396"
+            }
+        },
+        {
+            "timestamp": "2013-03-24T00:00:00+00:00",
+            "values": {
+                "sales": "1851.05",
+                "transactions": "276"
+            }
+        },
+        {
+            "timestamp": "2013-03-25T00:00:00+00:00",
+            "values": {
+                "sales": "3188.1",
+                "transactions": "464"
+            }
+        },
+        {
+            "timestamp": "2013-03-26T00:00:00+00:00",
+            "values": {
+                "sales": "3146.77",
+                "transactions": "489"
+            }
+        },
+        {
+            "timestamp": "2013-03-27T00:00:00+00:00",
+            "values": {
+                "sales": "3368.59",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-03-28T00:00:00+00:00",
+            "values": {
+                "sales": "2964.43",
+                "transactions": "458"
+            }
+        },
+        {
+            "timestamp": "2013-03-29T00:00:00+00:00",
+            "values": {
+                "sales": "3333.23",
+                "transactions": "488"
+            }
+        },
+        {
+            "timestamp": "2013-03-30T00:00:00+00:00",
+            "values": {
+                "sales": "2874.14",
+                "transactions": "388"
+            }
+        },
+        {
+            "timestamp": "2013-03-31T00:00:00+00:00",
+            "values": {
+                "sales": "1685.31",
+                "transactions": "232"
+            }
+        },
+        {
+            "timestamp": "2013-04-01T00:00:00+00:00",
+            "values": {
+                "sales": "3335.93",
+                "transactions": "502"
+            }
+        },
+        {
+            "timestamp": "2013-04-02T00:00:00+00:00",
+            "values": {
+                "sales": "3150.76",
+                "transactions": "500"
+            }
+        },
+        {
+            "timestamp": "2013-04-03T00:00:00+00:00",
+            "values": {
+                "sales": "3614.04",
+                "transactions": "537"
+            }
+        },
+        {
+            "timestamp": "2013-04-04T00:00:00+00:00",
+            "values": {
+                "sales": "2770.36",
+                "transactions": "426"
+            }
+        },
+        {
+            "timestamp": "2013-04-05T00:00:00+00:00",
+            "values": {
+                "sales": "3442.04",
+                "transactions": "503"
+            }
+        },
+        {
+            "timestamp": "2013-04-06T00:00:00+00:00",
+            "values": {
+                "sales": "2507.67",
+                "transactions": "363"
+            }
+        },
+        {
+            "timestamp": "2013-04-07T00:00:00+00:00",
+            "values": {
+                "sales": "2187.48",
+                "transactions": "299"
+            }
+        },
+        {
+            "timestamp": "2013-04-08T00:00:00+00:00",
+            "values": {
+                "sales": "2789.44",
+                "transactions": "451"
+            }
+        },
+        {
+            "timestamp": "2013-04-09T00:00:00+00:00",
+            "values": {
+                "sales": "2907.85",
+                "transactions": "470"
+            }
+        },
+        {
+            "timestamp": "2013-04-10T00:00:00+00:00",
+            "values": {
+                "sales": "3019.6",
+                "transactions": "495"
+            }
+        },
+        {
+            "timestamp": "2013-04-11T00:00:00+00:00",
+            "values": {
+                "sales": "3529.9",
+                "transactions": "533"
+            }
+        },
+        {
+            "timestamp": "2013-04-12T00:00:00+00:00",
+            "values": {
+                "sales": "3529.98",
+                "transactions": "531"
+            }
+        },
+        {
+            "timestamp": "2013-04-13T00:00:00+00:00",
+            "values": {
+                "sales": "3042.41",
+                "transactions": "422"
+            }
+        },
+        {
+            "timestamp": "2013-04-14T00:00:00+00:00",
+            "values": {
+                "sales": "1860.51",
+                "transactions": "299"
+            }
+        },
+        {
+            "timestamp": "2013-04-15T00:00:00+00:00",
+            "values": {
+                "sales": "2963.14",
+                "transactions": "463"
+            }
+        },
+        {
+            "timestamp": "2013-04-16T00:00:00+00:00",
+            "values": {
+                "sales": "2665.63",
+                "transactions": "427"
+            }
+        },
+        {
+            "timestamp": "2013-04-17T00:00:00+00:00",
+            "values": {
+                "sales": "3063.4",
+                "transactions": "480"
+            }
+        },
+        {
+            "timestamp": "2013-04-18T00:00:00+00:00",
+            "values": {
+                "sales": "3095.61",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-04-19T00:00:00+00:00",
+            "values": {
+                "sales": "3442.83",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2013-04-20T00:00:00+00:00",
+            "values": {
+                "sales": "2147.72",
+                "transactions": "316"
+            }
+        },
+        {
+            "timestamp": "2013-04-21T00:00:00+00:00",
+            "values": {
+                "sales": "1585.04",
+                "transactions": "249"
+            }
+        },
+        {
+            "timestamp": "2013-04-22T00:00:00+00:00",
+            "values": {
+                "sales": "2931.18",
+                "transactions": "493"
+            }
+        },
+        {
+            "timestamp": "2013-04-23T00:00:00+00:00",
+            "values": {
+                "sales": "2830.21",
+                "transactions": "484"
+            }
+        },
+        {
+            "timestamp": "2013-04-24T00:00:00+00:00",
+            "values": {
+                "sales": "2942.67",
+                "transactions": "471"
+            }
+        },
+        {
+            "timestamp": "2013-04-25T00:00:00+00:00",
+            "values": {
+                "sales": "3576.66",
+                "transactions": "528"
+            }
+        },
+        {
+            "timestamp": "2013-04-26T00:00:00+00:00",
+            "values": {
+                "sales": "3603.35",
+                "transactions": "538"
+            }
+        },
+        {
+            "timestamp": "2013-04-27T00:00:00+00:00",
+            "values": {
+                "sales": "3211.55",
+                "transactions": "452"
+            }
+        },
+        {
+            "timestamp": "2013-04-28T00:00:00+00:00",
+            "values": {
+                "sales": "1961.08",
+                "transactions": "297"
+            }
+        },
+        {
+            "timestamp": "2013-04-29T00:00:00+00:00",
+            "values": {
+                "sales": "2892.86",
+                "transactions": "432"
+            }
+        },
+        {
+            "timestamp": "2013-04-30T00:00:00+00:00",
+            "values": {
+                "sales": "2916.34",
+                "transactions": "469"
+            }
+        },
+        {
+            "timestamp": "2013-05-01T00:00:00+00:00",
+            "values": {
+                "sales": "3817.52",
+                "transactions": "540"
+            }
+        },
+        {
+            "timestamp": "2013-05-02T00:00:00+00:00",
+            "values": {
+                "sales": "3173.99",
+                "transactions": "488"
+            }
+        },
+        {
+            "timestamp": "2013-05-03T00:00:00+00:00",
+            "values": {
+                "sales": "3572.08",
+                "transactions": "536"
+            }
+        },
+        {
+            "timestamp": "2013-05-04T00:00:00+00:00",
+            "values": {
+                "sales": "2797.1",
+                "transactions": "418"
+            }
+        },
+        {
+            "timestamp": "2013-05-05T00:00:00+00:00",
+            "values": {
+                "sales": "1840.51",
+                "transactions": "253"
+            }
+        },
+        {
+            "timestamp": "2013-05-06T00:00:00+00:00",
+            "values": {
+                "sales": "3024.32",
+                "transactions": "472"
+            }
+        },
+        {
+            "timestamp": "2013-05-07T00:00:00+00:00",
+            "values": {
+                "sales": "2951.44",
+                "transactions": "454"
+            }
+        },
+        {
+            "timestamp": "2013-05-08T00:00:00+00:00",
+            "values": {
+                "sales": "3091.05",
+                "transactions": "483"
+            }
+        },
+        {
+            "timestamp": "2013-05-09T00:00:00+00:00",
+            "values": {
+                "sales": "3606.3",
+                "transactions": "508"
+            }
+        },
+        {
+            "timestamp": "2013-05-10T00:00:00+00:00",
+            "values": {
+                "sales": "3128.54",
+                "transactions": "487"
+            }
+        },
+        {
+            "timestamp": "2013-05-11T00:00:00+00:00",
+            "values": {
+                "sales": "2607.55",
+                "transactions": "391"
+            }
+        },
+        {
+            "timestamp": "2013-05-12T00:00:00+00:00",
+            "values": {
+                "sales": "1976.49",
+                "transactions": "274"
+            }
+        },
+        {
+            "timestamp": "2013-05-13T00:00:00+00:00",
+            "values": {
+                "sales": "2739.02",
+                "transactions": "436"
+            }
+        },
+        {
+            "timestamp": "2013-05-14T00:00:00+00:00",
+            "values": {
+                "sales": "3033.24",
+                "transactions": "469"
+            }
+        },
+        {
+            "timestamp": "2013-05-15T00:00:00+00:00",
+            "values": {
+                "sales": "3217.07",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-05-16T00:00:00+00:00",
+            "values": {
+                "sales": "3357.58",
+                "transactions": "500"
+            }
+        },
+        {
+            "timestamp": "2013-05-17T00:00:00+00:00",
+            "values": {
+                "sales": "3638.08",
+                "transactions": "504"
+            }
+        },
+        {
+            "timestamp": "2013-05-18T00:00:00+00:00",
+            "values": {
+                "sales": "2706",
+                "transactions": "376"
+            }
+        },
+        {
+            "timestamp": "2013-05-19T00:00:00+00:00",
+            "values": {
+                "sales": "2028.02",
+                "transactions": "305"
+            }
+        },
+        {
+            "timestamp": "2013-05-20T00:00:00+00:00",
+            "values": {
+                "sales": "3610.92",
+                "transactions": "538"
+            }
+        },
+        {
+            "timestamp": "2013-05-21T00:00:00+00:00",
+            "values": {
+                "sales": "2886.52",
+                "transactions": "483"
+            }
+        },
+        {
+            "timestamp": "2013-05-22T00:00:00+00:00",
+            "values": {
+                "sales": "3363.72",
+                "transactions": "535"
+            }
+        },
+        {
+            "timestamp": "2013-05-23T00:00:00+00:00",
+            "values": {
+                "sales": "3312.49",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2013-05-24T00:00:00+00:00",
+            "values": {
+                "sales": "3587.8",
+                "transactions": "531"
+            }
+        },
+        {
+            "timestamp": "2013-05-25T00:00:00+00:00",
+            "values": {
+                "sales": "3024.42",
+                "transactions": "425"
+            }
+        },
+        {
+            "timestamp": "2013-05-26T00:00:00+00:00",
+            "values": {
+                "sales": "2365.69",
+                "transactions": "328"
+            }
+        },
+        {
+            "timestamp": "2013-05-27T00:00:00+00:00",
+            "values": {
+                "sales": "1726.19",
+                "transactions": "263"
+            }
+        },
+        {
+            "timestamp": "2013-05-28T00:00:00+00:00",
+            "values": {
+                "sales": "2861.96",
+                "transactions": "441"
+            }
+        },
+        {
+            "timestamp": "2013-05-29T00:00:00+00:00",
+            "values": {
+                "sales": "3066.2",
+                "transactions": "499"
+            }
+        },
+        {
+            "timestamp": "2013-05-30T00:00:00+00:00",
+            "values": {
+                "sales": "3352.71",
+                "transactions": "537"
+            }
+        },
+        {
+            "timestamp": "2013-05-31T00:00:00+00:00",
+            "values": {
+                "sales": "3815.18",
+                "transactions": "552"
+            }
+        },
+        {
+            "timestamp": "2013-06-01T00:00:00+00:00",
+            "values": {
+                "sales": "2449.78",
+                "transactions": "338"
+            }
+        },
+        {
+            "timestamp": "2013-06-02T00:00:00+00:00",
+            "values": {
+                "sales": "1977.78",
+                "transactions": "300"
+            }
+        },
+        {
+            "timestamp": "2013-06-03T00:00:00+00:00",
+            "values": {
+                "sales": "3119.93",
+                "transactions": "476"
+            }
+        },
+        {
+            "timestamp": "2013-06-04T00:00:00+00:00",
+            "values": {
+                "sales": "3117.62",
+                "transactions": "464"
+            }
+        },
+        {
+            "timestamp": "2013-06-05T00:00:00+00:00",
+            "values": {
+                "sales": "3272.29",
+                "transactions": "493"
+            }
+        },
+        {
+            "timestamp": "2013-06-06T00:00:00+00:00",
+            "values": {
+                "sales": "3116.78",
+                "transactions": "472"
+            }
+        },
+        {
+            "timestamp": "2013-06-07T00:00:00+00:00",
+            "values": {
+                "sales": "3284.96",
+                "transactions": "475"
+            }
+        },
+        {
+            "timestamp": "2013-06-08T00:00:00+00:00",
+            "values": {
+                "sales": "2528.94",
+                "transactions": "374"
+            }
+        },
+        {
+            "timestamp": "2013-06-09T00:00:00+00:00",
+            "values": {
+                "sales": "2340.65",
+                "transactions": "315"
+            }
+        },
+        {
+            "timestamp": "2013-06-10T00:00:00+00:00",
+            "values": {
+                "sales": "3333.92",
+                "transactions": "507"
+            }
+        },
+        {
+            "timestamp": "2013-06-11T00:00:00+00:00",
+            "values": {
+                "sales": "2884.99",
+                "transactions": "467"
+            }
+        },
+        {
+            "timestamp": "2013-06-13T00:00:00+00:00",
+            "values": {
+                "sales": "3455.35",
+                "transactions": "498"
+            }
+        },
+        {
+            "timestamp": "2013-06-14T00:00:00+00:00",
+            "values": {
+                "sales": "3410.7",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-06-15T00:00:00+00:00",
+            "values": {
+                "sales": "2509.41",
+                "transactions": "367"
+            }
+        },
+        {
+            "timestamp": "2013-06-16T00:00:00+00:00",
+            "values": {
+                "sales": "1636.86",
+                "transactions": "259"
+            }
+        },
+        {
+            "timestamp": "2013-06-17T00:00:00+00:00",
+            "values": {
+                "sales": "3396.51",
+                "transactions": "497"
+            }
+        },
+        {
+            "timestamp": "2013-06-18T00:00:00+00:00",
+            "values": {
+                "sales": "2803.46",
+                "transactions": "405"
+            }
+        },
+        {
+            "timestamp": "2013-06-19T00:00:00+00:00",
+            "values": {
+                "sales": "3235.79",
+                "transactions": "497"
+            }
+        },
+        {
+            "timestamp": "2013-06-20T00:00:00+00:00",
+            "values": {
+                "sales": "3024.54",
+                "transactions": "457"
+            }
+        },
+        {
+            "timestamp": "2013-06-21T00:00:00+00:00",
+            "values": {
+                "sales": "3223.7",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2013-06-22T00:00:00+00:00",
+            "values": {
+                "sales": "2487.82",
+                "transactions": "360"
+            }
+        },
+        {
+            "timestamp": "2013-06-23T00:00:00+00:00",
+            "values": {
+                "sales": "1942.28",
+                "transactions": "282"
+            }
+        },
+        {
+            "timestamp": "2013-06-24T00:00:00+00:00",
+            "values": {
+                "sales": "3189.17",
+                "transactions": "481"
+            }
+        },
+        {
+            "timestamp": "2013-06-25T00:00:00+00:00",
+            "values": {
+                "sales": "3288.06",
+                "transactions": "490"
+            }
+        },
+        {
+            "timestamp": "2013-06-26T00:00:00+00:00",
+            "values": {
+                "sales": "3429.49",
+                "transactions": "524"
+            }
+        },
+        {
+            "timestamp": "2013-06-27T00:00:00+00:00",
+            "values": {
+                "sales": "3126.36",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-06-28T00:00:00+00:00",
+            "values": {
+                "sales": "3339.71",
+                "transactions": "462"
+            }
+        },
+        {
+            "timestamp": "2013-06-29T00:00:00+00:00",
+            "values": {
+                "sales": "2656.74",
+                "transactions": "334"
+            }
+        },
+        {
+            "timestamp": "2013-06-30T00:00:00+00:00",
+            "values": {
+                "sales": "2090.36",
+                "transactions": "296"
+            }
+        },
+        {
+            "timestamp": "2013-07-01T00:00:00+00:00",
+            "values": {
+                "sales": "3054.45",
+                "transactions": "469"
+            }
+        },
+        {
+            "timestamp": "2013-07-02T00:00:00+00:00",
+            "values": {
+                "sales": "2600.45",
+                "transactions": "412"
+            }
+        },
+        {
+            "timestamp": "2013-07-03T00:00:00+00:00",
+            "values": {
+                "sales": "3230.91",
+                "transactions": "479"
+            }
+        },
+        {
+            "timestamp": "2013-07-04T00:00:00+00:00",
+            "values": {
+                "sales": "1293.64",
+                "transactions": "207"
+            }
+        },
+        {
+            "timestamp": "2013-07-05T00:00:00+00:00",
+            "values": {
+                "sales": "2694.37",
+                "transactions": "425"
+            }
+        },
+        {
+            "timestamp": "2013-07-06T00:00:00+00:00",
+            "values": {
+                "sales": "2154.44",
+                "transactions": "323"
+            }
+        },
+        {
+            "timestamp": "2013-07-07T00:00:00+00:00",
+            "values": {
+                "sales": "2106.62",
+                "transactions": "293"
+            }
+        },
+        {
+            "timestamp": "2013-07-08T00:00:00+00:00",
+            "values": {
+                "sales": "2958.56",
+                "transactions": "442"
+            }
+        },
+        {
+            "timestamp": "2013-07-09T00:00:00+00:00",
+            "values": {
+                "sales": "2986.81",
+                "transactions": "455"
+            }
+        },
+        {
+            "timestamp": "2013-07-10T00:00:00+00:00",
+            "values": {
+                "sales": "3019.88",
+                "transactions": "462"
+            }
+        },
+        {
+            "timestamp": "2013-07-11T00:00:00+00:00",
+            "values": {
+                "sales": "3185.77",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2013-07-12T00:00:00+00:00",
+            "values": {
+                "sales": "3346.35",
+                "transactions": "490"
+            }
+        },
+        {
+            "timestamp": "2013-07-13T00:00:00+00:00",
+            "values": {
+                "sales": "2732.14",
+                "transactions": "388"
+            }
+        },
+        {
+            "timestamp": "2013-07-14T00:00:00+00:00",
+            "values": {
+                "sales": "2245.8",
+                "transactions": "305"
+            }
+        },
+        {
+            "timestamp": "2013-07-15T00:00:00+00:00",
+            "values": {
+                "sales": "3503.41",
+                "transactions": "508"
+            }
+        },
+        {
+            "timestamp": "2013-07-16T00:00:00+00:00",
+            "values": {
+                "sales": "3364.81",
+                "transactions": "455"
+            }
+        },
+        {
+            "timestamp": "2013-07-17T00:00:00+00:00",
+            "values": {
+                "sales": "3278.36",
+                "transactions": "488"
+            }
+        },
+        {
+            "timestamp": "2013-07-18T00:00:00+00:00",
+            "values": {
+                "sales": "3131.3",
+                "transactions": "473"
+            }
+        },
+        {
+            "timestamp": "2013-07-19T00:00:00+00:00",
+            "values": {
+                "sales": "3895.12",
+                "transactions": "532"
+            }
+        },
+        {
+            "timestamp": "2013-07-20T00:00:00+00:00",
+            "values": {
+                "sales": "3067.97",
+                "transactions": "405"
+            }
+        },
+        {
+            "timestamp": "2013-07-21T00:00:00+00:00",
+            "values": {
+                "sales": "2057.37",
+                "transactions": "318"
+            }
+        },
+        {
+            "timestamp": "2013-07-22T00:00:00+00:00",
+            "values": {
+                "sales": "3178.83",
+                "transactions": "485"
+            }
+        },
+        {
+            "timestamp": "2013-07-23T00:00:00+00:00",
+            "values": {
+                "sales": "2834.59",
+                "transactions": "449"
+            }
+        },
+        {
+            "timestamp": "2013-07-24T00:00:00+00:00",
+            "values": {
+                "sales": "3257.11",
+                "transactions": "468"
+            }
+        },
+        {
+            "timestamp": "2013-07-25T00:00:00+00:00",
+            "values": {
+                "sales": "3278.39",
+                "transactions": "472"
+            }
+        },
+        {
+            "timestamp": "2013-07-26T00:00:00+00:00",
+            "values": {
+                "sales": "3595.21",
+                "transactions": "510"
+            }
+        },
+        {
+            "timestamp": "2013-07-27T00:00:00+00:00",
+            "values": {
+                "sales": "2645.11",
+                "transactions": "373"
+            }
+        },
+        {
+            "timestamp": "2013-07-28T00:00:00+00:00",
+            "values": {
+                "sales": "1978",
+                "transactions": "276"
+            }
+        },
+        {
+            "timestamp": "2013-07-29T00:00:00+00:00",
+            "values": {
+                "sales": "2886.2",
+                "transactions": "451"
+            }
+        },
+        {
+            "timestamp": "2013-07-30T00:00:00+00:00",
+            "values": {
+                "sales": "3044.08",
+                "transactions": "438"
+            }
+        },
+        {
+            "timestamp": "2013-07-31T00:00:00+00:00",
+            "values": {
+                "sales": "3699.18",
+                "transactions": "537"
+            }
+        },
+        {
+            "timestamp": "2013-08-01T00:00:00+00:00",
+            "values": {
+                "sales": "3576.69",
+                "transactions": "519"
+            }
+        },
+        {
+            "timestamp": "2013-08-02T00:00:00+00:00",
+            "values": {
+                "sales": "3701.46",
+                "transactions": "565"
+            }
+        },
+        {
+            "timestamp": "2013-08-03T00:00:00+00:00",
+            "values": {
+                "sales": "2940.13",
+                "transactions": "415"
+            }
+        },
+        {
+            "timestamp": "2013-08-04T00:00:00+00:00",
+            "values": {
+                "sales": "1908.45",
+                "transactions": "255"
+            }
+        },
+        {
+            "timestamp": "2013-08-05T00:00:00+00:00",
+            "values": {
+                "sales": "3153.47",
+                "transactions": "497"
+            }
+        },
+        {
+            "timestamp": "2013-08-06T00:00:00+00:00",
+            "values": {
+                "sales": "2799.8",
+                "transactions": "431"
+            }
+        },
+        {
+            "timestamp": "2013-08-07T00:00:00+00:00",
+            "values": {
+                "sales": "3429.09",
+                "transactions": "510"
+            }
+        },
+        {
+            "timestamp": "2013-08-08T00:00:00+00:00",
+            "values": {
+                "sales": "3344.51",
+                "transactions": "496"
+            }
+        },
+        {
+            "timestamp": "2013-08-09T00:00:00+00:00",
+            "values": {
+                "sales": "3402.07",
+                "transactions": "473"
+            }
+        },
+        {
+            "timestamp": "2013-08-10T00:00:00+00:00",
+            "values": {
+                "sales": "2649.87",
+                "transactions": "367"
+            }
+        },
+        {
+            "timestamp": "2013-08-11T00:00:00+00:00",
+            "values": {
+                "sales": "2111.93",
+                "transactions": "286"
+            }
+        },
+        {
+            "timestamp": "2013-08-12T00:00:00+00:00",
+            "values": {
+                "sales": "3391.01",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2013-08-13T00:00:00+00:00",
+            "values": {
+                "sales": "3138.04",
+                "transactions": "463"
+            }
+        },
+        {
+            "timestamp": "2013-08-14T00:00:00+00:00",
+            "values": {
+                "sales": "3732.49",
+                "transactions": "543"
+            }
+        },
+        {
+            "timestamp": "2013-08-15T00:00:00+00:00",
+            "values": {
+                "sales": "3603.02",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2013-08-16T00:00:00+00:00",
+            "values": {
+                "sales": "3884.99",
+                "transactions": "528"
+            }
+        },
+        {
+            "timestamp": "2013-08-17T00:00:00+00:00",
+            "values": {
+                "sales": "2890.19",
+                "transactions": "408"
+            }
+        },
+        {
+            "timestamp": "2013-08-18T00:00:00+00:00",
+            "values": {
+                "sales": "1946.06",
+                "transactions": "287"
+            }
+        },
+        {
+            "timestamp": "2013-08-19T00:00:00+00:00",
+            "values": {
+                "sales": "3162.11",
+                "transactions": "481"
+            }
+        },
+        {
+            "timestamp": "2013-08-20T00:00:00+00:00",
+            "values": {
+                "sales": "3088.92",
+                "transactions": "479"
+            }
+        },
+        {
+            "timestamp": "2013-08-21T00:00:00+00:00",
+            "values": {
+                "sales": "4178.6",
+                "transactions": "604"
+            }
+        },
+        {
+            "timestamp": "2013-08-22T00:00:00+00:00",
+            "values": {
+                "sales": "4025.12",
+                "transactions": "591"
+            }
+        },
+        {
+            "timestamp": "2013-08-23T00:00:00+00:00",
+            "values": {
+                "sales": "3664.6",
+                "transactions": "522"
+            }
+        },
+        {
+            "timestamp": "2013-08-24T00:00:00+00:00",
+            "values": {
+                "sales": "3262.68",
+                "transactions": "441"
+            }
+        },
+        {
+            "timestamp": "2013-08-25T00:00:00+00:00",
+            "values": {
+                "sales": "2471.57",
+                "transactions": "341"
+            }
+        },
+        {
+            "timestamp": "2013-08-26T00:00:00+00:00",
+            "values": {
+                "sales": "3264.76",
+                "transactions": "507"
+            }
+        },
+        {
+            "timestamp": "2013-08-27T00:00:00+00:00",
+            "values": {
+                "sales": "3197.68",
+                "transactions": "489"
+            }
+        },
+        {
+            "timestamp": "2013-08-29T00:00:00+00:00",
+            "values": {
+                "sales": "3172.53",
+                "transactions": "502"
+            }
+        },
+        {
+            "timestamp": "2013-08-30T00:00:00+00:00",
+            "values": {
+                "sales": "3762.26",
+                "transactions": "579"
+            }
+        },
+        {
+            "timestamp": "2013-08-31T00:00:00+00:00",
+            "values": {
+                "sales": "2865.38",
+                "transactions": "418"
+            }
+        },
+        {
+            "timestamp": "2013-09-01T00:00:00+00:00",
+            "values": {
+                "sales": "1871.67",
+                "transactions": "291"
+            }
+        },
+        {
+            "timestamp": "2013-09-02T00:00:00+00:00",
+            "values": {
+                "sales": "2049.85",
+                "transactions": "288"
+            }
+        },
+        {
+            "timestamp": "2013-09-03T00:00:00+00:00",
+            "values": {
+                "sales": "2927.04",
+                "transactions": "462"
+            }
+        },
+        {
+            "timestamp": "2013-09-04T00:00:00+00:00",
+            "values": {
+                "sales": "2821.89",
+                "transactions": "468"
+            }
+        },
+        {
+            "timestamp": "2013-09-05T00:00:00+00:00",
+            "values": {
+                "sales": "3257.88",
+                "transactions": "500"
+            }
+        },
+        {
+            "timestamp": "2013-09-06T00:00:00+00:00",
+            "values": {
+                "sales": "3345.64",
+                "transactions": "507"
+            }
+        },
+        {
+            "timestamp": "2013-09-07T00:00:00+00:00",
+            "values": {
+                "sales": "2209.59",
+                "transactions": "331"
+            }
+        },
+        {
+            "timestamp": "2013-09-08T00:00:00+00:00",
+            "values": {
+                "sales": "1811.01",
+                "transactions": "279"
+            }
+        },
+        {
+            "timestamp": "2013-09-09T00:00:00+00:00",
+            "values": {
+                "sales": "2913.21",
+                "transactions": "454"
+            }
+        },
+        {
+            "timestamp": "2013-09-10T00:00:00+00:00",
+            "values": {
+                "sales": "3150.91",
+                "transactions": "518"
+            }
+        },
+        {
+            "timestamp": "2013-09-11T00:00:00+00:00",
+            "values": {
+                "sales": "3268.16",
+                "transactions": "533"
+            }
+        },
+        {
+            "timestamp": "2013-09-12T00:00:00+00:00",
+            "values": {
+                "sales": "3036.59",
+                "transactions": "510"
+            }
+        },
+        {
+            "timestamp": "2013-09-13T00:00:00+00:00",
+            "values": {
+                "sales": "3561.9",
+                "transactions": "546"
+            }
+        },
+        {
+            "timestamp": "2013-09-14T00:00:00+00:00",
+            "values": {
+                "sales": "2396.07",
+                "transactions": "379"
+            }
+        },
+        {
+            "timestamp": "2013-09-15T00:00:00+00:00",
+            "values": {
+                "sales": "2386.25",
+                "transactions": "340"
+            }
+        },
+        {
+            "timestamp": "2013-09-16T00:00:00+00:00",
+            "values": {
+                "sales": "2801.74",
+                "transactions": "452"
+            }
+        },
+        {
+            "timestamp": "2013-09-17T00:00:00+00:00",
+            "values": {
+                "sales": "2755.07",
+                "transactions": "467"
+            }
+        },
+        {
+            "timestamp": "2013-09-18T00:00:00+00:00",
+            "values": {
+                "sales": "3079.55",
+                "transactions": "485"
+            }
+        },
+        {
+            "timestamp": "2013-09-19T00:00:00+00:00",
+            "values": {
+                "sales": "3451.28",
+                "transactions": "548"
+            }
+        },
+        {
+            "timestamp": "2013-09-20T00:00:00+00:00",
+            "values": {
+                "sales": "3708.76",
+                "transactions": "562"
+            }
+        },
+        {
+            "timestamp": "2013-09-21T00:00:00+00:00",
+            "values": {
+                "sales": "2762.26",
+                "transactions": "402"
+            }
+        },
+        {
+            "timestamp": "2013-09-22T00:00:00+00:00",
+            "values": {
+                "sales": "2053.28",
+                "transactions": "310"
+            }
+        },
+        {
+            "timestamp": "2013-09-23T00:00:00+00:00",
+            "values": {
+                "sales": "2738.45",
+                "transactions": "455"
+            }
+        },
+        {
+            "timestamp": "2013-09-24T00:00:00+00:00",
+            "values": {
+                "sales": "3078.3",
+                "transactions": "497"
+            }
+        },
+        {
+            "timestamp": "2013-09-25T00:00:00+00:00",
+            "values": {
+                "sales": "3227.24",
+                "transactions": "510"
+            }
+        },
+        {
+            "timestamp": "2013-09-26T00:00:00+00:00",
+            "values": {
+                "sales": "3183.25",
+                "transactions": "496"
+            }
+        },
+        {
+            "timestamp": "2013-09-27T00:00:00+00:00",
+            "values": {
+                "sales": "3512.4",
+                "transactions": "523"
+            }
+        },
+        {
+            "timestamp": "2013-09-28T00:00:00+00:00",
+            "values": {
+                "sales": "2992.12",
+                "transactions": "430"
+            }
+        },
+        {
+            "timestamp": "2013-09-29T00:00:00+00:00",
+            "values": {
+                "sales": "1953.31",
+                "transactions": "279"
+            }
+        },
+        {
+            "timestamp": "2013-09-30T00:00:00+00:00",
+            "values": {
+                "sales": "3352.8",
+                "transactions": "504"
+            }
+        },
+        {
+            "timestamp": "2013-10-01T00:00:00+00:00",
+            "values": {
+                "sales": "3442.13",
+                "transactions": "526"
+            }
+        },
+        {
+            "timestamp": "2013-10-02T00:00:00+00:00",
+            "values": {
+                "sales": "3351.62",
+                "transactions": "531"
+            }
+        },
+        {
+            "timestamp": "2013-10-03T00:00:00+00:00",
+            "values": {
+                "sales": "3395.15",
+                "transactions": "539"
+            }
+        },
+        {
+            "timestamp": "2013-10-04T00:00:00+00:00",
+            "values": {
+                "sales": "4130.06",
+                "transactions": "595"
+            }
+        },
+        {
+            "timestamp": "2013-10-05T00:00:00+00:00",
+            "values": {
+                "sales": "3001.1",
+                "transactions": "415"
+            }
+        },
+        {
+            "timestamp": "2013-10-06T00:00:00+00:00",
+            "values": {
+                "sales": "1815.13",
+                "transactions": "263"
+            }
+        },
+        {
+            "timestamp": "2013-10-07T00:00:00+00:00",
+            "values": {
+                "sales": "3001.32",
+                "transactions": "486"
+            }
+        },
+        {
+            "timestamp": "2013-10-08T00:00:00+00:00",
+            "values": {
+                "sales": "3001.36",
+                "transactions": "483"
+            }
+        },
+        {
+            "timestamp": "2013-10-09T00:00:00+00:00",
+            "values": {
+                "sales": "3174.73",
+                "transactions": "510"
+            }
+        },
+        {
+            "timestamp": "2013-10-10T00:00:00+00:00",
+            "values": {
+                "sales": "3359.93",
+                "transactions": "507"
+            }
+        },
+        {
+            "timestamp": "2013-10-11T00:00:00+00:00",
+            "values": {
+                "sales": "3622.6",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-10-12T00:00:00+00:00",
+            "values": {
+                "sales": "2968.89",
+                "transactions": "404"
+            }
+        },
+        {
+            "timestamp": "2013-10-13T00:00:00+00:00",
+            "values": {
+                "sales": "1790.15",
+                "transactions": "284"
+            }
+        },
+        {
+            "timestamp": "2013-10-14T00:00:00+00:00",
+            "values": {
+                "sales": "3320.62",
+                "transactions": "518"
+            }
+        },
+        {
+            "timestamp": "2013-10-15T00:00:00+00:00",
+            "values": {
+                "sales": "3164.19",
+                "transactions": "499"
+            }
+        },
+        {
+            "timestamp": "2013-10-16T00:00:00+00:00",
+            "values": {
+                "sales": "3212.98",
+                "transactions": "513"
+            }
+        },
+        {
+            "timestamp": "2013-10-17T00:00:00+00:00",
+            "values": {
+                "sales": "3696.16",
+                "transactions": "545"
+            }
+        },
+        {
+            "timestamp": "2013-10-18T00:00:00+00:00",
+            "values": {
+                "sales": "4019.59",
+                "transactions": "589"
+            }
+        },
+        {
+            "timestamp": "2013-10-19T00:00:00+00:00",
+            "values": {
+                "sales": "3005.53",
+                "transactions": "413"
+            }
+        },
+        {
+            "timestamp": "2013-10-20T00:00:00+00:00",
+            "values": {
+                "sales": "2260.73",
+                "transactions": "322"
+            }
+        },
+        {
+            "timestamp": "2013-10-21T00:00:00+00:00",
+            "values": {
+                "sales": "3232.49",
+                "transactions": "508"
+            }
+        },
+        {
+            "timestamp": "2013-10-22T00:00:00+00:00",
+            "values": {
+                "sales": "3239.5",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-10-23T00:00:00+00:00",
+            "values": {
+                "sales": "3679.79",
+                "transactions": "547"
+            }
+        },
+        {
+            "timestamp": "2013-10-24T00:00:00+00:00",
+            "values": {
+                "sales": "3737.87",
+                "transactions": "543"
+            }
+        },
+        {
+            "timestamp": "2013-10-25T00:00:00+00:00",
+            "values": {
+                "sales": "3559.12",
+                "transactions": "514"
+            }
+        },
+        {
+            "timestamp": "2013-10-26T00:00:00+00:00",
+            "values": {
+                "sales": "2987.02",
+                "transactions": "420"
+            }
+        },
+        {
+            "timestamp": "2013-10-27T00:00:00+00:00",
+            "values": {
+                "sales": "1838.37",
+                "transactions": "265"
+            }
+        },
+        {
+            "timestamp": "2013-10-28T00:00:00+00:00",
+            "values": {
+                "sales": "3346.27",
+                "transactions": "511"
+            }
+        },
+        {
+            "timestamp": "2013-10-29T00:00:00+00:00",
+            "values": {
+                "sales": "3448.58",
+                "transactions": "524"
+            }
+        },
+        {
+            "timestamp": "2013-10-30T00:00:00+00:00",
+            "values": {
+                "sales": "3442.68",
+                "transactions": "512"
+            }
+        },
+        {
+            "timestamp": "2013-10-31T00:00:00+00:00",
+            "values": {
+                "sales": "3573.07",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-11-01T00:00:00+00:00",
+            "values": {
+                "sales": "3891.23",
+                "transactions": "555"
+            }
+        },
+        {
+            "timestamp": "2013-11-02T00:00:00+00:00",
+            "values": {
+                "sales": "2757.61",
+                "transactions": "384"
+            }
+        },
+        {
+            "timestamp": "2013-11-03T00:00:00+00:00",
+            "values": {
+                "sales": "1954.21",
+                "transactions": "268"
+            }
+        },
+        {
+            "timestamp": "2013-11-04T00:00:00+00:00",
+            "values": {
+                "sales": "3219.55",
+                "transactions": "475"
+            }
+        },
+        {
+            "timestamp": "2013-11-05T00:00:00+00:00",
+            "values": {
+                "sales": "2983.15",
+                "transactions": "461"
+            }
+        },
+        {
+            "timestamp": "2013-11-06T00:00:00+00:00",
+            "values": {
+                "sales": "3143.32",
+                "transactions": "481"
+            }
+        },
+        {
+            "timestamp": "2013-11-07T00:00:00+00:00",
+            "values": {
+                "sales": "3630.51",
+                "transactions": "514"
+            }
+        },
+        {
+            "timestamp": "2013-11-08T00:00:00+00:00",
+            "values": {
+                "sales": "3168.97",
+                "transactions": "459"
+            }
+        },
+        {
+            "timestamp": "2013-11-09T00:00:00+00:00",
+            "values": {
+                "sales": "2893.7",
+                "transactions": "394"
+            }
+        },
+        {
+            "timestamp": "2013-11-10T00:00:00+00:00",
+            "values": {
+                "sales": "1951.71",
+                "transactions": "258"
+            }
+        },
+        {
+            "timestamp": "2013-11-11T00:00:00+00:00",
+            "values": {
+                "sales": "2177.72",
+                "transactions": "333"
+            }
+        },
+        {
+            "timestamp": "2013-11-12T00:00:00+00:00",
+            "values": {
+                "sales": "2975.42",
+                "transactions": "456"
+            }
+        },
+        {
+            "timestamp": "2013-11-13T00:00:00+00:00",
+            "values": {
+                "sales": "3238.37",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2013-11-14T00:00:00+00:00",
+            "values": {
+                "sales": "3323.48",
+                "transactions": "495"
+            }
+        },
+        {
+            "timestamp": "2013-11-15T00:00:00+00:00",
+            "values": {
+                "sales": "3824.79",
+                "transactions": "545"
+            }
+        },
+        {
+            "timestamp": "2013-11-16T00:00:00+00:00",
+            "values": {
+                "sales": "2855.64",
+                "transactions": "383"
+            }
+        },
+        {
+            "timestamp": "2013-11-17T00:00:00+00:00",
+            "values": {
+                "sales": "2167.44",
+                "transactions": "321"
+            }
+        },
+        {
+            "timestamp": "2013-11-18T00:00:00+00:00",
+            "values": {
+                "sales": "2959.22",
+                "transactions": "450"
+            }
+        },
+        {
+            "timestamp": "2013-11-19T00:00:00+00:00",
+            "values": {
+                "sales": "3157.1",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2013-11-20T00:00:00+00:00",
+            "values": {
+                "sales": "3294",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-11-21T00:00:00+00:00",
+            "values": {
+                "sales": "3451.49",
+                "transactions": "485"
+            }
+        },
+        {
+            "timestamp": "2013-11-22T00:00:00+00:00",
+            "values": {
+                "sales": "3373.78",
+                "transactions": "508"
+            }
+        },
+        {
+            "timestamp": "2013-11-23T00:00:00+00:00",
+            "values": {
+                "sales": "2875.38",
+                "transactions": "397"
+            }
+        },
+        {
+            "timestamp": "2013-11-24T00:00:00+00:00",
+            "values": {
+                "sales": "2461.24",
+                "transactions": "345"
+            }
+        },
+        {
+            "timestamp": "2013-11-25T00:00:00+00:00",
+            "values": {
+                "sales": "3522.06",
+                "transactions": "514"
+            }
+        },
+        {
+            "timestamp": "2013-11-26T00:00:00+00:00",
+            "values": {
+                "sales": "3206.79",
+                "transactions": "473"
+            }
+        },
+        {
+            "timestamp": "2013-11-27T00:00:00+00:00",
+            "values": {
+                "sales": "3956.97",
+                "transactions": "538"
+            }
+        },
+        {
+            "timestamp": "2013-11-29T00:00:00+00:00",
+            "values": {
+                "sales": "2748.79",
+                "transactions": "358"
+            }
+        },
+        {
+            "timestamp": "2013-11-30T00:00:00+00:00",
+            "values": {
+                "sales": "2821.87",
+                "transactions": "368"
+            }
+        },
+        {
+            "timestamp": "2013-12-01T00:00:00+00:00",
+            "values": {
+                "sales": "1978.18",
+                "transactions": "275"
+            }
+        },
+        {
+            "timestamp": "2013-12-02T00:00:00+00:00",
+            "values": {
+                "sales": "3409.4",
+                "transactions": "495"
+            }
+        },
+        {
+            "timestamp": "2013-12-03T00:00:00+00:00",
+            "values": {
+                "sales": "3291.89",
+                "transactions": "519"
+            }
+        },
+        {
+            "timestamp": "2013-12-04T00:00:00+00:00",
+            "values": {
+                "sales": "3161.52",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2013-12-05T00:00:00+00:00",
+            "values": {
+                "sales": "3268.47",
+                "transactions": "513"
+            }
+        },
+        {
+            "timestamp": "2013-12-06T00:00:00+00:00",
+            "values": {
+                "sales": "3359.24",
+                "transactions": "494"
+            }
+        },
+        {
+            "timestamp": "2013-12-07T00:00:00+00:00",
+            "values": {
+                "sales": "2499.5",
+                "transactions": "322"
+            }
+        },
+        {
+            "timestamp": "2013-12-08T00:00:00+00:00",
+            "values": {
+                "sales": "2071.38",
+                "transactions": "281"
+            }
+        },
+        {
+            "timestamp": "2013-12-09T00:00:00+00:00",
+            "values": {
+                "sales": "3315.44",
+                "transactions": "492"
+            }
+        },
+        {
+            "timestamp": "2013-12-10T00:00:00+00:00",
+            "values": {
+                "sales": "2959.15",
+                "transactions": "448"
+            }
+        },
+        {
+            "timestamp": "2013-12-11T00:00:00+00:00",
+            "values": {
+                "sales": "3220.33",
+                "transactions": "503"
+            }
+        },
+        {
+            "timestamp": "2013-12-12T00:00:00+00:00",
+            "values": {
+                "sales": "3542.07",
+                "transactions": "523"
+            }
+        },
+        {
+            "timestamp": "2013-12-13T00:00:00+00:00",
+            "values": {
+                "sales": "3628.93",
+                "transactions": "536"
+            }
+        },
+        {
+            "timestamp": "2013-12-14T00:00:00+00:00",
+            "values": {
+                "sales": "3026.43",
+                "transactions": "414"
+            }
+        },
+        {
+            "timestamp": "2013-12-15T00:00:00+00:00",
+            "values": {
+                "sales": "2127.05",
+                "transactions": "299"
+            }
+        },
+        {
+            "timestamp": "2013-12-16T00:00:00+00:00",
+            "values": {
+                "sales": "3125.26",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2013-12-17T00:00:00+00:00",
+            "values": {
+                "sales": "3215.42",
+                "transactions": "475"
+            }
+        },
+        {
+            "timestamp": "2013-12-18T00:00:00+00:00",
+            "values": {
+                "sales": "3315.93",
+                "transactions": "489"
+            }
+        },
+        {
+            "timestamp": "2013-12-19T00:00:00+00:00",
+            "values": {
+                "sales": "3501.49",
+                "transactions": "535"
+            }
+        },
+        {
+            "timestamp": "2013-12-20T00:00:00+00:00",
+            "values": {
+                "sales": "3620.2",
+                "transactions": "513"
+            }
+        },
+        {
+            "timestamp": "2013-12-21T00:00:00+00:00",
+            "values": {
+                "sales": "2813.81",
+                "transactions": "386"
+            }
+        },
+        {
+            "timestamp": "2013-12-22T00:00:00+00:00",
+            "values": {
+                "sales": "2445.17",
+                "transactions": "352"
+            }
+        },
+        {
+            "timestamp": "2013-12-23T00:00:00+00:00",
+            "values": {
+                "sales": "3439.29",
+                "transactions": "490"
+            }
+        },
+        {
+            "timestamp": "2013-12-24T00:00:00+00:00",
+            "values": {
+                "sales": "2471",
+                "transactions": "323"
+            }
+        },
+        {
+            "timestamp": "2013-12-26T00:00:00+00:00",
+            "values": {
+                "sales": "2628.98",
+                "transactions": "394"
+            }
+        },
+        {
+            "timestamp": "2013-12-27T00:00:00+00:00",
+            "values": {
+                "sales": "2921.37",
+                "transactions": "428"
+            }
+        },
+        {
+            "timestamp": "2013-12-28T00:00:00+00:00",
+            "values": {
+                "sales": "2006.63",
+                "transactions": "299"
+            }
+        },
+        {
+            "timestamp": "2013-12-29T00:00:00+00:00",
+            "values": {
+                "sales": "1692.21",
+                "transactions": "256"
+            }
+        },
+        {
+            "timestamp": "2013-12-30T00:00:00+00:00",
+            "values": {
+                "sales": "3151.28",
+                "transactions": "471"
+            }
+        },
+        {
+            "timestamp": "2013-12-31T00:00:00+00:00",
+            "values": {
+                "sales": "2628.58",
+                "transactions": "410"
+            }
+        },
+        {
+            "timestamp": "2014-01-01T00:00:00+00:00",
+            "values": {
+                "sales": "1206.41",
+                "transactions": "190"
+            }
+        },
+        {
+            "timestamp": "2014-01-02T00:00:00+00:00",
+            "values": {
+                "sales": "2732.97",
+                "transactions": "420"
+            }
+        },
+        {
+            "timestamp": "2014-01-03T00:00:00+00:00",
+            "values": {
+                "sales": "3063.84",
+                "transactions": "455"
+            }
+        },
+        {
+            "timestamp": "2014-01-04T00:00:00+00:00",
+            "values": {
+                "sales": "2489.92",
+                "transactions": "347"
+            }
+        },
+        {
+            "timestamp": "2014-01-05T00:00:00+00:00",
+            "values": {
+                "sales": "1638.52",
+                "transactions": "248"
+            }
+        },
+        {
+            "timestamp": "2014-01-06T00:00:00+00:00",
+            "values": {
+                "sales": "2529.58",
+                "transactions": "401"
+            }
+        },
+        {
+            "timestamp": "2014-01-07T00:00:00+00:00",
+            "values": {
+                "sales": "2758.34",
+                "transactions": "441"
+            }
+        },
+        {
+            "timestamp": "2014-01-08T00:00:00+00:00",
+            "values": {
+                "sales": "2627.16",
+                "transactions": "429"
+            }
+        },
+        {
+            "timestamp": "2014-01-09T00:00:00+00:00",
+            "values": {
+                "sales": "2652.87",
+                "transactions": "417"
+            }
+        },
+        {
+            "timestamp": "2014-01-10T00:00:00+00:00",
+            "values": {
+                "sales": "3120.47",
+                "transactions": "461"
+            }
+        },
+        {
+            "timestamp": "2014-01-11T00:00:00+00:00",
+            "values": {
+                "sales": "2023.45",
+                "transactions": "307"
+            }
+        },
+        {
+            "timestamp": "2014-01-12T00:00:00+00:00",
+            "values": {
+                "sales": "1603.94",
+                "transactions": "246"
+            }
+        },
+        {
+            "timestamp": "2014-01-13T00:00:00+00:00",
+            "values": {
+                "sales": "2919.92",
+                "transactions": "475"
+            }
+        },
+        {
+            "timestamp": "2014-01-14T00:00:00+00:00",
+            "values": {
+                "sales": "2570.15",
+                "transactions": "427"
+            }
+        },
+        {
+            "timestamp": "2014-01-15T00:00:00+00:00",
+            "values": {
+                "sales": "2979.21",
+                "transactions": "451"
+            }
+        },
+        {
+            "timestamp": "2014-01-16T00:00:00+00:00",
+            "values": {
+                "sales": "2822.78",
+                "transactions": "452"
+            }
+        },
+        {
+            "timestamp": "2014-01-17T00:00:00+00:00",
+            "values": {
+                "sales": "3354.45",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2014-01-18T00:00:00+00:00",
+            "values": {
+                "sales": "2270.53",
+                "transactions": "336"
+            }
+        },
+        {
+            "timestamp": "2014-01-19T00:00:00+00:00",
+            "values": {
+                "sales": "1686.4",
+                "transactions": "258"
+            }
+        },
+        {
+            "timestamp": "2014-01-20T00:00:00+00:00",
+            "values": {
+                "sales": "2049.76",
+                "transactions": "317"
+            }
+        },
+        {
+            "timestamp": "2014-01-21T00:00:00+00:00",
+            "values": {
+                "sales": "2680.02",
+                "transactions": "438"
+            }
+        },
+        {
+            "timestamp": "2014-01-22T00:00:00+00:00",
+            "values": {
+                "sales": "2938.32",
+                "transactions": "458"
+            }
+        },
+        {
+            "timestamp": "2014-01-23T00:00:00+00:00",
+            "values": {
+                "sales": "2982.54",
+                "transactions": "444"
+            }
+        },
+        {
+            "timestamp": "2014-01-24T00:00:00+00:00",
+            "values": {
+                "sales": "3359.14",
+                "transactions": "480"
+            }
+        },
+        {
+            "timestamp": "2014-01-25T00:00:00+00:00",
+            "values": {
+                "sales": "2350.1",
+                "transactions": "344"
+            }
+        },
+        {
+            "timestamp": "2014-01-26T00:00:00+00:00",
+            "values": {
+                "sales": "1985.28",
+                "transactions": "274"
+            }
+        },
+        {
+            "timestamp": "2014-01-27T00:00:00+00:00",
+            "values": {
+                "sales": "2859.99",
+                "transactions": "450"
+            }
+        },
+        {
+            "timestamp": "2014-01-28T00:00:00+00:00",
+            "values": {
+                "sales": "2825.58",
+                "transactions": "445"
+            }
+        },
+        {
+            "timestamp": "2014-01-29T00:00:00+00:00",
+            "values": {
+                "sales": "3227.63",
+                "transactions": "533"
+            }
+        },
+        {
+            "timestamp": "2014-01-30T00:00:00+00:00",
+            "values": {
+                "sales": "3096.7",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2014-01-31T00:00:00+00:00",
+            "values": {
+                "sales": "3615.68",
+                "transactions": "500"
+            }
+        },
+        {
+            "timestamp": "2014-02-01T00:00:00+00:00",
+            "values": {
+                "sales": "2678.66",
+                "transactions": "381"
+            }
+        },
+        {
+            "timestamp": "2014-02-02T00:00:00+00:00",
+            "values": {
+                "sales": "1474.14",
+                "transactions": "242"
+            }
+        },
+        {
+            "timestamp": "2014-02-03T00:00:00+00:00",
+            "values": {
+                "sales": "3021.07",
+                "transactions": "493"
+            }
+        },
+        {
+            "timestamp": "2014-02-04T00:00:00+00:00",
+            "values": {
+                "sales": "2768.53",
+                "transactions": "425"
+            }
+        },
+        {
+            "timestamp": "2014-02-05T00:00:00+00:00",
+            "values": {
+                "sales": "2975.12",
+                "transactions": "479"
+            }
+        },
+        {
+            "timestamp": "2014-02-06T00:00:00+00:00",
+            "values": {
+                "sales": "2886.8",
+                "transactions": "459"
+            }
+        },
+        {
+            "timestamp": "2014-02-07T00:00:00+00:00",
+            "values": {
+                "sales": "3211.81",
+                "transactions": "486"
+            }
+        },
+        {
+            "timestamp": "2014-02-08T00:00:00+00:00",
+            "values": {
+                "sales": "2860.03",
+                "transactions": "388"
+            }
+        },
+        {
+            "timestamp": "2014-02-09T00:00:00+00:00",
+            "values": {
+                "sales": "2223.95",
+                "transactions": "305"
+            }
+        },
+        {
+            "timestamp": "2014-02-10T00:00:00+00:00",
+            "values": {
+                "sales": "3136.81",
+                "transactions": "465"
+            }
+        },
+        {
+            "timestamp": "2014-02-11T00:00:00+00:00",
+            "values": {
+                "sales": "3120.93",
+                "transactions": "454"
+            }
+        },
+        {
+            "timestamp": "2014-02-12T00:00:00+00:00",
+            "values": {
+                "sales": "3615.39",
+                "transactions": "531"
+            }
+        },
+        {
+            "timestamp": "2014-02-13T00:00:00+00:00",
+            "values": {
+                "sales": "3485.62",
+                "transactions": "498"
+            }
+        },
+        {
+            "timestamp": "2014-02-14T00:00:00+00:00",
+            "values": {
+                "sales": "3316.85",
+                "transactions": "461"
+            }
+        },
+        {
+            "timestamp": "2014-02-15T00:00:00+00:00",
+            "values": {
+                "sales": "3193.84",
+                "transactions": "430"
+            }
+        },
+        {
+            "timestamp": "2014-02-16T00:00:00+00:00",
+            "values": {
+                "sales": "2489.49",
+                "transactions": "311"
+            }
+        },
+        {
+            "timestamp": "2014-02-17T00:00:00+00:00",
+            "values": {
+                "sales": "3225.65",
+                "transactions": "409"
+            }
+        },
+        {
+            "timestamp": "2014-02-18T00:00:00+00:00",
+            "values": {
+                "sales": "3154.84",
+                "transactions": "476"
+            }
+        },
+        {
+            "timestamp": "2014-02-19T00:00:00+00:00",
+            "values": {
+                "sales": "3493.2",
+                "transactions": "509"
+            }
+        },
+        {
+            "timestamp": "2014-02-20T00:00:00+00:00",
+            "values": {
+                "sales": "3559.79",
+                "transactions": "517"
+            }
+        },
+        {
+            "timestamp": "2014-02-21T00:00:00+00:00",
+            "values": {
+                "sales": "3482.69",
+                "transactions": "511"
+            }
+        },
+        {
+            "timestamp": "2014-02-22T00:00:00+00:00",
+            "values": {
+                "sales": "3066.02",
+                "transactions": "379"
+            }
+        },
+        {
+            "timestamp": "2014-02-23T00:00:00+00:00",
+            "values": {
+                "sales": "2267.6",
+                "transactions": "323"
+            }
+        },
+        {
+            "timestamp": "2014-02-24T00:00:00+00:00",
+            "values": {
+                "sales": "3425.49",
+                "transactions": "474"
+            }
+        },
+        {
+            "timestamp": "2014-02-25T00:00:00+00:00",
+            "values": {
+                "sales": "3559.82",
+                "transactions": "511"
+            }
+        },
+        {
+            "timestamp": "2014-02-26T00:00:00+00:00",
+            "values": {
+                "sales": "3573.71",
+                "transactions": "508"
+            }
+        },
+        {
+            "timestamp": "2014-02-27T00:00:00+00:00",
+            "values": {
+                "sales": "3617.18",
+                "transactions": "515"
+            }
+        },
+        {
+            "timestamp": "2014-02-28T00:00:00+00:00",
+            "values": {
+                "sales": "3851.36",
+                "transactions": "534"
+            }
+        },
+        {
+            "timestamp": "2014-03-01T00:00:00+00:00",
+            "values": {
+                "sales": "2926.75",
+                "transactions": "387"
+            }
+        },
+        {
+            "timestamp": "2014-03-02T00:00:00+00:00",
+            "values": {
+                "sales": "2206",
+                "transactions": "284"
+            }
+        },
+        {
+            "timestamp": "2014-03-03T00:00:00+00:00",
+            "values": {
+                "sales": "3440.26",
+                "transactions": "505"
+            }
+        },
+        {
+            "timestamp": "2014-03-04T00:00:00+00:00",
+            "values": {
+                "sales": "3368.85",
+                "transactions": "480"
+            }
+        },
+        {
+            "timestamp": "2014-03-05T00:00:00+00:00",
+            "values": {
+                "sales": "3641.23",
+                "transactions": "487"
+            }
+        },
+        {
+            "timestamp": "2014-03-06T00:00:00+00:00",
+            "values": {
+                "sales": "3607.3",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2014-03-07T00:00:00+00:00",
+            "values": {
+                "sales": "3409.41",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2014-03-08T00:00:00+00:00",
+            "values": {
+                "sales": "2832.99",
+                "transactions": "355"
+            }
+        },
+        {
+            "timestamp": "2014-03-09T00:00:00+00:00",
+            "values": {
+                "sales": "2098",
+                "transactions": "285"
+            }
+        },
+        {
+            "timestamp": "2014-03-10T00:00:00+00:00",
+            "values": {
+                "sales": "3042.74",
+                "transactions": "453"
+            }
+        },
+        {
+            "timestamp": "2014-03-11T00:00:00+00:00",
+            "values": {
+                "sales": "2875.55",
+                "transactions": "433"
+            }
+        },
+        {
+            "timestamp": "2014-03-12T00:00:00+00:00",
+            "values": {
+                "sales": "3106.76",
+                "transactions": "448"
+            }
+        },
+        {
+            "timestamp": "2014-03-13T00:00:00+00:00",
+            "values": {
+                "sales": "2911.02",
+                "transactions": "447"
+            }
+        },
+        {
+            "timestamp": "2014-03-14T00:00:00+00:00",
+            "values": {
+                "sales": "3580.38",
+                "transactions": "481"
+            }
+        },
+        {
+            "timestamp": "2014-03-15T00:00:00+00:00",
+            "values": {
+                "sales": "2910.71",
+                "transactions": "363"
+            }
+        },
+        {
+            "timestamp": "2014-03-16T00:00:00+00:00",
+            "values": {
+                "sales": "2619.86",
+                "transactions": "347"
+            }
+        },
+        {
+            "timestamp": "2014-03-17T00:00:00+00:00",
+            "values": {
+                "sales": "3057.39",
+                "transactions": "479"
+            }
+        },
+        {
+            "timestamp": "2014-03-18T00:00:00+00:00",
+            "values": {
+                "sales": "3003.06",
+                "transactions": "456"
+            }
+        },
+        {
+            "timestamp": "2014-03-19T00:00:00+00:00",
+            "values": {
+                "sales": "3419.14",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2014-03-20T00:00:00+00:00",
+            "values": {
+                "sales": "3722.99",
+                "transactions": "537"
+            }
+        },
+        {
+            "timestamp": "2014-03-21T00:00:00+00:00",
+            "values": {
+                "sales": "3596.08",
+                "transactions": "532"
+            }
+        },
+        {
+            "timestamp": "2014-03-22T00:00:00+00:00",
+            "values": {
+                "sales": "2567.82",
+                "transactions": "358"
+            }
+        },
+        {
+            "timestamp": "2014-03-23T00:00:00+00:00",
+            "values": {
+                "sales": "2374.09",
+                "transactions": "325"
+            }
+        },
+        {
+            "timestamp": "2014-03-24T00:00:00+00:00",
+            "values": {
+                "sales": "2992.05",
+                "transactions": "445"
+            }
+        },
+        {
+            "timestamp": "2014-03-25T00:00:00+00:00",
+            "values": {
+                "sales": "3469.43",
+                "transactions": "506"
+            }
+        },
+        {
+            "timestamp": "2014-03-26T00:00:00+00:00",
+            "values": {
+                "sales": "3423.31",
+                "transactions": "509"
+            }
+        },
+        {
+            "timestamp": "2014-03-27T00:00:00+00:00",
+            "values": {
+                "sales": "3246.56",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2014-03-28T00:00:00+00:00",
+            "values": {
+                "sales": "3796.22",
+                "transactions": "523"
+            }
+        },
+        {
+            "timestamp": "2014-03-29T00:00:00+00:00",
+            "values": {
+                "sales": "3325.05",
+                "transactions": "416"
+            }
+        },
+        {
+            "timestamp": "2014-03-30T00:00:00+00:00",
+            "values": {
+                "sales": "2322.12",
+                "transactions": "301"
+            }
+        },
+        {
+            "timestamp": "2014-03-31T00:00:00+00:00",
+            "values": {
+                "sales": "3391.51",
+                "transactions": "489"
+            }
+        },
+        {
+            "timestamp": "2014-04-01T00:00:00+00:00",
+            "values": {
+                "sales": "3289.01",
+                "transactions": "462"
+            }
+        },
+        {
+            "timestamp": "2014-04-02T00:00:00+00:00",
+            "values": {
+                "sales": "3329.76",
+                "transactions": "493"
+            }
+        },
+        {
+            "timestamp": "2014-04-03T00:00:00+00:00",
+            "values": {
+                "sales": "3497.03",
+                "transactions": "504"
+            }
+        },
+        {
+            "timestamp": "2014-04-04T00:00:00+00:00",
+            "values": {
+                "sales": "3386.59",
+                "transactions": "491"
+            }
+        },
+        {
+            "timestamp": "2014-04-05T00:00:00+00:00",
+            "values": {
+                "sales": "2736.88",
+                "transactions": "371"
+            }
+        },
+        {
+            "timestamp": "2014-04-06T00:00:00+00:00",
+            "values": {
+                "sales": "1860.49",
+                "transactions": "271"
+            }
+        },
+        {
+            "timestamp": "2014-04-07T00:00:00+00:00",
+            "values": {
+                "sales": "3384.94",
+                "transactions": "464"
+            }
+        },
+        {
+            "timestamp": "2014-04-08T00:00:00+00:00",
+            "values": {
+                "sales": "3732.51",
+                "transactions": "498"
+            }
+        },
+        {
+            "timestamp": "2014-04-09T00:00:00+00:00",
+            "values": {
+                "sales": "3390.01",
+                "transactions": "507"
+            }
+        },
+        {
+            "timestamp": "2014-04-10T00:00:00+00:00",
+            "values": {
+                "sales": "3349.86",
+                "transactions": "505"
+            }
+        },
+        {
+            "timestamp": "2014-04-11T00:00:00+00:00",
+            "values": {
+                "sales": "3477.39",
+                "transactions": "485"
+            }
+        },
+        {
+            "timestamp": "2014-04-12T00:00:00+00:00",
+            "values": {
+                "sales": "2864.14",
+                "transactions": "385"
+            }
+        },
+        {
+            "timestamp": "2014-04-13T00:00:00+00:00",
+            "values": {
+                "sales": "1851.55",
+                "transactions": "270"
+            }
+        },
+        {
+            "timestamp": "2014-04-14T00:00:00+00:00",
+            "values": {
+                "sales": "3076.28",
+                "transactions": "436"
+            }
+        },
+        {
+            "timestamp": "2014-04-15T00:00:00+00:00",
+            "values": {
+                "sales": "3300.24",
+                "transactions": "460"
+            }
+        },
+        {
+            "timestamp": "2014-04-16T00:00:00+00:00",
+            "values": {
+                "sales": "3024.29",
+                "transactions": "431"
+            }
+        },
+        {
+            "timestamp": "2014-04-17T00:00:00+00:00",
+            "values": {
+                "sales": "3387.25",
+                "transactions": "466"
+            }
+        },
+        {
+            "timestamp": "2014-04-18T00:00:00+00:00",
+            "values": {
+                "sales": "3449.41",
+                "transactions": "442"
+            }
+        },
+        {
+            "timestamp": "2014-04-19T00:00:00+00:00",
+            "values": {
+                "sales": "3067.32",
+                "transactions": "402"
+            }
+        },
+        {
+            "timestamp": "2014-04-20T00:00:00+00:00",
+            "values": {
+                "sales": "1503.72",
+                "transactions": "227"
+            }
+        },
+        {
+            "timestamp": "2014-04-21T00:00:00+00:00",
+            "values": {
+                "sales": "2912.7",
+                "transactions": "449"
+            }
+        },
+        {
+            "timestamp": "2014-04-22T00:00:00+00:00",
+            "values": {
+                "sales": "3431.38",
+                "transactions": "501"
+            }
+        },
+        {
+            "timestamp": "2014-04-23T00:00:00+00:00",
+            "values": {
+                "sales": "3109.93",
+                "transactions": "464"
+            }
+        },
+        {
+            "timestamp": "2014-04-24T00:00:00+00:00",
+            "values": {
+                "sales": "3520",
+                "transactions": "510"
+            }
+        },
+        {
+            "timestamp": "2014-04-25T00:00:00+00:00",
+            "values": {
+                "sales": "3160.04",
+                "transactions": "435"
+            }
+        },
+        {
+            "timestamp": "2014-04-26T00:00:00+00:00",
+            "values": {
+                "sales": "3132.48",
+                "transactions": "395"
+            }
+        },
+        {
+            "timestamp": "2014-04-27T00:00:00+00:00",
+            "values": {
+                "sales": "2196.55",
+                "transactions": "279"
+            }
+        },
+        {
+            "timestamp": "2014-04-28T00:00:00+00:00",
+            "values": {
+                "sales": "3351.36",
+                "transactions": "468"
+            }
+        },
+        {
+            "timestamp": "2014-04-29T00:00:00+00:00",
+            "values": {
+                "sales": "3380.86",
+                "transactions": "473"
+            }
+        },
+        {
+            "timestamp": "2014-04-30T00:00:00+00:00",
+            "values": {
+                "sales": "3226.49",
+                "transactions": "475"
+            }
+        },
+        {
+            "timestamp": "2014-05-01T00:00:00+00:00",
+            "values": {
+                "sales": "3783.26",
+                "transactions": "511"
+            }
+        },
+        {
+            "timestamp": "2014-05-02T00:00:00+00:00",
+            "values": {
+                "sales": "4029.36",
+                "transactions": "568"
+            }
+        },
+        {
+            "timestamp": "2014-05-03T00:00:00+00:00",
+            "values": {
+                "sales": "2825.33",
+                "transactions": "379"
+            }
+        },
+        {
+            "timestamp": "2014-05-04T00:00:00+00:00",
+            "values": {
+                "sales": "1821.06",
+                "transactions": "259"
+            }
+        },
+        {
+            "timestamp": "2014-05-05T00:00:00+00:00",
+            "values": {
+                "sales": "3159.02",
+                "transactions": "471"
+            }
+        },
+        {
+            "timestamp": "2014-05-06T00:00:00+00:00",
+            "values": {
+                "sales": "2840.38",
+                "transactions": "425"
+            }
+        },
+        {
+            "timestamp": "2014-05-07T00:00:00+00:00",
+            "values": {
+                "sales": "3134.58",
+                "transactions": "459"
+            }
+        },
+        {
+            "timestamp": "2014-05-08T00:00:00+00:00",
+            "values": {
+                "sales": "3320.04",
+                "transactions": "478"
+            }
+        },
+        {
+            "timestamp": "2014-05-09T00:00:00+00:00",
+            "values": {
+                "sales": "3522.12",
+                "transactions": "495"
+            }
+        },
+        {
+            "timestamp": "2014-05-10T00:00:00+00:00",
+            "values": {
+                "sales": "2984.85",
+                "transactions": "393"
+            }
+        },
+        {
+            "timestamp": "2014-05-11T00:00:00+00:00",
+            "values": {
+                "sales": "1531.59",
+                "transactions": "212"
+            }
+        },
+        {
+            "timestamp": "2014-05-12T00:00:00+00:00",
+            "values": {
+                "sales": "2960.91",
+                "transactions": "456"
+            }
+        },
+        {
+            "timestamp": "2014-05-13T00:00:00+00:00",
+            "values": {
+                "sales": "3125.63",
+                "transactions": "477"
+            }
+        },
+        {
+            "timestamp": "2014-05-14T00:00:00+00:00",
+            "values": {
+                "sales": "3125.36",
+                "transactions": "482"
+            }
+        },
+        {
+            "timestamp": "2014-05-15T00:00:00+00:00",
+            "values": {
+                "sales": "3203.83",
+                "transactions": "454"
+            }
+        },
+        {
+            "timestamp": "2014-05-16T00:00:00+00:00",
+            "values": {
+                "sales": "3112.1",
+                "transactions": "452"
+            }
+        },
+        {
+            "timestamp": "2014-05-17T00:00:00+00:00",
+            "values": {
+                "sales": "2653.14",
+                "transactions": "369"
+            }
+        },
+        {
+            "timestamp": "2014-05-18T00:00:00+00:00",
+            "values": {
+                "sales": "2154.26",
+                "transactions": "293"
+            }
+        },
+        {
+            "timestamp": "2014-05-19T00:00:00+00:00",
+            "values": {
+                "sales": "2885.34",
+                "transactions": "444"
+            }
+        }
+    ]
+}

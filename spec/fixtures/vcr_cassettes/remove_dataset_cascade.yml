@@ -1,0 +1,238 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/api/data/ToRemove
+    body:
+      encoding: UTF-8
+      string: "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31"
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - text/csv
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/data/ToRemove
+      Nexosis-Request-Cost:
+      - 0.01 USD
+      Nexosis-Account-Balance:
+      - 1315070.94 USD
+      Date:
+      - Fri, 23 Jun 2017 18:22:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"ToRemove"}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:38 GMT
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/api/sessions/forecast?dataSetName=ToRemove&endDate=1-4-2017&isestimate=false&startDate=1-3-2017&targetColumn=foo
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Request-Cost:
+      - 0.1 USD
+      Nexosis-Account-Balance:
+      - 1315070.84 USD
+      Date:
+      - Fri, 23 Jun 2017 18:22:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cd631-5c42-409f-8b42-9e33d1fbcd32","type":"forecast","status":"requested","statusHistory":[{"date":"2017-06-23T18:22:58.114605+00:00","status":"requested"}],"extraParameters":{},"dataSetName":"ToRemove","targetColumn":"foo","startDate":"2017-01-03T00:00:00+00:00","endDate":"2017-01-04T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cd631-5c42-409f-8b42-9e33d1fbcd32/results"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast/model/foo"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/ToRemove"}]}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:38 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/sessions/015cd631-5c42-409f-8b42-9e33d1fbcd32
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Session-Status:
+      - Started
+      Nexosis-Account-Balance:
+      - 1315070.84 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 23 Jun 2017 18:22:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cd631-5c42-409f-8b42-9e33d1fbcd32","type":"forecast","status":"started","statusHistory":[{"date":"2017-06-23T18:22:58.114605+00:00","status":"requested"},{"date":"2017-06-23T18:22:57.7837598+00:00","status":"started"}],"extraParameters":{},"dataSetName":"ToRemove","targetColumn":"foo","startDate":"2017-01-03T00:00:00+00:00","endDate":"2017-01-04T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cd631-5c42-409f-8b42-9e33d1fbcd32/results"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast/model/foo"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/ToRemove"}]}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:38 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/sessions/015cd631-5c42-409f-8b42-9e33d1fbcd32
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Session-Status:
+      - Completed
+      Nexosis-Account-Balance:
+      - 1315070.84 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 23 Jun 2017 18:23:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cd631-5c42-409f-8b42-9e33d1fbcd32","type":"forecast","status":"completed","statusHistory":[{"date":"2017-06-23T18:22:58.114605+00:00","status":"requested"},{"date":"2017-06-23T18:22:57.7837598+00:00","status":"started"},{"date":"2017-06-23T18:23:02.1761576+00:00","status":"completed"}],"extraParameters":{},"dataSetName":"ToRemove","targetColumn":"foo","startDate":"2017-01-03T00:00:00+00:00","endDate":"2017-01-04T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cd631-5c42-409f-8b42-9e33d1fbcd32/results"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast/model/foo"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/ToRemove"}]}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:44 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/api/data/ToRemove?cascade=session
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315070.84 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 23 Jun 2017 18:23:01 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:44 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/data/ToRemove?endDate=&include=&page=0&pageSize=50&startDate=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Expires:
+      - "-1"
+      Nexosis-Account-Balance:
+      - 1315070.84 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 23 Jun 2017 18:23:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"statusCode":404,"message":"Item of type dataSet with identifier ToRemove
+        was not found","errorType":"NotFound","errorDetails":{"itemType":"dataSet","itemId":"ToRemove","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:44 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/sessions/015cd631-5c42-409f-8b42-9e33d1fbcd32
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Expires:
+      - "-1"
+      Nexosis-Account-Balance:
+      - 1315070.84 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 23 Jun 2017 18:23:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"statusCode":404,"message":"Item of type session with identifier 015cd631-5c42-409f-8b42-9e33d1fbcd32
+        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"015cd631-5c42-409f-8b42-9e33d1fbcd32","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
+    http_version: 
+  recorded_at: Fri, 23 Jun 2017 18:23:45 GMT
+recorded_with: VCR 3.0.3

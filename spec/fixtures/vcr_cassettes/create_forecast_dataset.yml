@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/api/sessions/forecast?dataSetName=TestRuby&endDate=02-22-2017&isestimate=false&startDate=01-22-2017&targetColumn=sales
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Request-Cost:
+      - 3.1 USD
+      Nexosis-Account-Balance:
+      - 1315104.28 USD
+      Date:
+      - Fri, 16 Jun 2017 13:30:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cb119-7d0a-4f3d-b4fb-4eb6ff687644","type":"forecast","status":"requested","statusHistory":[{"date":"2017-06-16T13:30:56.626144+00:00","status":"requested"}],"extraParameters":{},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2017-01-22T00:00:00+00:00","endDate":"2017-02-22T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cb119-7d0a-4f3d-b4fb-4eb6ff687644/results"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/TestRuby/forecast/model/sales"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]}'
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:31:02 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/api/sessions/forecast?dataSetName=&endDate=2017-01-10&isestimate=false&startDate=2017-01-06&targetColumn=sales
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n    \"data\": [{\r\n            \"timestamp\": \"2017-01-01T00:00:00+00:00\",\r\n
+        \           \"values\": {\r\n                \"sales\": \"2948.74\",\r\n                \"transactions\":
+        \"684\"\r\n            }\r\n        },\r\n        {\r\n            \"timestamp\":
+        \"2017-01-02T00:00:00+00:00\",\r\n            \"values\": {\r\n                \"sales\":
+        \"1906.35\",\r\n                \"transactions\": \"421\"\r\n            }\r\n
+        \       },\r\n        {\r\n            \"timestamp\": \"2017-01-03T00:00:00+00:00\",\r\n
+        \           \"values\": {\r\n                \"sales\": \"4523.42\",\r\n                \"transactions\":
+        \"1053\"\r\n            }\r\n        },\r\n        {\r\n            \"timestamp\":
+        \"2017-01-04T00:00:00+00:00\",\r\n            \"values\": {\r\n                \"sales\":
+        \"4586.85\",\r\n                \"transactions\": \"1038\"\r\n            }\r\n
+        \       },\r\n        {\r\n            \"timestamp\": \"2017-01-05T00:00:00+00:00\",\r\n
+        \           \"values\": {\r\n                \"sales\": \"4538.04\",\r\n                \"transactions\":
+        \"1055\"\r\n            }\r\n        }\r\n    ]\r\n}"
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Request-Cost:
+      - 0.4 USD
+      Nexosis-Account-Balance:
+      - 1315096.75 USD
+      Date:
+      - Fri, 16 Jun 2017 13:36:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cb11e-265c-48c9-8d12-4730a371fa4d","type":"forecast","status":"requested","statusHistory":[{"date":"2017-06-16T13:36:02.139811+00:00","status":"requested"}],"extraParameters":{},"dataSetName":"forecast.015cb11e-265c-48c9-8d12-4730a371fa4d","targetColumn":"sales","startDate":"2017-01-06T00:00:00+00:00","endDate":"2017-01-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cb11e-265c-48c9-8d12-4730a371fa4d/results"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/forecast.015cb11e-265c-48c9-8d12-4730a371fa4d/forecast/model/sales"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/forecast.015cb11e-265c-48c9-8d12-4730a371fa4d"}]}'
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:36:07 GMT
+recorded_with: VCR 3.0.3

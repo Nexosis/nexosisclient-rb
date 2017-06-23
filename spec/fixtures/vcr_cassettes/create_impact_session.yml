@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/api/sessions/impact?dataSetName=TestRuby&endDate=05-10-2016&eventName=test%20event&isestimate=false&startDate=05-01-2016&targetColumn=sales
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Request-Cost:
+      - 0.9 USD
+      Nexosis-Account-Balance:
+      - 1315103.38 USD
+      Date:
+      - Fri, 16 Jun 2017 13:36:00 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cb11e-1e78-4435-b543-2de775e24c03","type":"impact","status":"requested","statusHistory":[{"date":"2017-06-16T13:36:00.120342+00:00","status":"requested"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cb11e-1e78-4435-b543-2de775e24c03/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]}'
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:36:05 GMT
+recorded_with: VCR 3.0.3

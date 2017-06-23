@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/data?partialName=Ruby
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Balance:
+      - 1315085.06 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 16 Jun 2017 17:30:14 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"dataSetName":"RubyTest2"},{"dataSetName":"TestRuby"},{"dataSetName":"TestRuby_CSV"},{"dataSetName":"TestRuby_Json"}]}'
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 17:30:14 GMT
+recorded_with: VCR 3.0.3

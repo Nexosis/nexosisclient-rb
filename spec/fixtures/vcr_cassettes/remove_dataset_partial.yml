@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/api/data/ToRemove
+    body:
+      encoding: UTF-8
+      string: "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31"
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - text/csv
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/data/ToRemove
+      Nexosis-Request-Cost:
+      - 0.01 USD
+      Nexosis-Account-Balance:
+      - 1315072.27 USD
+      Date:
+      - Thu, 22 Jun 2017 18:06:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"ToRemove"}'
+    http_version: 
+  recorded_at: Thu, 22 Jun 2017 18:07:30 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/api/data/ToRemove?startDate=1-2-2017
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315072.27 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Thu, 22 Jun 2017 18:06:56 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Jun 2017 18:07:31 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/data/ToRemove?endDate=&include=&page=0&pageSize=50&startDate=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Balance:
+      - 1315072.27 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Thu, 22 Jun 2017 18:06:56 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"ToRemove","data":[{"timestamp":"2017-01-01T00:00:00+00:00","values":{}}],"links":[{"rel":"forecast","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast/model"},{"rel":"sessions","href":"https://api.uat.nexosisdev.com/api/sessions?dataSetName=ToRemove"}]}'
+    http_version: 
+  recorded_at: Thu, 22 Jun 2017 18:07:31 GMT
+recorded_with: VCR 3.0.3

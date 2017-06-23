@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/sessions?dataSetName=&endDate=&eventName=test%20event&startDate=&type=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Balance:
+      - 1315096.44 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 16 Jun 2017 13:36:03 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"sessionId":"015ca7fc-84c3-433e-9ceb-fddadca8c23b","type":"impact","status":"completed","statusHistory":[{"date":"2017-06-14T19:02:43.139551+00:00","status":"requested"},{"date":"2017-06-14T19:02:43.4745194+00:00","status":"started"},{"date":"2017-06-14T19:15:36.5993905+00:00","status":"completed"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015ca7fc-84c3-433e-9ceb-fddadca8c23b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015ca7ff-b610-4e4e-969f-c7cc8889468a","type":"impact","status":"completed","statusHistory":[{"date":"2017-06-14T19:06:12.368004+00:00","status":"requested"},{"date":"2017-06-14T19:06:12.7200183+00:00","status":"started"},{"date":"2017-06-14T19:28:31.1735121+00:00","status":"completed"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015ca7ff-b610-4e4e-969f-c7cc8889468a/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015ca855-0c85-4ff9-8da8-05ea8b34c30f","type":"impact","status":"completed","statusHistory":[{"date":"2017-06-14T20:39:25.061725+00:00","status":"requested"},{"date":"2017-06-14T20:39:25.5028363+00:00","status":"started"},{"date":"2017-06-14T20:52:18.4678475+00:00","status":"completed"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015ca855-0c85-4ff9-8da8-05ea8b34c30f/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015cac7e-280f-4e28-bfb1-cf96b2ba4dda","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T16:02:47.951715+00:00","status":"requested"},{"date":"2017-06-15T16:02:48.0932932+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"impact.015cac7e-280f-4e28-bfb1-cf96b2ba4dda","targetColumn":"sales","startDate":"2017-01-02T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cac7e-280f-4e28-bfb1-cf96b2ba4dda/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/impact.015cac7e-280f-4e28-bfb1-cf96b2ba4dda"}]},{"sessionId":"015cacfd-8b8e-4614-b6fe-227b04d489f7","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T18:21:56.494553+00:00","status":"requested"},{"date":"2017-06-15T18:21:56.5781332+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cacfd-8b8e-4614-b6fe-227b04d489f7/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015cacfd-9309-496c-9228-2429df41e686","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T18:21:58.409331+00:00","status":"requested"},{"date":"2017-06-15T18:21:59.8280902+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"impact.015cacfd-9309-496c-9228-2429df41e686","targetColumn":"sales","startDate":"2017-01-02T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cacfd-9309-496c-9228-2429df41e686/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/impact.015cacfd-9309-496c-9228-2429df41e686"}]},{"sessionId":"015cad99-00b7-46ee-be99-c8dc43058f88","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T21:11:44.567144+00:00","status":"requested"},{"date":"2017-06-15T21:11:44.6444111+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cad99-00b7-46ee-be99-c8dc43058f88/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015cad99-0802-447d-956d-0b3cc3fba2bf","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T21:11:46.434266+00:00","status":"requested"},{"date":"2017-06-15T21:11:46.7068987+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"impact.015cad99-0802-447d-956d-0b3cc3fba2bf","targetColumn":"sales","startDate":"2017-01-02T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cad99-0802-447d-956d-0b3cc3fba2bf/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/impact.015cad99-0802-447d-956d-0b3cc3fba2bf"}]},{"sessionId":"015cadbe-ef25-44cc-a2d9-799ef0d5f1ed","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T21:53:10.437632+00:00","status":"requested"},{"date":"2017-06-15T21:53:10.4674808+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cadbe-ef25-44cc-a2d9-799ef0d5f1ed/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015cadbe-f77b-4c54-a369-82477cda7de6","type":"impact","status":"started","statusHistory":[{"date":"2017-06-15T21:53:12.571014+00:00","status":"requested"},{"date":"2017-06-15T21:53:12.873715+00:00","status":"started"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"impact.015cadbe-f77b-4c54-a369-82477cda7de6","targetColumn":"sales","startDate":"2017-01-02T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cadbe-f77b-4c54-a369-82477cda7de6/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/impact.015cadbe-f77b-4c54-a369-82477cda7de6"}]},{"sessionId":"015cb11e-1e78-4435-b543-2de775e24c03","type":"impact","status":"requested","statusHistory":[{"date":"2017-06-16T13:36:00.120342+00:00","status":"requested"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cb11e-1e78-4435-b543-2de775e24c03/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/TestRuby"}]},{"sessionId":"015cb11e-276d-4deb-8385-8988c66b3343","type":"impact","status":"requested","statusHistory":[{"date":"2017-06-16T13:36:02.413102+00:00","status":"requested"}],"extraParameters":{"event":"test
+        event"},"dataSetName":"impact.015cb11e-276d-4deb-8385-8988c66b3343","targetColumn":"sales","startDate":"2017-01-02T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cb11e-276d-4deb-8385-8988c66b3343/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/impact.015cb11e-276d-4deb-8385-8988c66b3343"}]}]}'
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:36:10 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/api/sessions/forecast?dataSetName=&endDate=01-05-2017&isestimate=false&startDate=01-03-2017&targetColumn=sales
+    body:
+      encoding: UTF-8
+      string: "timestamp,sales\r\n01-01-2017,234.45\r\n01-02-2017,343.22"
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - text/csv
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Request-Cost:
+      - 0.2 USD
+      Nexosis-Account-Balance:
+      - 1315096.23 USD
+      Date:
+      - Fri, 16 Jun 2017 13:36:04 GMT
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"015cb11e-31ac-4af7-a1fd-449b921d29b2","type":"forecast","status":"requested","statusHistory":[{"date":"2017-06-16T13:36:05.036478+00:00","status":"requested"}],"extraParameters":{},"dataSetName":"forecast.015cb11e-31ac-4af7-a1fd-449b921d29b2","targetColumn":"sales","startDate":"2017-01-03T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/api/sessions/015cb11e-31ac-4af7-a1fd-449b921d29b2/results"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/forecast.015cb11e-31ac-4af7-a1fd-449b921d29b2/forecast/model/sales"},{"rel":"data","href":"https://api.uat.nexosisdev.com/api/data/forecast.015cb11e-31ac-4af7-a1fd-449b921d29b2"}]}'
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:36:10 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/api/sessions?dataSetName=forecast.015cb11e-31ac-4af7-a1fd-449b921d29b2&endDate=&eventName=&startDate=&type=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315096.23 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 16 Jun 2017 13:36:04 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:36:10 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/api/sessions/015cb11e-31ac-4af7-a1fd-449b921d29b2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Session-Status:
+      - NOTFOUND
+      Nexosis-Account-Balance:
+      - 1315096.23 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Fri, 16 Jun 2017 13:36:04 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 16 Jun 2017 13:36:11 GMT
+recorded_with: VCR 3.0.3
