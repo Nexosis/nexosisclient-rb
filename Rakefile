@@ -19,3 +19,4 @@ namespace :doc do
     end
   rescue LoadError
   end
+end
