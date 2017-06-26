@@ -160,7 +160,6 @@ module NexosisApi
                 query["include"] = options[:include].to_s unless options[:include].nil?
                 query
             end
-            
         end
     end
 end

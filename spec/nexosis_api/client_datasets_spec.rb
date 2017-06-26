@@ -3,17 +3,6 @@ require 'csv'
 require 'json'
 
 describe NexosisApi::Client::Datasets do
-    before(:all) do
-        begin
-            data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
-            test_client.create_dataset_csv('TestRuby', data)
-        rescue NexosisApi::HttpException
-        end
-    end
-
-    after(:all) do
-        test_client.remove_dataset('TestRuby', {:cascade => true})
-    end
     describe "#create_dataset_json", :vcr => {:cassette_name => "create_dataset_json"} do
         context "given a dataset json hash" do
             it "returns a dataset summary" do

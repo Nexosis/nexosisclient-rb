@@ -5,11 +5,22 @@ module NexosisApi
             data_hash.each do |k,v|
                 if(k == "dataSetName")
                     @dataset_name = v unless v.nil?
+                elsif(k == "columns")
+                    columns = []
+                    next if v.nil?
+                    v.keys.each do |col_key|
+                        columns << NexosisApi::DatasetColumn.new(col_key, v[col_key])
+                    end
+                    @column_metadata = columns
                 end
             end
         end
     
         # The name of the dataset uploaded and saved
         attr_accessor :dataset_name
+
+        # Descriptive information about the columns
+        # @return [Array of NexosisApi::DatasetColumn]
+        attr_accessor :column_metadata
     end
 end

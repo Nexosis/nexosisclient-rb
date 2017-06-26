@@ -6,6 +6,18 @@ RSpec.configure do |config|
   config.around(:each, :vcr) do |example|
     handle_vcr(example)
   end
+  config.before(:all) do
+    begin
+      data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
+      test_client.create_dataset_csv('TestRuby', data)
+      rescue NexosisApi::HttpException
+    end
+  end
+  
+  config.after(:all) do 
+    test_client.remove_dataset('TestRuby', {:cascade => true})
+  end
+  
 end
 
 VCR.configure do |config|
@@ -21,7 +33,7 @@ def test_api_key
 end
 
 def test_base_uri
-    ENV.fetch 'NEXOSIS_API_TESTURI', 'https://ml.nexosis.com/api'
+    ENV.fetch 'NEXOSIS_API_TESTURI', 'https://ml.nexosis.com/v1'
 end
 
 def test_client

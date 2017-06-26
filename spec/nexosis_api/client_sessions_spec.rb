@@ -2,17 +2,6 @@ require 'helper'
 require 'csv'
 
 describe NexosisApi::Client::Sessions do
-    before(:all) do
-        begin
-            data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
-            test_client.create_dataset_csv('TestRuby', data)
-        rescue NexosisApi::HttpException
-        end
-    end
-
-    after(:all) do
-        test_client.remove_dataset('TestRuby', {:cascade => true})
-    end
     describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
         context "given an existing dataset name" do
             it "returns a started session" do
