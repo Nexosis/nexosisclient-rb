@@ -18,15 +18,15 @@ module NexosisApi
         end
 
         # Identifier of algorithm run
-        #    @return [NexosisApi::Algorithm] 
+        # @return [NexosisApi::Algorithm] 
         attr_accessor :algorithm        
         
         # Set of {NexosisApi::Metric} on algorithm
-        #    @return [Array]
+        # @return [Array]
         attr_accessor :metrics
         
         # Relevant hypermedia as {NexosisApi::Link}
-        #    @return [Array]
+        # @return [Array]
         attr_accessor :links
     end
 end

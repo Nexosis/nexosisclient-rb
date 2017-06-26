@@ -84,14 +84,14 @@ module NexosisApi
             
             # Remove data from a data set or the entire set.
             #
-            # @param dataset [String] the name of the dataset from which to remove data
+            # @param dataset_name [String] the name of the dataset from which to remove data
             # @param filter_options [Hash] filtering which data to remove
-            # @Options - start_date, end_date, cascade_forecast, cascade_sessions, cascade
-            #    start_date - the first date on which to start removing data
-            #    end_date - the last date on which to finish removing data
-            #    cascade_forecast - will cascade deletes to all related forecasts
-            #    cascade_sessions - will cascade deletes to all related sessions
-            #    cascade - will cascade deletes to all related forecasts and sessions
+            # @note Options: start_date, end_date, cascade_forecast, cascade_sessions, cascade
+            #    - start_date - the first date on which to start removing data
+            #    - end_date - the last date on which to finish removing data
+            #    - cascade_forecast - will cascade deletes to all related forecasts
+            #    - cascade_sessions - will cascade deletes to all related sessions
+            #    - cascade - will cascade deletes to all related forecasts and sessions
             # @example - request delete with cascade forecast
             #    NexosisApi.client.remove_dataset('mydataset', {:cascade_forecast => true})
             def remove_dataset(dataset_name, filter_options = {})
