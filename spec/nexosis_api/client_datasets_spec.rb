@@ -3,6 +3,14 @@ require 'csv'
 require 'json'
 
 describe NexosisApi::Client::Datasets do
+    before(:all) do
+        data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
+        test_client.create_dataset_csv('TestRuby', data)
+    end
+
+    after(:all) do
+        test_client.remove_dataset('TestRuby', {:cascade => true})
+    end
     describe "#create_dataset_json", :vcr => {:cassette_name => "create_dataset_json"} do
         context "given a dataset json hash" do
             it "returns a dataset summary" do
@@ -73,7 +81,7 @@ describe NexosisApi::Client::Datasets do
                 expect(actual).to be_a(NexosisApi::DatasetData)
                 expect(actual.data.length).to eql(20)
                 actual.data.each do |d|
-                    entry_date = DateTime.parse(d["timestamp"])
+                    entry_date = DateTime.parse(d["timeStamp"])
                     expect(entry_date).to be_between(start_date,end_date).inclusive
                 end
             end

@@ -11,13 +11,20 @@ module NexosisApi
 			#
 			# @param query_options [Hash] optionally provide query parameters to limit the search of sessions. 
 			# @return[Array of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
-			# @note query parameters hash members are dataset_name, event_name, start_date, and end_date. 
-			#    Start and end dates refer to the session requested date.
+			# @note query parameters hash members are dataset_name, event_name, requested_before_date, and requested_after_date. 
+			#    After and before dates refer to the session requested date.
 			# @example query for just one dataset
 			#   sessions = NexosisApi.client.list_sessions :dataset_name => 'MyDataset'
 			def list_sessions(query_options = {})
 				sessions_url = '/sessions'
-				response = self.class.get(sessions_url, :headers => @headers, :query => get_query_from_options(query_options))
+				query = { 
+					"dataSetName" => query_options[:dataset_name],
+					"eventName" => query_options[:event_name],
+					"requestedAfterDate" => query_options[:requested_after_date],
+					"requestedBeforeDate" => query_options[:requested_before_date],
+					"type" => query_options[:type]
+				}
+				response = self.class.get(sessions_url, :headers => @headers, :query => query)
 				if(response.success?)
 					all_responses = []
 					response.parsed_response["items"].each do |session_hash|
@@ -188,12 +195,12 @@ module NexosisApi
 			def create_session(dataset_name, target_column, start_date, end_date, is_estimate=false, event_name = nil, type = "forecast", content = nil, content_type = "text/csv")
 				session_url = "/sessions/#{type}"
 				query = { 
-					"dataSetName" => dataset_name,
 					"targetColumn" => target_column,
 					"startDate" => start_date.to_s,
 					"endDate" => end_date.to_s,
 					"isestimate" => is_estimate.to_s
 				}
+				query["dataSetName"] = dataset_name.to_s unless dataset_name.to_s.empty?
 				if(event_name.nil? == false)
 					query["eventName"] = event_name
 				end

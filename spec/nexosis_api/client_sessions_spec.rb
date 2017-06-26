@@ -2,7 +2,14 @@ require 'helper'
 require 'csv'
 
 describe NexosisApi::Client::Sessions do
-   
+    before(:all) do
+        data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
+        test_client.create_dataset_csv('TestRuby', data)
+    end
+
+    after(:all) do
+        test_client.remove_dataset('TestRuby', {:cascade => true})
+    end
     describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
         context "given an existing dataset name" do
             it "returns a started session" do
@@ -25,7 +32,7 @@ describe NexosisApi::Client::Sessions do
     describe "#create_impact_session", :vcr  => {:cassette_name => "create_impact_session"} do
         context "given an existing dataset name" do
             it "returns a started session" do
-                actual = test_client.create_impact_session('TestRuby','sales','05-01-2016','05-10-2016','test event')
+                actual = test_client.create_impact_session('TestRuby','sales','05-01-2014','05-10-2014','test event')
                 expect(actual).to be_instance_of(NexosisApi::SessionResponse)
                 expect(actual.type).to eql('impact')
             end
@@ -35,7 +42,7 @@ describe NexosisApi::Client::Sessions do
     describe "#estimate_impact_session", :vcr  => {:cassette_name => "estimate_impact_session"} do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
-                actual = test_client.estimate_impact_session('TestRuby','sales','05-01-2016','05-10-2016', 'test event')
+                actual = test_client.estimate_impact_session('TestRuby','sales','05-01-2014','05-10-2014', 'test event')
                 expect(actual.cost).to eql('0.9 USD')
             end
         end
@@ -107,22 +114,31 @@ describe NexosisApi::Client::Sessions do
     describe "#get_session_results", :vcr  => {:cassette_name => "get_session_results"} do
         context "given the id of an completed session" do 
             it "returns the results of the session analysis" do
-                existing = (test_client.list_sessions :dataset_name=>'TestRuby').first
-                actual = test_client.get_session_results existing.sessionId
-                expect(actual).to be_a(NexosisApi::SessionResult)
-                expect(actual.data).not_to be_empty
+                session = test_client.create_forecast_session_csv("timestamp,foo\r\n1-1-2017,334.22\r\n1-2-2017,533.87",'foo','1-3-2017','1-4-2017')
+                loop do
+                    status_check = test_client.get_session session.sessionId
+                    break if (status_check.status == "completed" || status_check.status == "failed")
+                    sleep 5
+                end
+                begin
+                    actual = test_client.get_session_results session.sessionId
+                    expect(actual).to be_a(NexosisApi::SessionResult)
+                    expect(actual.data).not_to be_empty
+                ensure
+                    test_client.remove_dataset(session.dataSetName, {:cascade => true})
+                end
             end
         end
     end
 
     #TODO: this isn't a good test until we can page and know how many exist
-    describe "#list_sessions", :vcr  => {:cassette_name => "list_sessions"} do
-        context "given a request without a query" do
-            it "returns an array of all sessions" do
-                actual = test_client.list_sessions
-            end
-        end
-    end
+    # describe "#list_sessions", :vcr  => {:cassette_name => "list_sessions"} do
+    #     context "given a request without a query" do
+    #         it "returns an array of all sessions" do
+    #             actual = test_client.list_sessions
+    #         end
+    #     end
+    # end
     
     describe "#list_sessions", :vcr  => {:cassette_name => "list_sessions_dataset"} do
         context "given a request with a dataset name" do
@@ -150,8 +166,8 @@ describe NexosisApi::Client::Sessions do
         context "given a request with a start and end date" do
             it "returns an array of all sessions within that time frame" do
                 start_date = DateTime.strptime('6-14-2017','%m-%d-%Y')
-                end_date = DateTime.strptime('6-15-2017','%m-%d-%Y')
-                actual = test_client.list_sessions :start_date => start_date, :end_date => end_date
+                end_date = DateTime.strptime('6-30-2017','%m-%d-%Y')
+                actual = test_client.list_sessions :requested_after_date => start_date, :requested_before_date => end_date
                 expect(actual).to be_a(Array)
                 actual.each do |sr|
                     requested_date = DateTime.parse(sr.statusHistory.select {|v| v.has_value? "requested"}[0]["date"])

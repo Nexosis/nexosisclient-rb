@@ -155,9 +155,10 @@ module NexosisApi
                     "startDate" => options[:start_date].to_s,
                     "endDate" => options[:end_date].to_s,
                     "page" => options[:page_number],
-                    "pageSize" => options[:page_size],
-                    "include" => options[:include].to_s
+                    "pageSize" => options[:page_size]
                 }
+                query["include"] = options[:include].to_s unless options[:include].nil?
+                query
             end
             
         end
