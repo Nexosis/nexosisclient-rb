@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.uat.nexosisdev.com/api/sessions/impact?dataSetName=TestRuby&endDate=02-22-2017&eventName=test%20event&isestimate=false&startDate=01-22-2017&targetColumn=sales
+    uri: https://api.uat.nexosisdev.com/v1/sessions/impact?dataSetName=TestRuby&endDate=02-22-2017&eventName=test%20event&isestimate=false&startDate=01-22-2017&targetColumn=sales
     body:
       encoding: UTF-8
       string: ''
@@ -27,51 +27,15 @@ http_interactions:
       Expires:
       - "-1"
       Nexosis-Account-Balance:
-      - 1315103.38 USD
+      - 1315042.87 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Fri, 16 Jun 2017 13:36:00 GMT
+      - Mon, 26 Jun 2017 19:42:52 GMT
     body:
       encoding: UTF-8
       string: '{"statusCode":400,"message":"End Date must be before the last date
-        in the data set","errorType":"InvalidDateRange","errorDetails":{"exception":{"type":"Axon.Kernel.CompanyNotificationException","innerException":null,"data":{},"message":"End
-        Date must be before the last date in the data set","source":"Axon.Api","stackTrace":"   at
-        Axon.Api.Session.SessionController.HandleNotification[T](ICompanyNotification
-        notification) in /var/jenkins/workspace/axonapimaster/src/Axon.Api/Axon.Api/Session/SessionController.cs:line
-        519\n   at LanguageExt.ClassInstances.MEither`2.Match[C](Either`2 choice,
-        Func`2 Left, Func`2 Right, Func`1 Bottom)\n   at LanguageExt.TypeClass.ifLeft[CHOICE,CH,A,B](CH
-        ma, Func`2 leftMap)\n   at Axon.Api.Session.SessionController.PostImpactSessionAsync(String
-        dataSetName, String targetColumn, String eventName, DateTimeOffset startDate,
-        DateTimeOffset endDate, Uri callbackUrl, Boolean isEstimate, DataSetData data)
-        in /var/jenkins/workspace/axonapimaster/src/Axon.Api/Axon.Api/Session/SessionController.cs:line
-        307\n   at lambda_method(Closure , Object , Object[] )\n   at Microsoft.AspNetCore.Mvc.Internal.ObjectMethodExecutor.Execute(Object
-        target, Object[] parameters)\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()\n---
-        End of stack trace from previous location where exception was thrown ---\n   at
-        System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task
-        task)\n   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()\n   at
-        Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()\n---
-        End of stack trace from previous location where exception was thrown ---\n   at
-        System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext
-        context)\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State&
-        next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()\n---
-        End of stack trace from previous location where exception was thrown ---\n   at
-        System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext
-        context)\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State&
-        next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()\n---
-        End of stack trace from previous location where exception was thrown ---\n   at
-        System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task
-        task)\n   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()\n   at
-        Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()\n---
-        End of stack trace from previous location where exception was thrown ---\n   at
-        System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task
-        task)\n   at Axon.Api.AccountBalanceHeaderMiddleware.<Invoke>d__3.MoveNext()
-        in /var/jenkins/workspace/axonapimaster/src/Axon.Api/Axon.Api/AccountBalanceHeaderMiddleware.cs:line
-        41\n--- End of stack trace from previous location where exception was thrown
-        ---\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\n   at
-        System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task
-        task)\n   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()\n   at
-        Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>d__6.MoveNext()"},"companyId":"36774fba-a391-4078-af36-b5adf6a17a87","startDate":"2017-01-22T00:00:00.0000000+00:00","endDate":"2017-02-22T00:00:00.0000000+00:00"}}'
+        in the data set","errorType":"InvalidDateRange","errorDetails":{"startDate":"2017-01-22T00:00:00.0000000+00:00","endDate":"2017-02-22T00:00:00.0000000+00:00","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Fri, 16 Jun 2017 13:36:06 GMT
+  recorded_at: Mon, 26 Jun 2017 19:43:00 GMT
 recorded_with: VCR 3.0.3

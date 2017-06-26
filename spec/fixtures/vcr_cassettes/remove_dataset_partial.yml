@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.uat.nexosisdev.com/api/data/ToRemove
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemove
     body:
       encoding: UTF-8
       string: "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31"
@@ -25,17 +25,17 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315072.27 USD
+      - 1315046.99 USD
       Date:
-      - Thu, 22 Jun 2017 18:06:56 GMT
+      - Mon, 26 Jun 2017 19:42:32 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"ToRemove"}'
+      string: '{"dataSetName":"ToRemove","columns":{"timeStamp":{"dataType":"date","role":"timestamp"}}}'
     http_version: 
-  recorded_at: Thu, 22 Jun 2017 18:07:30 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:40 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/api/data/ToRemove?startDate=1-2-2017
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemove?startDate=1-2-2017
     body:
       encoding: US-ASCII
       string: ''
@@ -52,19 +52,19 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1315072.27 USD
+      - 1315046.99 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Thu, 22 Jun 2017 18:06:56 GMT
+      - Mon, 26 Jun 2017 19:42:32 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 22 Jun 2017 18:07:31 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:40 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/api/data/ToRemove?endDate=&include=&page=0&pageSize=50&startDate=
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemove?endDate=&page=0&pageSize=50&startDate=
     body:
       encoding: US-ASCII
       string: ''
@@ -83,14 +83,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1315072.27 USD
+      - 1315046.99 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Thu, 22 Jun 2017 18:06:56 GMT
+      - Mon, 26 Jun 2017 19:42:33 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"ToRemove","data":[{"timestamp":"2017-01-01T00:00:00+00:00","values":{}}],"links":[{"rel":"forecast","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast"},{"rel":"model","href":"https://api.uat.nexosisdev.com/api/data/ToRemove/forecast/model"},{"rel":"sessions","href":"https://api.uat.nexosisdev.com/api/sessions?dataSetName=ToRemove"}]}'
+      string: '{"dataSetName":"ToRemove","columns":{"foo":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"data":[{"foo":"223.33","timestamp":"1-1-2017"}],"links":[{"rel":"sessions","href":"https://api.uat.nexosisdev.com/api/sessions?dataSetName=ToRemove"}]}'
     http_version: 
-  recorded_at: Thu, 22 Jun 2017 18:07:31 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:40 GMT
 recorded_with: VCR 3.0.3

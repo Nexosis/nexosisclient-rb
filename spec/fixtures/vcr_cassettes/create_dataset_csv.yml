@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.uat.nexosisdev.com/api/data/TestRuby_CSV
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_CSV
     body:
       encoding: UTF-8
       string: "timeStamp,sales,transactions\r\n2012-12-31 00:00:00,2919.51,431\r\n2013-01-01
@@ -192,12 +192,12 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315085.06 USD
+      - 1315047.01 USD
       Date:
-      - Fri, 16 Jun 2017 13:58:28 GMT
+      - Mon, 26 Jun 2017 19:42:30 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"TestRuby_CSV"}'
+      string: '{"dataSetName":"TestRuby_CSV","columns":{"timeStamp":{"dataType":"date","role":"timestamp"}}}'
     http_version: 
-  recorded_at: Fri, 16 Jun 2017 13:58:28 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:37 GMT
 recorded_with: VCR 3.0.3

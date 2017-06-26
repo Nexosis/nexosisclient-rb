@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.uat.nexosisdev.com/api/data/ToRemove
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemove
     body:
       encoding: UTF-8
       string: "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31"
@@ -25,17 +25,17 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315072.33 USD
+      - 1315047 USD
       Date:
-      - Wed, 21 Jun 2017 14:18:32 GMT
+      - Mon, 26 Jun 2017 19:42:32 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"ToRemove"}'
+      string: '{"dataSetName":"ToRemove","columns":{"timeStamp":{"dataType":"date","role":"timestamp"}}}'
     http_version: 
-  recorded_at: Wed, 21 Jun 2017 14:19:02 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:39 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/api/data/ToRemove
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemove
     body:
       encoding: US-ASCII
       string: ''
@@ -52,19 +52,19 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1315072.33 USD
+      - 1315047 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Wed, 21 Jun 2017 14:18:32 GMT
+      - Mon, 26 Jun 2017 19:42:32 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 21 Jun 2017 14:19:02 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:40 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/api/data?partialName=
+    uri: https://api.uat.nexosisdev.com/v1/data?partialName=
     body:
       encoding: US-ASCII
       string: ''
@@ -83,14 +83,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1315072.33 USD
+      - 1315047 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Wed, 21 Jun 2017 14:18:32 GMT
+      - Mon, 26 Jun 2017 19:42:32 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[{"dataSetName":"d.015ca816-e260-4eb6-b105-6442aaff09f0"},{"dataSetName":"d.015ca817-2a2f-44de-b3e4-3b983f154567"},{"dataSetName":"DaasdflySasdfalessdf"},{"dataSetName":"DailySales"},{"dataSetName":"DailySales.015c6557-1dca-44a0-a038-4927992af6f6"},{"dataSetName":"DailySales.015c655b-0e5d-4273-a1cb-b9fcf737cf02"},{"dataSetName":"forecast.015c4118-7b36-4b48-8e73-52183e690a73"},{"dataSetName":"forecast.015c4118-8404-4ec6-8798-f70055b0e35f"},{"dataSetName":"forecast.015c4118-8ecd-4295-831d-8a3f3dc466aa"},{"dataSetName":"forecast.015c4118-96a3-41a3-94fb-33c09b3aa8b5"},{"dataSetName":"forecast.015c4118-aa2c-441d-8c93-9f7439239284"},{"dataSetName":"forecast.015c4118-ae23-4919-9a2c-e402255b30f7"},{"dataSetName":"forecast.015c4118-ae4c-4387-b23a-aef45bef4c7f"},{"dataSetName":"forecast.015c4136-7ec0-44b3-8295-14f60e9a5573"},{"dataSetName":"forecast.015c4136-822f-4ddc-b475-9a867f5869e2"},{"dataSetName":"forecast.015c4136-8608-48fa-aa7c-914d84291cd9"},{"dataSetName":"forecast.015c4136-89ed-4029-8bd0-817292572a63"},{"dataSetName":"forecast.015c4136-8dff-4ce0-a154-c56b12590b81"},{"dataSetName":"forecast.015c4136-91f6-4827-8e31-d734639d03e3"},{"dataSetName":"forecast.015c4136-9579-42b3-b7cb-b2a6ccb2cd53"},{"dataSetName":"forecast.015c4136-9987-4742-b70d-905169576f51"},{"dataSetName":"forecast.015c4136-9d8f-4ba3-8ab2-61009879aa35"},{"dataSetName":"forecast.015c4136-a17c-4a5b-9618-2d509aa0118a"},{"dataSetName":"forecast.015c4136-a583-44f4-b789-7785e721bd5b"},{"dataSetName":"forecast.015c4136-a8f1-4361-bbba-3cffa40e946b"},{"dataSetName":"forecast.015c4136-ad42-4692-ac7f-03e7654bcc1f"},{"dataSetName":"forecast.015c4136-b12e-4343-9198-527277aa9c8e"},{"dataSetName":"forecast.015c4136-b518-4ade-aba2-ad3265f7cf63"},{"dataSetName":"forecast.015c4138-2a91-4dc3-8b8e-f134160991a7"},{"dataSetName":"forecast.015c4138-2e4a-42c2-ad6a-94c1d40ac00e"},{"dataSetName":"forecast.015c4138-3301-4e8b-843e-abfafd6456e1"},{"dataSetName":"forecast.015c4138-3617-43bb-a1f8-af5f4b7637ad"},{"dataSetName":"forecast.015c4138-39f0-403e-a7c6-86cbe30eebc6"},{"dataSetName":"forecast.015c4138-3de0-40b6-81ac-4ddcc801cf57"},{"dataSetName":"forecast.015c4138-4247-4ac7-9d36-1cbe5670839e"},{"dataSetName":"forecast.015c4138-45de-4c96-8db1-07d32998aa28"},{"dataSetName":"forecast.015c4138-49be-432c-ae14-28566721579d"},{"dataSetName":"forecast.015c4138-4d79-4bdf-855e-975de631f6ed"},{"dataSetName":"forecast.015c4138-516a-48a2-b1f8-ff1f08ec486e"},{"dataSetName":"forecast.015c4138-54d8-479b-b149-c4805b9fe7ea"},{"dataSetName":"forecast.015c4138-58ec-4996-80a7-26f72bae7103"},{"dataSetName":"forecast.015c4138-5cf2-49e8-a0f8-357deb78d8ae"},{"dataSetName":"forecast.015c4138-60f7-4a9a-8b02-c839359d6e6e"},{"dataSetName":"forecast.015ca816-c057-4bf0-bda1-579089582008"},{"dataSetName":"forecast.015ca84a-f0c1-4117-8d81-577f28780a96"},{"dataSetName":"forecast.015ca854-bd64-43ca-9411-6bc386d6c5ab"},{"dataSetName":"forecast.015ca855-0fcf-4690-96ab-0dd8b4f8b906"},{"dataSetName":"forecast.015cac67-cc79-4e78-a750-14a4536db05d"},{"dataSetName":"forecast.015cac6a-ca1c-440a-960e-1ec2ea150041"},{"dataSetName":"forecast.015cac6b-3da5-40f4-aec7-0834122f1d29"},{"dataSetName":"forecast.015cac6c-0a80-43ab-a3f0-0d887a16ac0c"},{"dataSetName":"forecast.015cac6c-0cc2-4d90-9aee-e20acde1d179"},{"dataSetName":"forecast.015cac77-e738-4567-b1b0-5c743fc45493"},{"dataSetName":"forecast.015cac78-41d6-4988-8659-f0f131c85115"},{"dataSetName":"forecast.015cac78-50b8-4f7d-a890-ccc05fbb35af"},{"dataSetName":"forecast.015cac7e-2578-44ca-a155-3984e5d063a4"},{"dataSetName":"forecast.015cacfd-8e15-46e8-bbac-a2b30aa83a4e"},{"dataSetName":"forecast.015cacfd-9027-4689-82ea-50093514681e"},{"dataSetName":"forecast.015cacfd-91fb-4e5f-9928-06cac562c6d6"},{"dataSetName":"forecast.015cad22-18e5-4066-9d50-ac0ef7f43d22"},{"dataSetName":"forecast.015cad22-ef01-4a07-bbb1-33b74d9f3116"},{"dataSetName":"forecast.015cad72-5c25-414b-a1b0-176e65decaea"},{"dataSetName":"forecast.015cad78-0b6e-4db7-b9cd-2114064b029f"},{"dataSetName":"forecast.015cad7a-6540-4272-81c5-7803dd05ca3d"},{"dataSetName":"forecast.015cad85-4830-4a67-9a36-519732451ca0"},{"dataSetName":"forecast.015cad87-194b-4b84-adcc-81b5938a4b93"},{"dataSetName":"forecast.015cad87-c4b2-4116-9a97-d16ec6658f08"},{"dataSetName":"forecast.015cad92-f08a-4523-8070-fe07be43d85f"},{"dataSetName":"forecast.015cad93-a1ed-4ec3-badb-91f26000f21c"},{"dataSetName":"forecast.015cad95-7e55-4992-9b31-665126172b87"},{"dataSetName":"forecast.015cad96-75a7-40fc-bf0b-840e1a36d237"},{"dataSetName":"forecast.015cad97-347f-46f5-92eb-3fd06081c002"},{"dataSetName":"forecast.015cad98-6a0a-44d9-be08-219d9c16f4a6"},{"dataSetName":"forecast.015cad99-0359-4e48-95bd-ff9f36a5124b"},{"dataSetName":"forecast.015cad99-057b-4504-a597-210f0fb5d919"},{"dataSetName":"forecast.015cad99-0708-4e7e-8d9d-1b75d307f242"},{"dataSetName":"forecast.015cad99-0fa2-4dc6-a348-09d2ad13b91e"},{"dataSetName":"forecast.015cadbe-f239-41f4-b3df-1ac28bee525b"},{"dataSetName":"forecast.015cadbe-f468-468f-9014-d468bd868d5c"},{"dataSetName":"forecast.015cadbe-f675-4c95-b5f1-636f8333cd10"},{"dataSetName":"forecast.015cadbe-ffdc-4101-9485-3eee04b35be3"},{"dataSetName":"forecast.015cb11e-221f-4eee-ad22-e2c5c6c48432"},{"dataSetName":"forecast.015cb11e-246c-40cb-a82e-cc09d1875cc0"},{"dataSetName":"forecast.015cb11e-265c-48c9-8d12-4730a371fa4d"},{"dataSetName":"forecast.015cb11e-31ac-4af7-a1fd-449b921d29b2"},{"dataSetName":"forecast.015cb12e-6ca6-4670-aff4-8c4fd3698897"},{"dataSetName":"forecast.015cb12e-6f4d-4459-9188-e9c0719fc2d9"},{"dataSetName":"forecast.015cb12e-7156-441e-b387-52519a27d128"},{"dataSetName":"forecast.015cb12e-7fc1-4c24-b73b-15ad89d850b9"},{"dataSetName":"forecast.015cb1f5-1725-4877-bbcd-c77572d23e73"},{"dataSetName":"forecast.015cb1f5-19a0-4c0b-af41-dd3e68bf3731"},{"dataSetName":"forecast.015cb1f5-1c2a-4b2a-ae70-5c31ee407959"},{"dataSetName":"forecast.015cb1f5-26c2-44da-8d76-e0f46946bb11"},{"dataSetName":"GeneratedJson1"},{"dataSetName":"GeneratedJson100K"},{"dataSetName":"GeneratedJson10K"},{"dataSetName":"impact.015cac7e-280f-4e28-bfb1-cf96b2ba4dda"},{"dataSetName":"impact.015cacfd-9309-496c-9228-2429df41e686"},{"dataSetName":"impact.015cad99-0802-447d-956d-0b3cc3fba2bf"},{"dataSetName":"impact.015cadbe-f77b-4c54-a369-82477cda7de6"},{"dataSetName":"impact.015cb11e-276d-4deb-8385-8988c66b3343"},{"dataSetName":"impact.015cb12e-7294-4418-8a8f-e7ecc2824774"},{"dataSetName":"impact.015cb1fb-0b4f-4af4-b314-4098d2bc1fcf"},{"dataSetName":"impact.015cb1fb-b03f-432a-966a-e56411030b6a"},{"dataSetName":"RubyTest2"},{"dataSetName":"TestRuby"},{"dataSetName":"TestRuby_CSV"},{"dataSetName":"TestRuby_Json"},{"dataSetName":"TestTest"}]}'
+      string: '{"items":[{"dataSetName":"d.015ca816-e260-4eb6-b105-6442aaff09f0","columns":{}},{"dataSetName":"d.015ca817-2a2f-44de-b3e4-3b983f154567","columns":{}},{"dataSetName":"DaasdflySasdfalessdf","columns":{}},{"dataSetName":"DailySales","columns":{}},{"dataSetName":"DailySales.015c6557-1dca-44a0-a038-4927992af6f6","columns":{}},{"dataSetName":"DailySales.015c655b-0e5d-4273-a1cb-b9fcf737cf02","columns":{}},{"dataSetName":"GeneratedJson1","columns":{}},{"dataSetName":"GeneratedJson100K","columns":{}},{"dataSetName":"GeneratedJson10K","columns":{}},{"dataSetName":"RubyTest2","columns":{}},{"dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":"none"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}}},{"dataSetName":"TestRuby_CSV","columns":{"sales":{"dataType":"numeric","role":"none"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}}},{"dataSetName":"TestRuby_Json","columns":{"sales":{"dataType":"numeric","role":"none"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}}},{"dataSetName":"TestTest","columns":{}}]}'
     http_version: 
-  recorded_at: Wed, 21 Jun 2017 14:19:02 GMT
+  recorded_at: Mon, 26 Jun 2017 19:42:40 GMT
 recorded_with: VCR 3.0.3
