@@ -4,8 +4,11 @@ require 'json'
 
 describe NexosisApi::Client::Datasets do
     before(:all) do
-        data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
-        test_client.create_dataset_csv('TestRuby', data)
+        begin
+            data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
+            test_client.create_dataset_csv('TestRuby', data)
+        rescue NexosisApi::HttpException
+        end
     end
 
     after(:all) do

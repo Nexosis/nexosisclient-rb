@@ -25,11 +25,11 @@ def test_base_uri
 end
 
 def test_client
-    NexosisApi.client(api_key: '47ee6ee7a49d4518b5e9fe1a163f2384', base_uri: 'https://api.dev.nexosisdev.com/api')#api_key: test_api_key, base_uri: test_base_uri)
+    NexosisApi.client(api_key: test_api_key, base_uri: test_base_uri)
 end
 
 def handle_vcr(example)
-  return run_with_http_interaction(example) #if ENV['VCR_OFF']
+  return run_with_http_interaction(example) if ENV['VCR_OFF']
   VCR.use_cassette(:cassette_name) { example.call }
 end
 
