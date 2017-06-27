@@ -21,7 +21,7 @@ module NexosisApi
     # Primary entry point to working with Nexosis API
     class Client
         include HTTParty
-        base_uri 'https://ml.nexosis.com/api'
+        base_uri 'https://ml.nexosis.com/v1'
         include Client::Sessions
         include Client::Datasets
 
