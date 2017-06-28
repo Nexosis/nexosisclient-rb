@@ -113,11 +113,8 @@ module NexosisApi
                 }
                 
                 if(filter_options.empty? == false)
-                    query["startDate"] = filter_options[:start_date].to_s unless filter_options[:start_date].nil?
-                    query["endDate"] = filter_options[:end_date].to_s unless filter_options[:end_date].nil?
-                end
-                if(query.values.all?{|v|v.to_s.empty?})
-                    query = nil
+                    query["startDate"] = filter_options[:start_date].to_s #unless filter_options[:start_date].nil?
+                    query["endDate"] = filter_options[:end_date].to_s #unless filter_options[:end_date].nil?
                 end
                 response  = self.class.delete(dataset_remove_url, :headers => @headers, :query => query)
                 if(response.success?)
@@ -155,9 +152,9 @@ module NexosisApi
                     "startDate" => options[:start_date].to_s,
                     "endDate" => options[:end_date].to_s,
                     "page" => options[:page_number],
-                    "pageSize" => options[:page_size]
+                    "pageSize" => options[:page_size],
+                    "include" => options[:include]
                 }
-                query["include"] = options[:include].to_s unless options[:include].nil?
                 query
             end
         end

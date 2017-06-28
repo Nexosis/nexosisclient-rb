@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_CSV
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_NoTimestamp
     body:
       encoding: UTF-8
-      string: "timeStamp,sales,transactions\r\n2012-12-31 00:00:00,2919.51,431\r\n2013-01-01
+      string: "processtime,sales,transactions\r\n2012-12-31 00:00:00,2919.51,431\r\n2013-01-01
         00:00:00,1288.6,191\r\n2013-01-02 00:00:00,2895.62,443\r\n2013-01-03 00:00:00,2997.13,477\r\n2013-01-04
         00:00:00,3340.63,499\r\n2013-01-05 00:00:00,2254.3,354\r\n2013-01-06 00:00:00,1946.88,302\r\n2013-01-07
         00:00:00,2830.84,461\r\n2013-01-08 00:00:00,2833.66,465\r\n2013-01-09 00:00:00,2978.66,480\r\n2013-01-10
@@ -188,21 +188,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Location:
-      - http://gateway.uat.nexosisdev.com/data/TestRuby_CSV
+      - http://gateway.uat.nexosisdev.com/data/TestRuby_NoTimestamp
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1314923.1 USD
+      - 1314922.96 USD
       Date:
-      - Wed, 28 Jun 2017 20:14:32 GMT
+      - Wed, 28 Jun 2017 20:14:43 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"TestRuby_CSV","columns":{"sales":{"dataType":"numeric","role":null},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":null}}}'
+      string: '{"dataSetName":"TestRuby_NoTimestamp","columns":{"sales":{"dataType":"numeric","role":null},"processtime":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":null}}}'
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 20:14:33 GMT
+  recorded_at: Wed, 28 Jun 2017 20:14:44 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_CSV?cascade=session&endDate=&startDate=
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_NoTimestamp?cascade=session&endDate=&startDate=
     body:
       encoding: US-ASCII
       string: ''
@@ -219,14 +219,14 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1314923.1 USD
+      - 1314922.96 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Wed, 28 Jun 2017 20:14:32 GMT
+      - Wed, 28 Jun 2017 20:14:43 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 20:14:34 GMT
+  recorded_at: Wed, 28 Jun 2017 20:14:44 GMT
 recorded_with: VCR 3.0.3

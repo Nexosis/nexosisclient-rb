@@ -13,12 +13,26 @@ describe NexosisApi::Client::Datasets do
         end
     end
 
+    describe "#create_dataset_json", :vcr => {:cassette_name => "create_dataset_roles"} do
+        context "given a json dataset with metadata" do
+            it "returns a dataset summary" do
+                data = JSON.load(File.open('spec/fixtures/featureroledata.json'))
+                actual  = test_client.create_dataset_json 'TestRuby_JsonMetadata', data 
+                expect(actual).to be_a(NexosisApi::DatasetSummary)
+                expect(actual.column_metadata[0].role).to eql(:target)
+                expect(actual.column_metadata[2].role).to eql(:feature)
+                test_client.remove_dataset('TestRuby_JsonMetadata', {"cascade" => true})
+            end
+        end
+    end
+
     describe "#create_dataset_csv",:vcr => {:cassette_name => "create_dataset_csv"} do
         context "given a dataset csv file" do
             it "returns a dataset summary" do
                 data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
                 actual  = test_client.create_dataset_csv 'TestRuby_CSV', data 
                 expect(actual).to be_a(NexosisApi::DatasetSummary)
+                test_client.remove_dataset('TestRuby_CSV', {"cascade" => true})
             end
         end
     end
@@ -118,7 +132,7 @@ describe NexosisApi::Client::Datasets do
         context "given an existing saved dataset with completed sessions and cascade true" do 
             it "removes the dataset and the sessions" do
                 test_client.create_dataset_csv('ToRemove',"timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
-                session = test_client.create_forecast_session('ToRemove','foo','1-3-2017','1-4-2017')
+                session = test_client.create_forecast_session('ToRemove','1-3-2017','1-4-2017','foo')
                 loop do
                     status_check = test_client.get_session session.sessionId
                     break if (status_check.status == "completed" || status_check.status == "failed")
@@ -132,6 +146,18 @@ describe NexosisApi::Client::Datasets do
                 expect{test_client.get_session session.sessionId}.to raise_error {|error|
                     expect(error.code).to eql(404)
                 }
+            end
+        end
+    end
+
+    describe "#create_dataset_csv", :vcr => {:cassette_name => "create_csv_notimestamp"} do
+        context "given a csv with no distinct timestamp column" do 
+            it "creates the dataset and infers column" do
+                data = CSV.open('spec/fixtures/notimestamp.csv','rb', headers: true)
+                actual  = test_client.create_dataset_csv 'TestRuby_NoTimestamp', data
+                expect(actual).to be_a(NexosisApi::DatasetSummary)
+                expect(actual.column_metadata[1].role).to eql(:timestamp)
+                test_client.remove_dataset('TestRuby_NoTimestamp', {"cascade" => true})
             end
         end
     end

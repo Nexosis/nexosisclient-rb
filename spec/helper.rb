@@ -10,12 +10,15 @@ RSpec.configure do |config|
     begin
       data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
       test_client.create_dataset_csv('TestRuby', data)
-      rescue NexosisApi::HttpException
+    rescue NexosisApi::HttpException
     end
   end
   
   config.after(:all) do 
-    test_client.remove_dataset('TestRuby', {:cascade => true})
+    begin
+      test_client.remove_dataset('TestRuby', {:cascade => true})
+    rescue NexosisApi::HttpException
+    end
   end
   
 end

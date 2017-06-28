@@ -17,6 +17,7 @@ module NexosisApi
         end
     
         # The name of the dataset uploaded and saved
+        # @return [String]
         attr_accessor :dataset_name
 
         # Descriptive information about the columns

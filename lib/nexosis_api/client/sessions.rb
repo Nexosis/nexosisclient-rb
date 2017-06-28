@@ -1,4 +1,5 @@
 require 'csv'
+require 'json'
 
 module NexosisApi
 	class Client
@@ -70,87 +71,89 @@ module NexosisApi
 			# Forecast from data already saved to the API.
 			#
 			# @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
+			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
-			def create_forecast_session(dataset_name, target_column, start_date, end_date)
-				create_session dataset_name, target_column, start_date, end_date
+			def create_forecast_session(dataset_name, start_date, end_date, target_column = nil)
+				create_session(dataset_name, start_date, end_date, target_column)
 			end
 
 			# Forecast from CSV formatted data.
 			#
 			# @param csv [CSV] initialized CSV object ready for reading.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 parseable string. 
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 parseable string.
+			# @param target_column [String] The name of the column for which you want predictions.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
 			# @example load and send local file
 			#    mycsv = CSV.read('.\mylocal.csv')
 			#    NexosisApi.client(:api_key=>mykey).create_forecast_session_csv(mycsv,'sales','01-01-2017','02-01-2017')
-            def create_forecast_session_csv(csv, target_column, start_date, end_date)
+            def create_forecast_session_csv(csv, start_date, end_date, target_column)
 				content = process_csv_to_s csv
-                create_session(nil, target_column, start_date, end_date, false, nil, "forecast", content)
+                create_session(nil, start_date, end_date, target_column, false, nil, "forecast", content)
             end
 
 			# Forecast from data posted in the request.
 			#
 			# @param json_data [String] Json dataset matching the dataset input schema.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
+			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
 			# @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233
-			def create_forecast_session_data(json_data, target_column, start_date, end_date)
-				create_session nil, target_column, start_date, end_date, false, nil, "forecast", json_data, "application/json"
+			def create_forecast_session_data(json_data, start_date, end_date, target_column = nil)
+				json_data = json_data.to_json unless json_data.is_a? String
+				create_session nil, start_date, end_date, target_column, false, nil, "forecast", json_data, "application/json"
 			end
 
 			# Estimate the cost of a forecast from data already saved to the API.
 			#
 			# @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
+			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-            def estimate_forecast_session(dataset_name, target_column, start_date, end_date)
-                create_session dataset_name, target_column, start_date, end_date, true
+            def estimate_forecast_session(dataset_name, start_date, end_date, target_column = nil)
+                create_session dataset_name, start_date, end_date, target_column, true
             end
 			
 			# Analyze impact for an event with data already saved to the API.
 			#
 			# @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the impactful event. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the impactful event. Can be ISO 8601 string.
 			# @param event_name [String] The name of the event.
+			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in datatset.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
-            def create_impact_session(dataset_name, target_column, start_date, end_date, event_name)
-                create_session dataset_name, target_column, start_date, end_date, false, event_name, "impact"
+            def create_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil)
+                create_session dataset_name, start_date, end_date, target_column, false, event_name, "impact"
             end
 
 			# Analyze impact for an event with data in json format.
 			#
 			# @param json_data [String] Json dataset matching the dataset input schema.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the impactful event. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the impactful event. Can be ISO 8601 string.
 			# @param event_name [String] The name of the event.
+			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
 			# @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233
-			def create_impact_session_data(json_data, target_column, start_date, end_date, event_name)
-				create_session nil, target_column, start_date, end_date, false, event_name, "impact", json_data, "application/json"
+			def create_impact_session_data(json_data, start_date, end_date, event_name, target_column = nil)
+				json_data = json_data.to_json unless json_data.is_a? String
+				create_session nil, start_date, end_date, target_column, false, event_name, "impact", json_data, "application/json"
 			end
             
 			# Estimate the cost of impact analysis for an event with data already saved to the API.
 			#
 			# @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-			# @param target_column [String] The name of the column for which you want predictions.
 			# @param start_date [DateTime] The starting date of the impactful event. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the impactful event. Can be ISO 8601 string.
 			# @param event_name [String] The name of the event.
+			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-            def estimate_impact_session(dataset_name, target_column, start_date, end_date, event_name)
-                create_session dataset_name, target_column, start_date, end_date, true, event_name, "impact"
+            def estimate_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil)
+                create_session dataset_name, start_date, end_date, target_column, true, event_name, "impact"
             end
             
 			# Get the results of the session.
@@ -192,10 +195,10 @@ module NexosisApi
 			    end
             end
         private
-			def create_session(dataset_name, target_column, start_date, end_date, is_estimate=false, event_name = nil, type = "forecast", content = nil, content_type = "text/csv")
+			def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = "forecast", content = nil, content_type = "text/csv")
 				session_url = "/sessions/#{type}"
 				query = { 
-					"targetColumn" => target_column,
+					"targetColumn" => target_column.to_s,
 					"startDate" => start_date.to_s,
 					"endDate" => end_date.to_s,
 					"isestimate" => is_estimate.to_s

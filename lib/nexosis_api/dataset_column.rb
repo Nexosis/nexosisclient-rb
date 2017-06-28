@@ -3,8 +3,8 @@ module NexosisApi
     class DatasetColumn
         def initialize(column_name, value_hash)
             @name = column_name
-            @type = NexosisApi::ColumnType.const_get(value_hash["dataType"].upcase)
-            @role = NexosisApi::ColumnRole.const_get(value_hash["role"].upcase)
+            @type = NexosisApi::ColumnType.const_get(value_hash["dataType"].upcase) unless value_hash["dataType"].nil?
+            @role = NexosisApi::ColumnRole.const_get(value_hash["role"].upcase) unless value_hash["role"].nil?
         end
         # The column header, label, or name
         # @return [String]
