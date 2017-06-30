@@ -9,6 +9,13 @@ module NexosisApi
 					instance_variable_set("@#{k}", links) unless v.nil?
 				elsif(k == "isEstimate")
                     instance_variable_set("@is_estimate", v) unless v.nil?
+				elsif(k == "columns")
+                    columns = []
+                    next if v.nil?
+                    v.keys.each do |col_key|
+                        columns << NexosisApi::DatasetColumn.new(col_key, v[col_key])
+                    end
+                    @column_metadata = columns
 				else
 					instance_variable_set("@#{k}", v) unless v.nil?
 				end
@@ -58,6 +65,11 @@ module NexosisApi
 		# Is this session an estimate only session
 		# @return [Boolean]
 		attr_accessor :is_estimate
+
+		# The column descriptors for the data in this session
+		#    will reflect either the metadata sent in, defaults form dataset, or inferred values
+		# @return[Array of NexosisApi::DatasetColumn]
+		attr_accessor :column_metadata
 	end
 end
 

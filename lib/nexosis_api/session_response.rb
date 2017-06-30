@@ -11,7 +11,7 @@ module NexosisApi
 					instance_variable_set("@cost", v[0]) unless v.nil?
                 elsif(k == "nexosis-account-balance")
                     instance_variable_set("@account_balance", v[0]) unless v.nil?
-				end
+                end
 			end
         end
 
