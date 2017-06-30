@@ -1,30 +1,30 @@
 require 'helper'
 
-# describe NexosisApi::Session do
-#     describe "#initialize" do
-#         context "given a hash with session values" do
-#             it "creates an instance with those values" do
-#                 target = NexosisApi::Session.new({"sessionId":"015ca6f7-ca42-49de-9601-f5493a03cbfa","type":"forecast","status":"completed","requestedDate":"2017-06-14T14:17:56.012548+00:00","statusHistory":[{"date":"2017-06-14T14:17:56.012548+00:00","status":"requested"},{"date":"2017-06-14T14:17:57.0034498+00:00","status":"started"},{"date":"2017-06-14T14:18:05.1763039+00:00","status":"completed"}],"extraParameters":{},"columns":{},"dataSetName":"RubyTest","targetColumn":"sales","startDate":"2017-01-22T00:00:00+00:00","endDate":"2017-02-22T00:00:00+00:00","callbackUrl":nil,"isEstimate":false,"resultInterval":nil})
-#                 expect(target).to_not be_nil
-#                 expect(target.dataSetName).to eql('RubyTest')
-#             end
-#         end
-#     end
-# end
+describe NexosisApi::Session do
+    describe "#initialize" do
+        context "given a hash with session values" do
+            it "creates an instance with those values" do
+                target = NexosisApi::Session.new({"sessionId":"015ca6f7-ca42-49de-9601-f5493a03cbfa","type":"forecast","status":"completed","requestedDate":"2017-06-14T14:17:56.012548+00:00","statusHistory":[{"date":"2017-06-14T14:17:56.012548+00:00","status":"requested"},{"date":"2017-06-14T14:17:57.0034498+00:00","status":"started"},{"date":"2017-06-14T14:18:05.1763039+00:00","status":"completed"}],"extraParameters":{},"columns":{},"dataSetName":"RubyTest","targetColumn":"sales","startDate":"2017-01-22T00:00:00+00:00","endDate":"2017-02-22T00:00:00+00:00","callbackUrl":nil,"isEstimate":false,"resultInterval":nil})
+                expect(target).to_not be_nil
+                expect(target.dataSetName).to eql('RubyTest')
+            end
+        end
+    end
+end
 
 
-# describe NexosisApi::SessionResponse do
-#     describe "#initialize" do
-#         context "given a hash with session response values" do
-#             it "creates an instance with those values" do
-#                 target = NexosisApi::SessionResponse.new({"nexosis-account-balance"=>["6548.25"],"nexosis-request-cost"=>["15.00"], "session" => {"sessionId":"015ca6f7-ca42-49de-9601-f5493a03cbfa","type":"forecast","status":"completed","requestedDate":"2017-06-14T14:17:56.012548+00:00","statusHistory":[{"date"=>"2017-06-14T14:17:56.012548+00:00","status"=>"requested"},{"date"=>"2017-06-14T14:17:57.0034498+00:00","status"=>"started"},{"date"=>"2017-06-14T14:18:05.1763039+00:00","status"=>"completed"}],"extraParameters":{},"columns":{},"dataSetName":"RubyTest","targetColumn":"sales","startDate":"2017-01-22T00:00:00+00:00","endDate":"2017-02-22T00:00:00+00:00","callbackUrl":nil,"isEstimate":false,"resultInterval":nil}})
-#                 expect(target).to_not be_nil
-#                 expect(target.dataSetName).to eql('RubyTest')
-#                 expect(target.cost).to eql('15.00')
-#             end
-#         end
-#     end
-# end
+describe NexosisApi::SessionResponse do
+    describe "#initialize" do
+        context "given a hash with session response values" do
+            it "creates an instance with those values" do
+                target = NexosisApi::SessionResponse.new({"nexosis-account-balance"=>["6548.25"],"nexosis-request-cost"=>["15.00"], "session" => {"sessionId":"015ca6f7-ca42-49de-9601-f5493a03cbfa","type":"forecast","status":"completed","requestedDate":"2017-06-14T14:17:56.012548+00:00","statusHistory":[{"date"=>"2017-06-14T14:17:56.012548+00:00","status"=>"requested"},{"date"=>"2017-06-14T14:17:57.0034498+00:00","status"=>"started"},{"date"=>"2017-06-14T14:18:05.1763039+00:00","status"=>"completed"}],"extraParameters":{},"columns":{},"dataSetName":"RubyTest","targetColumn":"sales","startDate":"2017-01-22T00:00:00+00:00","endDate":"2017-02-22T00:00:00+00:00","callbackUrl":nil,"isEstimate":false,"resultInterval":nil}})
+                expect(target).to_not be_nil
+                expect(target.dataSetName).to eql('RubyTest')
+                expect(target.cost).to eql('15.00')
+            end
+        end
+    end
+end
 
 describe NexosisApi::SessionResult do
     describe "#initialize" do
