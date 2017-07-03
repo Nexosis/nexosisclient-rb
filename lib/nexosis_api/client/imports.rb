@@ -35,6 +35,17 @@ module NexosisApi
                    raise HttpException.new("There was a problem uploading the dataset: #{response.code}.", "uploading dataset from s3 #{dataset_name}" ,response)
 			    end
             end
+
+            def retrieve_import(import_id)
+                raise ArgumentError "import_id was not provided and is not optional " unless import_id.to_s.empty? == false
+                imports_url = "/imports/#{import_id}"
+                response = self.class.get(imports_url, :headers => @headers)
+                if(response.success?)
+                    NexosisApi::S3Response.new(response.parsed_response)
+                else
+                   raise HttpException.new("There was a problem uploading the dataset: #{response.code}.", "uploading dataset from s3 #{dataset_name}" ,response)
+			    end
+            end
         end
     end
 end

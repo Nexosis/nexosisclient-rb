@@ -16,4 +16,17 @@ describe NexosisApi::Client::Imports do
             end
         end
     end
+
+    describe "#retrieve_import", :vcr => {:cassette_name => "retrieve_import"} do
+        context "given an active S3 import" do
+            it "returns an import response with status" do
+               #TODO: when list capability is in place need to get one from list instead.
+               import_id = '015d087d-1681-4a3f-96a0-046eec1a5894'
+               actual = test_client.retrieve_import import_id
+               expect(actual).to_not be_nil
+               expect(actual).to be_a(NexosisApi::S3Response)
+               
+            end
+        end
+    end
 end
