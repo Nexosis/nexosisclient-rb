@@ -20,5 +20,16 @@ module NexosisApi
         # @note Either none, timestamp, target, or feature
         # @return [NexosisApi::ColumnRole]
         attr_accessor :role
+
+        # utility method to format a column description in the way it is expected on input
+        def to_hash
+            { self.name => { "dataType" => self.type.to_s, "role" => self.role.to_s }} 
+        end
+
+        def self.to_json(column_array)
+            result = {}
+            column_array.each {|col| result[col.to_hash.keys[0]] = col.to_hash.values[0] } 
+            result
+        end
     end
 end

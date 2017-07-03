@@ -11,11 +11,13 @@ require 'nexosis_api/http_exception'
 require 'nexosis_api/impact_metric'
 require 'nexosis_api/link'
 require 'nexosis_api/metric'
+require 'nexosis_api/s3_response'
 require 'nexosis_api/session_response'
 require 'nexosis_api/session_result'
 require 'nexosis_api/session'
 require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
+require 'nexosis_api/client/imports'
 
 module NexosisApi
     # Primary entry point to working with Nexosis API
@@ -24,6 +26,7 @@ module NexosisApi
         base_uri 'https://ml.nexosis.com/v1'
         include Client::Sessions
         include Client::Datasets
+        include Client::Imports
 
         def initialize(options = {})
             raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
