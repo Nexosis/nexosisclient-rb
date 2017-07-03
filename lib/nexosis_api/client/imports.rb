@@ -36,6 +36,12 @@ module NexosisApi
 			    end
             end
 
+            # Get s3 response back from import created previously. Presumably to check status.
+            #
+            # @param import_id [String] The id returned from a previous request to import
+            # @return [NexosisApi::S3Response]
+            # @example get S3 import
+            #    NexosisApi.client.retrieve_import('740dca2a-b488-4322-887e-fa473b1caa54')
             def retrieve_import(import_id)
                 raise ArgumentError "import_id was not provided and is not optional " unless import_id.to_s.empty? == false
                 imports_url = "/imports/#{import_id}"

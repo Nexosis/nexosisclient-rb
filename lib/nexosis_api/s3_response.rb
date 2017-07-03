@@ -24,7 +24,7 @@ module NexosisApi
             end
         end
 
-        # 
+        # The unique identifier for this import request
         # @return [String]
         attr_accessor :import_id
 

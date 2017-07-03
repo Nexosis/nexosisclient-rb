@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.uat.nexosisdev.com/v1/sessions/impact?endDate=2013-05-19&eventName=test%20event&isestimate=false&startDate=2013-05-10&targetColumn=sales
+    uri: https://api.uat.nexosisdev.com/v1/sessions/impact?endDate=2013-05-19&eventName=test%20event&isestimate=false&resultInterval=day&startDate=2013-05-10&targetColumn=sales
     body:
       encoding: ASCII-8BIT
       string: "{\r\n    \"columns\": {\r\n        \"sales\": {\r\n            \"dataType\":
@@ -1027,18 +1027,18 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.9 USD
       Nexosis-Account-Balance:
-      - 1314914.41 USD
+      - 1314878.15 USD
       Date:
-      - Wed, 28 Jun 2017 20:14:48 GMT
+      - Mon, 03 Jul 2017 19:38:41 GMT
     body:
       encoding: UTF-8
-      string: '{"sessionId":"015cf057-8b0f-4b65-a911-cd6fa59a59f3","type":"impact","status":"requested","requestedDate":"2017-06-28T20:14:48.079557+00:00","statusHistory":[{"date":"2017-06-28T20:14:48.079557+00:00","status":"requested"}],"extraParameters":{"event":"test
-        event"},"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"dataSetName":"impact.015cf057-8b0f-4b65-a911-cd6fa59a59f3","targetColumn":"sales","startDate":"2013-05-10T00:00:00+00:00","endDate":"2013-05-19T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015cf057-8b0f-4b65-a911-cd6fa59a59f3/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/impact.015cf057-8b0f-4b65-a911-cd6fa59a59f3"}]}'
+      string: '{"sessionId":"015d09f6-494b-4844-be9f-d9f54369ab70","type":"impact","status":"requested","requestedDate":"2017-07-03T19:38:41.867508+00:00","statusHistory":[{"date":"2017-07-03T19:38:41.867508+00:00","status":"requested"}],"extraParameters":{"event":"test
+        event"},"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"dataSetName":"impact.015d09f6-494b-4844-be9f-d9f54369ab70","targetColumn":"sales","startDate":"2013-05-10T00:00:00+00:00","endDate":"2013-05-19T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d09f6-494b-4844-be9f-d9f54369ab70/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/impact.015d09f6-494b-4844-be9f-d9f54369ab70"}]}'
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 20:14:50 GMT
+  recorded_at: Mon, 03 Jul 2017 19:38:43 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/data/impact.015cf057-8b0f-4b65-a911-cd6fa59a59f3?cascade=session&endDate=&startDate=
+    uri: https://api.uat.nexosisdev.com/v1/data/impact.015d09f6-494b-4844-be9f-d9f54369ab70?cascade=session&endDate=&startDate=
     body:
       encoding: US-ASCII
       string: ''
@@ -1055,14 +1055,14 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1314914.41 USD
+      - 1314878.15 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Wed, 28 Jun 2017 20:14:49 GMT
+      - Mon, 03 Jul 2017 19:38:43 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 20:14:50 GMT
+  recorded_at: Mon, 03 Jul 2017 19:38:44 GMT
 recorded_with: VCR 3.0.3

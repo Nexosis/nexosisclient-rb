@@ -208,7 +208,7 @@ describe NexosisApi::Client::Sessions do
         end
     end
 
-    describe "#create_forecast_session", :vcr => {} do
+    describe "#create_forecast_session", :vcr => {:cassette_name => "create_session_no_dataset_404"} do
         context "given a dataset name that does not exist" do
             it "fails with a 404 http message" do
                  expect{test_client.create_forecast_session('IDontExist','01-22-2017','02-22-2017','sales')}.to raise_error{ |error|

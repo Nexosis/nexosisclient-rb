@@ -16,6 +16,8 @@ module NexosisApi
                         columns << NexosisApi::DatasetColumn.new(col_key, v[col_key])
                     end
                     @column_metadata = columns
+				elsif(k == "resultInterval")
+					@result_interval = v
 				else
 					instance_variable_set("@#{k}", v) unless v.nil?
 				end
@@ -70,6 +72,10 @@ module NexosisApi
 		#    will reflect either the metadata sent in, defaults form dataset, or inferred values
 		# @return[Array of NexosisApi::DatasetColumn]
 		attr_accessor :column_metadata
+
+		# The requested result interval. Default is DAY if none was requested during session creation.
+		# @return [NexosisApi::TimeInterval]
+		attr_accessor :result_interval
 	end
 end
 

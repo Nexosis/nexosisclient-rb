@@ -21,14 +21,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1314923.1 USD
+      - 1314873.86 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Wed, 28 Jun 2017 20:14:32 GMT
+      - Mon, 03 Jul 2017 19:40:15 GMT
     body:
       encoding: UTF-8
       string: '{"items":[{"dataSetName":"DaasdflySasdfalessdf","columns":{}},{"dataSetName":"DailySales","columns":{}},{"dataSetName":"DailySales.015c6557-1dca-44a0-a038-4927992af6f6","columns":{}},{"dataSetName":"DailySales.015c655b-0e5d-4273-a1cb-b9fcf737cf02","columns":{}},{"dataSetName":"GeneratedJson1","columns":{}},{"dataSetName":"GeneratedJson100K","columns":{}},{"dataSetName":"GeneratedJson10K","columns":{}},{"dataSetName":"Location-A","columns":{"sales":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}}},{"dataSetName":"RubyTest2","columns":{}},{"dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":null}}},{"dataSetName":"TestRuby_Json","columns":{"sales":{"dataType":"numeric","role":"none"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}}},{"dataSetName":"TestTest","columns":{}}]}'
     http_version: 
-  recorded_at: Wed, 28 Jun 2017 20:14:34 GMT
+  recorded_at: Mon, 03 Jul 2017 19:40:17 GMT
 recorded_with: VCR 3.0.3
