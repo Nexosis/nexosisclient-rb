@@ -11,7 +11,7 @@ module NexosisApi
 			# List sessions previously submitted
 			#
 			# @param query_options [Hash] optionally provide query parameters to limit the search of sessions. 
-			# @return[Array of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
+			# @return [Array of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
 			# @note query parameters hash members are dataset_name, event_name, requested_before_date, and requested_after_date. 
 			#    After and before dates refer to the session requested date.
 			# @example query for just one dataset

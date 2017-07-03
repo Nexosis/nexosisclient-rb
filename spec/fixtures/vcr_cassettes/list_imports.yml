@@ -21,47 +21,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1314853.64 USD
+      - 1314853.71 USD
       Nexosis-Request-Cost:
       - 0.000 USD
       Date:
-      - Mon, 03 Jul 2017 21:31:43 GMT
+      - Mon, 03 Jul 2017 21:27:42 GMT
     body:
       encoding: UTF-8
       string: '{"items":[{"importId":"015d0866-219a-434d-bef6-39cfd20d353a","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T12:21:37.283569+00:00","statusHistory":[{"date":"2017-07-03T12:21:37.283569+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]},{"importId":"015d0877-49b0-4a68-ac37-cab05233b435","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T12:40:21.680674+00:00","statusHistory":[{"date":"2017-07-03T12:40:21.680674+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]},{"importId":"015d0878-08cf-4714-9ba6-0de305abd8c2","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T12:41:10.606933+00:00","statusHistory":[{"date":"2017-07-03T12:41:10.606933+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]},{"importId":"015d087b-8ea9-4591-b635-509bba087a7c","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T12:45:01.48163+00:00","statusHistory":[{"date":"2017-07-03T12:45:01.48163+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]},{"importId":"015d087d-1681-4a3f-96a0-046eec1a5894","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T12:46:41.79324+00:00","statusHistory":[{"date":"2017-07-03T12:46:41.79324+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]},{"importId":"015d0a23-2bd1-4c64-933f-02aa799d0ab7","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T20:27:43.44081+00:00","statusHistory":[{"date":"2017-07-03T20:27:43.44081+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]},{"importId":"015d0a48-9d17-4e70-b3fc-949b8d960804","type":"s3","status":"completed","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T21:08:37.263462+00:00","statusHistory":[{"date":"2017-07-03T21:08:37.263462+00:00","status":"requested"},{"date":"2017-07-03T21:08:39.2451399+00:00","status":"started"},{"date":"2017-07-03T21:08:41.1128021+00:00","status":"completed"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]}]}'
     http_version: 
-  recorded_at: Mon, 03 Jul 2017 21:31:45 GMT
-- request:
-    method: get
-    uri: https://api.uat.nexosisdev.com/v1/imports/015d0866-219a-434d-bef6-39cfd20d353a
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Import-Status:
-      - Requested
-      Nexosis-Account-Balance:
-      - 1314853.64 USD
-      Nexosis-Request-Cost:
-      - 0.000 USD
-      Date:
-      - Mon, 03 Jul 2017 21:31:43 GMT
-    body:
-      encoding: UTF-8
-      string: '{"importId":"015d0866-219a-434d-bef6-39cfd20d353a","type":"s3","status":"requested","dataSetName":"TestRuby_Json","parameters":{"bucket":"nexosis-sample-data","path":"LocationA.csv","region":"us-east-1"},"requestedDate":"2017-07-03T12:21:37.283569+00:00","statusHistory":[{"date":"2017-07-03T12:21:37.283569+00:00","status":"requested"}],"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"none"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_Json"}]}'
-    http_version: 
-  recorded_at: Mon, 03 Jul 2017 21:31:45 GMT
+  recorded_at: Mon, 03 Jul 2017 21:27:44 GMT
 recorded_with: VCR 3.0.3

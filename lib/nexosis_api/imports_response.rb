@@ -1,6 +1,6 @@
 module NexosisApi
-    # class to parse results from an S3 imports call
-    class S3Response
+    # class to parse results from an imports call
+    class ImportsResponse
         def initialize(response_hash)
             response_hash.each do |k,v|
                 if(k == "importId")
@@ -28,7 +28,7 @@ module NexosisApi
         # @return [String]
         attr_accessor :import_id
 
-        # Always s3
+        # Currently always s3
         # @return [String]
         attr_accessor :type, :s3 
         
