@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/v1/sessions/forecast?dataSetName=TestRuby&endDate=02-22-2017&isestimate=false&resultInterval=seconds&startDate=01-22-2017&targetColumn=sales
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Expires:
+      - "-1"
+      Nexosis-Account-Balance:
+      - 1314867.15 USD
+      Nexosis-Request-Cost:
+      - 0.000 USD
+      Date:
+      - Mon, 03 Jul 2017 20:00:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"statusCode":400,"message":"Request is invalid","errorType":"RequestValidation","errorDetails":{"resultInterval":["The
+        value ''seconds'' is not valid for Nullable`1."]}}'
+    http_version: 
+  recorded_at: Mon, 03 Jul 2017 20:00:51 GMT
+recorded_with: VCR 3.0.3

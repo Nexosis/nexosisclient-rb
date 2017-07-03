@@ -218,4 +218,16 @@ describe NexosisApi::Client::Sessions do
             end
         end
     end
+
+    describe "#create_forecast_session", :vcr => {:cassette_name => "create_session_invalid_interval"} do
+        context "given a request with invalid interval specified" do
+            it "fails with a 400 message" do
+                 expect{test_client.create_forecast_session('TestRuby','01-22-2017','02-22-2017','sales','seconds')}.to raise_error{ |error|
+                    expect(error).to be_a(NexosisApi::HttpException)
+                    expect(error.code).to eql(400)
+                    expect(error.message).to include("The value 'seconds' is not valid")
+                 }
+            end
+        end
+    end
 end

@@ -5,16 +5,13 @@ module NexosisApi
       def initialize(message = "", action = nil, http_obj)
         @message = message
         if(http_obj.is_a?(Hash))
-        @message.prepend(http_obj["message"].concat(": ")) unless http_obj["message"].nil?
-        @action = action
-          if(http_obj.instance_of?(HTTParty::Response))
-            @message = message.concat("|| Explanation: ").concat(http_obj["errorDetails"]["message"]) unless http_obj["errorDetails"]["message"].nil?
-            @code = http_obj.parsed_response["statusCode"]
-            @type = http_obj.parsed_response["errorType"]
-            @response = http_obj.response
-            @request = http_obj.request
-          end
-        else
+          @message.prepend(http_obj["message"].concat(": ")) unless http_obj["message"].nil?
+          @action = action
+        elsif(http_obj.instance_of?(HTTParty::Response))
+          @message = message.concat("|| Explanation: ").concat(http_obj.parsed_response["errorDetails"].to_s) unless http_obj.parsed_response["errorDetails"].nil?
+          @type = http_obj.parsed_response["errorType"]
+          @response = http_obj.response
+          @request = http_obj.request
           @code = http_obj.code
         end
       end

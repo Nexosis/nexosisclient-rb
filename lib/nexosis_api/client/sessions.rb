@@ -82,7 +82,7 @@ module NexosisApi
 			#    For instance if your data includes many recoreds per hour, then you could request hour, day, or any other result interval.
 			#    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results. 
 			def create_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-				create_session(dataset_name, start_date, end_date, target_column, false, nil, "forecast", nil, result_interval)
+				create_session(dataset_name, start_date, end_date, target_column, false, nil, "forecast", nil,nil,result_interval)
 			end
 
 			# Forecast from CSV formatted data.
