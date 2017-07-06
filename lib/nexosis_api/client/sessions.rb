@@ -121,9 +121,10 @@ module NexosisApi
 			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
+			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-            def estimate_forecast_session(dataset_name, start_date, end_date, target_column = nil)
-                create_session dataset_name, start_date, end_date, target_column, true
+            def estimate_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
+                create_session dataset_name, start_date, end_date, target_column, true, nil, "forecast", nil, nil, result_interval
             end
 			
 			# Analyze impact for an event with data already saved to the API.
@@ -161,9 +162,10 @@ module NexosisApi
 			# @param end_date [DateTime] The ending date of the impactful event. Can be ISO 8601 string.
 			# @param event_name [String] The name of the event.
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
+			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-            def estimate_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil)
-                create_session dataset_name, start_date, end_date, target_column, true, event_name, "impact"
+            def estimate_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
+                create_session dataset_name, start_date, end_date, target_column, true, event_name, "impact", nil, "application/json", result_interval
             end
             
 			# Get the results of the session.
