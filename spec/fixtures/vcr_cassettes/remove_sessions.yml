@@ -1,16 +1,49 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.uat.nexosisdev.com/v1/sessions/forecast?endDate=01-05-2017&isestimate=false&resultInterval=day&startDate=01-03-2017&targetColumn=sales
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemoveRuby
     body:
       encoding: UTF-8
-      string: "timestamp,sales\r\n01-01-2017,234.45\r\n01-02-2017,343.22"
+      string: '{"columns":{"timestamp":{"dataType":"date","role":"timestamp"},"sales":{"dataType":"numeric","role":"target"}},"data":[{"timestamp":"2017-01-01T00:00:00+00:00","sales":"2948.74"},{"timestamp":"2017-01-02T00:00:00+00:00","sales":"1906.35"},{"timestamp":"2017-01-03T00:00:00+00:00","sales":"4523.42"},{"timestamp":"2017-01-04T00:00:00+00:00","sales":"4586.85"},{"timestamp":"2017-01-05T00:00:00+00:00","sales":"4538.04"}]}'
     headers:
       Api-Key:
       - api-key
       Content-Type:
-      - text/csv
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/data/ToRemoveRuby
+      Nexosis-Request-Cost:
+      - 0.01 USD
+      Nexosis-Account-Balance:
+      - 1314733.15 USD
+      Date:
+      - Wed, 12 Jul 2017 12:57:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"ToRemoveRuby","columns":{"sales":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}}}'
+    http_version: 
+  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/v1/sessions/forecast?dataSetName=ToRemoveRuby&endDate=2017-01-10&isestimate=false&resultInterval=day&startDate=2017-01-06&targetColumn=sales
+    body:
+      encoding: UTF-8
+      string: '""'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
   response:
     status:
       code: 200
@@ -21,19 +54,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Request-Cost:
-      - 0.2 USD
+      - 0.40 USD
       Nexosis-Account-Balance:
-      - 1314870.39 USD
+      - 1314732.75 USD
       Date:
-      - Mon, 03 Jul 2017 19:41:04 GMT
+      - Wed, 12 Jul 2017 12:57:08 GMT
     body:
       encoding: UTF-8
-      string: '{"sessionId":"015d09f8-7486-4090-9a49-d7ac921c45fa","type":"forecast","status":"requested","requestedDate":"2017-07-03T19:41:04.006042+00:00","statusHistory":[{"date":"2017-07-03T19:41:04.006042+00:00","status":"requested"}],"extraParameters":{},"columns":{"sales":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"forecast.015d09f8-7486-4090-9a49-d7ac921c45fa","targetColumn":"sales","startDate":"2017-01-03T00:00:00+00:00","endDate":"2017-01-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d09f8-7486-4090-9a49-d7ac921c45fa/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/forecast.015d09f8-7486-4090-9a49-d7ac921c45fa"}]}'
+      string: '{"sessionId":"015d36df-e0f8-4bb7-a6d9-8d474c92f699","type":"forecast","status":"requested","requestedDate":"2017-07-12T12:57:08.08797+00:00","statusHistory":[{"date":"2017-07-12T12:57:08.08797+00:00","status":"requested"}],"extraParameters":{},"columns":{"sales":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"ToRemoveRuby","targetColumn":"sales","startDate":"2017-01-06T00:00:00+00:00","endDate":"2017-01-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d36df-e0f8-4bb7-a6d9-8d474c92f699/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemoveRuby"}]}'
     http_version: 
-  recorded_at: Mon, 03 Jul 2017 19:41:05 GMT
+  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=forecast.015d09f8-7486-4090-9a49-d7ac921c45fa&endDate=&eventName=&startDate=&type=
+    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=ToRemoveRuby&endDate=&eventName=&startDate=&type=
     body:
       encoding: US-ASCII
       string: ''
@@ -50,19 +83,19 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1314870.39 USD
+      - 1314732.75 USD
       Nexosis-Request-Cost:
-      - 0.000 USD
+      - 0.00 USD
       Date:
-      - Mon, 03 Jul 2017 19:41:04 GMT
+      - Wed, 12 Jul 2017 12:57:09 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 03 Jul 2017 19:41:06 GMT
+  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/015d09f8-7486-4090-9a49-d7ac921c45fa
+    uri: https://api.uat.nexosisdev.com/v1/sessions/015d36df-e0f8-4bb7-a6d9-8d474c92f699
     body:
       encoding: US-ASCII
       string: ''
@@ -87,15 +120,15 @@ http_interactions:
       Expires:
       - "-1"
       Nexosis-Account-Balance:
-      - 1314870.39 USD
+      - 1314732.75 USD
       Nexosis-Request-Cost:
-      - 0.000 USD
+      - 0.00 USD
       Date:
-      - Mon, 03 Jul 2017 19:41:04 GMT
+      - Wed, 12 Jul 2017 12:57:09 GMT
     body:
       encoding: UTF-8
-      string: '{"statusCode":404,"message":"Item of type session with identifier 015d09f8-7486-4090-9a49-d7ac921c45fa
-        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"015d09f8-7486-4090-9a49-d7ac921c45fa","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
+      string: '{"statusCode":404,"message":"Item of type session with identifier 015d36df-e0f8-4bb7-a6d9-8d474c92f699
+        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"015d36df-e0f8-4bb7-a6d9-8d474c92f699","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Mon, 03 Jul 2017 19:41:06 GMT
+  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
 recorded_with: VCR 3.0.3

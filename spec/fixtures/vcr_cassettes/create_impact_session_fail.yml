@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.uat.nexosisdev.com/v1/sessions/impact?dataSetName=TestRuby&endDate=02-22-2017&eventName=test%20event&isestimate=false&resultInterval=day&startDate=01-22-2017&targetColumn=sales
     body:
       encoding: UTF-8
-      string: ''
+      string: '""'
     headers:
       Api-Key:
       - api-key
@@ -27,15 +27,15 @@ http_interactions:
       Expires:
       - "-1"
       Nexosis-Account-Balance:
-      - 1314882.69 USD
+      - 1314733.66 USD
       Nexosis-Request-Cost:
-      - 0.000 USD
+      - 0.00 USD
       Date:
-      - Mon, 03 Jul 2017 19:38:38 GMT
+      - Wed, 12 Jul 2017 12:56:55 GMT
     body:
       encoding: UTF-8
       string: '{"statusCode":400,"message":"End Date must be before the last date
         in the data set","errorType":"InvalidDateRange","errorDetails":{"startDate":"2017-01-22T00:00:00.0000000+00:00","endDate":"2017-02-22T00:00:00.0000000+00:00","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Mon, 03 Jul 2017 19:38:40 GMT
+  recorded_at: Wed, 12 Jul 2017 12:56:59 GMT
 recorded_with: VCR 3.0.3

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.uat.nexosisdev.com/v1/sessions/impact?dataSetName=TestRuby&endDate=05-10-2014&eventName=test%20event&isestimate=true&resultInterval=week&startDate=05-01-2014&targetColumn=sales
     body:
       encoding: UTF-8
-      string: ''
+      string: '""'
     headers:
       Api-Key:
       - api-key
@@ -21,15 +21,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Request-Cost:
-      - 0.128571428571429 USD
+      - 0.13 USD
       Nexosis-Account-Balance:
-      - 1314827 USD
+      - 1314728.65 USD
       Date:
-      - Thu, 06 Jul 2017 18:24:28 GMT
+      - Wed, 12 Jul 2017 12:57:11 GMT
     body:
       encoding: UTF-8
-      string: '{"sessionId":"015d1925-6da0-4e4c-9c9d-a13bee53cfa5","type":"impact","status":"estimated","requestedDate":"2017-07-06T18:24:29.600735+00:00","statusHistory":[{"date":"2017-07-06T18:24:29.600735+00:00","status":"requested"},{"date":"2017-07-06T18:24:29.617908+00:00","status":"estimated"}],"extraParameters":{"event":"test
-        event"},"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature"}},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2014-05-01T00:00:00+00:00","endDate":"2014-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":true,"resultInterval":"week","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d1925-6da0-4e4c-9c9d-a13bee53cfa5/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby"}]}'
+      string: '{"sessionId":"015d36df-e843-41d2-b3d4-13ed304c1ec2","type":"impact","status":"estimated","requestedDate":"2017-07-12T12:57:09.955519+00:00","statusHistory":[{"date":"2017-07-12T12:57:09.955519+00:00","status":"requested"},{"date":"2017-07-12T12:57:09.976916+00:00","status":"estimated"}],"extraParameters":{"event":"test
+        event"},"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature"}},"dataSetName":"TestRuby","targetColumn":"sales","startDate":"2014-05-01T00:00:00+00:00","endDate":"2014-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":true,"resultInterval":"week","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d36df-e843-41d2-b3d4-13ed304c1ec2/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby"}]}'
     http_version: 
-  recorded_at: Thu, 06 Jul 2017 18:24:30 GMT
+  recorded_at: Wed, 12 Jul 2017 12:57:15 GMT
 recorded_with: VCR 3.0.3

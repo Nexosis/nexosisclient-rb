@@ -59,13 +59,9 @@ describe NexosisApi::Client::Sessions do
                     break if (status_check.status == "completed" || status_check.status == "failed")
                     sleep 5
                 end
-                begin
-                    actual = test_client.get_session_results session.sessionId
-                    expect(actual).to be_a(NexosisApi::SessionResult)
-                    expect(actual.data).not_to be_empty
-                ensure
-                    test_client.remove_dataset(session.dataSetName, {:cascade => true})
-                end
+                actual = test_client.get_session_results session.sessionId
+                expect(actual).to be_a(NexosisApi::SessionResult)
+                expect(actual.data).not_to be_empty
             end
         end
     end
@@ -112,7 +108,7 @@ describe NexosisApi::Client::Sessions do
             it "removes any session created with that name" do
                 #create the session to remove
                 existing_dataset = "ToRemoveRuby"
-                json = {"columns" => {"timestamp"=> {"dataType"=> "date","role"=> "timestamp"},"sales"=> {"dataType"=> "numeric","role"=> "target"}},"data"=> [{"timestamp"=> "2017-01-01T00=>00=>00+00=>00","sales"=> "2948.74"},{"timestamp"=> "2017-01-02T00=>00=>00+00=>00","sales"=> "1906.35"},{"timestamp"=> "2017-01-03T00=>00=>00+00=>00","sales"=> "4523.42"},{"timestamp"=> "2017-01-04T00=>00=>00+00=>00","sales"=> "4586.85"},{"timestamp"=> "2017-01-05T00=>00=>00+00=>00","sales"=> "4538.04"}]}
+                json = {"columns" => {"timestamp"=> {"dataType"=> "date","role"=> "timestamp"},"sales"=> {"dataType"=> "numeric","role"=> "target"}},"data"=> [{"timestamp"=> "2017-01-01T00:00:00+00:00","sales"=> "2948.74"},{"timestamp"=> "2017-01-02T00:00:00+00:00","sales"=> "1906.35"},{"timestamp"=> "2017-01-03T00:00:00+00:00","sales"=> "4523.42"},{"timestamp"=> "2017-01-04T00:00:00+00:00","sales"=> "4586.85"},{"timestamp"=> "2017-01-05T00:00:00+00:00","sales"=> "4538.04"}]}
                 new_dataset = test_client.create_dataset_json(existing_dataset, json)
                 new_session = test_client.create_forecast_session(existing_dataset,"2017-01-06","2017-01-10","sales")
                 test_client.remove_sessions :dataset_name => existing_dataset
@@ -132,7 +128,7 @@ describe NexosisApi::Client::Sessions do
                 actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
                 expect(actual).to be_a(NexosisApi::SessionResponse)
                 expect(actual.targetColumn).to eql('sales')
-                expect(actual.column_metadata[1].role).to eql('')
+                expect(actual.column_metadata[2].role).to eql(NexosisApi::ColumnRole::FEATURE)
             end
         end
     end
@@ -165,7 +161,7 @@ describe NexosisApi::Client::Sessions do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
                 actual = test_client.estimate_forecast_session('TestRuby','01-22-2013','02-22-2013','sales', NexosisApi::TimeInterval::WEEK)
-                expect(actual.cost).to eql('0.442857142857143 USD')
+                expect(actual.cost).to eql('0.44 USD')
             end
         end
     end
@@ -175,7 +171,7 @@ describe NexosisApi::Client::Sessions do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
                 actual = test_client.estimate_impact_session('TestRuby','05-01-2014','05-10-2014', 'test event','sales', NexosisApi::TimeInterval::WEEK)
-                expect(actual.cost).to eql('0.128571428571429 USD')
+                expect(actual.cost).to eql('0.13 USD')
             end
         end
     end
