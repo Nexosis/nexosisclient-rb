@@ -44,7 +44,7 @@ def test_client
 end
 
 def handle_vcr(example)
-  return run_with_http_interaction(example) if ENV['VCR_OFF']
+  return run_with_http_interaction(example) #if ENV['VCR_OFF']
   VCR.use_cassette(:cassette_name) { example.call }
 end
 

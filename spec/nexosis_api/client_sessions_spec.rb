@@ -5,7 +5,7 @@ describe NexosisApi::Client::Sessions do
     describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
         context "given an existing dataset name" do
             it "returns a started session" do
-                actual = test_client.create_forecast_session('TestRuby','01-22-2017','02-22-2017','sales')
+                actual = test_client.create_forecast_session('TestRuby','2014-05-20','2014-05-21','sales')
                 expect(actual).to be_instance_of(NexosisApi::SessionResponse)
                 expect(actual.type).to eql('forecast')
             end
@@ -15,8 +15,8 @@ describe NexosisApi::Client::Sessions do
     describe "#estimate_forecast_session", :vcr  => {:cassette_name => "estimate_forecast_session"} do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
-                actual = test_client.estimate_forecast_session('TestRuby','01-22-2017','02-22-2017','sales')
-                expect(actual.cost).to eql('3.1 USD')
+                actual = test_client.estimate_forecast_session('TestRuby','2014-05-20','2014-06-20','sales')
+                expect(actual.cost).to eql('3.10 USD')
             end
         end
     end
@@ -35,7 +35,7 @@ describe NexosisApi::Client::Sessions do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
                 actual = test_client.estimate_impact_session('TestRuby','05-01-2014','05-10-2014', 'test event','sales')
-                expect(actual.cost).to eql('0.9 USD')
+                expect(actual.cost).to eql('0.90 USD')
             end
         end
     end
@@ -50,75 +50,10 @@ describe NexosisApi::Client::Sessions do
         end
     end
 
-    describe "#create_forecast_session_csv", :vcr  => {:cassette_name => "create_forecast_session_csv"} do
-        context "given a csv file as a dataset with headers true" do
-            it "returns a session response" do
-                file = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
-                actual = test_client.create_forecast_session_csv(file,'2014-05-20','2014-05-21','sales')
-                expect(actual.type).to eql('forecast')
-            end
-        end
-    end
-
-    describe "#create_forecast_session_csv", :vcr  => {:cassette_name => "create_forecast_session_csv_noheader"} do
-        context "given a csv file as a dataset with headers false" do
-            it "returns a session response" do
-                file = CSV.open('spec/fixtures/sampledata.csv','rb')
-                actual = test_client.create_forecast_session_csv(file,'2014-05-20','2014-06-20','sales')
-                expect(actual.type).to eql('forecast')
-            end
-        end
-    end
-
-    describe "#create_forecast_session_csv", :vcr  => {:cassette_name => "create_forecast_session_csv_fail"} do
-        context "given csv content that isn't illegal but isn't properly formatted'" do
-            it "throws an HttpException error" do
-                file = CSV.open('spec/fixtures/malformeddata.csv','rb')
-                expect { actual = test_client.create_forecast_session_csv('timestamp,foo\r\n2014-05-19,65.25','2014-05-20','2014-05-21','sales')}.to raise_error { |error|
-                    expect(error).to be_a(NexosisApi::HttpException)
-                }
-            end
-        end
-    end
-
-    describe "#create_forecast_session_csv", :vcr  => {:cassette_name => "create_forecast_session_csv_fail"} do
-        context "given csv content that isn't really csv" do
-            it "throws an MalformedCSVError error" do
-                file = CSV.open('spec/fixtures/malformeddata.csv','rb')
-                expect { actual = test_client.create_forecast_session_csv(file,'2014-05-20','2014-06-20','sales')}.to raise_error { |error|
-                    expect(error).to be_a(CSV::MalformedCSVError)
-                }
-            end
-        end
-    end
-
-    describe "#create_forecast_session_data", :vcr  => {:cassette_name => "create_forecast_session_data"} do
-        context "given a json data formatted for the api" do  
-            it "returns a session response" do
-                file_content = IO.read('spec/fixtures/sampledata.json', mode: 'rb')
-                actual = test_client.create_forecast_session_data(file_content,'2017-01-06','2017-01-10','sales')
-                expect(actual).to be_instance_of(NexosisApi::SessionResponse)
-                expect(actual.type).to eql('forecast')
-            end
-        end    
-    end
-
-    describe "#create_impact_session_data", :vcr => {:cassette_name => "create_impact_session_data"}  do
-        context "given a json data formatted for the api" do  
-            it "returns a session response" do
-                file_content = IO.read('spec/fixtures/sampledata.json',mode: 'rb')
-                actual = test_client.create_impact_session_data(file_content,'2013-05-10','2013-05-19','test event','sales')
-                expect(actual).to be_instance_of(NexosisApi::SessionResponse)
-                expect(actual.type).to eql('impact')
-                test_client.remove_dataset(actual.dataSetName,{"cascade"=>true})
-            end
-        end    
-    end
-
     describe "#get_session_results", :vcr  => {:cassette_name => "get_session_results"} do
         context "given the id of an completed session" do 
             it "returns the results of the session analysis" do
-                session = test_client.create_forecast_session_csv("timestamp,foo\r\n1-1-2017,334.22\r\n1-2-2017,533.87",'1-3-2017','1-4-2017','foo')
+                session = test_client.create_forecast_session("TestRuby",'2014-05-20','2014-05-25','sales')
                 loop do
                     status_check = test_client.get_session session.sessionId
                     break if (status_check.status == "completed" || status_check.status == "failed")
@@ -134,15 +69,6 @@ describe NexosisApi::Client::Sessions do
             end
         end
     end
-
-    #TODO: this isn't a good test until we can page and know how many exist
-    # describe "#list_sessions", :vcr  => {:cassette_name => "list_sessions"} do
-    #     context "given a request without a query" do
-    #         it "returns an array of all sessions" do
-    #             actual = test_client.list_sessions
-    #         end
-    #     end
-    # end
     
     describe "#list_sessions", :vcr  => {:cassette_name => "list_sessions_dataset"} do
         context "given a request with a dataset name" do
@@ -185,8 +111,10 @@ describe NexosisApi::Client::Sessions do
         context "given a dataset name" do
             it "removes any session created with that name" do
                 #create the session to remove
-                new_session = test_client.create_forecast_session_csv("timestamp,sales\r\n01-01-2017,234.45\r\n01-02-2017,343.22",'01-03-2017','01-05-2017','sales')
-                existing_dataset = new_session.dataSetName
+                existing_dataset = "ToRemoveRuby"
+                json = {"columns" => {"timestamp"=> {"dataType"=> "date","role"=> "timestamp"},"sales"=> {"dataType"=> "numeric","role"=> "target"}},"data"=> [{"timestamp"=> "2017-01-01T00=>00=>00+00=>00","sales"=> "2948.74"},{"timestamp"=> "2017-01-02T00=>00=>00+00=>00","sales"=> "1906.35"},{"timestamp"=> "2017-01-03T00=>00=>00+00=>00","sales"=> "4523.42"},{"timestamp"=> "2017-01-04T00=>00=>00+00=>00","sales"=> "4586.85"},{"timestamp"=> "2017-01-05T00=>00=>00+00=>00","sales"=> "4538.04"}]}
+                new_dataset = test_client.create_dataset_json(existing_dataset, json)
+                new_session = test_client.create_forecast_session(existing_dataset,"2017-01-06","2017-01-10","sales")
                 test_client.remove_sessions :dataset_name => existing_dataset
                 expect{test_client.get_session(new_session.sessionId)}.to raise_error{ |error|
                     expect(error).to be_a(NexosisApi::HttpException)
@@ -197,13 +125,14 @@ describe NexosisApi::Client::Sessions do
     end
 
     describe "#create_forecast_session_data", :vcr => {:cassette_name => "create_forecast_session_features"} do
-        context "given a json dataset with metadata" do
+        context "given a metadata specification" do
             it "executes a session with a feature identified" do
-                data = JSON.load(File.open('spec/fixtures/featureroledata.json'))
-                actual  = test_client.create_forecast_session_data(data,'2013-07-18','2013-08-28')
+                columns = []
+                columns << NexosisApi::DatasetColumn.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERIC, "role" => NexosisApi::ColumnRole::FEATURE })
+                actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
                 expect(actual).to be_a(NexosisApi::SessionResponse)
                 expect(actual.targetColumn).to eql('sales')
-                test_client.remove_dataset(actual.dataSetName,{"cascade"=>true})
+                expect(actual.column_metadata[1].role).to eql('')
             end
         end
     end
@@ -211,7 +140,7 @@ describe NexosisApi::Client::Sessions do
     describe "#create_forecast_session", :vcr => {:cassette_name => "create_session_no_dataset_404"} do
         context "given a dataset name that does not exist" do
             it "fails with a 404 http message" do
-                 expect{test_client.create_forecast_session('IDontExist','01-22-2017','02-22-2017','sales')}.to raise_error{ |error|
+                 expect{test_client.create_forecast_session('IDontExist','01-22-2013','02-22-2013','sales')}.to raise_error{ |error|
                     expect(error).to be_a(NexosisApi::HttpException)
                     expect(error.code).to eql(404)
                  }
@@ -222,7 +151,7 @@ describe NexosisApi::Client::Sessions do
     describe "#create_forecast_session", :vcr => {:cassette_name => "create_session_invalid_interval"} do
         context "given a request with invalid interval specified" do
             it "fails with a 400 message" do
-                 expect{test_client.create_forecast_session('TestRuby','01-22-2017','02-22-2017','sales','seconds')}.to raise_error{ |error|
+                 expect{test_client.create_forecast_session('TestRuby','01-22-2013','02-22-2013','sales','seconds')}.to raise_error{ |error|
                     expect(error).to be_a(NexosisApi::HttpException)
                     expect(error.code).to eql(400)
                     expect(error.message).to include("The value 'seconds' is not valid")
@@ -235,7 +164,7 @@ describe NexosisApi::Client::Sessions do
         context "given a weekly forecast request" do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
-                actual = test_client.estimate_forecast_session('TestRuby','01-22-2017','02-22-2017','sales', NexosisApi::TimeInterval::WEEK)
+                actual = test_client.estimate_forecast_session('TestRuby','01-22-2013','02-22-2013','sales', NexosisApi::TimeInterval::WEEK)
                 expect(actual.cost).to eql('0.442857142857143 USD')
             end
         end

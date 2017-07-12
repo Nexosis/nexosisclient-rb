@@ -70,49 +70,20 @@ module NexosisApi
 				end
 			end
 		
-			# Forecast from data already saved to the API.
+			# Initiate a new forecast session based on a named dataset.
 			#
 			# @param dataset_name [String] The name of the saved data set that has the data to forecast on.
 			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
+			# @param column_metadata [Array of NexosisApi::DatasetColumn] (optional) - specification for how to handle columns if different from existing metadata on dataset 
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
 			# @note The time interval selected must be greater than or equal to the finest granularity of the data provided.
 			#    For instance if your data includes many recoreds per hour, then you could request hour, day, or any other result interval.
 			#    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results. 
-			def create_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-				create_session(dataset_name, start_date, end_date, target_column, false, nil, "forecast", nil,nil,result_interval)
-			end
-
-			# Forecast from CSV formatted data.
-			#
-			# @param csv [CSV] initialized CSV object ready for reading.
-			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 parseable string. 
-			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 parseable string.
-			# @param target_column [String] The name of the column for which you want predictions.
-			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-			# @return [NexosisApi::SessionResponse] providing information about the sesssion
-			# @example load and send local file
-			#    mycsv = CSV.read('.\mylocal.csv')
-			#    NexosisApi.client(:api_key=>mykey).create_forecast_session_csv(mycsv,'sales','01-01-2017','02-01-2017')
-            def create_forecast_session_csv(csv, start_date, end_date, target_column, result_interval = NexosisApi::TimeInterval::DAY)
-				content = process_csv_to_s csv
-                create_session(nil, start_date, end_date, target_column, false, nil, "forecast", content, "text/csv", result_interval)
-            end
-
-			# Forecast from data posted in the request.
-			#
-			# @param json_data [String] Json dataset matching the dataset input schema.
-			# @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
-			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
-			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset
-			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-			# @return [NexosisApi::SessionResponse] providing information about the sesssion
-			# @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233
-			def create_forecast_session_data(json_data, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-				json_data = json_data.to_json unless json_data.is_a? String
-				create_session nil, start_date, end_date, target_column, false, nil, "forecast", json_data, "application/json", result_interval
+			def create_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
+				create_session(dataset_name, start_date, end_date, target_column, false, nil, "forecast", result_interval, column_metadata)
 			end
 
 			# Estimate the cost of a forecast from data already saved to the API.
@@ -124,7 +95,7 @@ module NexosisApi
 			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
             def estimate_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-                create_session dataset_name, start_date, end_date, target_column, true, nil, "forecast", nil, nil, result_interval
+                create_session(dataset_name, start_date, end_date, target_column, true, nil, "forecast", result_interval)
             end
 			
 			# Analyze impact for an event with data already saved to the API.
@@ -135,26 +106,12 @@ module NexosisApi
 			# @param event_name [String] The name of the event.
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in datatset.
 			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
+			# @param column_metadata [Array of NexosisApi::DatasetColumn] (optional) - specification for how to handle columns if different from existing metadata on dataset 
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
-            def create_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-                create_session dataset_name, start_date, end_date, target_column, false, event_name, "impact", nil, result_interval
+            def create_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
+                create_session(dataset_name, start_date, end_date, target_column, false, event_name, "impact", result_interval, column_metadata)
             end
 
-			# Analyze impact for an event with data in json format.
-			#
-			# @param json_data [String] Json dataset matching the dataset input schema.
-			# @param start_date [DateTime] The starting date of the impactful event. Can be ISO 8601 string. 
-			# @param end_date [DateTime] The ending date of the impactful event. Can be ISO 8601 string.
-			# @param event_name [String] The name of the event.
-			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
-			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-			# @return [NexosisApi::SessionResponse] providing information about the sesssion
-			# @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/5919ef80a730020dd851f233
-			def create_impact_session_data(json_data, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-				json_data = json_data.to_json unless json_data.is_a? String
-				create_session nil, start_date, end_date, target_column, false, event_name, "impact", json_data, "application/json", result_interval
-			end
-            
 			# Estimate the cost of impact analysis for an event with data already saved to the API.
 			#
 			# @param dataset_name [String] The name of the saved data set that has the data to forecast on.
@@ -164,8 +121,8 @@ module NexosisApi
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-            def estimate_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-                create_session dataset_name, start_date, end_date, target_column, true, event_name, "impact", nil, "application/json", result_interval
+			def estimate_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
+                create_session(dataset_name, start_date, end_date, target_column, true, event_name, "impact", result_interval)
             end
             
 			# Get the results of the session.
@@ -178,7 +135,7 @@ module NexosisApi
 		
 		    	if as_csv
 			    	@headers["Accept"] = "text/csv"
-			    end
+				end
 			    response = self.class.get(session_result_url, @options)
 			    @headers.delete("Accept")
 
@@ -207,7 +164,7 @@ module NexosisApi
 			    end
             end
         private
-			def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = "forecast", content = nil, content_type = "text/csv", result_interval = NexosisApi::TimeInterval::DAY)
+			def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = "forecast", result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
 				session_url = "/sessions/#{type}"
 				query = { 
 					"targetColumn" => target_column.to_s,
@@ -220,12 +177,15 @@ module NexosisApi
 				if(event_name.nil? == false)
 					query["eventName"] = event_name
 				end
-                if content.nil? == false
-                    headers = {"api-key" => @api_key, "content-type" => content_type}
-                    response = self.class.post(session_url, {:headers => headers, :query => query, :body => content})
-                else
-                    response = self.class.post(session_url, :headers => @headers, :query => query)
-                end
+				body = ''
+				if(column_metadata.nil? == false)
+					column_json = DatasetColumn.to_json(column_metadata)
+                	body = {
+						"dataSetName" => dataset_name,
+						"columns" => column_json
+					}
+				end
+				response = self.class.post(session_url, :headers => @headers, :query => query, :body => body.to_json)
 				if(response.success?)
 					session_hash = {"session" => response.parsed_response}.merge(response.headers)
 					NexosisApi::SessionResponse.new(session_hash)
