@@ -11,19 +11,23 @@ module NexosisApi
 			# List sessions previously submitted
 			#
 			# @param query_options [Hash] optionally provide query parameters to limit the search of sessions. 
+			# @param page [Integer] optionally provide a page number for paging. Defaults to 0 (first page).
+			# @param pageSize [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
 			# @return [Array of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
 			# @note query parameters hash members are dataset_name, event_name, requested_before_date, and requested_after_date. 
 			#    After and before dates refer to the session requested date.
 			# @example query for just one dataset
 			#   sessions = NexosisApi.client.list_sessions :dataset_name => 'MyDataset'
-			def list_sessions(query_options = {})
+			def list_sessions(query_options = {}, page = 0, pageSize = 50)
 				sessions_url = '/sessions'
 				query = { 
 					"dataSetName" => query_options[:dataset_name],
 					"eventName" => query_options[:event_name],
 					"requestedAfterDate" => query_options[:requested_after_date],
 					"requestedBeforeDate" => query_options[:requested_before_date],
-					"type" => query_options[:type]
+					"type" => query_options[:type],
+					"page" => page,
+					"pageSize" => pageSize
 				}
 				response = self.class.get(sessions_url, :headers => @headers, :query => query)
 				if(response.success?)

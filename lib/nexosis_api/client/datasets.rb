@@ -48,7 +48,7 @@ module NexosisApi
             #
             # @param dataset_name [String] name of the dataset for which to retrieve data.
             # @param page_number [Integer] zero-based page number of results to retrieve
-            # @param page_size [Integer] Count of results to retrieve in each page (max 100).
+            # @param page_size [Integer] Count of results to retrieve in each page (max 1000).
             # @param query_options [Hash] options hash for limiting and projecting returned results
             # @note Query Options includes start_date as a DateTime or ISO 8601 compliant string,
             #    end_date, also as a DateTime or string, and :include as an Array of strings indicating the columns to return.
@@ -66,7 +66,7 @@ module NexosisApi
             #
             # @param dataset_name [String] name of the dataset for which to retrieve data.
             # @param page_number [Integer] zero-based page number of results to retrieve
-            # @param page_size [Integer] Count of results to retrieve in each page (max 100).
+            # @param page_size [Integer] Count of results to retrieve in each page (max 1000).
             # @param query_options [Hash] options hash for limiting and projecting returned results
             # @note Query Options includes start_date as a DateTime or ISO 8601 compliant string,
             #    end_date, also as a DateTime or string, and :include as an Array of strings indicating the columns to return.

@@ -175,4 +175,28 @@ describe NexosisApi::Client::Sessions do
             end
         end
     end
+
+    describe "#list_sessions",:vcr => {:cassette_name => "list_sessions_pagesize"} do
+        context "given a page size" do
+            it "should return lte that size" do
+                actual = test_client.list_sessions({},0,5)
+                expect(actual).to be_a(Array)
+                expect(actual.size).to eql(5)                
+            end
+        end
+    end
+
+    describe "#list_sessions",:vcr => {:cassette_name => "list_sessions_paged"} do
+        context "given a page number" do
+            it "should return next result set" do
+                both = test_client.list_sessions({},0,2)
+                id1 = both[0].sessionId
+                id2 = both[1].sessionId
+                pageOne = test_client.list_sessions({},0,1)
+                expect(pageOne[0].sessionId).to eql(id1)
+                pageTwo = test_client.list_sessions({},1,1)
+                expect(pageTwo[0].sessionId).to eql(id2)
+            end
+        end
+    end
 end
