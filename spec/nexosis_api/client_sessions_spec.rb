@@ -199,4 +199,18 @@ describe NexosisApi::Client::Sessions do
             end
         end
     end
+
+     describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_session_numericmeasure"} do
+        context "given a metadata specification with measure" do
+            it "executes a session with measure datatype" do
+                columns = []
+                columns << NexosisApi::DatasetColumn.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERICMEASURE, "role" => NexosisApi::ColumnRole::FEATURE })
+                actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
+                expect(actual).to be_a(NexosisApi::SessionResponse)
+                expect(actual.column_metadata[2].type).to eql(NexosisApi::ColumnType::NUMERICMEASURE)
+                expect(actual.column_metadata[2].imputation).to eql('mean')
+                expect(actual.column_metadata[2].aggregation).to eql('mean')
+            end
+        end
+    end
 end

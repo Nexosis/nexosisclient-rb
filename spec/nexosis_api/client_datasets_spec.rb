@@ -151,13 +151,25 @@ describe NexosisApi::Client::Datasets do
     end
 
     describe "#create_dataset_csv", :vcr => {:cassette_name => "create_csv_notimestamp"} do
-        context "given a csv with no distinct timestamp column" do 
+        context "given a csv with no distinct timestamp column" do
             it "creates the dataset and infers column" do
                 data = CSV.open('spec/fixtures/notimestamp.csv','rb', headers: true)
                 actual  = test_client.create_dataset_csv 'TestRuby_NoTimestamp', data
                 expect(actual).to be_a(NexosisApi::DatasetSummary)
                 expect(actual.column_metadata[1].role).to eql(:timestamp)
                 test_client.remove_dataset('TestRuby_NoTimestamp', {"cascade" => true})
+            end
+        end
+    end
+
+    describe '#create_dataset', :vcr => {:cassette_name => 'create_json_numericmeasure'} do
+        context 'given a measure type column' do
+            it 'maps to proper type enumeration on response' do
+                data = JSON.load(File.open('spec/fixtures/measuredata.json'))
+                actual  = test_client.create_dataset_json 'TestRuby_MeasureDatatype', data 
+                expect(actual).to be_a(NexosisApi::DatasetSummary)
+                expect(actual.column_metadata[1].type).to eql(:numericmeasure)
+                test_client.remove_dataset('TestRuby_MeasureDatatype', {"cascade" => true})
             end
         end
     end
