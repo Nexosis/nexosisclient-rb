@@ -10,8 +10,9 @@ module NexosisApi
             # save data in a named dataset
             #
             # @param dataset_name [String] name to save the dataset
-            # @param json_data [Hash] parsed json data
+            # @param json_data [Hash] parsed json data 
             # @return [NexosisApi::DatasetSummary] information about your upload
+            # @note input json is to be a hash, do not send a json string via to_json.
             def create_dataset_json(dataset_name, json_data)
                 create_dataset dataset_name, json_data.to_json, 'application/json'
             end
@@ -128,7 +129,7 @@ module NexosisApi
             def create_dataset dataset_name, content, content_type
                 raise ArgumentError "dataset_name was not provided and is not optional " unless dataset_name.to_s.empty? == false
                 dataset_url = "/data/#{dataset_name}"
-                headers = {"api-key" => @api_key, "content-type" => content_type}
+                headers = {"api-key" => @api_key, "Content-Type" => content_type}
                 response = self.class.put(dataset_url, {:headers => headers, :body => content})
                 if(response.success?)
                     NexosisApi::DatasetSummary.new(response)

@@ -9,7 +9,7 @@ module NexosisApi
                     columns = []
                     next if v.nil?
                     v.keys.each do |col_key|
-                        columns << NexosisApi::DatasetColumn.new(col_key, v[col_key])
+                        columns << NexosisApi::Column.new(col_key, v[col_key])
                     end
                     @column_metadata = columns
                 end
@@ -21,7 +21,7 @@ module NexosisApi
         attr_accessor :dataset_name
 
         # Descriptive information about the columns
-        # @return [Array of NexosisApi::DatasetColumn]
+        # @return [Array of NexosisApi::Column]
         attr_accessor :column_metadata
     end
 end

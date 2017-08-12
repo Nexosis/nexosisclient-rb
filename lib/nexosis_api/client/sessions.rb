@@ -81,7 +81,7 @@ module NexosisApi
 			# @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
 			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-			# @param column_metadata [Array of NexosisApi::DatasetColumn] (optional) - specification for how to handle columns if different from existing metadata on dataset 
+			# @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset 
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
 			# @note The time interval selected must be greater than or equal to the finest granularity of the data provided.
 			#    For instance if your data includes many recoreds per hour, then you could request hour, day, or any other result interval.
@@ -110,7 +110,7 @@ module NexosisApi
 			# @param event_name [String] The name of the event.
 			# @param target_column [String] The name of the column for which you want predictions. Nil if defined in datatset.
 			# @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-			# @param column_metadata [Array of NexosisApi::DatasetColumn] (optional) - specification for how to handle columns if different from existing metadata on dataset 
+			# @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset 
 			# @return [NexosisApi::SessionResponse] providing information about the sesssion
             def create_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
                 create_session(dataset_name, start_date, end_date, target_column, false, event_name, "impact", result_interval, column_metadata)
@@ -183,7 +183,7 @@ module NexosisApi
 				end
 				body = ''
 				if(column_metadata.nil? == false)
-					column_json = DatasetColumn.to_json(column_metadata)
+					column_json = Column.to_json(column_metadata)
                 	body = {
 						"dataSetName" => dataset_name,
 						"columns" => column_json

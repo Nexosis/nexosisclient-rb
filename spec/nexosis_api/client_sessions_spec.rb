@@ -124,7 +124,7 @@ describe NexosisApi::Client::Sessions do
         context "given a metadata specification" do
             it "executes a session with a feature identified" do
                 columns = []
-                columns << NexosisApi::DatasetColumn.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERIC, "role" => NexosisApi::ColumnRole::FEATURE })
+                columns << NexosisApi::Column.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERIC, "role" => NexosisApi::ColumnRole::FEATURE })
                 actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
                 expect(actual).to be_a(NexosisApi::SessionResponse)
                 expect(actual.targetColumn).to eql('sales')
@@ -204,7 +204,7 @@ describe NexosisApi::Client::Sessions do
         context "given a metadata specification with measure" do
             it "executes a session with measure datatype" do
                 columns = []
-                columns << NexosisApi::DatasetColumn.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERICMEASURE, "role" => NexosisApi::ColumnRole::FEATURE })
+                columns << NexosisApi::Column.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERICMEASURE, "role" => NexosisApi::ColumnRole::FEATURE })
                 actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
                 expect(actual).to be_a(NexosisApi::SessionResponse)
                 expect(actual.column_metadata[2].type).to eql(NexosisApi::ColumnType::NUMERICMEASURE)
