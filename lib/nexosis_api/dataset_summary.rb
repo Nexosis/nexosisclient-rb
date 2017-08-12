@@ -3,9 +3,9 @@ module NexosisApi
     class DatasetSummary
         def initialize(data_hash)
             data_hash.each do |k,v|
-                if(k == "dataSetName")
+                if(k == 'dataSetName')
                     @dataset_name = v unless v.nil?
-                elsif(k == "columns")
+                elsif(k == 'columns')
                     columns = []
                     next if v.nil?
                     v.keys.each do |col_key|

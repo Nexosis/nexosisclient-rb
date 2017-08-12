@@ -2,15 +2,15 @@ require 'helper'
 require 'csv'
 
 describe NexosisApi::Client::Sessions do
-    describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
-        context "given an existing dataset name" do
-            it "returns a started session" do
-                actual = test_client.create_forecast_session('TestRuby','2014-05-20','2014-05-21','sales')
-                expect(actual).to be_instance_of(NexosisApi::SessionResponse)
-                expect(actual.type).to eql('forecast')
-            end
-        end
+  describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
+    context "given an existing dataset name" do
+      it "returns a started session" do
+        actual = test_client.create_forecast_session('TestRuby','2014-05-20','2014-05-21','sales')
+        expect(actual).to be_instance_of(NexosisApi::SessionResponse)
+        expect(actual.type).to eql('forecast')
+      end
     end
+  end
 
     describe "#estimate_forecast_session", :vcr  => {:cassette_name => "estimate_forecast_session"} do
         context "given an existing dataset name" do
