@@ -39,5 +39,21 @@ module NexosisApi
     # The join configuration for this view
     # @return [Array of NexosisApi::Join]
     attr_accessor :joins
+
+    def to_json
+      hash = {}
+      hash['dataSetName'] = dataset_name
+      if column_metadata.nil? == false
+        hash['columns'] = []
+        column_metadata.each do |column|
+          hash['columns'] << column.to_hash
+        end
+      end
+      hash['joins'] = []
+      joins.each do |join|
+        hash['joins'] << join.to_hash
+      end
+      hash.to_json
+    end
   end
 end

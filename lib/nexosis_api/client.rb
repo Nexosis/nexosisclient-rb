@@ -31,13 +31,14 @@ module NexosisApi
         include Client::Sessions
         include Client::Datasets
         include Client::Imports
+        include Client::Views
 
         def initialize(options = {})
             raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
             @api_key = options[:api_key]
             self.class.base_uri options[:base_uri] unless options[:base_uri].nil?
-            @headers = {"api-key" => @api_key, "content-type" => "application/json"}
-		    @options = {:headers => @headers, :format => :json}
+            @headers = {'api-key': @api_key, 'Content-Type': 'application/json'}
+		    @options = {headers: @headers, format: :json}
         end
 
         # Gets the current account balance.
@@ -48,16 +49,16 @@ module NexosisApi
         def get_account_balance()
             session_url = '/sessions'
 			response = self.class.get(session_url,@options)
-			response.headers["nexosis-account-balance"]
+			response.headers['nexosis-account-balance']
         end
 
         private
         def process_csv_to_s csv
-            content = ""
+            content = ''
             if(csv.is_a?(CSV))
                 csv.each do |row|
                     if(csv.headers.nil?)
-                        #not using row.to_csv because it uses non-compliant '\n' newline
+                        # not using row.to_csv because it uses non-compliant '\n' newline
                         content.concat(row.join(',')).concat("\r\n")
                     else
                         content.concat(row.fields.join(',')).concat("\r\n")
