@@ -1,8 +1,8 @@
 module NexosisApi
   # class to hold the parsed results of a view
-  class ViewSummary
+  class ViewDefinition
     def initialize(view_hash)
-      view_hash.each do |k,v|
+      view_hash.each do |k, v|
         if k == 'viewName'
           @view_name = v unless v.nil?
         elsif k == 'datasetName'
@@ -44,9 +44,9 @@ module NexosisApi
       hash = {}
       hash['dataSetName'] = dataset_name
       if column_metadata.nil? == false
-        hash['columns'] = []
+        hash['columns'] = {}
         column_metadata.each do |column|
-          hash['columns'] << column.to_hash
+          hash['columns'].merge!(column.to_hash)
         end
       end
       hash['joins'] = []

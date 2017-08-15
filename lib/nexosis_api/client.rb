@@ -2,6 +2,7 @@ require 'nexosis_api/algorithm_run'
 require 'nexosis_api/algorithm_selection'
 require 'nexosis_api/algorithm'
 require 'nexosis_api/column'
+require 'nexosis_api/column_options'
 require 'nexosis_api/column_role'
 require 'nexosis_api/column_type'
 require 'nexosis_api/dataset_data'
@@ -17,7 +18,7 @@ require 'nexosis_api/session_response'
 require 'nexosis_api/session_result'
 require 'nexosis_api/session'
 require 'nexosis_api/time_interval'
-require 'nexosis_api/view_summary'
+require 'nexosis_api/view_definition'
 require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
 require 'nexosis_api/client/imports'
@@ -37,7 +38,7 @@ module NexosisApi
             raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
             @api_key = options[:api_key]
             self.class.base_uri options[:base_uri] unless options[:base_uri].nil?
-            @headers = {'api-key': @api_key, 'Content-Type': 'application/json'}
+            @headers = {'api-key' => @api_key, 'Content-Type' => 'application/json'}
 		    @options = {headers: @headers, format: :json}
         end
 

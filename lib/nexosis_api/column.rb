@@ -32,19 +32,12 @@ module NexosisApi
     # @return [String]
     attr_accessor :aggregation
 
-    # Interval of a time series column being joined to another time series
-    # @note not valid outside of join defintion  @todo - move to derived type?
-    # @since v1.2
-    # @return [String]
-    attr_accessor :join_interval
-
     # utility method to format a column description in the way it is expected on input
     def to_hash
       { name => { 'dataType' => type.to_s,
                   'role' => role.to_s,
                   'imputation' => imputation.to_s,
-                  'aggregation' => aggregation.to_s,
-                  'joinInterval' => join_interval.to_s } }
+                  'aggregation' => aggregation.to_s } }
     end
 
     def self.to_json(column_array)

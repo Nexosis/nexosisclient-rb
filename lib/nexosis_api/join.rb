@@ -7,11 +7,11 @@ module NexosisApi
       join_hash.each do |k, v|
         if k == 'dataSetName'
           @dataset_name = v unless v.nil?
-        elsif k == 'columns'
-          @columns = v unless v.nil?
+        elsif k == 'column_options'
+          @column_options = v unless v.nil?
         elsif k == 'joins'
           joins = []
-          v.each do |join|
+          v&.each do |join|
             joins << NexosisApi::Join.new(join)
             @joins = joins
           end
@@ -23,10 +23,10 @@ module NexosisApi
     # @return [String] the dataset name provided for this join
     attr_accessor :dataset_name
 
-    # The optional column definition which 
-    # defines the columns to be used from the given dataset
-    # @return [Array of NexosisApi::Column] column metadata definition
-    attr_accessor :columns
+    # The optional column definition for the join which
+    # defines how columns should be used from the joined dataset
+    # @return [Array of NexosisApi::ColumnOptions] column options definition
+    attr_accessor :column_options
 
     # Optional additional data source to be joined to this data source
     # @return [Array of NexosisApi::Join] zero or more additional joins
@@ -35,10 +35,10 @@ module NexosisApi
     def to_hash
       hash = {}
       hash['dataSetName'] = dataset_name.to_s
-      if columns.nil? == false
-        hash['columns'] = []
-        columns.each do |column|
-          hash['columns'] << column.to_hash
+      if column_options.nil? == false
+        hash['columns'] = {}
+        column_options.each do |column|
+          hash['columns'].merge!(column.to_hash)
         end
       end
       if joins.nil? == false
