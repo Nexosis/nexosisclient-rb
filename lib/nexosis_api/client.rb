@@ -18,6 +18,7 @@ require 'nexosis_api/session_response'
 require 'nexosis_api/session_result'
 require 'nexosis_api/session'
 require 'nexosis_api/time_interval'
+require 'nexosis_api/view_data'
 require 'nexosis_api/view_definition'
 require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
@@ -54,6 +55,8 @@ module NexosisApi
         end
 
         private
+
+        # @private
         def process_csv_to_s csv
             content = ''
             if(csv.is_a?(CSV))
@@ -72,6 +75,20 @@ module NexosisApi
                 content = csv
             end
             content
+        end
+
+        # @private
+        def create_query(page_number, page_size, options = {})
+            options.store(:page_number, page_number)
+            options.store(:page_size, page_size)
+            query = {
+              'page' => page_number,
+              'pageSize' => page_size
+            }
+            query['startDate'] = options[:start_date].to_s unless options[:start_date].nil?
+            query['endDate'] = options[:end_date].to_s unless options[:end_date].nil?
+            query['include'] = options[:include] unless options[:include].nil?
+            query
         end
     end
 end

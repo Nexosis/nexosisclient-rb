@@ -142,20 +142,6 @@ module NexosisApi
       end
 
       # @private
-      def create_query(page_number, page_size, options = {})
-        options.store(:page_number, page_number)
-        options.store(:page_size, page_size)
-        query = {
-          'startDate' => options[:start_date].to_s,
-          'endDate' => options[:end_date].to_s,
-          'page' => options[:page_number],
-          'pageSize' => options[:page_size],
-          'include' => options[:include]
-        }
-        query
-      end
-
-      # @private
       def create_cascade_options(option_hash)
         return nil if option_hash.nil?
         return %w[session view forecast] if option_hash.key?(:cascade)

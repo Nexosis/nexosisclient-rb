@@ -68,11 +68,22 @@ describe NexosisApi::Client::Views do
   describe '#remove_view' do
     context 'given an existing view' do
       it 'removes the view' do
-        # setup view to remove
         test_client.create_view 'TestRubyView_Remove', 'TestRuby', 'TestRuby_Right'
         test_client.remove_view 'TestRubyView_Remove'
         actual = test_client.list_views 'TestRubyView_Remove'
         expect(actual).to be_empty
+      end
+    end
+  end
+
+  describe '#get_view' do
+    context 'given an existing view' do
+      it 'retrieves the data of the view' do
+        test_client.create_view 'TestRubyView_Data', 'TestRuby', 'TestRuby_Right'
+        actual = test_client.get_view 'TestRubyView_Data'
+        expect(actual).to be_a(NexosisApi::ViewData)
+        expect(actual.column_metadata.length).to eql(3)
+        expect(actual.view_name).to eql('TestRubyView_Data')
       end
     end
   end
