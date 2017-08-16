@@ -95,7 +95,7 @@ module NexosisApi
       #    The dates can be used independently and are inclusive. Lack of options returns all values within the given page.
       # @note - the results include any transformations or imputations required to prepare the data for a session
       # @raise [NexosisApi::HttpException]
-      def get_view(view_name, page_number = 0, page_size = 50, query_options = {}, column_list = [])
+      def get_view(view_name, page_number = 0, page_size = 50, query_options = {})
         raise ArgumentError 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
         url = "/views/#{view_name}"
         response = self.class.get(url, headers: @headers, query: create_query(page_number, page_size, query_options))

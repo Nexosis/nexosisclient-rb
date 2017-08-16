@@ -87,4 +87,31 @@ describe NexosisApi::Client::Views do
       end
     end
   end
+
+  describe '#get_view' do
+    context 'given a range of dates' do
+      it 'retrieves the view data within range' do
+        start_date = Date.parse('05-01-2014')
+        end_date = Date.parse('05-10-2014')
+        test_client.create_view 'TestRubyView_DataDates', 'TestRuby', 'TestRuby_Right'
+        actual = test_client.get_view 'TestRubyView_DataDates', 0, 10, {'start_date': start_date, 'end_date': end_date}
+        expect(actual).to be_a(NexosisApi::ViewData)
+        expect(actual.data.length).to eql(10)
+        actual.data.each do |datum|
+          expect(Date.parse(datum["timeStamp"])).to be_between(start_date, end_date).inclusive
+        end
+      end
+    end
+  end
+
+  describe '#get_view' do
+    context 'given a set of columns' do
+      it 'retrieves only the given columns' do
+        test_client.create_view 'TestRubyView_DataCols', 'TestRuby', 'TestRuby_Right'
+        actual = test_client.get_view 'TestRubyView_DataCols', 0, 1, {'include': ['sales']}
+        expect(actual).to be_a(NexosisApi::ViewData)
+        expect(actual.data.first).to_not be_nil
+      end
+    end
+  end
 end
