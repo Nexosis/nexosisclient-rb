@@ -18,6 +18,8 @@ module NexosisApi
           @column_metadata = columns
         elsif(k == 'resultInterval')
           @result_interval = v
+        elsif (k == 'dataSourceName')
+          @datasource_name = v
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
@@ -46,6 +48,7 @@ module NexosisApi
     
     # the dataset used in this session
     # @return [String]
+    # @deprecated - Use the @data_source_name property instead
     attr_accessor :dataSetName
 
     # The column in the dataset for which this session ran predictions
@@ -76,5 +79,10 @@ module NexosisApi
     # The requested result interval. Default is DAY if none was requested during session creation.
     # @return [NexosisApi::TimeInterval]
     attr_accessor :result_interval
+
+    # The name of the datasource used to run this session
+    # @return [String] - the dataset or view name
+    # @since v1.2
+    attr_accessor :datasource_name
   end
 end

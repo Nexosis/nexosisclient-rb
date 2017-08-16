@@ -7,7 +7,7 @@ module NexosisApi
       join_hash.each do |k, v|
         if k == 'dataSetName'
           @dataset_name = v unless v.nil?
-        elsif k == 'column_options'
+        elsif k == 'columnOptions'
           @column_options = v unless v.nil?
         elsif k == 'joins'
           joins = []

@@ -7,7 +7,7 @@ module NexosisApi
     # @param options_hash [Hash] additional information about how to process the column in a join
     def initialize(column_name, options_hash)
       @name = column_name
-      @join_interval = options_hash['join_internal']
+      @join_interval = options_hash['joinInterval']
       @alias = options_hash['alias']
     end
 
