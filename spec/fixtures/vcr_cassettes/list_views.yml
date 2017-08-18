@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/views/TestRubyView_List
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby","joins":[{"dataSet":{"name":"TestRuby_Right"}}]}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/views/TestRubyView_List
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:15 GMT
+    body:
+      encoding: UTF-8
+      string: '{"viewName":"TestRubyView_List","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:16 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/views?page=0&pageSize=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:15 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"viewName":"LocationMix","dataSetName":"LocationSales","columns":{"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"Sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"LocationTransactions"},"columnOptions":{},"joins":null}]},{"viewName":"testJavascriptViewJoins","dataSetName":"testJavascript","columns":{"time":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"es6-client":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"testJavascript2"},"columnOptions":{},"joins":null}]},{"viewName":"TestRubyView_List","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{},"joins":null}]}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:16 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/views/TestRubyView_List
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:17 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:16 GMT
+recorded_with: VCR 3.0.3

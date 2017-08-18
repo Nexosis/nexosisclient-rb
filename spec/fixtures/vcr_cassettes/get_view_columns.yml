@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/views/TestRubyView_DataCols
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby","joins":[{"dataSet":{"name":"TestRuby_Right"}}]}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/views/TestRubyView_DataCols
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:19 GMT
+    body:
+      encoding: UTF-8
+      string: '{"viewName":"TestRubyView_DataCols","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:19 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/views/LocationMix?include=transactions&page=0&pageSize=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:19 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"transactions":"419"}],"viewName":"LocationMix","dataSetName":"LocationSales","columns":{"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"Sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"LocationTransactions"},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:19 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/views/TestRubyView_Data
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby","joins":[{"dataSet":{"name":"TestRuby_Right"}}]}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/views/TestRubyView_Data
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"viewName":"TestRubyView_Data","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:18 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/views/TestRubyView_Data?page=0&pageSize=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:18 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"sales":"2919.51","transactions":"431","timeStamp":"2012-12-31T00:00:00.0000000Z"},{"sales":"1288.6","transactions":"191","timeStamp":"2013-01-01T00:00:00.0000000Z"},{"sales":"2895.62","transactions":"443","timeStamp":"2013-01-02T00:00:00.0000000Z"},{"sales":"2997.13","transactions":"477","timeStamp":"2013-01-03T00:00:00.0000000Z"},{"sales":"3340.63","transactions":"499","timeStamp":"2013-01-04T00:00:00.0000000Z"},{"sales":"2254.3","transactions":"354","timeStamp":"2013-01-05T00:00:00.0000000Z"},{"sales":"1946.88","transactions":"302","timeStamp":"2013-01-06T00:00:00.0000000Z"},{"sales":"2830.84","transactions":"461","timeStamp":"2013-01-07T00:00:00.0000000Z"},{"sales":"2833.66","transactions":"465","timeStamp":"2013-01-08T00:00:00.0000000Z"},{"sales":"2978.66","transactions":"480","timeStamp":"2013-01-09T00:00:00.0000000Z"},{"sales":"3127.26","transactions":"515","timeStamp":"2013-01-10T00:00:00.0000000Z"},{"sales":"3638.69","transactions":"541","timeStamp":"2013-01-11T00:00:00.0000000Z"},{"sales":"2277.96","transactions":"368","timeStamp":"2013-01-12T00:00:00.0000000Z"},{"sales":"1749.19","transactions":"281","timeStamp":"2013-01-13T00:00:00.0000000Z"},{"sales":"2754.11","transactions":"449","timeStamp":"2013-01-14T00:00:00.0000000Z"},{"sales":"2899.2","transactions":"487","timeStamp":"2013-01-15T00:00:00.0000000Z"},{"sales":"4164.13","transactions":"596","timeStamp":"2013-01-16T00:00:00.0000000Z"},{"sales":"3177.56","transactions":"507","timeStamp":"2013-01-17T00:00:00.0000000Z"},{"sales":"3785.51","transactions":"579","timeStamp":"2013-01-18T00:00:00.0000000Z"},{"sales":"2693.33","transactions":"387","timeStamp":"2013-01-19T00:00:00.0000000Z"},{"sales":"1822.92","transactions":"259","timeStamp":"2013-01-20T00:00:00.0000000Z"},{"sales":"2189.45","transactions":"371","timeStamp":"2013-01-21T00:00:00.0000000Z"},{"sales":"2473.25","transactions":"422","timeStamp":"2013-01-22T00:00:00.0000000Z"},{"sales":"2904.55","transactions":"494","timeStamp":"2013-01-23T00:00:00.0000000Z"},{"sales":"3365.76","transactions":"527","timeStamp":"2013-01-24T00:00:00.0000000Z"},{"sales":"3664.27","transactions":"574","timeStamp":"2013-01-25T00:00:00.0000000Z"},{"sales":"2501.75","transactions":"367","timeStamp":"2013-01-26T00:00:00.0000000Z"},{"sales":"1923.3","transactions":"318","timeStamp":"2013-01-27T00:00:00.0000000Z"},{"sales":"3052.95","transactions":"475","timeStamp":"2013-01-28T00:00:00.0000000Z"},{"sales":"2617.65","transactions":"461","timeStamp":"2013-01-29T00:00:00.0000000Z"},{"sales":"3142.97","transactions":"491","timeStamp":"2013-01-30T00:00:00.0000000Z"},{"sales":"3390.82","transactions":"539","timeStamp":"2013-01-31T00:00:00.0000000Z"},{"sales":"3845.82","transactions":"602","timeStamp":"2013-02-01T00:00:00.0000000Z"},{"sales":"2822.97","transactions":"423","timeStamp":"2013-02-02T00:00:00.0000000Z"},{"sales":"1636","transactions":"261","timeStamp":"2013-02-03T00:00:00.0000000Z"},{"sales":"3042.26","transactions":"491","timeStamp":"2013-02-04T00:00:00.0000000Z"},{"sales":"3111.73","transactions":"493","timeStamp":"2013-02-05T00:00:00.0000000Z"},{"sales":"2924.14","transactions":"484","timeStamp":"2013-02-06T00:00:00.0000000Z"},{"sales":"3387.96","transactions":"506","timeStamp":"2013-02-07T00:00:00.0000000Z"},{"sales":"3092.96","transactions":"493","timeStamp":"2013-02-08T00:00:00.0000000Z"},{"sales":"2898.58","transactions":"423","timeStamp":"2013-02-09T00:00:00.0000000Z"},{"sales":"1762.14","transactions":"272","timeStamp":"2013-02-10T00:00:00.0000000Z"},{"sales":"3402.92","transactions":"511","timeStamp":"2013-02-11T00:00:00.0000000Z"},{"sales":"3047.72","transactions":"486","timeStamp":"2013-02-12T00:00:00.0000000Z"},{"sales":"3166.07","transactions":"494","timeStamp":"2013-02-13T00:00:00.0000000Z"},{"sales":"2971.14","transactions":"462","timeStamp":"2013-02-14T00:00:00.0000000Z"},{"sales":"3582.68","transactions":"528","timeStamp":"2013-02-15T00:00:00.0000000Z"},{"sales":"3016.86","transactions":"416","timeStamp":"2013-02-16T00:00:00.0000000Z"},{"sales":"2360.59","transactions":"330","timeStamp":"2013-02-17T00:00:00.0000000Z"},{"sales":"2603.96","transactions":"384","timeStamp":"2013-02-18T00:00:00.0000000Z"}],"viewName":"TestRubyView_Data","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:18 GMT
+recorded_with: VCR 3.0.3

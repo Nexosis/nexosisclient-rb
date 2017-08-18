@@ -12,7 +12,7 @@ describe NexosisApi::Client::Views do
     test_client.remove_dataset('TestRuby_Right', cascade_view: true)
   end
 
-  describe '#list_views' do
+  describe '#list_views', :vcr => {:cassette_name => 'list_views'} do
     context 'given existing views' do
       it 'returns all views' do
         test_client.create_view 'TestRubyView_List', 'TestRuby', 'TestRuby_Right'
@@ -24,7 +24,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe '#create_view' do
+  describe '#create_view', :vcr => {:cassette_name => 'create_view'} do
     context 'given two existing datasets' do
       it 'creates a view as join of both' do
         actual = test_client.create_view 'TestRubyView', 'TestRuby', 'TestRuby_Right'
@@ -33,7 +33,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe '#create_view' do
+  describe '#create_view', :vcr => {:cassette_name => 'create_view_columns'} do
     context 'given a dataset without defaults' do
       it 'creates metadata on view reference' do
         view_definition = NexosisApi::ViewDefinition.new({})
@@ -52,7 +52,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe 'viewsummary#to_json' do
+  describe 'viewsummary#to_json' , :vcr => {:cassette_name => 'view_summary_json'} do
     context 'given an object with values set' do
       it 'outputs a valid json string' do
         view_definition = NexosisApi::ViewDefinition.new({})
@@ -65,7 +65,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe '#remove_view' do
+  describe '#remove_view', :vcr => {:cassette_name => 'remove_view'} do
     context 'given an existing view' do
       it 'removes the view' do
         test_client.create_view 'TestRubyView_Remove', 'TestRuby', 'TestRuby_Right'
@@ -76,7 +76,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe '#get_view' do
+  describe '#get_view', :vcr => {:cassette_name => 'get_view_data'} do
     context 'given an existing view' do
       it 'retrieves the data of the view' do
         test_client.create_view 'TestRubyView_Data', 'TestRuby', 'TestRuby_Right'
@@ -88,7 +88,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe '#get_view' do
+  describe '#get_view', :vcr => {:cassette_name => 'get_view_daterange'} do
     context 'given a range of dates' do
       it 'retrieves the view data within range' do
         start_date = Date.parse('05-01-2014')
@@ -104,7 +104,7 @@ describe NexosisApi::Client::Views do
     end
   end
 
-  describe '#get_view' do
+  describe '#get_view', :vcr => {:cassette_name => 'get_view_columns'} do
     context 'given a set of columns' do
       it 'retrieves only the given columns' do
         test_client.create_view 'TestRubyView_DataCols', 'TestRuby', 'TestRuby_Right'

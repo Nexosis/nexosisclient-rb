@@ -27,15 +27,15 @@ http_interactions:
       Expires:
       - "-1"
       Nexosis-Account-Balance:
-      - 1314733.66 USD
+      - 1315111.77 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 12 Jul 2017 12:56:55 GMT
+      - Fri, 18 Aug 2017 02:58:35 GMT
     body:
       encoding: UTF-8
       string: '{"statusCode":400,"message":"End Date must be before the last date
         in the data set","errorType":"InvalidDateRange","errorDetails":{"startDate":"2017-01-22T00:00:00.0000000+00:00","endDate":"2017-02-22T00:00:00.0000000+00:00","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Wed, 12 Jul 2017 12:56:59 GMT
+  recorded_at: Fri, 18 Aug 2017 02:58:35 GMT
 recorded_with: VCR 3.0.3
