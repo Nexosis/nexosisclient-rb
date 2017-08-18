@@ -5,8 +5,8 @@ module NexosisApi
   class Join
     def initialize(join_hash)
       join_hash.each do |k, v|
-        if k == 'dataSetName'
-          @dataset_name = v unless v.nil?
+        if k == 'dataSet'
+          @dataset_name = v['name'] unless v.nil?
         elsif k == 'columnOptions'
           @column_options = v unless v.nil?
         elsif k == 'joins'
@@ -20,7 +20,7 @@ module NexosisApi
     end
 
     # The name of the dataset that will be participating in the join
-    # @return [String] the dataset name provided for this join
+    # @return [String] name of the dataset provided for this join 
     attr_accessor :dataset_name
 
     # The optional column definition for the join which
@@ -34,7 +34,7 @@ module NexosisApi
 
     def to_hash
       hash = {}
-      hash['dataSetName'] = dataset_name.to_s
+      hash['dataSet'] = { name: dataset_name }
       if column_options.nil? == false
         hash['columns'] = {}
         column_options.each do |column|

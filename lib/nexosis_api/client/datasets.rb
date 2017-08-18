@@ -105,11 +105,11 @@ module NexosisApi
           query['startDate'] = [filter_options[:start_date].to_s] unless filter_options[:start_date].nil?
           query['endDate'] = [filter_options[:end_date].to_s] unless filter_options[:end_date].nil?
         end
-        normalizer = proc { |query_set| query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') }
+        #normalizer = proc { |query_set| query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') }
         response = self.class.delete(dataset_remove_url,
                                      headers: @headers,
                                      query: query,
-                                     query_string_normalizer: normalizer)
+                                     query_string_normalizer: ->(query_map) {array_query_normalizer(query_map)})
         if response.success?
           return
         else
@@ -138,7 +138,9 @@ module NexosisApi
         raise ArgumentError 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
         dataset_url = "/data/#{dataset_name}"
         headers = { 'api-key' => @api_key, 'Accept' => content_type }
-        self.class.get(dataset_url, headers: headers, query: create_query(page_number, page_size, query_options))
+        self.class.get(dataset_url, headers: headers,
+                                    query: create_query(page_number, page_size, query_options),
+                                    query_string_normalizer: ->(query_map) { array_query_normalizer(query_map) })
       end
 
       # @private

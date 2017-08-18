@@ -16,7 +16,7 @@ describe NexosisApi::Client::Sessions do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
                 actual = test_client.estimate_forecast_session('TestRuby','2014-05-20','2014-06-20','sales')
-                expect(actual.cost).to eql('3.10 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -35,7 +35,7 @@ describe NexosisApi::Client::Sessions do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
                 actual = test_client.estimate_impact_session('TestRuby','05-01-2014','05-10-2014', 'test event','sales')
-                expect(actual.cost).to eql('0.90 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -161,7 +161,7 @@ describe NexosisApi::Client::Sessions do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
                 actual = test_client.estimate_forecast_session('TestRuby','01-22-2013','02-22-2013','sales', NexosisApi::TimeInterval::WEEK)
-                expect(actual.cost).to eql('0.44 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -171,7 +171,7 @@ describe NexosisApi::Client::Sessions do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
                 actual = test_client.estimate_impact_session('TestRuby','05-01-2014','05-10-2014', 'test event','sales', NexosisApi::TimeInterval::WEEK)
-                expect(actual.cost).to eql('0.13 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end

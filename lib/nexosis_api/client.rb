@@ -82,13 +82,17 @@ module NexosisApi
       options.store(:page_number, page_number)
       options.store(:page_size, page_size)
       query = {
-        'page' => page_number,
-        'pageSize' => page_size
+        'page' => [page_number],
+        'pageSize' => [page_size]
       }
-      query['startDate'] = options[:start_date].to_s unless options[:start_date].nil?
-      query['endDate'] = options[:end_date].to_s unless options[:end_date].nil?
-      query['include'] = options[:include].join(',') unless options[:include].nil?
+      query['startDate'] = [options[:start_date].iso8601.gsub(/\+/,'%2B')] unless options[:start_date].nil?
+      query['endDate'] = [options[:end_date].iso8601.gsub(/\+/,'%2B')] unless options[:end_date].nil?
+      query['include'] = options[:include] unless options[:include].nil?
       query
+    end
+
+    def array_query_normalizer(query_set)
+      query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') 
     end
   end
 end

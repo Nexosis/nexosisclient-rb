@@ -44,7 +44,7 @@ module NexosisApi
         raise ArgumentError 'right_datasource_name was not provided and is not optional' unless right_datasource_name.to_s.empty? == false
         view_definition = NexosisApi::ViewDefinition.new('viewName' => view_name)
         view_definition.dataset_name = dataset_name
-        join = NexosisApi::Join.new('dataSetName' => right_datasource_name)
+        join = NexosisApi::Join.new('dataSet' => { 'name' => right_datasource_name })
         view_definition.joins = [join]
         create_view_by_def(view_definition)
       end
@@ -98,7 +98,9 @@ module NexosisApi
       def get_view(view_name, page_number = 0, page_size = 50, query_options = {})
         raise ArgumentError 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
         url = "/views/#{view_name}"
-        response = self.class.get(url, headers: @headers, query: create_query(page_number, page_size, query_options))
+        response = self.class.get(url, headers: @headers,
+                                       query: create_query(page_number, page_size, query_options),
+                                       query_string_normalizer: ->(query_map) { array_query_normalizer(query_map) } )
         raise NexosisApi::HttpException.new('Could not retrieve data for the given view', "Requesting data for view #{view_name}", response) unless response.success?
         NexosisApi::ViewData.new(response.parsed_response)
       end

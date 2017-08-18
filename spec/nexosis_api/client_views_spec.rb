@@ -43,7 +43,7 @@ describe NexosisApi::Client::Views do
         columns << NexosisApi::Column.new('sales', 'dataType' => 'numeric', 'role' => 'target' )
         columns << NexosisApi::Column.new('transactions', 'dataType' => 'numeric', 'role' => 'feature' )
         view_definition.column_metadata = columns
-        view_definition.joins = [NexosisApi::Join.new('dataSetName' => 'TestRuby_Right')]
+        view_definition.joins = [NexosisApi::Join.new('dataSet' => { 'name' => 'TestRuby_Right' })]
         actual = test_client.create_view_by_def view_definition
         expect(actual).to be_a(NexosisApi::ViewDefinition)
         expect(actual.column_metadata.length).to eql(3)
@@ -57,10 +57,10 @@ describe NexosisApi::Client::Views do
       it 'outputs a valid json string' do
         view_definition = NexosisApi::ViewDefinition.new({})
         view_definition.dataset_name = 'testdataset'
-        join = NexosisApi::Join.new('dataSetName' => 'right_datasource_name')
+        join = NexosisApi::Join.new('dataSet' => { 'name' => 'right_datasource_name' })
         view_definition.joins = [join]
         actual = view_definition.to_json
-        expect(actual).to eql('{"dataSetName":"testdataset","joins":[{"dataSetName":"right_datasource_name"}]}')
+        expect(actual).to eql('{"dataSetName":"testdataset","joins":[{"dataSet":{"name":"right_datasource_name"}}]}')
       end
     end
   end
@@ -98,7 +98,7 @@ describe NexosisApi::Client::Views do
         expect(actual).to be_a(NexosisApi::ViewData)
         expect(actual.data.length).to eql(10)
         actual.data.each do |datum|
-          expect(Date.parse(datum["timeStamp"])).to be_between(start_date, end_date).inclusive
+          expect(Date.parse(datum['timeStamp'])).to be_between(start_date, end_date).inclusive
         end
       end
     end
@@ -108,7 +108,7 @@ describe NexosisApi::Client::Views do
     context 'given a set of columns' do
       it 'retrieves only the given columns' do
         test_client.create_view 'TestRubyView_DataCols', 'TestRuby', 'TestRuby_Right'
-        actual = test_client.get_view 'TestRubyView_DataCols', 0, 1, {'include': ['sales']}
+        actual = test_client.get_view 'LocationMix', 0, 1, 'include': %w[sales transactions]
         expect(actual).to be_a(NexosisApi::ViewData)
         expect(actual.data.first).to_not be_nil
       end
