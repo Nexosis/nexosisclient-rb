@@ -7,7 +7,7 @@ module NexosisApi
     # @param options_hash [Hash] additional information about how to process the column in a join
     def initialize(column_name, options_hash)
       @name = column_name
-      @join_interval = options_hash['joinInterval']
+      @join_interval = NexosisApi::TimeInterval.const_get(options_hash['joinInterval'].upcase) unless options_hash['joinInterval'].nil?
       @alias = options_hash['alias']
     end
 
@@ -15,7 +15,7 @@ module NexosisApi
 
     # Optional interval of a time series column being joined to another time series
     # @note not valid outside of join defintion
-    # @return [String]
+    # @return [NexosisApi::TimeInterval]
     attr_accessor :join_interval
 
     # Optional alias of the column when participating in a join
