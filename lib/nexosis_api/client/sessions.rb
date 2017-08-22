@@ -48,8 +48,8 @@ module NexosisApi
         if(session_id.to_s.empty?)
           raise ArgumentError 'session_id cannot be empty or nil'
         end
-        session_url = "/session/#{session_id}"
-        response = self.class.delete(session_url)
+        session_url = "/sessions/#{session_id}"
+        response = self.class.delete(session_url, headers: @headers)
         if(response.success?)
           return
         else

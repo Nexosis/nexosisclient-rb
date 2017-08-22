@@ -9,7 +9,8 @@ module NexosisApi
         base_message.prepend(http_obj['message'].concat(': ')) unless http_obj['message'].nil?
         @action = action
       elsif(http_obj.instance_of?(HTTParty::Response))
-        full_message = base_message.concat('|| Explanation: ').concat(http_obj.parsed_response['errorDetails'].to_s) unless http_obj.parsed_response['errorDetails'].nil?
+        full_message = http_obj.parsed_response['message']
+        full_message = full_message.concat(' || Details: ').concat(http_obj.parsed_response['errorDetails'].to_s) unless http_obj.parsed_response['errorDetails'].nil?
         @type = http_obj.parsed_response['errorType']
         @response = http_obj.response
         @request = http_obj.request

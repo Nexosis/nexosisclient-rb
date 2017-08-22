@@ -7,7 +7,7 @@ describe NexosisApi::Client::Datasets do
     context 'given a dataset json hash' do
       it 'returns a dataset summary' do
         data = JSON.load(File.open('spec/fixtures/sampledata.json'))
-        actual  = test_client.create_dataset_json 'TestRuby_Json', data
+        actual = test_client.create_dataset_json 'TestRuby_Json', data
         expect(actual).to be_a(NexosisApi::DatasetSummary)
       end
     end

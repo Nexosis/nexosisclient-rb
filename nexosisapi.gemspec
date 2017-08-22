@@ -11,11 +11,11 @@ Gem::Specification.new do |spec|
   spec.files = %w(nexosisapi.gemspec)
   spec.files += Dir.glob("lib/**/*.rb")
   spec.homepage = 'https://github.com/nexosis/nexosisclient-rb'
-  spec.licenses = ['Apache 2.0']
+  spec.licenses = ['Apache-2.0']
   spec.name = 'nexosis_api'
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.0.0'
   spec.summary = "Ruby client for working with the Nexosis API"
-  spec.version = '1.1.2'
+  spec.version = '1.2.0'
   spec.metadata["yard.run"] = "yri"
 end

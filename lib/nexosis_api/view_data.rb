@@ -1,4 +1,3 @@
-require './lib/nexosis_api/view_definition'
 module NexosisApi
   # Class to hold the parsed results of a view data retrieval
   class ViewData < ViewDefinition

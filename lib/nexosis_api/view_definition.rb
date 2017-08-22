@@ -5,21 +5,13 @@ module NexosisApi
       view_hash.each do |k, v|
         if k == 'viewName'
           @view_name = v unless v.nil?
-        elsif k == 'datasetName'
+        elsif k == 'dataSetName'
           @dataset_name = v unless v.nil?
         elsif k == 'columns'
-          columns = []
           next if v.nil?
-          v.keys.each do |col_key|
-            columns << NexosisApi::Column.new(col_key, v[col_key])
-          end
-          @column_metadata = columns
+          @column_metadata = v.reject { |value| value.nil? } .map { |col_name, col_hash| NexosisApi::Column.new(col_name, col_hash)}
         elsif k == 'joins'
-          joins = []
-          v.each do |join|
-            joins << NexosisApi::Join.new(join)
-          end
-          @joins = joins
+          @joins = v.reject(&:nil?).map { |join| NexosisApi::Join.new(join) }
         end
       end
     end
