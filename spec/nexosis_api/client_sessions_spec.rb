@@ -116,6 +116,7 @@ describe NexosisApi::Client::Sessions do
                     expect(error).to be_a(NexosisApi::HttpException)
                     expect(error.code).to eql(404)
                 }
+                test_client.remove_dataset existing_dataset
             end
         end
     end
@@ -179,9 +180,9 @@ describe NexosisApi::Client::Sessions do
     describe "#list_sessions",:vcr => {:cassette_name => "list_sessions_pagesize"} do
         context "given a page size" do
             it "should return lte that size" do
-                actual = test_client.list_sessions({},0,5)
+                actual = test_client.list_sessions({},0,3)
                 expect(actual).to be_a(Array)
-                expect(actual.size).to eql(5)                
+                expect(actual.size).to eql(3)                
             end
         end
     end

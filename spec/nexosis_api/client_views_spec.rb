@@ -108,7 +108,7 @@ describe NexosisApi::Client::Views do
     context 'given a set of columns' do
       it 'retrieves only the given columns' do
         test_client.create_view 'TestRubyView_DataCols', 'TestRuby', 'TestRuby_Right'
-        actual = test_client.get_view 'LocationMix', 0, 1, 'include': %w[sales transactions]
+        actual = test_client.get_view 'TestRubyView_DataCols', 0, 1, 'include': %w[sales transactions]
         expect(actual).to be_a(NexosisApi::ViewData)
         expect(actual.data.first).to_not be_nil
       end

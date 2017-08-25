@@ -9,6 +9,7 @@ describe NexosisApi::Client::Datasets do
         data = JSON.load(File.open('spec/fixtures/sampledata.json'))
         actual = test_client.create_dataset_json 'TestRuby_Json', data
         expect(actual).to be_a(NexosisApi::DatasetSummary)
+        test_client.remove_dataset('TestRuby_Json', cascade: true)
       end
     end
   end

@@ -517,12 +517,41 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315111.88 USD
+      - 1315108.15 USD
       Date:
-      - Fri, 18 Aug 2017 02:58:18 GMT
+      - Fri, 25 Aug 2017 13:18:01 GMT
     body:
       encoding: UTF-8
       string: '{"dataSetName":"TestRuby_Json","columns":{"sales":{"dataType":"numeric","role":"none","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":"none","imputation":"zeroes","aggregation":"sum"}}}'
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 02:58:19 GMT
+  recorded_at: Fri, 25 Aug 2017 13:18:02 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_Json?cascade=forecast
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315108.15 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 25 Aug 2017 13:18:01 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 13:18:02 GMT
 recorded_with: VCR 3.0.3
