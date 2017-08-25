@@ -11,7 +11,8 @@ module NexosisApi
           @column_options = v unless v.nil?
         elsif k == 'joins'
           joins = []
-          v&.each do |join|
+          next if v.nil?
+          v.each do |join|
             joins << NexosisApi::Join.new(join)
             @joins = joins
           end
