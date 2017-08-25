@@ -246,17 +246,17 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315166.30 USD
+      - 1315111.81 USD
       Date:
-      - Tue, 08 Aug 2017 17:25:01 GMT
+      - Fri, 18 Aug 2017 02:58:30 GMT
     body:
       encoding: UTF-8
       string: '{"dataSetName":"TestRuby_MeasureDatatype","columns":{"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"co2PpmMean":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"globalTemp":{"dataType":"numericMeasure","role":"target","imputation":"mean","aggregation":"mean"},"sunspotsSum":{"dataType":"numericMeasure","role":"none","imputation":"mean","aggregation":"mean"}}}'
     http_version: 
-  recorded_at: Tue, 08 Aug 2017 17:25:01 GMT
+  recorded_at: Fri, 18 Aug 2017 02:58:31 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_MeasureDatatype?cascade=session&endDate=&startDate=
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_MeasureDatatype?cascade=forecast
     body:
       encoding: US-ASCII
       string: ''
@@ -273,14 +273,14 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1315166.30 USD
+      - 1315111.81 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Tue, 08 Aug 2017 17:25:01 GMT
+      - Fri, 18 Aug 2017 02:58:30 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 08 Aug 2017 17:25:01 GMT
+  recorded_at: Fri, 18 Aug 2017 02:58:31 GMT
 recorded_with: VCR 3.0.3

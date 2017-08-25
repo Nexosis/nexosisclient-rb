@@ -2,21 +2,21 @@ require 'helper'
 require 'csv'
 
 describe NexosisApi::Client::Sessions do
-    describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
-        context "given an existing dataset name" do
-            it "returns a started session" do
-                actual = test_client.create_forecast_session('TestRuby','2014-05-20','2014-05-21','sales')
-                expect(actual).to be_instance_of(NexosisApi::SessionResponse)
-                expect(actual.type).to eql('forecast')
-            end
-        end
+  describe "#create_forecast_session", :vcr => {:cassette_name => "create_forecast_dataset"} do
+    context "given an existing dataset name" do
+      it "returns a started session" do
+        actual = test_client.create_forecast_session('TestRuby','2014-05-20','2014-05-21','sales')
+        expect(actual).to be_instance_of(NexosisApi::SessionResponse)
+        expect(actual.type).to eql('forecast')
+      end
     end
+  end
 
     describe "#estimate_forecast_session", :vcr  => {:cassette_name => "estimate_forecast_session"} do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
                 actual = test_client.estimate_forecast_session('TestRuby','2014-05-20','2014-06-20','sales')
-                expect(actual.cost).to eql('3.10 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -35,7 +35,7 @@ describe NexosisApi::Client::Sessions do
         context "given an existing dataset name" do
             it "returns a session response with cost" do
                 actual = test_client.estimate_impact_session('TestRuby','05-01-2014','05-10-2014', 'test event','sales')
-                expect(actual.cost).to eql('0.90 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -116,6 +116,7 @@ describe NexosisApi::Client::Sessions do
                     expect(error).to be_a(NexosisApi::HttpException)
                     expect(error.code).to eql(404)
                 }
+                test_client.remove_dataset existing_dataset
             end
         end
     end
@@ -124,7 +125,7 @@ describe NexosisApi::Client::Sessions do
         context "given a metadata specification" do
             it "executes a session with a feature identified" do
                 columns = []
-                columns << NexosisApi::DatasetColumn.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERIC, "role" => NexosisApi::ColumnRole::FEATURE })
+                columns << NexosisApi::Column.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERIC, "role" => NexosisApi::ColumnRole::FEATURE })
                 actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
                 expect(actual).to be_a(NexosisApi::SessionResponse)
                 expect(actual.targetColumn).to eql('sales')
@@ -161,7 +162,7 @@ describe NexosisApi::Client::Sessions do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
                 actual = test_client.estimate_forecast_session('TestRuby','01-22-2013','02-22-2013','sales', NexosisApi::TimeInterval::WEEK)
-                expect(actual.cost).to eql('0.44 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -171,7 +172,7 @@ describe NexosisApi::Client::Sessions do
             it "estimates the weekly period" do
                 #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
                 actual = test_client.estimate_impact_session('TestRuby','05-01-2014','05-10-2014', 'test event','sales', NexosisApi::TimeInterval::WEEK)
-                expect(actual.cost).to eql('0.13 USD')
+                expect(actual.cost).to eql('0.01 USD')
             end
         end
     end
@@ -179,9 +180,9 @@ describe NexosisApi::Client::Sessions do
     describe "#list_sessions",:vcr => {:cassette_name => "list_sessions_pagesize"} do
         context "given a page size" do
             it "should return lte that size" do
-                actual = test_client.list_sessions({},0,5)
+                actual = test_client.list_sessions({},0,3)
                 expect(actual).to be_a(Array)
-                expect(actual.size).to eql(5)                
+                expect(actual.size).to eql(3)                
             end
         end
     end
@@ -204,7 +205,7 @@ describe NexosisApi::Client::Sessions do
         context "given a metadata specification with measure" do
             it "executes a session with measure datatype" do
                 columns = []
-                columns << NexosisApi::DatasetColumn.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERICMEASURE, "role" => NexosisApi::ColumnRole::FEATURE })
+                columns << NexosisApi::Column.new('transactions',{ "dataType" => NexosisApi::ColumnType::NUMERICMEASURE, "role" => NexosisApi::ColumnRole::FEATURE })
                 actual  = test_client.create_forecast_session("TestRuby",'2013-07-18','2013-08-28',"sales",'day', columns)
                 expect(actual).to be_a(NexosisApi::SessionResponse)
                 expect(actual.column_metadata[2].type).to eql(NexosisApi::ColumnType::NUMERICMEASURE)

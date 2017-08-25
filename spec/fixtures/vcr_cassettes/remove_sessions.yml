@@ -25,14 +25,14 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1314733.15 USD
+      - 1315108.22 USD
       Date:
-      - Wed, 12 Jul 2017 12:57:08 GMT
+      - Fri, 25 Aug 2017 12:59:49 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"ToRemoveRuby","columns":{"sales":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}}}'
+      string: '{"dataSetName":"ToRemoveRuby","columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null}}}'
     http_version: 
-  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
+  recorded_at: Fri, 25 Aug 2017 12:59:49 GMT
 - request:
     method: post
     uri: https://api.uat.nexosisdev.com/v1/sessions/forecast?dataSetName=ToRemoveRuby&endDate=2017-01-10&isestimate=false&resultInterval=day&startDate=2017-01-06&targetColumn=sales
@@ -54,16 +54,16 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Request-Cost:
-      - 0.40 USD
+      - 0.01 USD
       Nexosis-Account-Balance:
-      - 1314732.75 USD
+      - 1315108.21 USD
       Date:
-      - Wed, 12 Jul 2017 12:57:08 GMT
+      - Fri, 25 Aug 2017 12:59:49 GMT
     body:
       encoding: UTF-8
-      string: '{"sessionId":"015d36df-e0f8-4bb7-a6d9-8d474c92f699","type":"forecast","status":"requested","requestedDate":"2017-07-12T12:57:08.08797+00:00","statusHistory":[{"date":"2017-07-12T12:57:08.08797+00:00","status":"requested"}],"extraParameters":{},"columns":{"sales":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"ToRemoveRuby","targetColumn":"sales","startDate":"2017-01-06T00:00:00+00:00","endDate":"2017-01-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d36df-e0f8-4bb7-a6d9-8d474c92f699/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemoveRuby"}]}'
+      string: '{"sessionId":"015e197a-2860-4bf4-bedb-9e0305f88569","type":"forecast","status":"requested","requestedDate":"2017-08-25T12:59:49.728921+00:00","statusHistory":[{"date":"2017-08-25T12:59:49.728921+00:00","status":"requested"}],"extraParameters":{},"messages":[],"columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null}},"dataSourceName":"ToRemoveRuby","dataSetName":"ToRemoveRuby","targetColumn":"sales","startDate":"2017-01-06T00:00:00+00:00","endDate":"2017-01-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015e197a-2860-4bf4-bedb-9e0305f88569/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemoveRuby"}]}'
     http_version: 
-  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
+  recorded_at: Fri, 25 Aug 2017 12:59:49 GMT
 - request:
     method: delete
     uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=ToRemoveRuby&endDate=&eventName=&startDate=&type=
@@ -83,19 +83,19 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1314732.75 USD
+      - 1315108.21 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 12 Jul 2017 12:57:09 GMT
+      - Fri, 25 Aug 2017 12:59:49 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
+  recorded_at: Fri, 25 Aug 2017 12:59:50 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/015d36df-e0f8-4bb7-a6d9-8d474c92f699
+    uri: https://api.uat.nexosisdev.com/v1/sessions/015e197a-2860-4bf4-bedb-9e0305f88569
     body:
       encoding: US-ASCII
       string: ''
@@ -120,15 +120,44 @@ http_interactions:
       Expires:
       - "-1"
       Nexosis-Account-Balance:
-      - 1314732.75 USD
+      - 1315108.21 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 12 Jul 2017 12:57:09 GMT
+      - Fri, 25 Aug 2017 12:59:49 GMT
     body:
       encoding: UTF-8
-      string: '{"statusCode":404,"message":"Item of type session with identifier 015d36df-e0f8-4bb7-a6d9-8d474c92f699
-        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"015d36df-e0f8-4bb7-a6d9-8d474c92f699","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
+      string: '{"statusCode":404,"message":"Item of type session with identifier 015e197a-2860-4bf4-bedb-9e0305f88569
+        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"015e197a-2860-4bf4-bedb-9e0305f88569","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Wed, 12 Jul 2017 12:57:13 GMT
+  recorded_at: Fri, 25 Aug 2017 12:59:50 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/data/ToRemoveRuby
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315108.21 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 25 Aug 2017 12:59:50 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 25 Aug 2017 12:59:50 GMT
 recorded_with: VCR 3.0.3

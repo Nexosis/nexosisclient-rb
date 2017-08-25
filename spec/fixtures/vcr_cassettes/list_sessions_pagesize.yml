@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=5&requestedAfterDate=&requestedBeforeDate=&type=
+    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=3&requestedAfterDate=&requestedBeforeDate=&type=
     body:
       encoding: US-ASCII
       string: ''
@@ -21,37 +21,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1314551.40 USD
+      - 1315108.21 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 26 Jul 2017 15:31:30 GMT
+      - Fri, 25 Aug 2017 12:59:51 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[{"sessionId":"015d5647-faad-4b40-9892-d7d64edde19c","type":"forecast","status":"completed","requestedDate":"2017-07-18T15:19:04.109157+00:00","statusHistory":[{"date":"2017-07-18T15:19:04.109157+00:00","status":"requested"},{"date":"2017-07-18T15:19:04.0139652+00:00","status":"started"},{"date":"2017-07-18T15:20:31.3904242+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"92
-        daily observations were found in the dataset between 2008-06-01T00:00:00.0000000Z
-        and 2008-08-31T00:00:00.0000000Z."},{"severity":"informational","message":"92
-        daily observations were found in the dataset between 2003-09-01T00:00:00.0000000
-        and 2008-08-31T00:00:00.0000000."}],"columns":{"observed":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"data-sessions-integration","targetColumn":"observed","startDate":"2008-09-01T00:00:00+00:00","endDate":"2008-09-30T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d5647-faad-4b40-9892-d7d64edde19c/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]},{"sessionId":"015d57bf-d2fa-40b0-b626-3f9fa629d8f6","type":"forecast","status":"completed","requestedDate":"2017-07-18T22:09:35.482585+00:00","statusHistory":[{"date":"2017-07-18T22:09:35.482585+00:00","status":"requested"},{"date":"2017-07-18T22:09:35.3291872+00:00","status":"started"},{"date":"2017-07-18T22:14:36.2370772+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2016-08-01T00:00:00.0000000Z
-        and 2017-03-25T00:00:00.0000000Z."},{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2012-03-26T00:00:00.0000000
-        and 2017-03-25T00:00:00.0000000."}],"columns":{"instances":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"testDataSet-2017-07-18T18:09:34.656-04:00","targetColumn":"instances","startDate":"2017-03-26T00:00:00+00:00","endDate":"2017-04-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d57bf-d2fa-40b0-b626-3f9fa629d8f6/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/testDataSet-2017-07-18T18:09:34.656-04:00"}]},{"sessionId":"015d57bf-d60c-4353-aebe-faf8ca81c286","type":"forecast","status":"completed","requestedDate":"2017-07-18T22:09:36.268145+00:00","statusHistory":[{"date":"2017-07-18T22:09:36.268145+00:00","status":"requested"},{"date":"2017-07-18T22:09:36.1416554+00:00","status":"started"},{"date":"2017-07-18T22:15:30.5839243+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2016-08-01T00:00:00.0000000Z
-        and 2017-03-25T00:00:00.0000000Z."},{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2012-03-26T00:00:00.0000000
-        and 2017-03-25T00:00:00.0000000."}],"columns":{"instances":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"testDataSet-2017-07-18T18:09:35.484-04:00","targetColumn":"instances","startDate":"2017-03-26T00:00:00+00:00","endDate":"2017-04-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d57bf-d60c-4353-aebe-faf8ca81c286/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/testDataSet-2017-07-18T18:09:35.484-04:00"}]},{"sessionId":"015d57bf-d8e5-4f35-a3cc-cb316dbe3ee0","type":"forecast","status":"failed","requestedDate":"2017-07-18T22:09:36.997106+00:00","statusHistory":[{"date":"2017-07-18T22:09:36.997106+00:00","status":"requested"},{"date":"2017-07-18T22:09:37.3447918+00:00","status":"started"},{"date":"2017-07-18T22:15:43.3386733+00:00","status":"failed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"90
-        daily observations were found in the dataset between 2017-04-19T22:09:36.2850000Z
-        and 2017-07-17T22:09:36.2850000Z."},{"severity":"informational","message":"0
-        daily observations were found in the dataset between 2012-03-26T00:00:00.0000000
-        and 2017-03-25T00:00:00.0000000."},{"severity":"error","message":"Nexosis
-        could not execute any algortihms to model this dataset. The most common cause
-        of this error is that the dataset does not contain enough rows prior to the
-        forecast start date to adequately train and test a model. Please make sure
-        that the dataset contains at least 150 records prior to the forecast start
-        date and try the request again."}],"columns":{"instances":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"testDataSet-2017-07-18T18:09:36.285-04:00","targetColumn":"instances","startDate":"2017-03-26T00:00:00+00:00","endDate":"2017-04-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d57bf-d8e5-4f35-a3cc-cb316dbe3ee0/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/testDataSet-2017-07-18T18:09:36.285-04:00"}]},{"sessionId":"015d5b88-f036-497a-8bdd-9d18590db2fe","type":"forecast","status":"completed","requestedDate":"2017-07-19T15:48:07.350268+00:00","statusHistory":[{"date":"2017-07-19T15:48:07.350268+00:00","status":"requested"},{"date":"2017-07-19T15:48:07.8230378+00:00","status":"started"},{"date":"2017-07-19T15:48:17.7903173+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"1455
-        daily observations were found in the dataset between 2012-01-01T00:00:00.0000000
-        and 2016-12-31T00:00:00.0000000."}],"columns":{"sales":{"dataType":"numeric","role":"target"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature"}},"dataSetName":"Location-A","targetColumn":"sales","startDate":"2017-01-01T00:00:00+00:00","endDate":"2017-02-05T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d5b88-f036-497a-8bdd-9d18590db2fe/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Location-A"}]}]}'
+      string: '{"items":[{"sessionId":"015e1091-8934-4319-bec8-d4522c89a84c","type":"forecast","status":"completed","requestedDate":"2017-08-23T19:28:46.900554+00:00","statusHistory":[{"date":"2017-08-23T19:28:46.900554+00:00","status":"requested"},{"date":"2017-08-23T19:28:46.9507231+00:00","status":"started"},{"date":"2017-08-23T20:04:00.6348512+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"1213
+        daily observations were found in the dataset between 2012-12-31T00:00:00.0000000Z
+        and 2016-04-30T00:00:00.0000000Z."},{"severity":"informational","message":"1213
+        daily observations were found in the dataset between 2010-11-09T00:00:00.0000000Z
+        and 2016-04-30T00:00:00.0000000Z."}],"columns":{"Sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"dataSourceName":"LocationSalesMix","dataSetName":"LocationSalesMix","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015e1091-8934-4319-bec8-d4522c89a84c/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/LocationSalesMix"}]},{"sessionId":"015e10f5-feb7-4473-90e3-a80cc898709f","type":"forecast","status":"completed","requestedDate":"2017-08-23T21:18:30.583722+00:00","statusHistory":[{"date":"2017-08-23T21:18:30.583722+00:00","status":"requested"},{"date":"2017-08-23T21:18:31.788497+00:00","status":"started"},{"date":"2017-08-23T21:45:45.6462234+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"1213
+        daily observations were found in the dataset between 2012-12-31T00:00:00.0000000Z
+        and 2016-04-30T00:00:00.0000000Z."},{"severity":"informational","message":"1213
+        daily observations were found in the dataset between 2010-11-09T00:00:00.0000000Z
+        and 2016-04-30T00:00:00.0000000Z."}],"columns":{"Sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null}},"dataSourceName":"LocationSales","dataSetName":"LocationSales","targetColumn":"sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015e10f5-feb7-4473-90e3-a80cc898709f/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/LocationSales"}]},{"sessionId":"015e142e-6138-437f-84f3-1aca4747db8b","type":"forecast","status":"completed","requestedDate":"2017-08-24T12:18:57.464803+00:00","statusHistory":[{"date":"2017-08-24T12:18:57.464803+00:00","status":"requested"},{"date":"2017-08-24T12:18:58.7301186+00:00","status":"started"},{"date":"2017-08-24T12:52:04.4703949+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"1213
+        daily observations were found in the dataset between 2012-12-31T00:00:00.0000000Z
+        and 2016-04-30T00:00:00.0000000Z."},{"severity":"informational","message":"1213
+        daily observations were found in the dataset between 2010-11-09T00:00:00.0000000Z
+        and 2016-04-30T00:00:00.0000000Z."}],"columns":{"Sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"dataSourceName":"LocationSalesMix","dataSetName":"LocationSalesMix","targetColumn":"Sales","startDate":"2016-05-01T00:00:00+00:00","endDate":"2016-05-10T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015e142e-6138-437f-84f3-1aca4747db8b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/LocationSalesMix"}]}]}'
     http_version: 
-  recorded_at: Wed, 26 Jul 2017 15:31:32 GMT
+  recorded_at: Fri, 25 Aug 2017 12:59:51 GMT
 recorded_with: VCR 3.0.3

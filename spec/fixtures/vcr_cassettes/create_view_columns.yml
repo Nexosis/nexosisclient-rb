@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/views/TestRubyView_ByDef
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":"target","imputation":"","aggregation":""},"transactions":{"dataType":"numeric","role":"feature","imputation":"","aggregation":""}},"joins":[{"dataSet":{"name":"TestRuby_Right"}}]}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/views/TestRubyView_ByDef
+      Nexosis-Account-Balance:
+      - 1315111.70 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 18 Aug 2017 03:08:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"viewName":"TestRubyView_ByDef","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 18 Aug 2017 03:08:17 GMT
+recorded_with: VCR 3.0.3

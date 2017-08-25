@@ -21,24 +21,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1314551.40 USD
+      - 1315111.73 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 26 Jul 2017 15:31:30 GMT
+      - Fri, 18 Aug 2017 03:08:13 GMT
     body:
       encoding: UTF-8
       string: '{"items":[{"sessionId":"015d5647-faad-4b40-9892-d7d64edde19c","type":"forecast","status":"completed","requestedDate":"2017-07-18T15:19:04.109157+00:00","statusHistory":[{"date":"2017-07-18T15:19:04.109157+00:00","status":"requested"},{"date":"2017-07-18T15:19:04.0139652+00:00","status":"started"},{"date":"2017-07-18T15:20:31.3904242+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"92
         daily observations were found in the dataset between 2008-06-01T00:00:00.0000000Z
         and 2008-08-31T00:00:00.0000000Z."},{"severity":"informational","message":"92
         daily observations were found in the dataset between 2003-09-01T00:00:00.0000000
-        and 2008-08-31T00:00:00.0000000."}],"columns":{"observed":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"data-sessions-integration","targetColumn":"observed","startDate":"2008-09-01T00:00:00+00:00","endDate":"2008-09-30T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d5647-faad-4b40-9892-d7d64edde19c/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]},{"sessionId":"015d57bf-d2fa-40b0-b626-3f9fa629d8f6","type":"forecast","status":"completed","requestedDate":"2017-07-18T22:09:35.482585+00:00","statusHistory":[{"date":"2017-07-18T22:09:35.482585+00:00","status":"requested"},{"date":"2017-07-18T22:09:35.3291872+00:00","status":"started"},{"date":"2017-07-18T22:14:36.2370772+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2016-08-01T00:00:00.0000000Z
-        and 2017-03-25T00:00:00.0000000Z."},{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2012-03-26T00:00:00.0000000
-        and 2017-03-25T00:00:00.0000000."}],"columns":{"instances":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"testDataSet-2017-07-18T18:09:34.656-04:00","targetColumn":"instances","startDate":"2017-03-26T00:00:00+00:00","endDate":"2017-04-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d57bf-d2fa-40b0-b626-3f9fa629d8f6/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/testDataSet-2017-07-18T18:09:34.656-04:00"}]}]}'
+        and 2008-08-31T00:00:00.0000000."}],"columns":{"observed":{"dataType":"numeric","role":"target","imputation":null,"aggregation":null},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null}},"dataSourceName":"data-sessions-integration","dataSetName":"data-sessions-integration","targetColumn":"observed","startDate":"2008-09-01T00:00:00+00:00","endDate":"2008-09-30T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d5647-faad-4b40-9892-d7d64edde19c/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]},{"sessionId":"015d991d-e3e8-4bb2-a7cd-17867adb3d3d","type":"forecast","status":"failed","requestedDate":"2017-07-31T14:47:39.223396+00:00","statusHistory":[{"date":"2017-07-31T14:47:39.223396+00:00","status":"requested"},{"date":"2017-07-31T14:47:39.0478691+00:00","status":"started"},{"date":"2017-07-31T14:47:49.8938436+00:00","status":"failed"}],"extraParameters":{},"messages":[{"severity":"error","message":"Some
+        values in column ''category'' are inconsistent with column metadata: You specified
+        column type ''Numeric'', but we could not successfully convert all values
+        in this column to that type. Please check your data for formatting issues."}],"columns":{"sales":{"dataType":"numeric","role":"target","imputation":null,"aggregation":null},"category":{"dataType":"numeric","role":"feature","imputation":null,"aggregation":null},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"string","role":"feature","imputation":null,"aggregation":null}},"dataSourceName":"ChangeType","dataSetName":"ChangeType","targetColumn":"sales","startDate":"2017-01-23T00:00:00+00:00","endDate":"2017-01-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d991d-e3e8-4bb2-a7cd-17867adb3d3d/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ChangeType"}]}]}'
     http_version: 
-  recorded_at: Wed, 26 Jul 2017 15:31:32 GMT
+  recorded_at: Fri, 18 Aug 2017 03:08:13 GMT
 - request:
     method: get
     uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=1&requestedAfterDate=&requestedBeforeDate=&type=
@@ -60,20 +59,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1314551.40 USD
+      - 1315111.73 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 26 Jul 2017 15:31:30 GMT
+      - Fri, 18 Aug 2017 03:08:13 GMT
     body:
       encoding: UTF-8
       string: '{"items":[{"sessionId":"015d5647-faad-4b40-9892-d7d64edde19c","type":"forecast","status":"completed","requestedDate":"2017-07-18T15:19:04.109157+00:00","statusHistory":[{"date":"2017-07-18T15:19:04.109157+00:00","status":"requested"},{"date":"2017-07-18T15:19:04.0139652+00:00","status":"started"},{"date":"2017-07-18T15:20:31.3904242+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"92
         daily observations were found in the dataset between 2008-06-01T00:00:00.0000000Z
         and 2008-08-31T00:00:00.0000000Z."},{"severity":"informational","message":"92
         daily observations were found in the dataset between 2003-09-01T00:00:00.0000000
-        and 2008-08-31T00:00:00.0000000."}],"columns":{"observed":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"data-sessions-integration","targetColumn":"observed","startDate":"2008-09-01T00:00:00+00:00","endDate":"2008-09-30T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d5647-faad-4b40-9892-d7d64edde19c/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]}]}'
+        and 2008-08-31T00:00:00.0000000."}],"columns":{"observed":{"dataType":"numeric","role":"target","imputation":null,"aggregation":null},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null}},"dataSourceName":"data-sessions-integration","dataSetName":"data-sessions-integration","targetColumn":"observed","startDate":"2008-09-01T00:00:00+00:00","endDate":"2008-09-30T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d5647-faad-4b40-9892-d7d64edde19c/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]}]}'
     http_version: 
-  recorded_at: Wed, 26 Jul 2017 15:31:33 GMT
+  recorded_at: Fri, 18 Aug 2017 03:08:13 GMT
 - request:
     method: get
     uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=1&pageSize=1&requestedAfterDate=&requestedBeforeDate=&type=
@@ -95,18 +94,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1314551.40 USD
+      - 1315111.73 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 26 Jul 2017 15:31:30 GMT
+      - Fri, 18 Aug 2017 03:08:13 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[{"sessionId":"015d57bf-d2fa-40b0-b626-3f9fa629d8f6","type":"forecast","status":"completed","requestedDate":"2017-07-18T22:09:35.482585+00:00","statusHistory":[{"date":"2017-07-18T22:09:35.482585+00:00","status":"requested"},{"date":"2017-07-18T22:09:35.3291872+00:00","status":"started"},{"date":"2017-07-18T22:14:36.2370772+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2016-08-01T00:00:00.0000000Z
-        and 2017-03-25T00:00:00.0000000Z."},{"severity":"informational","message":"237
-        daily observations were found in the dataset between 2012-03-26T00:00:00.0000000
-        and 2017-03-25T00:00:00.0000000."}],"columns":{"instances":{"dataType":"numeric","role":"target"},"timestamp":{"dataType":"date","role":"timestamp"}},"dataSetName":"testDataSet-2017-07-18T18:09:34.656-04:00","targetColumn":"instances","startDate":"2017-03-26T00:00:00+00:00","endDate":"2017-04-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d57bf-d2fa-40b0-b626-3f9fa629d8f6/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/testDataSet-2017-07-18T18:09:34.656-04:00"}]}]}'
+      string: '{"items":[{"sessionId":"015d991d-e3e8-4bb2-a7cd-17867adb3d3d","type":"forecast","status":"failed","requestedDate":"2017-07-31T14:47:39.223396+00:00","statusHistory":[{"date":"2017-07-31T14:47:39.223396+00:00","status":"requested"},{"date":"2017-07-31T14:47:39.0478691+00:00","status":"started"},{"date":"2017-07-31T14:47:49.8938436+00:00","status":"failed"}],"extraParameters":{},"messages":[{"severity":"error","message":"Some
+        values in column ''category'' are inconsistent with column metadata: You specified
+        column type ''Numeric'', but we could not successfully convert all values
+        in this column to that type. Please check your data for formatting issues."}],"columns":{"sales":{"dataType":"numeric","role":"target","imputation":null,"aggregation":null},"category":{"dataType":"numeric","role":"feature","imputation":null,"aggregation":null},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"string","role":"feature","imputation":null,"aggregation":null}},"dataSourceName":"ChangeType","dataSetName":"ChangeType","targetColumn":"sales","startDate":"2017-01-23T00:00:00+00:00","endDate":"2017-01-25T00:00:00+00:00","callbackUrl":null,"isEstimate":false,"resultInterval":"day","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015d991d-e3e8-4bb2-a7cd-17867adb3d3d/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ChangeType"}]}]}'
     http_version: 
-  recorded_at: Wed, 26 Jul 2017 15:31:33 GMT
+  recorded_at: Fri, 18 Aug 2017 03:08:13 GMT
 recorded_with: VCR 3.0.3
