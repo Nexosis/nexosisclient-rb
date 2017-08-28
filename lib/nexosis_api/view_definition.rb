@@ -11,6 +11,7 @@ module NexosisApi
           next if v.nil?
           @column_metadata = v.reject { |value| value.nil? } .map { |col_name, col_hash| NexosisApi::Column.new(col_name, col_hash)}
         elsif k == 'joins'
+          next if v.nil?
           @joins = v.reject(&:nil?).map { |join| NexosisApi::Join.new(join) }
         end
       end
