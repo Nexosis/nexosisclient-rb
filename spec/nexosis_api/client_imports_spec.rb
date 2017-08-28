@@ -38,4 +38,24 @@ describe NexosisApi::Client::Imports do
             end
         end
     end
+
+    describe '#import_from_s3' do
+        context 'given no dataset_name' do
+          it 'raises ArgumentError' do
+            expect { test_client.import_from_s3 ''}.to raise_error { |error|
+              expect(error).to be_a(ArgumentError)
+           }
+          end
+        end
+    end
+    
+    describe '#retrieve_import' do
+        context 'given no import_id' do
+          it 'raises ArgumentError' do
+            expect { test_client.retrieve_import ''}.to raise_error { |error|
+              expect(error).to be_a(ArgumentError)
+           }
+          end
+        end
+    end
 end

@@ -23,11 +23,9 @@ module NexosisApi
         query.store 'dataSetName', dataset_name if dataset_name.empty? == false
         response = self.class.get(url, headers: @headers, query: query)
         if response.success?
-          items = []
-          response.parsed_response['items'].each do |definition|
-            items << NexosisApi::ViewDefinition.new(definition)
+          response.parsed_response['items'].map do |definition|
+            NexosisApi::ViewDefinition.new(definition)
           end
-          items
         end
       end
 
@@ -39,9 +37,9 @@ module NexosisApi
       # @note @view_name Must be unique within your organization
       # @raise [NexosisApi::HttpException]
       def create_view(view_name, dataset_name, right_datasource_name)
-        raise ArgumentError 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
-        raise ArgumentError 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
-        raise ArgumentError 'right_datasource_name was not provided and is not optional' unless right_datasource_name.to_s.empty? == false
+        raise ArgumentError, 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
+        raise ArgumentError, 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
+        raise ArgumentError, 'right_datasource_name was not provided and is not optional' unless right_datasource_name.to_s.empty? == false
         view_definition = NexosisApi::ViewDefinition.new('viewName' => view_name)
         view_definition.dataset_name = dataset_name
         join = NexosisApi::Join.new('dataSet' => { 'name' => right_datasource_name })
@@ -55,7 +53,7 @@ module NexosisApi
       # @raise [NexosisApi::HttpException]
       def create_view_by_def(view_definition)
         view_name = view_definition.view_name
-        raise ArgumentError 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
+        raise ArgumentError, 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
         url = "/views/#{view_name}"
         response = self.class.put(url, headers: @headers, body: view_definition.to_json)
         if response.success?
@@ -73,7 +71,7 @@ module NexosisApi
       # @return [void]
       # @raise [NexosisApi::HttpException]
       def remove_view(view_name, cascade = nil)
-        raise ArgumentError 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
+        raise ArgumentError, 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
         url = "/views/#{view_name}"
         query = 'cascade=sessions' unless cascade.nil?
         response = self.class.delete(url, headers: @headers, query: query)
@@ -96,7 +94,7 @@ module NexosisApi
       # @note - the results include any transformations or imputations required to prepare the data for a session
       # @raise [NexosisApi::HttpException]
       def get_view(view_name, page_number = 0, page_size = 50, query_options = {})
-        raise ArgumentError 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
+        raise ArgumentError, 'view_name was not provided and is not optional' unless view_name.to_s.empty? == false
         url = "/views/#{view_name}"
         response = self.class.get(url, headers: @headers,
                                        query: create_query(page_number, page_size, query_options),

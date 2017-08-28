@@ -33,9 +33,9 @@ module NexosisApi
       # @return [NexosisApi::ImportsResponse]
       # @see http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for information on region names
       def import_from_s3(dataset_name, bucket_name, path, region = "us-east-1", column_metadata = [])
-        raise ArgumentError "dataset_name was not provided and is not optional " unless dataset_name.to_s.empty? == false
-        raise ArgumentError "bucket_name was not provided and is not optional " unless bucket_name.to_s.empty? == false
-        raise ArgumentError "path was not provided and is not optional " unless path.to_s.empty? == false
+        raise ArgumentError, "dataset_name was not provided and is not optional " unless dataset_name.to_s.empty? == false
+        raise ArgumentError, "bucket_name was not provided and is not optional " unless bucket_name.to_s.empty? == false
+        raise ArgumentError, "path was not provided and is not optional " unless path.to_s.empty? == false
                 s3_import_url = "/imports/s3"
         column_json = Column.to_json(column_metadata)
         body = {
@@ -60,7 +60,7 @@ module NexosisApi
       # @example get S3 import
       #    NexosisApi.client.retrieve_import('740dca2a-b488-4322-887e-fa473b1caa54')
       def retrieve_import(import_id)
-        raise ArgumentError "import_id was not provided and is not optional " unless import_id.to_s.empty? == false
+        raise ArgumentError, "import_id was not provided and is not optional " unless import_id.to_s.empty? == false
         imports_url = "/imports/#{import_id}"
         response = self.class.get(imports_url, :headers => @headers)
         if(response.success?)

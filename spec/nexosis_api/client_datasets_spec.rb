@@ -173,4 +173,14 @@ describe NexosisApi::Client::Datasets do
       end
     end
   end  
+
+  describe '#remove_dataset' do
+    context 'given no dataset_name' do
+      it 'raises ArgumentError' do
+        expect { test_client.remove_dataset ''}.to raise_error { |error|
+          expect(error).to be_a(ArgumentError)
+       }
+      end
+    end
+  end
 end

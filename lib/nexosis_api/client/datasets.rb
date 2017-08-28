@@ -96,7 +96,7 @@ module NexosisApi
       # @example - request delete with cascade forecast
       #    NexosisApi.client.remove_dataset('mydataset', {:cascade_forecast => true})
       def remove_dataset(dataset_name, filter_options = {})
-        raise ArgumentError 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
+        raise ArgumentError, 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
         dataset_remove_url = "/data/#{dataset_name}"
         query = {}
         if filter_options.empty? == false
@@ -121,7 +121,7 @@ module NexosisApi
 
       # @private
       def create_dataset(dataset_name, content, content_type)
-        raise ArgumentError 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
+        raise ArgumentError, 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
         dataset_url = "/data/#{dataset_name}"
         headers = { 'api-key' => @api_key, 'Content-Type' => content_type }
         response = self.class.put(dataset_url, headers: headers, body: content)
@@ -134,8 +134,8 @@ module NexosisApi
 
       # @private
       def get_dataset_internal(dataset_name, page_number = 0, page_size = 50, query_options = {}, content_type = 'application/json')
-        raise ArgumentError 'page size must be <= 100 items per page' unless page_size <= 100
-        raise ArgumentError 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
+        raise ArgumentError, 'page size must be <= 100 items per page' unless page_size <= 100
+        raise ArgumentError, 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
         dataset_url = "/data/#{dataset_name}"
         headers = { 'api-key' => @api_key, 'Accept' => content_type }
         self.class.get(dataset_url, headers: headers,

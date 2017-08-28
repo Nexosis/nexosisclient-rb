@@ -114,4 +114,24 @@ describe NexosisApi::Client::Views do
       end
     end
   end
+
+  describe '#create_view' do
+    context 'given no view_name' do
+      it 'raises ArgumentError' do
+        expect { test_client.create_view '', '', ''}.to raise_error { |error|
+          expect(error).to be_a(ArgumentError)
+       }
+      end
+    end
+  end
+
+  describe '#remove_view' do
+    context 'given no view_name' do
+      it 'raises ArgumentError' do
+        expect { test_client.remove_view ''}.to raise_error { |error|
+          expect(error).to be_a(ArgumentError)
+       }
+      end
+    end
+  end
 end
