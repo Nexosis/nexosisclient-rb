@@ -6,7 +6,9 @@ module NexosisApi
     def initialize(join_hash)
       join_hash.each do |k, v|
         if k == 'dataSet'
-          @dataset_name = v['name'] unless v.nil?
+          @join_target = NexosisApi::DatasetJoinTarget.new(v)
+        elsif k == 'calendar'
+          @join_target = NexosisApi::CalendarJoinTarget.new(v)
         elsif k == 'columnOptions'
           @column_options = v unless v.nil?
         elsif k == 'joins'
@@ -20,9 +22,9 @@ module NexosisApi
       end
     end
 
-    # The name of the dataset that will be participating in the join
-    # @return [String] name of the dataset provided for this join 
-    attr_accessor :dataset_name
+    # The details of the data source that will be participating in the join
+    # @return [Object] details of the join target
+    attr_accessor :join_target
 
     # The optional column definition for the join which
     # defines how columns should be used from the joined dataset
@@ -34,8 +36,7 @@ module NexosisApi
     attr_accessor :joins
 
     def to_hash
-      hash = {}
-      hash['dataSet'] = { name: dataset_name }
+      hash = @join_target.to_hash
       if column_options.nil? == false
         hash['columns'] = {}
         column_options.each do |column|

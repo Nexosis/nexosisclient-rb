@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/views/TestViewCal
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby","joins":[{"calendar":{"name":"Nexosis.Holidays-US"}}]}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/views/TestViewCal
+      Nexosis-Account-Balance:
+      - 1315103.85 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 31 Aug 2017 21:50:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"viewName":"TestViewCal","dataSetName":"TestRuby","columns":{"eventTimestamp":{"dataType":"date","role":null,"imputation":null,"aggregation":null},"eventName":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"max"},"calendarName":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"max"},"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":null,"calendar":{"url":null,"name":"Nexosis.Holidays-US","timeZone":null},"columnOptions":{},"joins":null}]}'
+    http_version: 
+  recorded_at: Thu, 31 Aug 2017 21:50:35 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/views/TestViewCal
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315103.85 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 31 Aug 2017 21:50:36 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 31 Aug 2017 21:50:36 GMT
+recorded_with: VCR 3.0.3

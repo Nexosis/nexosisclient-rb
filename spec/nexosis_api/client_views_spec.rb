@@ -134,4 +134,17 @@ describe NexosisApi::Client::Views do
       end
     end
   end
+
+  describe '#create_view_by_def', :vcr => {:cassette_name => 'create_calendar_view'} do
+    context 'given a view with calendar' do
+      it 'creates view' do
+        definition = NexosisApi::ViewDefinition.new({'viewName' => 'TestViewCal', 'dataSetName' => 'TestRuby', 'joins' => [{ 'calendar' => { 'name' => 'Nexosis.Holidays-US' } } ] })
+        actual = test_client.create_view_by_def definition
+        expect(actual).to_not be_nil
+        expect(actual.joins[0].join_target).to_not be_nil
+        expect(actual.joins[0].join_target).to be_a(NexosisApi::CalendarJoinTarget)
+        test_client.remove_view 'TestViewCal'
+      end
+    end
+  end
 end
