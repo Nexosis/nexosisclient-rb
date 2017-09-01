@@ -6,17 +6,18 @@ module NexosisApi
     def initialize(join_hash)
       join_hash.each do |k, v|
         if k == 'dataSet'
-          @join_target = NexosisApi::DatasetJoinTarget.new(v)
+          @join_target = NexosisApi::DatasetJoinTarget.new(v) unless v.nil?
         elsif k == 'calendar'
-          @join_target = NexosisApi::CalendarJoinTarget.new(v)
+          @join_target = NexosisApi::CalendarJoinTarget.new(v) unless v.nil?
         elsif k == 'columnOptions'
-          @column_options = v unless v.nil?
-        elsif k == 'joins'
-          joins = []
           next if v.nil?
-          v.each do |join|
-            joins << NexosisApi::Join.new(join)
-            @joins = joins
+          @column_options = v.map do |key, option|
+            NexosisApi::ColumnOptions.new(key, option)
+          end
+        elsif k == 'joins'
+          next if v.nil?
+          @joins = v.map do |join|
+            NexosisApi::Join.new(join)
           end
         end
       end
@@ -36,11 +37,11 @@ module NexosisApi
     attr_accessor :joins
 
     def to_hash
-      hash = @join_target.to_hash
+      hash = join_target.to_hash
       if column_options.nil? == false
-        hash['columns'] = {}
+        hash['columnOptions'] = {}
         column_options.each do |column|
-          hash['columns'].merge!(column.to_hash)
+          hash['columnOptions'].merge!(column.to_hash)
         end
       end
       if joins.nil? == false

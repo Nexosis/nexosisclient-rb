@@ -147,4 +147,18 @@ describe NexosisApi::Client::Views do
       end
     end
   end
+
+  describe '#create_view_by_def', :vcr => {:cassette_name => 'create_aliased_view'} do
+    context 'given datasets with matching columns' do
+      it 'includes both by alias' do
+        definition = NexosisApi::ViewDefinition.new({'viewName' => 'TestViewAlias', 'dataSetName' => 'TestRuby', 'joins' => [{ 'dataSet' => { 'name' => 'TestRuby_Right' }, 'columnOptions' => { 'transactions' => { 'alias' => 'othertransactions' } } } ] })
+        actual = test_client.create_view_by_def definition
+        expect(actual).to_not be_nil
+        expect(actual.joins[0].join_target).to_not be_nil
+        expect(actual.joins[0].join_target).to be_a(NexosisApi::DatasetJoinTarget)
+        expect(actual.column_metadata[2].name).to eql('othertransactions')
+        test_client.remove_view 'TestViewAlias'
+      end
+    end
+  end
 end

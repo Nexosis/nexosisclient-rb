@@ -10,7 +10,7 @@ module NexosisApi
     attr_accessor :dataset_name
     
     def to_hash
-      { 'dataSet' => { 'name' => @dataset_name } }
+      { 'dataSet' => { 'name' => dataset_name } }
     end
   end
 end

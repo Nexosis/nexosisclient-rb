@@ -58,4 +58,25 @@ describe NexosisApi::Join do
       end
     end
   end
+
+  describe '#initialize' do
+    context 'given a hash with a column alias' do
+      it 'creates an instance with column options' do
+        target = NexosisApi::Join.new({'dataSet' => {'name' => 'TestDataset'}, 'columnOptions' => { 'some_column' => { 'alias' => 'column_alias' } } })
+        expect(target.column_options).to_not be_nil
+        expect(target.column_options[0].alias).to eql('column_alias')
+        expect(target.column_options[0].column_name).to eql('some_column')
+      end
+    end
+  end
+
+  describe '#to_hash' do
+    context 'given a join object' do
+      it 'provides hash matching api json' do
+        target = NexosisApi::Join.new({'dataSet' => {'name' => 'TestDataset'}, 'columnOptions' => { 'some_column' => { 'alias' => 'column_alias' }, 'other_column' => { 'alias' => 'another_alias' } } })
+        actual = target.to_hash
+        expect(actual.to_json).to eql('{"dataSet":{"name":"TestDataset"},"columnOptions":{"some_column":{"alias":"column_alias"},"other_column":{"alias":"another_alias"}}}')
+      end
+    end
+  end
 end

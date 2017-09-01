@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/views/TestViewAlias
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby","joins":[{"dataSet":{"name":"TestRuby_Right"},"columnOptions":{"transactions":{"alias":"othertransactions"}}}]}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/views/TestViewAlias
+      Nexosis-Account-Balance:
+      - 1315102.96 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 01 Sep 2017 18:07:21 GMT
+    body:
+      encoding: UTF-8
+      string: '{"viewName":"TestViewAlias","dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"othertransactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}},"joins":[{"dataSet":{"name":"TestRuby_Right"},"calendar":null,"columnOptions":{"transactions":{"alias":"othertransactions","joinInterval":null}},"joins":null}]}'
+    http_version: 
+  recorded_at: Fri, 01 Sep 2017 18:07:21 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/views/TestViewAlias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315102.96 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Fri, 01 Sep 2017 18:07:22 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 01 Sep 2017 18:07:21 GMT
+recorded_with: VCR 3.0.3

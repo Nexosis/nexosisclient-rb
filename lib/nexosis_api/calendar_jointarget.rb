@@ -17,8 +17,8 @@ module NexosisApi
 
     def to_hash
       hash = { 'calendar' => {} }
-      hash['calendar'].store 'url', @url unless @url.nil?
-      hash['calendar'].store 'name', @name unless @name.nil?
+      hash['calendar'].store 'url', url unless url.nil?
+      hash['calendar'].store 'name', name unless name.nil?
       hash
     end
   end
