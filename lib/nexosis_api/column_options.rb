@@ -1,6 +1,6 @@
 module NexosisApi
   # Class for holding the join options on a column in a view-based join
-  # @since v1.2
+  # @since 1.2.0
   class ColumnOptions
     # Create a new option for a join column.
     # @param column_name [String] the name of the original column from the source dataset

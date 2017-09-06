@@ -82,7 +82,7 @@ module NexosisApi
 
     # The name of the datasource used to run this session
     # @return [String] - the dataset or view name
-    # @since v1.2
+    # @since 1.2.0
     attr_accessor :datasource_name
   end
 end

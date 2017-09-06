@@ -3,7 +3,7 @@ module NexosisApi
   class Client
     # Views-based API operations
     # @see http://docs.nexosis.com/
-    # @since v1.2
+    # @since 1.2.0
     module Views
       ## List all existing view defintions, optionally limited by
       # partial name or participating data sources

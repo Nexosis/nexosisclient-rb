@@ -1,5 +1,6 @@
 module NexosisApi
   # Class to hold the parsed results of a view data retrieval
+  # @since 1.2.0
   class ViewData < ViewDefinition
     def initialize(viewdata_hash)
       @data = viewdata_hash['data']

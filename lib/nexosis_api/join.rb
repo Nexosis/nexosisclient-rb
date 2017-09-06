@@ -2,6 +2,7 @@
 
 module NexosisApi
   # class to hold a join defintion initialized by a hash of join values
+  # @since 1.2.0
   class Join
     def initialize(join_hash)
       join_hash.each do |k, v|

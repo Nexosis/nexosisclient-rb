@@ -1,5 +1,6 @@
 module NexosisApi
   # class to hold the parsed results of a view
+  # @since 1.2.0
   class ViewDefinition
     def initialize(view_hash)
       view_hash.each do |k, v|

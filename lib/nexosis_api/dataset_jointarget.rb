@@ -1,5 +1,7 @@
 module NexosisApi
   # Specifies the name of a dataset to use as the join datasource
+  # @see http://docs.nexosis.com/guides/views
+  # @since 1.2.3
   class DatasetJoinTarget
     def initialize(ds_join_hash)
       @dataset_name = ds_join_hash['name'] unless ds_join_hash.nil?
