@@ -110,7 +110,7 @@ describe NexosisApi::Client::Datasets do
   describe '#remove_dataset', :vcr => {:cassette_name => 'remove_dataset_all'} do
     context 'given an existing saved dataset' do 
       it 'removes the entire dataset' do
-        test_client.create_dataset_csv('ToRemove','timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31')
+        test_client.create_dataset_csv('ToRemove',"timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
         test_client.remove_dataset('ToRemove')
         datasets = test_client.list_datasets
         expect(datasets.any?{|v|v == 'ToRemove'}).to eql(false)
