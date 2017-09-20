@@ -52,7 +52,7 @@ module NexosisApi
     #   client.get_account_balance
     def get_account_balance()
       session_url = '/sessions'
-      response = self.class.get(session_url,@options)
+      response = self.class.get(session_url, @options)
       response.headers['nexosis-account-balance']
     end
 
@@ -94,7 +94,7 @@ module NexosisApi
     end
 
     def array_query_normalizer(query_set)
-      query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') 
+      query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&')
     end
   end
 end

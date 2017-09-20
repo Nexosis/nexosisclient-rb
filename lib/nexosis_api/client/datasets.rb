@@ -134,7 +134,7 @@ module NexosisApi
 
       # @private
       def get_dataset_internal(dataset_name, page_number = 0, page_size = 50, query_options = {}, content_type = 'application/json')
-        raise ArgumentError, 'page size must be <= 100 items per page' unless page_size <= 100
+        raise ArgumentError, 'page size must be <= 1000 items per page' unless page_size <= 1000
         raise ArgumentError, 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
         dataset_url = "/data/#{dataset_name}"
         headers = { 'api-key' => @api_key, 'Accept' => content_type }
