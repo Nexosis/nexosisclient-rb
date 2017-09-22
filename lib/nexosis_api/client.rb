@@ -41,7 +41,7 @@ module NexosisApi
       raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
       @api_key = options[:api_key]
       self.class.base_uri options[:base_uri] unless options[:base_uri].nil?
-      @headers = {'api-key' => @api_key, 'Content-Type' => 'application/json'}
+      @headers = {'api-key' => @api_key, 'Content-Type' => 'application/json', 'User-Agent' => 'Nexosis-Ruby-API-Client/1.2'}
       @options = {headers: @headers, format: :json}
     end
 
