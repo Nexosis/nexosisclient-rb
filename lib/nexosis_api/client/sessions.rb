@@ -160,12 +160,30 @@ module NexosisApi
       def get_session(session_id)
         session_url = "/sessions/#{session_id}"
         response = self.class.get(session_url, @options)
-        if(response.success?)
+        if response.success?
           NexosisApi::Session.new(response.parsed_response)
         else
           raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
         end
-			end
+      end
+
+      def create_model(data_source_name, target_column, columns = {})
+        model_url = '/sessions/model'
+        body = {
+          dataSourceName: data_source_name,
+          targetColumn: target_column,
+          predictionDomain: 'regression',
+          isEstimate: false
+        }
+        body.store(columns: columns) unless columns.empty?
+        response = self.class.post(model_url, headers: @headers, body: body.to_json)
+        if response.success?
+          session_hash = { 'session' => response.parsed_response }.merge(response.headers)
+          NexosisApi::SessionResponse.new(session_hash)
+        else
+          raise HttpException.new("There was a problem creating the model session: #{response.code}.", "creating model session #{session_id}" ,response)
+        end
+      end
 
       private
       def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = "forecast", result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)

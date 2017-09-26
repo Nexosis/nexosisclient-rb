@@ -1,6 +1,7 @@
 require 'nexosis_api'
 require 'vcr'
 require 'rspec'
+require 'json'
 
 RSpec.configure do |config|
   config.around(:each, :vcr) do |example|
@@ -8,15 +9,19 @@ RSpec.configure do |config|
   end
   config.before(:all) do
     begin
-      data = CSV.open('spec/fixtures/sampledata.csv','rb', headers: true)
+      data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
+      nts_data = JSON.load(File.open('spec/fixtures/housedata.json'))
       test_client.create_dataset_csv('TestRuby', data)
-    rescue NexosisApi::HttpException
+      test_client.create_dataset_json('TestRuby_NTS', nts_data)
+    rescue Exception => eApi
+      puts eApi.message
     end
   end
-  
-  config.after(:all) do 
+
+  config.after(:all) do
     begin
-      test_client.remove_dataset('TestRuby', {:cascade => true})
+      test_client.remove_dataset('TestRuby', cascade: true)
+      test_client.remove_dataset('TestRuby_NTS', cascade: true)
     rescue NexosisApi::HttpException
     end
   end
