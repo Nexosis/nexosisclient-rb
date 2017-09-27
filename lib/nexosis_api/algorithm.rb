@@ -7,6 +7,10 @@ module NexosisApi
       end
     end
 
+    # A unique identififer for the algorithm
+    # @return [String]
+    attr_accessor :key
+
     # A friendly name for the algorithm
     # @return [String]
     attr_accessor :name

@@ -3,15 +3,13 @@ module NexosisApi
   class DatasetSummary
     def initialize(data_hash)
       data_hash.each do |k, v|
-        if(k == 'dataSetName')
+        if (k == 'dataSetName')
           @dataset_name = v unless v.nil?
-        elsif(k == 'columns')
-          columns = []
-          next if v.nil?
-          v.keys.each do |col_key|
-            columns << NexosisApi::Column.new(col_key, v[col_key])
-          end
-          @column_metadata = columns
+        elsif (k == 'columns')
+          @column_metadata = columns.reject { |_key, value| value.nil? }
+                                    .map do |col_key, col_val|
+                                      NexosisApi::Column.new(col_key, col_val[col_key])
+                                    end
         end
       end
     end
