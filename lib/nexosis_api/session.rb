@@ -18,6 +18,8 @@ module NexosisApi
           @result_interval = v
         elsif (k == 'dataSourceName')
           @datasource_name = v
+        elsif (k == 'modelId')
+          @model_id = v
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
@@ -82,5 +84,12 @@ module NexosisApi
     # @return [String] - the dataset or view name
     # @since 1.2.0
     attr_accessor :datasource_name
+
+    # The id of the model created by this session if any
+    # @return [String] a uuid/buid format unique string for the model
+    # @note This is always empty in time-series sessions (forecast/impact)
+    # The model id returned here should be used in all future calls
+    # to model endpoints - primarily the /models/{modelId}/predict endpoint.
+    attr_reader :model_id
   end
 end

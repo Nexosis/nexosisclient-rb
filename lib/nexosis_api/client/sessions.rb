@@ -53,13 +53,13 @@ module NexosisApi
         if(response.success?)
           return
         else
-          raise HttpException.new('Could not delete session with given id', "remove session with id #{session_id.to_s}",response)
+          raise HttpException.new('Could not delete session with given id', "remove session with id #{session_id}", response)
         end
       end
 
       # Remove sessions that have been run. All query options are optional and will be used to limit the sessions removed.
-      # @param query_options [Hash] optionally provide query parametes to limit the set of sessions removed. 
-      # @note query parameters hash members are type, dataset_name, event_name, start_date, and end_date. 
+      # @param query_options [Hash] optionally provide query parametes to limit the set of sessions removed.
+      # @note query parameters hash members are type, dataset_name, event_name, start_date, and end_date.
       #    Start and end dates refer to the session requested date.
       #    Results are not removed but then can only be accessed by dataset name
       # @example Remove all sessions based on a dataset by name
@@ -77,15 +77,15 @@ module NexosisApi
       # Initiate a new forecast session based on a named dataset.
       #
       # @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-      # @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
+      # @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string.
       # @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
       # @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
       # @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-      # @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset 
+      # @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset
       # @return [NexosisApi::SessionResponse] providing information about the sesssion
       # @note The time interval selected must be greater than or equal to the finest granularity of the data provided.
       #    For instance if your data includes many recoreds per hour, then you could request hour, day, or any other result interval.
-      #    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results. 
+      #    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results.
       def create_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
         create_session(dataset_name, start_date, end_date, target_column, false, nil, 'forecast', result_interval, column_metadata)
       end
@@ -136,18 +136,13 @@ module NexosisApi
       # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
       def get_session_results(session_id, as_csv = false)
         session_result_url = "/sessions/#{session_id}/results"
-        if as_csv
-          @headers["Accept"] = 'text/csv'
-        end
+        @headers['Accept'] = 'text/csv' if as_csv
         response = self.class.get(session_result_url, @options)
         @headers.delete('Accept')
 
-				if(response.success?)
-          if(as_csv)
-            response.body
-          else
-            NexosisApi::SessionResult.new(response.parsed_response)
-          end
+        if (response.success?)
+          return response.body if as_csv
+          NexosisApi::SessionResult.new(response.parsed_response)
         else
           raise HttpException.new("There was a problem getting the session: #{response.code}.", "get results for session #{session_id}" ,response)
         end

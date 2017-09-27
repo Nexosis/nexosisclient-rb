@@ -6,9 +6,7 @@ module NexosisApi
         if (k == 'data')
           @data = v
         elsif (k == 'links')
-          links = Array.new
-          v.each do |l| links << NexosisApi::Link.new(l) end
-          @links = links
+          @links = v.reject(&:nil?).map { |l| links << NexosisApi::Link.new(l) }
         end
       end
     end
@@ -17,7 +15,7 @@ module NexosisApi
     # @return [Array of NexosisApi::Link]
     attr_accessor :links
 
-    #The hash of data values from the dataset
+    # The hash of data values from the dataset
     # @return [Array of Hash] where each hash contains the dataset data
     attr_accessor :data
   end

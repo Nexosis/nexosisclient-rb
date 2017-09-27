@@ -25,6 +25,17 @@ module NexosisApi
           raise HttpException.new("There was a problem listing models: #{response.code}.", "listing models with data source name #{data_source_name}", response)
         end
       end
+
+      def get_model(model_id)
+        raise ArgumentError('Retrieving a model requires that model_id be specified and it is currently null.') if model_id.nil?
+        model_url = "/models/#{model_id}"
+        response = self.class.get(model_url, @options)
+        if (response.success?)
+          NexosisApi::ModelSummary.new(response.parsed_response)
+        else
+          raise HttpException.new("There was a problem getting your model: #{response.code}.", "Could not get model #{model_id}", response)
+        end
+      end
     end
   end
 end

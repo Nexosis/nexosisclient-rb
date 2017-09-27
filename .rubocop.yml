@@ -2,3 +2,20 @@ AllCops:
   Exclude:
     - "spec/fixtures/**/*"
   TargetRubyVersion: 2.4
+
+Metrics/LineLength:
+  Max: 100
+  IgnoredPatterns: [\s+#]
+# Parenthetical conditionals are preferred for clarity
+Style/ParenthesesAroundCondition:
+  Enabled: false
+Style/RedundantParentheses:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 15
+  CountComments: false
+Metrics/BlockLength:
+  CountComments: false
+# Not going to use immmutable strings
+Style/FrozenStringLiteralComment:
+  Enabled: false
