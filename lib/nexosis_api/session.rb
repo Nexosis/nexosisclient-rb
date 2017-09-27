@@ -3,20 +3,18 @@ module NexosisApi
   class Session
     def initialize(sessionHash)
       sessionHash.each do |k,v|
-        if(k == 'links')
+        if (k == 'links')
           links = Array.new
-          v.each do |l| links << NexosisApi::Link.new(l) end
+          v.each { |l| links << NexosisApi::Link.new(l) }
           instance_variable_set("@#{k}", links) unless v.nil?
-        elsif(k == 'isEstimate')
+        elsif (k == 'isEstimate')
           instance_variable_set('@is_estimate', v) unless v.nil?
-        elsif(k == 'columns')
-          columns = []
-          next if v.nil?
-          v.keys.each do |col_key|
-            columns << NexosisApi::Column.new(col_key, v[col_key])
-          end
-          @column_metadata = columns
-        elsif(k == 'resultInterval')
+        elsif (k == 'columns')
+          @column_metadata = v.reject { |_key, value| value.nil? }
+                              .map do |col_key, col_val|
+                                NexosisApi::Column.new(col_key, col_val[col_key])
+                              end
+        elsif (k == 'resultInterval')
           @result_interval = v
         elsif (k == 'dataSourceName')
           @datasource_name = v
