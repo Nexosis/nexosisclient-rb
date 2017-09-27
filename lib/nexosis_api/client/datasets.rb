@@ -92,6 +92,7 @@ module NexosisApi
       #    - cascade_forecast - will cascade deletes to all related forecasts
       #    - cascade_session - will cascade deletes to all related sessions
       #    - cascade_view - will cascade deletes to all related views (any part of join - think twice)
+      #    - cascase_model - will cascade deletes to all models created from this dataset
       #    - cascade - will cascade deletes to all related forecasts and sessions
       # @example - request delete with cascade forecast
       #    NexosisApi.client.remove_dataset('mydataset', {:cascade_forecast => true})
@@ -146,7 +147,7 @@ module NexosisApi
       # @private
       def create_cascade_options(option_hash)
         return nil if option_hash.nil?
-        return %w[session view forecast] if option_hash.key?(:cascade)
+        return %w[session view forecast model] if option_hash.key?(:cascade)
         options_set = []
         option_hash.each_key { |k| options_set << k.to_s.gsub(/cascade_/, '') if k.to_s.include? 'cascade_' }
         # HACK: required to be backward compatible with incorrect key names

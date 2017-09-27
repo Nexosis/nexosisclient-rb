@@ -1,8 +1,1058 @@
 {
-  "columns" :{
-    "SalePrice" :{
-      "dataType" : "numeric",
-      "role" : "target"
+  "columns": {
+    "SalePrice": {
+      "dataType": "numeric",
+      "role": "target"
+    },
+    "LotFrontage": {
+      "role": "feature"
+    },
+    "LotArea": {
+      "role": "feature"
+    },
+    "LotShape": {
+      "role": "feature"
+    },
+    "LandSlope": {
+      "role": "feature"
+    },
+    "OverallQual": {
+      "role": "feature"
+    },
+    "OverallCond": {
+      "role": "feature"
+    },
+    "YearBuilt": {
+      "role": "feature"
+    },
+    "YearRemodAdd": {
+      "role": "feature"
+    },
+    "MasVnrArea": {
+      "role": "feature"
+    },
+    "ExterQual": {
+      "role": "feature"
+    },
+    "ExterCond": {
+      "role": "feature"
+    },
+    "BsmtQual": {
+      "role": "feature"
+    },
+    "BsmtCond": {
+      "role": "feature"
+    },
+    "BsmtExposure": {
+      "role": "feature"
+    },
+    "BsmtFinSF1": {
+      "role": "feature"
+    },
+    "BsmtFinSF2": {
+      "role": "feature"
+    },
+    "BsmtUnfSF": {
+      "role": "feature"
+    },
+    "TotalBsmtSF": {
+      "role": "feature"
+    },
+    "HeatingQC": {
+      "role": "feature"
+    },
+    "X1stFlrSF": {
+      "role": "feature"
+    },
+    "X2ndFlrSF": {
+      "role": "feature"
+    },
+    "LowQualFinSF": {
+      "role": "feature"
+    },
+    "GrLivArea": {
+      "role": "feature"
+    },
+    "BsmtFullBath": {
+      "role": "feature"
+    },
+    "BsmtHalfBath": {
+      "role": "feature"
+    },
+    "FullBath": {
+      "role": "feature"
+    },
+    "HalfBath": {
+      "role": "feature"
+    },
+    "BedroomAbvGr": {
+      "role": "feature"
+    },
+    "KitchenAbvGr": {
+      "role": "feature"
+    },
+    "KitchenQual": {
+      "role": "feature"
+    },
+    "TotRmsAbvGrd": {
+      "role": "feature"
+    },
+    "Fireplaces": {
+      "role": "feature"
+    },
+    "FireplaceQu": {
+      "role": "feature"
+    },
+    "GarageYrBlt": {
+      "role": "feature"
+    },
+    "GarageFinish": {
+      "role": "feature"
+    },
+    "GarageCars": {
+      "role": "feature"
+    },
+    "GarageArea": {
+      "role": "feature"
+    },
+    "GarageQual": {
+      "role": "feature"
+    },
+    "GarageCond": {
+      "role": "feature"
+    },
+    "WoodDeckSF": {
+      "role": "feature"
+    },
+    "OpenPorchSF": {
+      "role": "feature"
+    },
+    "EnclosedPorch": {
+      "role": "feature"
+    },
+    "X3SsnPorch": {
+      "role": "feature"
+    },
+    "ScreenPorch": {
+      "role": "feature"
+    },
+    "PoolArea": {
+      "role": "feature"
+    },
+    "PoolQC": {
+      "role": "feature"
+    },
+    "MiscVal": {
+      "role": "feature"
+    },
+    "MoSold": {
+      "role": "feature"
+    },
+    "YrSold": {
+      "role": "feature"
+    },
+    "MSSubClass_1": {
+      "role": "feature"
+    },
+    "MSSubClass_2": {
+      "role": "feature"
+    },
+    "MSSubClass_3": {
+      "role": "feature"
+    },
+    "MSSubClass_4": {
+      "role": "feature"
+    },
+    "MSSubClass_5": {
+      "role": "feature"
+    },
+    "MSSubClass_6": {
+      "role": "feature"
+    },
+    "MSSubClass_7": {
+      "role": "feature"
+    },
+    "MSSubClass_8": {
+      "role": "feature"
+    },
+    "MSSubClass_9": {
+      "role": "feature"
+    },
+    "MSSubClass_10": {
+      "role": "feature"
+    },
+    "MSSubClass_11": {
+      "role": "feature"
+    },
+    "MSSubClass_12": {
+      "role": "feature"
+    },
+    "MSSubClass_13": {
+      "role": "feature"
+    },
+    "MSSubClass_14": {
+      "role": "feature"
+    },
+    "MSSubClass_15": {
+      "role": "feature"
+    },
+    "MSZoningRL": {
+      "role": "feature"
+    },
+    "MSZoningRM": {
+      "role": "feature"
+    },
+    "MSZoningC..all.": {
+      "role": "feature"
+    },
+    "MSZoningFV": {
+      "role": "feature"
+    },
+    "MSZoningRH": {
+      "role": "feature"
+    },
+    "StreetPave": {
+      "role": "feature"
+    },
+    "StreetGrvl": {
+      "role": "feature"
+    },
+    "AlleyNone": {
+      "role": "feature"
+    },
+    "AlleyGrvl": {
+      "role": "feature"
+    },
+    "AlleyPave": {
+      "role": "feature"
+    },
+    "LotShapeReg": {
+      "role": "feature"
+    },
+    "LotShapeIR1": {
+      "role": "feature"
+    },
+    "LotShapeIR2": {
+      "role": "feature"
+    },
+    "LotShapeIR3": {
+      "role": "feature"
+    },
+    "LandContourLvl": {
+      "role": "feature"
+    },
+    "LandContourBnk": {
+      "role": "feature"
+    },
+    "LandContourLow": {
+      "role": "feature"
+    },
+    "LandContourHLS": {
+      "role": "feature"
+    },
+    "UtilitiesAllPub": {
+      "role": "feature"
+    },
+    "UtilitiesNoSeWa": {
+      "role": "feature"
+    },
+    "LotConfigInside": {
+      "role": "feature"
+    },
+    "LotConfigFR2": {
+      "role": "feature"
+    },
+    "LotConfigCorner": {
+      "role": "feature"
+    },
+    "LotConfigCulDSac": {
+      "role": "feature"
+    },
+    "LotConfigFR3": {
+      "role": "feature"
+    },
+    "LandSlopeGtl": {
+      "role": "feature"
+    },
+    "LandSlopeMod": {
+      "role": "feature"
+    },
+    "LandSlopeSev": {
+      "role": "feature"
+    },
+    "NeighborhoodCollgCr": {
+      "role": "feature"
+    },
+    "NeighborhoodVeenker": {
+      "role": "feature"
+    },
+    "NeighborhoodCrawfor": {
+      "role": "feature"
+    },
+    "NeighborhoodNoRidge": {
+      "role": "feature"
+    },
+    "NeighborhoodMitchel": {
+      "role": "feature"
+    },
+    "NeighborhoodSomerst": {
+      "role": "feature"
+    },
+    "NeighborhoodNWAmes": {
+      "role": "feature"
+    },
+    "NeighborhoodOldTown": {
+      "role": "feature"
+    },
+    "NeighborhoodBrkSide": {
+      "role": "feature"
+    },
+    "NeighborhoodSawyer": {
+      "role": "feature"
+    },
+    "NeighborhoodNridgHt": {
+      "role": "feature"
+    },
+    "NeighborhoodNAmes": {
+      "role": "feature"
+    },
+    "NeighborhoodSawyerW": {
+      "role": "feature"
+    },
+    "NeighborhoodIDOTRR": {
+      "role": "feature"
+    },
+    "NeighborhoodMeadowV": {
+      "role": "feature"
+    },
+    "NeighborhoodEdwards": {
+      "role": "feature"
+    },
+    "NeighborhoodTimber": {
+      "role": "feature"
+    },
+    "NeighborhoodGilbert": {
+      "role": "feature"
+    },
+    "NeighborhoodStoneBr": {
+      "role": "feature"
+    },
+    "NeighborhoodClearCr": {
+      "role": "feature"
+    },
+    "NeighborhoodNPkVill": {
+      "role": "feature"
+    },
+    "NeighborhoodBlmngtn": {
+      "role": "feature"
+    },
+    "NeighborhoodBrDale": {
+      "role": "feature"
+    },
+    "NeighborhoodSWISU": {
+      "role": "feature"
+    },
+    "NeighborhoodBlueste": {
+      "role": "feature"
+    },
+    "Condition1Norm": {
+      "role": "feature"
+    },
+    "Condition1Feedr": {
+      "role": "feature"
+    },
+    "Condition1PosN": {
+      "role": "feature"
+    },
+    "Condition1Artery": {
+      "role": "feature"
+    },
+    "Condition1RRAe": {
+      "role": "feature"
+    },
+    "Condition1RRNn": {
+      "role": "feature"
+    },
+    "Condition1RRAn": {
+      "role": "feature"
+    },
+    "Condition1PosA": {
+      "role": "feature"
+    },
+    "Condition1RRNe": {
+      "role": "feature"
+    },
+    "Condition2Norm": {
+      "role": "feature"
+    },
+    "Condition2Artery": {
+      "role": "feature"
+    },
+    "Condition2RRNn": {
+      "role": "feature"
+    },
+    "Condition2Feedr": {
+      "role": "feature"
+    },
+    "Condition2PosN": {
+      "role": "feature"
+    },
+    "Condition2PosA": {
+      "role": "feature"
+    },
+    "Condition2RRAn": {
+      "role": "feature"
+    },
+    "Condition2RRAe": {
+      "role": "feature"
+    },
+    "BldgType1Fam": {
+      "role": "feature"
+    },
+    "BldgType2fmCon": {
+      "role": "feature"
+    },
+    "BldgTypeDuplex": {
+      "role": "feature"
+    },
+    "BldgTypeTwnhsE": {
+      "role": "feature"
+    },
+    "BldgTypeTwnhs": {
+      "role": "feature"
+    },
+    "HouseStyle2Story": {
+      "role": "feature"
+    },
+    "HouseStyle1Story": {
+      "role": "feature"
+    },
+    "HouseStyle1.5Fin": {
+      "role": "feature"
+    },
+    "HouseStyle1.5Unf": {
+      "role": "feature"
+    },
+    "HouseStyleSFoyer": {
+      "role": "feature"
+    },
+    "HouseStyleSLvl": {
+      "role": "feature"
+    },
+    "HouseStyle2.5Unf": {
+      "role": "feature"
+    },
+    "HouseStyle2.5Fin": {
+      "role": "feature"
+    },
+    "RoofStyleGable": {
+      "role": "feature"
+    },
+    "RoofStyleHip": {
+      "role": "feature"
+    },
+    "RoofStyleGambrel": {
+      "role": "feature"
+    },
+    "RoofStyleMansard": {
+      "role": "feature"
+    },
+    "RoofStyleFlat": {
+      "role": "feature"
+    },
+    "RoofStyleShed": {
+      "role": "feature"
+    },
+    "RoofMatlCompShg": {
+      "role": "feature"
+    },
+    "RoofMatlWdShngl": {
+      "role": "feature"
+    },
+    "RoofMatlMetal": {
+      "role": "feature"
+    },
+    "RoofMatlWdShake": {
+      "role": "feature"
+    },
+    "RoofMatlMembran": {
+      "role": "feature"
+    },
+    "RoofMatlTar.Grv": {
+      "role": "feature"
+    },
+    "RoofMatlRoll": {
+      "role": "feature"
+    },
+    "RoofMatlClyTile": {
+      "role": "feature"
+    },
+    "Exterior1stVinylSd": {
+      "role": "feature"
+    },
+    "Exterior1stMetalSd": {
+      "role": "feature"
+    },
+    "Exterior1stWd.Sdng": {
+      "role": "feature"
+    },
+    "Exterior1stHdBoard": {
+      "role": "feature"
+    },
+    "Exterior1stBrkFace": {
+      "role": "feature"
+    },
+    "Exterior1stWdShing": {
+      "role": "feature"
+    },
+    "Exterior1stCemntBd": {
+      "role": "feature"
+    },
+    "Exterior1stPlywood": {
+      "role": "feature"
+    },
+    "Exterior1stAsbShng": {
+      "role": "feature"
+    },
+    "Exterior1stStucco": {
+      "role": "feature"
+    },
+    "Exterior1stBrkComm": {
+      "role": "feature"
+    },
+    "Exterior1stAsphShn": {
+      "role": "feature"
+    },
+    "Exterior1stStone": {
+      "role": "feature"
+    },
+    "Exterior1stImStucc": {
+      "role": "feature"
+    },
+    "Exterior1stCBlock": {
+      "role": "feature"
+    },
+    "Exterior2ndVinylSd": {
+      "role": "feature"
+    },
+    "Exterior2ndMetalSd": {
+      "role": "feature"
+    },
+    "Exterior2ndWd.Shng": {
+      "role": "feature"
+    },
+    "Exterior2ndHdBoard": {
+      "role": "feature"
+    },
+    "Exterior2ndPlywood": {
+      "role": "feature"
+    },
+    "Exterior2ndWd.Sdng": {
+      "role": "feature"
+    },
+    "Exterior2ndCmentBd": {
+      "role": "feature"
+    },
+    "Exterior2ndBrkFace": {
+      "role": "feature"
+    },
+    "Exterior2ndStucco": {
+      "role": "feature"
+    },
+    "Exterior2ndAsbShng": {
+      "role": "feature"
+    },
+    "Exterior2ndBrk.Cmn": {
+      "role": "feature"
+    },
+    "Exterior2ndImStucc": {
+      "role": "feature"
+    },
+    "Exterior2ndAsphShn": {
+      "role": "feature"
+    },
+    "Exterior2ndStone": {
+      "role": "feature"
+    },
+    "Exterior2ndOther": {
+      "role": "feature"
+    },
+    "Exterior2ndCBlock": {
+      "role": "feature"
+    },
+    "MasVnrTypeBrkFace": {
+      "role": "feature"
+    },
+    "MasVnrTypeNone": {
+      "role": "feature"
+    },
+    "MasVnrTypeStone": {
+      "role": "feature"
+    },
+    "MasVnrTypeBrkCmn": {
+      "role": "feature"
+    },
+    "ExterQualGd": {
+      "role": "feature"
+    },
+    "ExterQualTA": {
+      "role": "feature"
+    },
+    "ExterQualEx": {
+      "role": "feature"
+    },
+    "ExterQualFa": {
+      "role": "feature"
+    },
+    "ExterCondTA": {
+      "role": "feature"
+    },
+    "ExterCondGd": {
+      "role": "feature"
+    },
+    "ExterCondFa": {
+      "role": "feature"
+    },
+    "ExterCondPo": {
+      "role": "feature"
+    },
+    "ExterCondEx": {
+      "role": "feature"
+    },
+    "FoundationPConc": {
+      "role": "feature"
+    },
+    "FoundationCBlock": {
+      "role": "feature"
+    },
+    "FoundationBrkTil": {
+      "role": "feature"
+    },
+    "FoundationWood": {
+      "role": "feature"
+    },
+    "FoundationSlab": {
+      "role": "feature"
+    },
+    "FoundationStone": {
+      "role": "feature"
+    },
+    "BsmtQualGd": {
+      "role": "feature"
+    },
+    "BsmtQualTA": {
+      "role": "feature"
+    },
+    "BsmtQualEx": {
+      "role": "feature"
+    },
+    "BsmtQualNone": {
+      "role": "feature"
+    },
+    "BsmtQualFa": {
+      "role": "feature"
+    },
+    "BsmtCondTA": {
+      "role": "feature"
+    },
+    "BsmtCondGd": {
+      "role": "feature"
+    },
+    "BsmtCondNone": {
+      "role": "feature"
+    },
+    "BsmtCondFa": {
+      "role": "feature"
+    },
+    "BsmtCondPo": {
+      "role": "feature"
+    },
+    "BsmtExposureNo": {
+      "role": "feature"
+    },
+    "BsmtExposureGd": {
+      "role": "feature"
+    },
+    "BsmtExposureMn": {
+      "role": "feature"
+    },
+    "BsmtExposureAv": {
+      "role": "feature"
+    },
+    "BsmtExposureNone": {
+      "role": "feature"
+    },
+    "BsmtFinType1GLQ": {
+      "role": "feature"
+    },
+    "BsmtFinType1ALQ": {
+      "role": "feature"
+    },
+    "BsmtFinType1Unf": {
+      "role": "feature"
+    },
+    "BsmtFinType1Rec": {
+      "role": "feature"
+    },
+    "BsmtFinType1BLQ": {
+      "role": "feature"
+    },
+    "BsmtFinType1None": {
+      "role": "feature"
+    },
+    "BsmtFinType1LwQ": {
+      "role": "feature"
+    },
+    "BsmtFinType2Unf": {
+      "role": "feature"
+    },
+    "BsmtFinType2BLQ": {
+      "role": "feature"
+    },
+    "BsmtFinType2None": {
+      "role": "feature"
+    },
+    "BsmtFinType2ALQ": {
+      "role": "feature"
+    },
+    "BsmtFinType2Rec": {
+      "role": "feature"
+    },
+    "BsmtFinType2LwQ": {
+      "role": "feature"
+    },
+    "BsmtFinType2GLQ": {
+      "role": "feature"
+    },
+    "HeatingGasA": {
+      "role": "feature"
+    },
+    "HeatingGasW": {
+      "role": "feature"
+    },
+    "HeatingGrav": {
+      "role": "feature"
+    },
+    "HeatingWall": {
+      "role": "feature"
+    },
+    "HeatingOthW": {
+      "role": "feature"
+    },
+    "HeatingFloor": {
+      "role": "feature"
+    },
+    "HeatingQCEx": {
+      "role": "feature"
+    },
+    "HeatingQCGd": {
+      "role": "feature"
+    },
+    "HeatingQCTA": {
+      "role": "feature"
+    },
+    "HeatingQCFa": {
+      "role": "feature"
+    },
+    "HeatingQCPo": {
+      "role": "feature"
+    },
+    "CentralAirY": {
+      "role": "feature"
+    },
+    "CentralAirN": {
+      "role": "feature"
+    },
+    "ElectricalSBrkr": {
+      "role": "feature"
+    },
+    "ElectricalFuseF": {
+      "role": "feature"
+    },
+    "ElectricalFuseA": {
+      "role": "feature"
+    },
+    "ElectricalFuseP": {
+      "role": "feature"
+    },
+    "ElectricalMix": {
+      "role": "feature"
+    },
+    "KitchenQualGd": {
+      "role": "feature"
+    },
+    "KitchenQualTA": {
+      "role": "feature"
+    },
+    "KitchenQualEx": {
+      "role": "feature"
+    },
+    "KitchenQualFa": {
+      "role": "feature"
+    },
+    "FunctionalTyp": {
+      "role": "feature"
+    },
+    "FunctionalMin1": {
+      "role": "feature"
+    },
+    "FunctionalMaj1": {
+      "role": "feature"
+    },
+    "FunctionalMin2": {
+      "role": "feature"
+    },
+    "FunctionalMod": {
+      "role": "feature"
+    },
+    "FunctionalMaj2": {
+      "role": "feature"
+    },
+    "FunctionalSev": {
+      "role": "feature"
+    },
+    "FireplaceQuNone": {
+      "role": "feature"
+    },
+    "FireplaceQuTA": {
+      "role": "feature"
+    },
+    "FireplaceQuGd": {
+      "role": "feature"
+    },
+    "FireplaceQuFa": {
+      "role": "feature"
+    },
+    "FireplaceQuEx": {
+      "role": "feature"
+    },
+    "FireplaceQuPo": {
+      "role": "feature"
+    },
+    "GarageTypeAttchd": {
+      "role": "feature"
+    },
+    "GarageTypeDetchd": {
+      "role": "feature"
+    },
+    "GarageTypeBuiltIn": {
+      "role": "feature"
+    },
+    "GarageTypeCarPort": {
+      "role": "feature"
+    },
+    "GarageTypeNone": {
+      "role": "feature"
+    },
+    "GarageTypeBasment": {
+      "role": "feature"
+    },
+    "GarageType2Types": {
+      "role": "feature"
+    },
+    "GarageFinishRFn": {
+      "role": "feature"
+    },
+    "GarageFinishUnf": {
+      "role": "feature"
+    },
+    "GarageFinishFin": {
+      "role": "feature"
+    },
+    "GarageFinishNone": {
+      "role": "feature"
+    },
+    "GarageQualTA": {
+      "role": "feature"
+    },
+    "GarageQualFa": {
+      "role": "feature"
+    },
+    "GarageQualGd": {
+      "role": "feature"
+    },
+    "GarageQualNone": {
+      "role": "feature"
+    },
+    "GarageQualEx": {
+      "role": "feature"
+    },
+    "GarageQualPo": {
+      "role": "feature"
+    },
+    "GarageCondTA": {
+      "role": "feature"
+    },
+    "GarageCondFa": {
+      "role": "feature"
+    },
+    "GarageCondNone": {
+      "role": "feature"
+    },
+    "GarageCondGd": {
+      "role": "feature"
+    },
+    "GarageCondPo": {
+      "role": "feature"
+    },
+    "GarageCondEx": {
+      "role": "feature"
+    },
+    "PavedDriveY": {
+      "role": "feature"
+    },
+    "PavedDriveN": {
+      "role": "feature"
+    },
+    "PavedDriveP": {
+      "role": "feature"
+    },
+    "PoolQCNone": {
+      "role": "feature"
+    },
+    "PoolQCEx": {
+      "role": "feature"
+    },
+    "PoolQCFa": {
+      "role": "feature"
+    },
+    "PoolQCGd": {
+      "role": "feature"
+    },
+    "FenceNone": {
+      "role": "feature"
+    },
+    "FenceMnPrv": {
+      "role": "feature"
+    },
+    "FenceGdWo": {
+      "role": "feature"
+    },
+    "FenceGdPrv": {
+      "role": "feature"
+    },
+    "FenceMnWw": {
+      "role": "feature"
+    },
+    "MiscFeatureNone": {
+      "role": "feature"
+    },
+    "MiscFeatureShed": {
+      "role": "feature"
+    },
+    "MiscFeatureGar2": {
+      "role": "feature"
+    },
+    "MiscFeatureOthr": {
+      "role": "feature"
+    },
+    "MiscFeatureTenC": {
+      "role": "feature"
+    },
+    "SaleTypeWD": {
+      "role": "feature"
+    },
+    "SaleTypeNew": {
+      "role": "feature"
+    },
+    "SaleTypeCOD": {
+      "role": "feature"
+    },
+    "SaleTypeConLD": {
+      "role": "feature"
+    },
+    "SaleTypeConLI": {
+      "role": "feature"
+    },
+    "SaleTypeCWD": {
+      "role": "feature"
+    },
+    "SaleTypeConLw": {
+      "role": "feature"
+    },
+    "SaleTypeCon": {
+      "role": "feature"
+    },
+    "SaleTypeOth": {
+      "role": "feature"
+    },
+    "SaleConditionNormal": {
+      "role": "feature"
+    },
+    "SaleConditionAbnorml": {
+      "role": "feature"
+    },
+    "SaleConditionPartial": {
+      "role": "feature"
+    },
+    "SaleConditionAdjLand": {
+      "role": "feature"
+    },
+    "SaleConditionAlloca": {
+      "role": "feature"
+    },
+    "SaleConditionFamily": {
+      "role": "feature"
+    },
+    "OverallCond1": {
+      "role": "feature"
+    },
+    "OverallCond2": {
+      "role": "feature"
+    },
+    "OverallCond3": {
+      "role": "feature"
+    },
+    "OverallCond4": {
+      "role": "feature"
+    },
+    "OverallCond5": {
+      "role": "feature"
+    },
+    "OverallCond6": {
+      "role": "feature"
+    },
+    "OverallCond7": {
+      "role": "feature"
+    },
+    "OverallCond8": {
+      "role": "feature"
+    },
+    "OverallCond9": {
+      "role": "feature"
+    },
+    "OverallCond10": {
+      "role": "feature"
+    },
+    "OverallQual1": {
+      "role": "feature"
+    },
+    "OverallQual2": {
+      "role": "feature"
+    },
+    "OverallQual3": {
+      "role": "feature"
+    },
+    "OverallQual4": {
+      "role": "feature"
+    },
+    "OverallQual5": {
+      "role": "feature"
+    },
+    "OverallQual6": {
+      "role": "feature"
+    },
+    "OverallQual7": {
+      "role": "feature"
+    },
+    "OverallQual8": {
+      "role": "feature"
+    },
+    "OverallQual9": {
+      "role": "feature"
+    },
+    "OverallQual10": {
+      "role": "feature"
     }
   },
   "data": [
@@ -44131,5 +45181,5 @@
       "OverallQual9": 0,
       "OverallQual10": 0
     }
-  ] 
+  ]
 }

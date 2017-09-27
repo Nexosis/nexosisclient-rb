@@ -6,10 +6,10 @@ module NexosisApi
         if (k == 'dataSetName')
           @dataset_name = v unless v.nil?
         elsif (k == 'columns')
-          @column_metadata = columns.reject { |_key, value| value.nil? }
-                                    .map do |col_key, col_val|
-                                      NexosisApi::Column.new(col_key, col_val[col_key])
-                                    end
+          @column_metadata = v.reject { |_key, value| value.nil? }
+                              .map do |col_key, col_val|
+                                NexosisApi::Column.new(col_key, col_val)
+                              end
         end
       end
     end

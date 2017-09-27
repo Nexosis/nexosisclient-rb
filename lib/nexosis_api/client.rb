@@ -38,6 +38,7 @@ module NexosisApi
     include Client::Datasets
     include Client::Imports
     include Client::Views
+    include Client::Models
 
     def initialize(options = {})
       raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false

@@ -4,6 +4,7 @@ module NexosisApi
   class ModelSummary
     def initialize(model_hash)
       model_hash.each do |k, v|
+        k = k.to_s
         if (k == 'modelId')
           @model_id = v
         elsif (k == 'predictionDomain')
@@ -17,12 +18,12 @@ module NexosisApi
         elsif (k == 'columns')
           @column_metadata = v.reject { |_key, value| value.nil? }
                               .map do |col_key, col_val|
-                                NexosisApi::Column.new(col_key, col_val[col_key])
+                                NexosisApi::Column.new(col_key, col_val)
                               end
         elsif (k == 'metrics')
-          @metrics = v.reject(&:nil?)
-                      .map do |val|
-                        NexosisApi::Metric.new(val)
+          @metrics = v.reject { |_key, value| value.nil? }
+                      .map do |col_key, col_val|
+                        NexosisApi::Metric.new(name: col_key, value: col_val)
                       end
         end
       end

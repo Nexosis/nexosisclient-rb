@@ -12,7 +12,7 @@ module NexosisApi
         elsif (k == 'columns')
           @column_metadata = v.reject { |_key, value| value.nil? }
                               .map do |col_key, col_val|
-                                NexosisApi::Column.new(col_key, col_val[col_key])
+                                NexosisApi::Column.new(col_key, v[col_key])
                               end
         elsif (k == 'resultInterval')
           @result_interval = v

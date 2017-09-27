@@ -181,12 +181,12 @@ module NexosisApi
           session_hash = { 'session' => response.parsed_response }.merge(response.headers)
           NexosisApi::SessionResponse.new(session_hash)
         else
-          raise HttpException.new("There was a problem creating the model session: #{response.code}.", "creating model session #{session_id}" ,response)
+          raise HttpException.new("There was a problem creating the model session: #{response.code}.", 'creating model session' ,response)
         end
       end
 
       private
-      def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = "forecast", result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
+      def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = 'forecast', result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
         session_url = "/sessions/#{type}"
         query = { 
           'targetColumn' => target_column.to_s,
@@ -208,8 +208,8 @@ module NexosisApi
           }
         end
         response = self.class.post(session_url, :headers => @headers, :query => query, :body => body.to_json)
-        if(response.success?)
-          session_hash = {'session' => response.parsed_response}.merge(response.headers)
+        if (response.success?)
+          session_hash = { 'session' => response.parsed_response }.merge(response.headers)
           NexosisApi::SessionResponse.new(session_hash)
         else
           raise HttpException.new("Unable to create new #{type} session", "Create session for dataset #{dataset_name}",response)
