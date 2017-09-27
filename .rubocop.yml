@@ -4,8 +4,8 @@ AllCops:
   TargetRubyVersion: 2.4
 
 Metrics/LineLength:
-  Max: 100
-  IgnoredPatterns: [\s+#]
+  Max: 110
+  IgnoredPatterns: [^\s+#]
 # Parenthetical conditionals are preferred for clarity
 Style/ParenthesesAroundCondition:
   Enabled: false
