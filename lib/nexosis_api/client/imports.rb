@@ -13,7 +13,7 @@ module NexosisApi
         imports_url = '/imports'
         response = self.class.get(imports_url, headers: @headers)
         if (response.success?)
-          response.parsed_response['items'].map { |i| items << NexosisApi::ImportsResponse.new(i) }
+          response.parsed_response['items'].map { |i| NexosisApi::ImportsResponse.new(i) }
         else
           raise HttpException.new("There was a problem getting the imports: #{response.code}.", "uploading dataset from s3 #{dataset_name}", response)
         end

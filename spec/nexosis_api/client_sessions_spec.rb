@@ -106,13 +106,48 @@ describe NexosisApi::Client::Sessions do
   describe '#remove_sessions', :vcr  => {:cassette_name => 'remove_sessions'} do
     context 'given a dataset name' do
       it 'removes any session created with that name' do
-        #create the session to remove
+        # create the session to remove
         existing_dataset = 'ToRemoveRuby'
-        json = {'columns' => {'timestamp'=> {'dataType'=> 'date', 'role'=> 'timestamp'},'sales'=> {'dataType'=> 'numeric', 'role'=> 'target'}},'data'=> [{'timestamp'=> '2017-01-01T00:00:00+00:00', 'sales'=> '2948.74'},{'timestamp'=> '2017-01-02T00:00:00+00:00', 'sales'=> '1906.35'},{'timestamp'=> '2017-01-03T00:00:00+00:00', 'sales'=> '4523.42'},{'timestamp'=> '2017-01-04T00:00:00+00:00', 'sales'=> '4586.85'},{'timestamp'=> '2017-01-05T00:00:00+00:00', 'sales'=> '4538.04'}]}
-        new_dataset = test_client.create_dataset_json(existing_dataset, json)
-        new_session = test_client.create_forecast_session(existing_dataset,'2017-01-06', '2017-01-10', 'sales')
+        json = {
+          'columns' => {
+            'timestamp' =>
+            {
+              'dataType' => 'date',
+              'role' => 'timestamp'
+            },
+            'sales' =>
+            {
+              'dataType' => 'numeric',
+              'role' => 'target'
+            }
+          },
+          'data' => [
+            {
+              'timestamp' => '2017-01-01T00:00:00+00:00',
+              'sales' => '2948.74'
+            },
+            {
+              'timestamp' => '2017-01-02T00:00:00+00:00',
+              'sales' => '1906.35'
+            },
+            {
+              'timestamp' => '2017-01-03T00:00:00+00:00',
+              'sales' => '4523.42'
+            },
+            {
+              'timestamp' => '2017-01-04T00:00:00+00:00',
+              'sales' => '4586.85'
+            },
+            {
+              'timestamp' => '2017-01-05T00:00:00+00:00',
+              'sales' => '4538.04'
+            }
+          ]
+        }
+        test_client.create_dataset_json(existing_dataset, json)
+        new_session = test_client.create_forecast_session(existing_dataset, '2017-01-06', '2017-01-10', 'sales')
         test_client.remove_sessions :dataset_name => existing_dataset
-        expect{test_client.get_session(new_session.sessionId)}.to raise_error{ |error|
+        expect{ test_client.get_session(new_session.sessionId) }.to raise_error{ |error|
           expect(error).to be_a(NexosisApi::HttpException)
           expect(error.code).to eql(404)
         }
@@ -160,7 +195,7 @@ describe NexosisApi::Client::Sessions do
   describe '#estimate_forecast_session',:vcr => {:cassette_name => 'estimate_forecast_weekly'} do
     context 'given a weekly forecast request' do
       it 'estimates the weekly period' do
-        #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
+        # 30 day span of time is only ~4 forecast requests, resulting in smaller estimate
         actual = test_client.estimate_forecast_session('TestRuby', '01-22-2013', '02-22-2013', 'sales', NexosisApi::TimeInterval::WEEK)
         expect(actual.cost).to eql('0.01 USD')
       end
@@ -170,7 +205,7 @@ describe NexosisApi::Client::Sessions do
   describe '#estimate_impact_session',:vcr => {:cassette_name => 'estimate_impact_weekly'} do
     context 'given a weekly impact request' do
       it 'estimates the weekly period' do
-        #30 day span of time is only ~4 forecast requests, resulting in smaller estimate
+        # 30 day span of time is only ~4 forecast requests, resulting in smaller estimate
         actual = test_client.estimate_impact_session('TestRuby', '05-01-2014', '05-10-2014', 'test event', 'sales', NexosisApi::TimeInterval::WEEK)
         expect(actual.cost).to eql('0.01 USD')
       end
@@ -194,7 +229,7 @@ describe NexosisApi::Client::Sessions do
         id1 = both[0].sessionId
         id2 = both[1].sessionId
         page_one = test_client.list_sessions({},0,1)
-        expect(pageOne[0].sessionId).to eql(id1)
+        expect(page_one[0].sessionId).to eql(id1)
         page_two = test_client.list_sessions({},1,1)
         expect(page_two[0].sessionId).to eql(id2)
       end

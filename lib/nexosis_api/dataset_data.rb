@@ -6,7 +6,7 @@ module NexosisApi
         if (k == 'data')
           @data = v
         elsif (k == 'links')
-          @links = v.reject(&:nil?).map { |l| links << NexosisApi::Link.new(l) }
+          @links = v.reject(&:nil?).map { |l| NexosisApi::Link.new(l) }
         end
       end
     end

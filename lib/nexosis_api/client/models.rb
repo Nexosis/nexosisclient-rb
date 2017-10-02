@@ -68,7 +68,7 @@ module NexosisApi
       # Remove an existing model
       #
       # @param model_id [String] the unique id of the model to remove.
-      def remove_model(model_id)
+      def remove_model(model_id = '')
         raise ArgumentError, 'Deleting a model requires that model_id be specified and it is currently empty.' if model_id.empty?
         delete_url = "/models/#{model_id}"
         response = self.class.delete(delete_url, @options)

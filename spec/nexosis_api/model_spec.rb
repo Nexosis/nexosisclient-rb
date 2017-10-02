@@ -113,4 +113,28 @@ describe NexosisApi::ModelSummary do
       end
     end
   end
+
+  describe NexosisApi::DatasetSummary do
+    describe '#timeseries?' do
+      context 'given a dataset with a timestamp column' do
+        it 'returns true' do
+          dataset = NexosisApi::DatasetSummary.new(
+            {
+              'dataSetName' => 'testtimestamp',
+              'columns' => {
+                'timestamp' => {
+                  'type' => NexosisApi::ColumnType::DATE,
+                  'role' => NexosisApi::ColumnRole::TIMESTAMP
+                },
+                'nottimestamp' => {
+                  'type' => NexosisApi::ColumnType::NUMERIC
+                }
+              }
+            }
+          )
+          expect(dataset.timeseries?).to be true
+        end
+      end
+    end
+  end
 end

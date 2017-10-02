@@ -21,5 +21,13 @@ module NexosisApi
     # Descriptive information about the columns
     # @return [Array of NexosisApi::Column]
     attr_accessor :column_metadata
+
+    # Helper method which tells you whether or not this dataset has a column with timestamp role.
+    # @note Often helpful for implmenters as non-timeseries datasets
+    # cannot be sent to forecast or impact sessions
+    # @since 1.3.0
+    def timeseries?
+      !@column_metadata.select { |dc| dc.role == NexosisApi::ColumnRole::TIMESTAMP }.empty?
+    end
   end
 end

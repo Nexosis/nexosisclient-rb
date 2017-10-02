@@ -45,16 +45,13 @@ module NexosisApi
       # Remove a session
       # @param session_id [String] required session identifier
       def remove_session(session_id)
-        if(session_id.to_s.empty?)
+        if (session_id.to_s.empty?)
           raise ArgumentError 'session_id cannot be empty or nil'
         end
         session_url = "/sessions/#{session_id}"
         response = self.class.delete(session_url, headers: @headers)
-        if(response.success?)
-          return
-        else
-          raise HttpException.new('Could not delete session with given id', "remove session with id #{session_id}", response)
-        end
+        return if response.success?
+        raise HttpException.new('Could not delete session with given id', "remove session with id #{session_id}", response)
       end
 
       # Remove sessions that have been run. All query options are optional and will be used to limit the sessions removed.
@@ -67,11 +64,8 @@ module NexosisApi
       def remove_sessions(query_options = {})
         sessions_url = '/sessions'
         response = self.class.delete(sessions_url, :headers => @headers, :query => get_query_from_options(query_options))
-        if(response.success?)
-          return
-        else
-          raise HttpException.new('Could not remove sessions', "Remove sessions with query #{query_options.to_s}",response)
-        end
+        return if response.success?
+        raise HttpException.new('Could not remove sessions', "Remove sessions with query #{query_options.to_s}",response)
       end
 
       # Initiate a new forecast session based on a named dataset.

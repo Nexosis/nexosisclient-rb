@@ -34,11 +34,9 @@ module NexosisApi
         list_dataset_url = "/data?partialName=#{partial_name}"
         response = self.class.get(list_dataset_url, headers: @headers)
         if response.success?
-          results = []
-          response.parsed_response['items'].each do |dr|
-            results << NexosisApi::DatasetSummary.new(dr)
+          response.parsed_response['items'].map do |dr|
+            NexosisApi::DatasetSummary.new(dr)
           end
-          results
         else
           raise HttpException.new("There was a problem listing datasets: #{response.code}.", "listing datasets with partial name #{partial_name}", response)
         end
@@ -55,11 +53,8 @@ module NexosisApi
       #    The dates can be used independently and are inclusive. Lack of options returns all values within the given page.
       def get_dataset(dataset_name, page_number = 0, page_size = 50, query_options = {})
         response = get_dataset_internal(dataset_name, page_number, page_size, query_options)
-        if response.success?
-          NexosisApi::DatasetData.new(response.parsed_response)
-        else
-          raise HttpException.new("There was a problem getting the dataset: #{response.code}.", "getting dataset #{dataset_name}", response)
-        end
+        return NexosisApi::DatasetData.new(response.parsed_response) if response.success?
+        raise HttpException.new("There was a problem getting the dataset: #{response.code}.", "getting dataset #{dataset_name}", response)
       end
 
       # Get the data in the set, written to a CSV file, optionally filtering it.
@@ -75,11 +70,8 @@ module NexosisApi
       #    NexosisApi.client.get_dataset_csv('MyDataset', 1, 20, {:include => 'sales'})
       def get_dataset_csv(dataset_name, page_number = 0, page_size = 50, query_options = {})
         response = get_dataset_internal(dataset_name, page_number, page_size, query_options, 'text/csv')
-        if response.success?
-          response.body
-        else
-          raise HttpException.new("There was a problem getting the dataset: #{response.code}.", "getting dataset #{dataset_name}", response)
-        end
+        return response.body if response.success?
+        raise HttpException.new("There was a problem getting the dataset: #{response.code}.", "getting dataset #{dataset_name}", response)
       end
 
       # Remove data from a data set or the entire set.
@@ -106,16 +98,13 @@ module NexosisApi
           query['startDate'] = [filter_options[:start_date].to_s] unless filter_options[:start_date].nil?
           query['endDate'] = [filter_options[:end_date].to_s] unless filter_options[:end_date].nil?
         end
-        #normalizer = proc { |query_set| query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') }
+        # normalizer = proc { |query_set| query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') }
         response = self.class.delete(dataset_remove_url,
                                      headers: @headers,
                                      query: query,
                                      query_string_normalizer: ->(query_map) {array_query_normalizer(query_map)})
-        if response.success?
-          return
-        else
-          raise HttpException.new("There was a problem removing the dataset: #{response.code}.", "removing dataset #{dataset_name}", response)
-        end
+        return if response.success?
+        raise HttpException.new("There was a problem removing the dataset: #{response.code}.", "removing dataset #{dataset_name}", response)
       end
 
       private
