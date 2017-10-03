@@ -20,6 +20,8 @@ module NexosisApi
           @datasource_name = v
         elsif (k == 'modelId')
           @model_id = v
+        elsif (k == 'requestedDate')
+          @requested_date = DateTime.parse(v)
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
@@ -84,6 +86,10 @@ module NexosisApi
     # @return [String] - the dataset or view name
     # @since 1.2.0
     attr_accessor :datasource_name
+
+    # The date this session was orginally submitted
+    # @since 1.3.0
+    attr_accessor :requested_date
 
     # The id of the model created by this session if any
     # @return [String] a uuid/buid format unique string for the model

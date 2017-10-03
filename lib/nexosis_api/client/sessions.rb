@@ -149,11 +149,8 @@ module NexosisApi
       def get_session(session_id)
         session_url = "/sessions/#{session_id}"
         response = self.class.get(session_url, @options)
-        if response.success?
-          NexosisApi::Session.new(response.parsed_response)
-        else
-          raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
-        end
+        return NexosisApi::Session.new(response.parsed_response) if response.success?
+        raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
       end
 
       def create_model(data_source_name, target_column, columns = {})
@@ -175,9 +172,11 @@ module NexosisApi
       end
 
       private
+
+      # @private
       def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = 'forecast', result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
         session_url = "/sessions/#{type}"
-        query = { 
+        query = {
           'targetColumn' => target_column.to_s,
           'startDate' => start_date.to_s,
           'endDate' => end_date.to_s,
@@ -185,18 +184,18 @@ module NexosisApi
           'resultInterval' => result_interval.to_s
         }
         query['dataSetName'] = dataset_name.to_s unless dataset_name.to_s.empty?
-        if(event_name.nil? == false)
+        if (event_name.nil? == false)
           query['eventName'] = event_name
         end
         body = ''
-        if(column_metadata.nil? == false)
+        if (column_metadata.nil? == false)
           column_json = Column.to_json(column_metadata)
           body = {
             'dataSetName' => dataset_name,
             'columns' => column_json
           }
         end
-        response = self.class.post(session_url, :headers => @headers, :query => query, :body => body.to_json)
+        response = self.class.post(session_url, headers: @headers, query: query, body: body.to_json)
         if (response.success?)
           session_hash = { 'session' => response.parsed_response }.merge(response.headers)
           NexosisApi::SessionResponse.new(session_hash)

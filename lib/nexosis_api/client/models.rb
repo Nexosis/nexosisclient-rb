@@ -72,7 +72,7 @@ module NexosisApi
         raise ArgumentError, 'Deleting a model requires that model_id be specified and it is currently empty.' if model_id.empty?
         delete_url = "/models/#{model_id}"
         response = self.class.delete(delete_url, @options)
-        unless (ressponse.success?)
+        unless (response.success?)
           raise HttpException.new("There was a problem deleting your model: #{response.code}.",
                                   "Could not delete #{model_id}",
                                   response)
