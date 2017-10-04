@@ -18,6 +18,8 @@ module NexosisApi
           links = []
           v.each { |l| links << NexosisApi::Link.new(l) }
           instance_variable_set("@#{k}", links) unless v.nil?
+        elsif k == 'dataSetName'
+          @datasource_name = v
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
@@ -37,9 +39,20 @@ module NexosisApi
     # @note The import will be performed in a FIFO queue. Check back on status before attempting to start a session using the dataset.
     attr_accessor :status
 
+    # Date and status of each status this session has entered
+    # @return [Hash]
+    # @since 1.3.0
+    attr_accessor :statusHistory
+
     # echo back the dataset name provided
     # @return [String]
+    # @deprecated use datasource_name instead
     attr_accessor :dataSetName
+
+    # echo back the name of the data source uploaded
+    # @return [String]
+    # @since 1.3.0
+    attr_accessor :datasource_name
 
     # The S3 parameters used to import a dataset
     # @return [Hash]
