@@ -153,10 +153,10 @@ module NexosisApi
         raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
       end
 
-      def create_model(data_source_name, target_column, columns = {})
+      def create_model(datasource_name, target_column, columns = {})
         model_url = '/sessions/model'
         body = {
-          dataSourceName: data_source_name,
+          dataSourceName: datasource_name,
           targetColumn: target_column,
           predictionDomain: 'regression',
           isEstimate: false

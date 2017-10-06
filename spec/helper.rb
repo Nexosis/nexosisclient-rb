@@ -10,7 +10,7 @@ RSpec.configure do |config|
   config.before(:all) do
     begin
       data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
-      nts_data = JSON.load(File.open('spec/fixtures/housedata.json'))
+      nts_data = JSON.load(File.open('spec/fixtures/dummydata.json'))
       test_client.create_dataset_csv('TestRuby', data)
       test_client.create_dataset_json('TestRuby_NTS', nts_data)
     rescue Exception => eApi

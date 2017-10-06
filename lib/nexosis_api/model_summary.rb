@@ -10,7 +10,7 @@ module NexosisApi
         elsif (k == 'predictionDomain')
           @prediction_domain = v
         elsif (k == 'dataSourceName')
-          @data_source_name = v
+          @datasource_name = v
         elsif (k == 'createdDate')
           @created_date = DateTime.parse(v) unless v.nil?
         elsif (k == 'algorithm')
@@ -25,6 +25,8 @@ module NexosisApi
                       .map do |col_key, col_val|
                         NexosisApi::Metric.new(name: col_key, value: col_val)
                       end
+        elsif (k == 'sessionId')
+          @session_id = v
         end
       end
     end
@@ -33,13 +35,17 @@ module NexosisApi
     # @return [String]
     attr_accessor :model_id
 
+    # Unique id of the session used to create this model instance
+    # @return [String]
+    attr_accessor :session_id
+
     # The type of prediction performed
     # @return [String]
     attr_reader :prediction_domain
 
     # The data source used to create this model
     # @return [String]
-    attr_accessor :data_source_name
+    attr_accessor :datasource_name
 
     # The date on which this model was created.
     # @return [DateTime]

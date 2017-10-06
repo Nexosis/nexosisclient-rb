@@ -50,7 +50,7 @@ module NexosisApi
     
     # the dataset used in this session
     # @return [String]
-    # @deprecated - Use the @data_source_name property instead
+    # @deprecated - Use the @datasource_name property instead
     attr_accessor :dataSetName
 
     # The column in the dataset for which this session ran predictions
@@ -93,9 +93,10 @@ module NexosisApi
 
     # The id of the model created by this session if any
     # @return [String] a uuid/buid format unique string for the model
+    # @since 1.3.0
     # @note This is always empty in time-series sessions (forecast/impact)
     # The model id returned here should be used in all future calls
     # to model endpoints - primarily the /models/{modelId}/predict endpoint.
-    attr_reader :model_id
+    attr_accessor :model_id
   end
 end

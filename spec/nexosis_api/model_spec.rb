@@ -36,6 +36,22 @@ describe NexosisApi::SessionResult do
       end
     end
   end
+
+  describe '#initialize' do
+    context 'given a hash with metrics' do
+      it 'fills out metrics as hash' do
+        session_hash = { 'metrics': {
+          'meanAbsoluteError': '15990.948459514153',
+          'meanAbsolutePercentError': '0.092227013821557124',
+          'rootMeanSquareError': '29872.102288912662'
+        }, 'data': []}
+        
+        target = NexosisApi::SessionResult.new(session_hash)
+        expect(target.metrics).to_not be_nil
+        expect(target.metrics[0].name).to eql('meanAbsoluteError')
+      end
+    end
+  end
 end
 
 describe NexosisApi::Join do
@@ -107,7 +123,7 @@ describe NexosisApi::ModelSummary do
           }
         }
         target = NexosisApi::ModelSummary.new(values)
-        expect(target.data_source_name).to eql('test_ds')
+        expect(target.datasource_name).to eql('test_ds')
         expect(target.algorithm.name).to eql('test')
         expect(target.column_metadata[0].type).to eql(NexosisApi::ColumnType::NUMERIC)
       end

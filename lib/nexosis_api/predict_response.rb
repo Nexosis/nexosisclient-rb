@@ -15,7 +15,7 @@ module NexosisApi
     # The feature data along with predicted target value
     # @return [Array of Hash] each row of data as a hash in an array of values
     # @note The result data includes an echo of the data sent to the predict request
-    # along with the target column containing the values.
+    # along with the target column containing the values predicted.
     # [
     #   {
     #     "feature1": 23.33,

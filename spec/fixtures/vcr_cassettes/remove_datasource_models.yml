@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/models?createdAfterDate=2017-01-01&createdBeforeDate=2017-01-10&dataSourceName=TestDataSource
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 05 Oct 2017 13:30:05 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:30:06 GMT
+recorded_with: VCR 3.0.3
