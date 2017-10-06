@@ -220,17 +220,17 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315111.87 USD
+      - 1315087.02 USD
       Date:
-      - Fri, 18 Aug 2017 02:58:19 GMT
+      - Fri, 06 Oct 2017 17:51:36 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"TestRuby_JsonMetadata","columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}}}'
+      string: '{"dataSetName":"TestRuby_JsonMetadata","isTimeSeries":true,"columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}}}'
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 02:58:19 GMT
+  recorded_at: Fri, 06 Oct 2017 17:51:36 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_JsonMetadata?cascade=forecast
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_JsonMetadata?cascade=model
     body:
       encoding: US-ASCII
       string: ''
@@ -239,6 +239,8 @@ http_interactions:
       - api-key
       Content-Type:
       - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
   response:
     status:
       code: 204
@@ -247,14 +249,14 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1315111.87 USD
+      - 1315087.02 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 18 Aug 2017 02:58:19 GMT
+      - Fri, 06 Oct 2017 17:51:37 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 02:58:20 GMT
+  recorded_at: Fri, 06 Oct 2017 17:51:36 GMT
 recorded_with: VCR 3.0.3

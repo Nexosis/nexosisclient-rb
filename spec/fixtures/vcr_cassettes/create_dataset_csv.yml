@@ -192,17 +192,17 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315108.25 USD
+      - 1315087.01 USD
       Date:
-      - Fri, 25 Aug 2017 12:59:24 GMT
+      - Fri, 06 Oct 2017 17:51:37 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"TestRuby_CSV","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}}}'
+      string: '{"dataSetName":"TestRuby_CSV","isTimeSeries":true,"columns":{"sales":{"dataType":"numeric","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","imputation":"zeroes","aggregation":"sum"}}}'
     http_version: 
-  recorded_at: Fri, 25 Aug 2017 12:59:25 GMT
+  recorded_at: Fri, 06 Oct 2017 17:51:37 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_CSV?cascade=forecast
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_CSV?cascade=model
     body:
       encoding: US-ASCII
       string: ''
@@ -211,6 +211,8 @@ http_interactions:
       - api-key
       Content-Type:
       - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
   response:
     status:
       code: 204
@@ -219,14 +221,14 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1315108.25 USD
+      - 1315087.01 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 25 Aug 2017 12:59:24 GMT
+      - Fri, 06 Oct 2017 17:51:37 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 25 Aug 2017 12:59:25 GMT
+  recorded_at: Fri, 06 Oct 2017 17:51:37 GMT
 recorded_with: VCR 3.0.3

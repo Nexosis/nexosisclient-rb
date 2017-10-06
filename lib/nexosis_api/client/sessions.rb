@@ -45,21 +45,18 @@ module NexosisApi
       # Remove a session
       # @param session_id [String] required session identifier
       def remove_session(session_id)
-        if(session_id.to_s.empty?)
+        if (session_id.to_s.empty?)
           raise ArgumentError 'session_id cannot be empty or nil'
         end
         session_url = "/sessions/#{session_id}"
         response = self.class.delete(session_url, headers: @headers)
-        if(response.success?)
-          return
-        else
-          raise HttpException.new('Could not delete session with given id', "remove session with id #{session_id.to_s}",response)
-        end
+        return if response.success?
+        raise HttpException.new('Could not delete session with given id', "remove session with id #{session_id}", response)
       end
 
       # Remove sessions that have been run. All query options are optional and will be used to limit the sessions removed.
-      # @param query_options [Hash] optionally provide query parametes to limit the set of sessions removed. 
-      # @note query parameters hash members are type, dataset_name, event_name, start_date, and end_date. 
+      # @param query_options [Hash] optionally provide query parametes to limit the set of sessions removed.
+      # @note query parameters hash members are type, dataset_name, event_name, start_date, and end_date.
       #    Start and end dates refer to the session requested date.
       #    Results are not removed but then can only be accessed by dataset name
       # @example Remove all sessions based on a dataset by name
@@ -67,25 +64,22 @@ module NexosisApi
       def remove_sessions(query_options = {})
         sessions_url = '/sessions'
         response = self.class.delete(sessions_url, :headers => @headers, :query => get_query_from_options(query_options))
-        if(response.success?)
-          return
-        else
-          raise HttpException.new('Could not remove sessions', "Remove sessions with query #{query_options.to_s}",response)
-        end
+        return if response.success?
+        raise HttpException.new('Could not remove sessions', "Remove sessions with query #{query_options.to_s}",response)
       end
 
       # Initiate a new forecast session based on a named dataset.
       #
       # @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-      # @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
+      # @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string.
       # @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
       # @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
       # @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-      # @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset 
+      # @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset
       # @return [NexosisApi::SessionResponse] providing information about the sesssion
       # @note The time interval selected must be greater than or equal to the finest granularity of the data provided.
       #    For instance if your data includes many recoreds per hour, then you could request hour, day, or any other result interval.
-      #    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results. 
+      #    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results.
       def create_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
         create_session(dataset_name, start_date, end_date, target_column, false, nil, 'forecast', result_interval, column_metadata)
       end
@@ -136,18 +130,13 @@ module NexosisApi
       # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
       def get_session_results(session_id, as_csv = false)
         session_result_url = "/sessions/#{session_id}/results"
-        if as_csv
-          @headers["Accept"] = 'text/csv'
-        end
+        @headers['Accept'] = 'text/csv' if as_csv
         response = self.class.get(session_result_url, @options)
         @headers.delete('Accept')
 
-				if(response.success?)
-          if(as_csv)
-            response.body
-          else
-            NexosisApi::SessionResult.new(response.parsed_response)
-          end
+        if (response.success?)
+          return response.body if as_csv
+          NexosisApi::SessionResult.new(response.parsed_response)
         else
           raise HttpException.new("There was a problem getting the session: #{response.code}.", "get results for session #{session_id}" ,response)
         end
@@ -160,17 +149,34 @@ module NexosisApi
       def get_session(session_id)
         session_url = "/sessions/#{session_id}"
         response = self.class.get(session_url, @options)
-        if(response.success?)
-          NexosisApi::Session.new(response.parsed_response)
+        return NexosisApi::Session.new(response.parsed_response) if response.success?
+        raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
+      end
+
+      def create_model(datasource_name, target_column, columns = {})
+        model_url = '/sessions/model'
+        body = {
+          dataSourceName: datasource_name,
+          targetColumn: target_column,
+          predictionDomain: 'regression',
+          isEstimate: false
+        }
+        body.store(columns: columns) unless columns.empty?
+        response = self.class.post(model_url, headers: @headers, body: body.to_json)
+        if response.success?
+          session_hash = { 'session' => response.parsed_response }.merge(response.headers)
+          NexosisApi::SessionResponse.new(session_hash)
         else
-          raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
+          raise HttpException.new("There was a problem creating the model session: #{response.code}.", 'creating model session' ,response)
         end
-			end
+      end
 
       private
-      def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = "forecast", result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
+
+      # @private
+      def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = 'forecast', result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
         session_url = "/sessions/#{type}"
-        query = { 
+        query = {
           'targetColumn' => target_column.to_s,
           'startDate' => start_date.to_s,
           'endDate' => end_date.to_s,
@@ -178,20 +184,20 @@ module NexosisApi
           'resultInterval' => result_interval.to_s
         }
         query['dataSetName'] = dataset_name.to_s unless dataset_name.to_s.empty?
-        if(event_name.nil? == false)
+        if (event_name.nil? == false)
           query['eventName'] = event_name
         end
         body = ''
-        if(column_metadata.nil? == false)
+        if (column_metadata.nil? == false)
           column_json = Column.to_json(column_metadata)
           body = {
             'dataSetName' => dataset_name,
             'columns' => column_json
           }
         end
-        response = self.class.post(session_url, :headers => @headers, :query => query, :body => body.to_json)
-        if(response.success?)
-          session_hash = {'session' => response.parsed_response}.merge(response.headers)
+        response = self.class.post(session_url, headers: @headers, query: query, body: body.to_json)
+        if (response.success?)
+          session_hash = { 'session' => response.parsed_response }.merge(response.headers)
           NexosisApi::SessionResponse.new(session_hash)
         else
           raise HttpException.new("Unable to create new #{type} session", "Create session for dataset #{dataset_name}",response)

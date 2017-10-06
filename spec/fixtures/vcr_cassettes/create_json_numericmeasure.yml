@@ -246,17 +246,17 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.01 USD
       Nexosis-Account-Balance:
-      - 1315111.81 USD
+      - 1315086.98 USD
       Date:
-      - Fri, 18 Aug 2017 02:58:30 GMT
+      - Fri, 06 Oct 2017 17:51:40 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"TestRuby_MeasureDatatype","columns":{"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"co2PpmMean":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"globalTemp":{"dataType":"numericMeasure","role":"target","imputation":"mean","aggregation":"mean"},"sunspotsSum":{"dataType":"numericMeasure","role":"none","imputation":"mean","aggregation":"mean"}}}'
+      string: '{"dataSetName":"TestRuby_MeasureDatatype","isTimeSeries":true,"columns":{"timeStamp":{"dataType":"date","role":"timestamp"},"co2PpmMean":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"globalTemp":{"dataType":"numericMeasure","role":"target","imputation":"mean","aggregation":"mean"},"sunspotsSum":{"dataType":"numericMeasure","role":"none","imputation":"mean","aggregation":"mean"}}}'
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 02:58:31 GMT
+  recorded_at: Fri, 06 Oct 2017 17:51:40 GMT
 - request:
     method: delete
-    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_MeasureDatatype?cascade=forecast
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_MeasureDatatype?cascade=model
     body:
       encoding: US-ASCII
       string: ''
@@ -265,6 +265,8 @@ http_interactions:
       - api-key
       Content-Type:
       - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
   response:
     status:
       code: 204
@@ -273,14 +275,14 @@ http_interactions:
       Content-Length:
       - '0'
       Nexosis-Account-Balance:
-      - 1315111.81 USD
+      - 1315086.98 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 18 Aug 2017 02:58:30 GMT
+      - Fri, 06 Oct 2017 17:51:40 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 02:58:31 GMT
+  recorded_at: Fri, 06 Oct 2017 17:51:40 GMT
 recorded_with: VCR 3.0.3

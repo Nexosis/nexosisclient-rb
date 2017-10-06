@@ -1,0 +1,212 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/v1/sessions/model
+    body:
+      encoding: UTF-8
+      string: '{"dataSourceName":"TestRuby_NTS","targetColumn":"target","predictionDomain":"regression","isEstimate":false}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Date:
+      - Thu, 05 Oct 2017 13:29:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015eecb9-f8fa-4c6f-a94c-e5725678c8ae","type":"model","status":"requested","predictionDomain":"regression","requestedDate":"2017-10-05T13:29:24.473938+00:00","statusHistory":[{"date":"2017-10-05T13:29:24.473938+00:00","status":"requested"}],"extraParameters":{},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:29:24 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Session-Status:
+      - Started
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 05 Oct 2017 13:29:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015eecb9-f8fa-4c6f-a94c-e5725678c8ae","type":"model","status":"started","predictionDomain":"regression","requestedDate":"2017-10-05T13:29:24.473938+00:00","statusHistory":[{"date":"2017-10-05T13:29:24.473938+00:00","status":"requested"},{"date":"2017-10-05T13:29:24.2257144+00:00","status":"started"}],"extraParameters":{},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:29:24 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Session-Status:
+      - Started
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 05 Oct 2017 13:29:34 GMT
+    body:
+      encoding: UTF-8
+      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015eecb9-f8fa-4c6f-a94c-e5725678c8ae","type":"model","status":"started","predictionDomain":"regression","requestedDate":"2017-10-05T13:29:24.473938+00:00","statusHistory":[{"date":"2017-10-05T13:29:24.473938+00:00","status":"requested"},{"date":"2017-10-05T13:29:24.2257144+00:00","status":"started"}],"extraParameters":{},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:29:35 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Session-Status:
+      - Completed
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 05 Oct 2017 13:30:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015eecb9-f8fa-4c6f-a94c-e5725678c8ae","type":"model","status":"completed","predictionDomain":"regression","modelId":"669c9fa3-e01c-4215-98be-f8e5a315a73c","requestedDate":"2017-10-05T13:29:24.473938+00:00","statusHistory":[{"date":"2017-10-05T13:29:24.473938+00:00","status":"requested"},{"date":"2017-10-05T13:29:24.2257144+00:00","status":"started"},{"date":"2017-10-05T13:29:55.4759157+00:00","status":"completed"}],"extraParameters":{},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015eecb9-f8fa-4c6f-a94c-e5725678c8ae/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/669c9fa3-e01c-4215-98be-f8e5a315a73c"}]}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:30:05 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/models/669c9fa3-e01c-4215-98be-f8e5a315a73c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 05 Oct 2017 13:30:05 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:30:06 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/models/669c9fa3-e01c-4215-98be-f8e5a315a73c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Expires:
+      - "-1"
+      Nexosis-Account-Balance:
+      - 1315087.87 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 05 Oct 2017 13:30:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"statusCode":404,"message":"Item of type model with identifier 669c9fa3-e01c-4215-98be-f8e5a315a73c
+        was not found","errorType":"NotFound","errorDetails":{"itemType":"model","itemId":"669c9fa3-e01c-4215-98be-f8e5a315a73c","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 13:30:06 GMT
+recorded_with: VCR 3.0.3

@@ -12,5 +12,9 @@ module NexosisApi
 
     # A feature to be included in analysis
     FEATURE = :feature
+
+    # This column will be used to uniquely identify rows during
+    # update and delete operations, but will not be used as a feature.
+    KEY = :key
   end
 end

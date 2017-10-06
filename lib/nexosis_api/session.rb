@@ -3,23 +3,25 @@ module NexosisApi
   class Session
     def initialize(sessionHash)
       sessionHash.each do |k,v|
-        if(k == 'links')
+        if (k == 'links')
           links = Array.new
-          v.each do |l| links << NexosisApi::Link.new(l) end
+          v.each { |l| links << NexosisApi::Link.new(l) }
           instance_variable_set("@#{k}", links) unless v.nil?
-        elsif(k == 'isEstimate')
+        elsif (k == 'isEstimate')
           instance_variable_set('@is_estimate', v) unless v.nil?
-        elsif(k == 'columns')
-          columns = []
-          next if v.nil?
-          v.keys.each do |col_key|
-            columns << NexosisApi::Column.new(col_key, v[col_key])
-          end
-          @column_metadata = columns
-        elsif(k == 'resultInterval')
+        elsif (k == 'columns')
+          @column_metadata = v.reject { |_key, value| value.nil? }
+                              .map do |col_key, col_val|
+                                NexosisApi::Column.new(col_key, v[col_key])
+                              end
+        elsif (k == 'resultInterval')
           @result_interval = v
         elsif (k == 'dataSourceName')
           @datasource_name = v
+        elsif (k == 'modelId')
+          @model_id = v
+        elsif (k == 'requestedDate')
+          @requested_date = DateTime.parse(v)
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
@@ -48,7 +50,7 @@ module NexosisApi
     
     # the dataset used in this session
     # @return [String]
-    # @deprecated - Use the @data_source_name property instead
+    # @deprecated - Use the @datasource_name property instead
     attr_accessor :dataSetName
 
     # The column in the dataset for which this session ran predictions
@@ -84,5 +86,17 @@ module NexosisApi
     # @return [String] - the dataset or view name
     # @since 1.2.0
     attr_accessor :datasource_name
+
+    # The date this session was orginally submitted
+    # @since 1.3.0
+    attr_accessor :requested_date
+
+    # The id of the model created by this session if any
+    # @return [String] a uuid/buid format unique string for the model
+    # @since 1.3.0
+    # @note This is always empty in time-series sessions (forecast/impact)
+    # The model id returned here should be used in all future calls
+    # to model endpoints - primarily the /models/{modelId}/predict endpoint.
+    attr_accessor :model_id
   end
 end

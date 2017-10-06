@@ -10,16 +10,12 @@ module NexosisApi
       #
       # @return [Array of NexosisApi::ImportsResponse]
       def list_imports
-        imports_url = "/imports"
-        response = self.class.get(imports_url, :headers => @headers)
-        if(response.success?)
-          items = []
-          response.parsed_response["items"].each do |i|
-            items << NexosisApi::ImportsResponse.new(i)
-          end
-          items
+        imports_url = '/imports'
+        response = self.class.get(imports_url, headers: @headers)
+        if (response.success?)
+          response.parsed_response['items'].map { |i| NexosisApi::ImportsResponse.new(i) }
         else
-          raise HttpException.new("There was a problem getting the imports: #{response.code}.", "uploading dataset from s3 #{dataset_name}" ,response)
+          raise HttpException.new("There was a problem getting the imports: #{response.code}.", "uploading dataset from s3 #{dataset_name}", response)
         end
       end
 
@@ -32,21 +28,21 @@ module NexosisApi
       # @param column_metadata [Array of NexosisApi::Column] description of each column in target dataset. Optional.
       # @return [NexosisApi::ImportsResponse]
       # @see http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for information on region names
-      def import_from_s3(dataset_name, bucket_name, path, region = "us-east-1", column_metadata = [])
-        raise ArgumentError, "dataset_name was not provided and is not optional " unless dataset_name.to_s.empty? == false
-        raise ArgumentError, "bucket_name was not provided and is not optional " unless bucket_name.to_s.empty? == false
-        raise ArgumentError, "path was not provided and is not optional " unless path.to_s.empty? == false
-                s3_import_url = "/imports/s3"
+      def import_from_s3(dataset_name, bucket_name, path, region = 'us-east-1', column_metadata = [])
+        raise ArgumentError, 'dataset_name was not provided and is not optional ' unless dataset_name.to_s.empty? == false
+        raise ArgumentError, 'bucket_name was not provided and is not optional ' unless bucket_name.to_s.empty? == false
+        raise ArgumentError, 'path was not provided and is not optional ' unless path.to_s.empty? == false
+        s3_import_url = '/imports/s3'
         column_json = Column.to_json(column_metadata)
         body = {
-          "dataSetName" => dataset_name,
-          "bucket" => bucket_name,
-          "path" => path,
-          "region" => region,
-          "columns" => column_json
+          'dataSetName' => dataset_name,
+          'bucket' => bucket_name,
+          'path' => path,
+          'region' => region,
+          'columns' => column_json
         }
-        response = self.class.post(s3_import_url, :headers => @headers, :body => body.to_json)
-        if(response.success?)
+        response = self.class.post(s3_import_url, headers: @headers, body: body.to_json)
+        if (response.success?)
           NexosisApi::ImportsResponse.new(response.parsed_response)
         else
           raise HttpException.new("There was a problem importing from s3: #{response.code}.", "uploading dataset from s3 #{dataset_name}" ,response)
@@ -60,10 +56,10 @@ module NexosisApi
       # @example get S3 import
       #    NexosisApi.client.retrieve_import('740dca2a-b488-4322-887e-fa473b1caa54')
       def retrieve_import(import_id)
-        raise ArgumentError, "import_id was not provided and is not optional " unless import_id.to_s.empty? == false
+        raise ArgumentError, 'import_id was not provided and is not optional ' unless import_id.to_s.empty? == false
         imports_url = "/imports/#{import_id}"
-        response = self.class.get(imports_url, :headers => @headers)
-        if(response.success?)
+        response = self.class.get(imports_url, headers: @headers)
+        if (response.success?)
           NexosisApi::ImportsResponse.new(response.parsed_response)
         else
           raise HttpException.new("There was a problem getting the import #{response.code}.", "requesting an import #{import_id}" ,response)

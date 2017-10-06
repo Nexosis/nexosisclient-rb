@@ -16,6 +16,8 @@ require 'nexosis_api/imports_response'
 require 'nexosis_api/join'
 require 'nexosis_api/link'
 require 'nexosis_api/metric'
+require 'nexosis_api/model_summary'
+require 'nexosis_api/predict_response'
 require 'nexosis_api/session_response'
 require 'nexosis_api/session_result'
 require 'nexosis_api/session'
@@ -26,6 +28,7 @@ require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
 require 'nexosis_api/client/imports'
 require 'nexosis_api/client/views'
+require 'nexosis_api/client/models'
 
 module NexosisApi
   # Primary entry point to working with Nexosis API
@@ -36,13 +39,15 @@ module NexosisApi
     include Client::Datasets
     include Client::Imports
     include Client::Views
+    include Client::Models
 
     def initialize(options = {})
       raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
       @api_key = options[:api_key]
       self.class.base_uri options[:base_uri] unless options[:base_uri].nil?
-      @headers = {'api-key' => @api_key, 'Content-Type' => 'application/json', 'User-Agent' => 'Nexosis-Ruby-API-Client/1.2'}
-      @options = {headers: @headers, format: :json}
+      @headers = { 'api-key' => @api_key, 'Content-Type' => 'application/json',
+                   'User-Agent' => 'Nexosis-Ruby-API-Client/1.2' }
+      @options = { headers: @headers, format: :json }
     end
 
     # Gets the current account balance.

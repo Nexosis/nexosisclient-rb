@@ -132,8 +132,8 @@ describe NexosisApi::Client::Datasets do
   describe '#remove_dataset', :vcr => {:cassette_name => 'remove_dataset_cascade'} do
     context 'given an existing saved dataset with completed sessions and cascade true' do 
       it 'removes the dataset and the sessions' do
-        test_client.create_dataset_csv('ToRemove', 'timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31')
-        session = test_client.create_forecast_session('ToRemove','1-3-2017','1-4-2017','foo')
+        test_client.create_dataset_csv('ToRemove', "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
+        session = test_client.create_forecast_session('ToRemove', '1-3-2017', '1-4-2017', 'foo')
         loop do
           status_check = test_client.get_session session.sessionId
           break if (status_check.status == 'completed' || status_check.status == 'failed')
