@@ -14,6 +14,8 @@ module NexosisApi
         elsif k == 'joins'
           next if v.nil?
           @joins = v.reject(&:nil?).map { |join| NexosisApi::Join.new(join) }
+        elsif k == 'isTimeSeries'
+          @is_timeseries = v
         end
       end
     end
@@ -33,6 +35,14 @@ module NexosisApi
     # The join configuration for this view
     # @return [Array of NexosisApi::Join]
     attr_accessor :joins
+
+    # Is this view based on time series data?
+    # @since 1.3.0
+    attr_accessor :is_timeseries
+    
+    # Is this view based on time series data?
+    # @since 1.3.0
+    alias_method :timeseries?, :is_timeseries
 
     def to_json
       hash = {}
