@@ -253,7 +253,7 @@ describe NexosisApi::Client::Sessions do
   describe '#create_model', :vcr => {:cassette_name => 'create_model_session'} do
     context 'given a non-timeseries datasource' do
       it 'starts a session to create a model' do
-        actual = test_client.create_model('TestRuby_NTS', 'SalePrice')
+        actual = test_client.create_model('TestRuby_NTS', 'target')
         expect(actual).to be_a(NexosisApi::SessionResponse)
       end
     end
