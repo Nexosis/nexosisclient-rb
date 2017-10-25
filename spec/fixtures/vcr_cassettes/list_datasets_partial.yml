@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/data?partialName=Ruby
+    uri: https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=Ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -11,6 +11,8 @@ http_interactions:
       - api-key
       Content-Type:
       - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
   response:
     status:
       code: 200
@@ -21,14 +23,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1315111.86 USD
+      - 1331604.15 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 18 Aug 2017 02:58:21 GMT
+      - Wed, 25 Oct 2017 20:36:37 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[{"dataSetName":"TestRuby","columns":{"sales":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":null,"imputation":"zeroes","aggregation":"sum"}}},{"dataSetName":"TestRuby_Json","columns":{"sales":{"dataType":"numeric","role":"none","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null},"transactions":{"dataType":"numeric","role":"none","imputation":"zeroes","aggregation":"sum"}}},{"dataSetName":"ToRemoveRuby","columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp","imputation":null,"aggregation":null}}}]}'
+      string: '{"items":[{"dataSetName":"TestRuby","isTimeSeries":true,"columns":{"sales":{"dataType":"numeric","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","imputation":"zeroes","aggregation":"sum"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby"}]},{"dataSetName":"TestRuby_NTS","isTimeSeries":false,"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}],"pageNumber":0,"totalPages":1,"pageSize":50,"totalCount":2,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=Ruby"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=Ruby&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=Ruby&page=0"}]}'
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 02:58:21 GMT
+  recorded_at: Wed, 25 Oct 2017 20:36:42 GMT
 recorded_with: VCR 3.0.3

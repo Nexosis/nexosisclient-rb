@@ -30,15 +30,13 @@ module NexosisApi
           'pageSize' => pageSize
         }
         response = self.class.get(sessions_url, :headers => @headers, :query => query)
-        if(response.success?)
-          all_responses = []
-          response.parsed_response['items'].each do |session_hash|
+        if (response.success?)
+          response.parsed_response['items'].map do |session_hash|
             response_hash = { 'session' => session_hash }.merge(response.headers)
-            all_responses << NexosisApi::SessionResponse.new(response_hash)
+            NexosisApi::SessionResponse.new(response_hash)
           end
-          all_responses
         else
-          raise HttpException.new('Could not retrieve sessions',"Get all sessions with query #{query_options.to_s}",response)
+          raise HttpException.new('Could not retrieve sessions', "Get all sessions with query #{query_options.to_s}",response)
         end
       end
 

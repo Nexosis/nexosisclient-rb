@@ -8,12 +8,23 @@ module NexosisApi
 
       # List all existing import requests
       #
+      # @param dataset_name [String] optional name filter of dataset which was imported
+      # @param page [int] page number for items in list
+      # @param page_size [int] number of items in each page
       # @return [Array of NexosisApi::ImportsResponse]
-      def list_imports
+      # @since 1.4 added paging parameters
+      def list_imports(dataset_name = '', page = 0, page_size = 50)
         imports_url = '/imports'
-        response = self.class.get(imports_url, headers: @headers)
+        query = {
+          dataSetName: dataset_name,
+          page: page,
+          pageSize: page_size
+        }
+        response = self.class.get(imports_url, headers: @headers, query: query)
         if (response.success?)
-          response.parsed_response['items'].map { |i| NexosisApi::ImportsResponse.new(i) }
+          NexosisApi::PagedArray.new(response.parsed_response,
+                                     response.parsed_response['items']
+                                     .map { |i| NexosisApi::ImportsResponse.new(i) })
         else
           raise HttpException.new("There was a problem getting the imports: #{response.code}.", "uploading dataset from s3 #{dataset_name}", response)
         end
