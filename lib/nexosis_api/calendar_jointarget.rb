@@ -23,6 +23,7 @@ module NexosisApi
     # @see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     attr_accessor :timezone
 
+    # custom hash to match with api requests
     def to_hash
       hash = { 'calendar' => {} }
       hash['calendar'].store 'url', url unless url.nil?

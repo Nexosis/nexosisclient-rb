@@ -27,6 +27,7 @@ module NexosisApi
     # @return [String]
     attr_accessor :alias
 
+    # builds a custom hash which will match api requests
     def to_hash
       hash = { column_name => {} }
       hash[column_name]['join_interval'] = join_interval.to_s unless join_interval.nil?

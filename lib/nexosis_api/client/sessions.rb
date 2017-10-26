@@ -150,6 +150,12 @@ module NexosisApi
         raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
       end
 
+      # Create a new model based on a data source
+      #
+      # @param datasource_name [String] The datasource from which to build the model
+      # @param target_column [String] The column which will be predicted when using the model
+      # @param columns [Hash] column metadata to modify roles, imputation, or target.
+      # @since 1.3.0
       def create_model(datasource_name, target_column, columns = {})
         model_url = '/sessions/model'
         body = {

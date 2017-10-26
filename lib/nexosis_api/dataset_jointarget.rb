@@ -11,6 +11,7 @@ module NexosisApi
     # @return [String] name of the dataset provided for this join
     attr_accessor :dataset_name
     
+    # provides a custom hash to match api requests
     def to_hash
       { 'dataSet' => { 'name' => dataset_name } }
     end
