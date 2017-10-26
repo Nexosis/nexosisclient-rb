@@ -4,20 +4,12 @@ module NexosisApi
   class PagedArray < Array
     def initialize(paged_response, item_array = [])
       self[0..item_array.length] = item_array
-      paged_response.each do |k, v|
-        key = k.to_s
-        if key == 'pageNumber'
-          @page_number = v
-        elsif key == 'totalPages'
-          @total_pages = v
-        elsif key == 'pageSize'
-          @page_size = v
-        elsif key == 'totalCount'
-          @item_total = v
-        elsif key == 'links'
-          @links = v.map { |l| NexosisApi::Link.new(l) }
-        end
-      end
+      var_map = { 'pageNumber' => :@page_number,
+                  'totalPages' => :@total_pages,
+                  'pageSize' => :@page_size,
+                  'totalCount' => :@item_total }
+      paged_response.each { |k, v| instance_variable_set(var_map[k.to_s], v) unless var_map[k.to_s].nil? }
+      @links = paged_response['links'].map { |l| NexosisApi::Link.new(l) } unless paged_response['links'].nil?
     end
 
     # The current page number represented by this collection

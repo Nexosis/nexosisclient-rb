@@ -1,8 +1,8 @@
 module NexosisApi
   # Class for parsing the results of a session based request
   class Session
-    def initialize(sessionHash)
-      sessionHash.each do |k,v|
+    def initialize(session_hash)
+      session_hash.each do |k, v|
         if (k == 'links')
           links = Array.new
           v.each { |l| links << NexosisApi::Link.new(l) }
@@ -96,7 +96,12 @@ module NexosisApi
     # @since 1.3.0
     # @note This is always empty in time-series sessions (forecast/impact)
     # The model id returned here should be used in all future calls
-    # to model endpoints - primarily the /models/{modelId}/predict endpoint.
+    # to model endpoints - primarily the /models/{model_id}/predict endpoint.
     attr_accessor :model_id
+
+    # 
+    # @return [Array]
+    # @since 1.4.0
+    attr_accessor :prediction_intervals
   end
 end

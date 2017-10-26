@@ -164,7 +164,7 @@ describe NexosisApi::PagedArray do
                           totalPages: 2,
                           pageSize: 10,
                           totalCount: 20,
-                          links: [{ rel: 'self', href: 'http://example.com' }] }
+                          'links' => [{ rel: 'self', href: 'http://example.com' }] }
         actual = NexosisApi::PagedArray.new(response_hash, test_arr)
         expect(actual).to be_a(Array)
         expect(actual.length).to eql(3)
