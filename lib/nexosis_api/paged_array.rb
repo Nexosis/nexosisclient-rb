@@ -1,5 +1,6 @@
 module NexosisApi
   # Generic list base class for list responses
+  # @since 1.4
   class PagedArray < Array
     def initialize(paged_response, item_array = [])
       self[0..item_array.length] = item_array

@@ -11,7 +11,7 @@ module NexosisApi
       # @param dataset_name [String] optional name filter of dataset which was imported
       # @param page [int] page number for items in list
       # @param page_size [int] number of items in each page
-      # @return [Array of NexosisApi::ImportsResponse]
+      # @return [NexosisApi::PagedArray of NexosisApi::ImportsResponse]
       # @since 1.4 added paging parameters
       def list_imports(dataset_name = '', page = 0, page_size = 50)
         imports_url = '/imports'

@@ -31,7 +31,7 @@ module NexosisApi
       # @param partial_name [String] if provided, all datasets returned will contain this string
       # @param page [int] page number for items in list
       # @param page_size [int] number of items in each page
-      # @return [Array of NexosisApi::DatasetSummary] array of datasets found
+      # @return [NexosisApi::PagedArray of NexosisApi::DatasetSummary] array of datasets found
       # @since 1.4 - added paging parameters
       def list_datasets(partial_name = '', page = 0, page_size = 50)
         list_dataset_url = '/data'
