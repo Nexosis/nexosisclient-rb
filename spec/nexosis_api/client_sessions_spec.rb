@@ -258,4 +258,27 @@ describe NexosisApi::Client::Sessions do
       end
     end
   end
+
+  describe '#get_session', :vcr => {:cassette_name => 'session_predict_interval'} do
+    context 'given a completed session' do
+      it 'returns the available intervals' do
+        available = test_client.list_sessions
+        actual = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
+        expect(actual.prediction_intervals).to be_a(Array)
+        expect(actual.prediction_intervals).to_not be_empty
+      end
+    end
+  end
+
+  #TODO: open back up when resolved.
+  # describe '#get_session_results' do
+  #   context 'given an available prediction interval' do
+  #     it 'sets the query parameter' do
+  #       available = test_client.list_sessions({}, 0, 10)
+  #       completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
+  #       actual = test_client.get_session_results completed.sessionId, false, '.5'
+  #       expect(actual).to_not be_nil
+  #     end
+  #   end
+  # end
 end
