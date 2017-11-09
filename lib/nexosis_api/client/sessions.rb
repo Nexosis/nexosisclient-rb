@@ -13,14 +13,14 @@ module NexosisApi
       # @param query_options [Hash] optionally provide query parameters to limit the search of sessions. 
       # @param page [Integer] optionally provide a page number for paging. Defaults to 0 (first page).
       # @param pageSize [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
-      # @return [Array of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
+      # @return [NexosisApi::PagedArray of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
       # @note query parameters hash members are dataset_name, event_name, requested_before_date, and requested_after_date. 
       #    After and before dates refer to the session requested date.
       # @example query for just one dataset
       #   sessions = NexosisApi.client.list_sessions :dataset_name => 'MyDataset'
       def list_sessions(query_options = {}, page = 0, pageSize = 50)
         sessions_url = '/sessions'
-        query = { 
+        query = {
           'dataSetName' => query_options[:dataset_name],
           'eventName' => query_options[:event_name],
           'requestedAfterDate' => query_options[:requested_after_date],
@@ -29,17 +29,14 @@ module NexosisApi
           'page' => page,
           'pageSize' => pageSize
         }
-        response = self.class.get(sessions_url, :headers => @headers, :query => query)
-        if(response.success?)
-          all_responses = []
-          response.parsed_response['items'].each do |session_hash|
-            response_hash = { 'session' => session_hash }.merge(response.headers)
-            all_responses << NexosisApi::SessionResponse.new(response_hash)
-          end
-          all_responses
-        else
-          raise HttpException.new('Could not retrieve sessions',"Get all sessions with query #{query_options.to_s}",response)
-        end
+        response = self.class.get(sessions_url, headers: @headers, query: query)
+        raise HttpException.new('Could not retrieve sessions',
+                                "Get all sessions with query #{query_options}",
+                                response) unless response.success?
+        NexosisApi::PagedArray.new(response.parsed_response, response.parsed_response['items'].map do |session_hash|
+          response_hash = { 'session' => session_hash }.merge(response.headers)
+          NexosisApi::SessionResponse.new(response_hash)
+        end)
       end
 
       # Remove a session

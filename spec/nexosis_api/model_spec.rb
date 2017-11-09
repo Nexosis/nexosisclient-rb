@@ -12,7 +12,6 @@ describe NexosisApi::Session do
   end
 end
 
-
 describe NexosisApi::SessionResponse do
   describe '#initialize' do
     context 'given a hash with session response values' do
@@ -150,6 +149,30 @@ describe NexosisApi::ModelSummary do
           )
           expect(dataset.timeseries?).to be true
         end
+      end
+    end
+  end
+end
+
+describe NexosisApi::PagedArray do
+  describe '#initialize' do
+    context 'given a list response hash' do
+      it 'fills the array and props' do
+        test_arr = [1, 2, 3]
+        response_hash = { items: [],
+                          pageNumber: 1,
+                          totalPages: 2,
+                          pageSize: 10,
+                          totalCount: 20,
+                          'links' => [{ rel: 'self', href: 'http://example.com' }] }
+        actual = NexosisApi::PagedArray.new(response_hash, test_arr)
+        expect(actual).to be_a(Array)
+        expect(actual.length).to eql(3)
+        expect(actual.page_number).to eql(1)
+        expect(actual.total_pages).to eql(2)
+        expect(actual.page_size).to eql(10)
+        expect(actual.item_total).to eql(20)
+        expect(actual.links[0]).to be_a(NexosisApi::Link)
       end
     end
   end

@@ -37,32 +37,32 @@ describe NexosisApi::Client::Datasets do
       end
     end
   end
-  
-  describe '#list_datasets',:vcr => {:cassette_name => 'list_datasets_all'} do 
+
+  describe '#list_datasets', :vcr => {:cassette_name => 'list_datasets_all'} do 
     context 'given existing saved datasets' do
       it 'returns a list dataset summaries for all existing' do
-        actual  = test_client.list_datasets
+        actual = test_client.list_datasets
         expect(actual).to be_a(Array)
         actual.each { |ds| expect(ds).to be_a(NexosisApi::DatasetSummary) }
       end
     end
   end
-  
-  describe '#list_datasets',:vcr => {:cassette_name => 'list_datasets_partial'} do
+
+  describe '#list_datasets', :vcr => {:cassette_name => 'list_datasets_partial'} do
     context 'given existing saved datasets' do
       it 'returns a list dataset summaries containing the partial name' do
-        actual  = test_client.list_datasets 'Ruby'
+        actual = test_client.list_datasets 'Ruby'
         expect(actual).to be_a(Array)
-        actual.each { |ds| 
+        actual.each do |ds|
           expect(ds).to be_a(NexosisApi::DatasetSummary)
           expect(ds.dataset_name).to include('Ruby')
-        }
+        end
       end
     end
   end
-  
-  describe '#get_dataset',:vcr => {:cassette_name => 'get_datasets_data'} do
-    context 'given an existing saved dataset' do 
+
+  describe '#get_dataset', :vcr => { :cassette_name => 'get_datasets_data'} do
+    context 'given an existing saved dataset' do
       it 'returns the dataset data' do
         dataset_name = 'TestRuby'
         page_number = 0
@@ -106,11 +106,11 @@ describe NexosisApi::Client::Datasets do
       end
     end
   end
-  
-  describe '#remove_dataset', :vcr => {:cassette_name => 'remove_dataset_all'} do
-    context 'given an existing saved dataset' do 
+
+  describe '#remove_dataset', :vcr => { :cassette_name => 'remove_dataset_all' } do
+    context 'given an existing saved dataset' do
       it 'removes the entire dataset' do
-        test_client.create_dataset_csv('ToRemove',"timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
+        test_client.create_dataset_csv('ToRemove', "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
         test_client.remove_dataset('ToRemove')
         datasets = test_client.list_datasets
         expect(datasets.any?{|v|v == 'ToRemove'}).to eql(false)
@@ -119,18 +119,18 @@ describe NexosisApi::Client::Datasets do
   end
 
   describe '#remove_dataset', :vcr => {:cassette_name => 'remove_dataset_partial'} do
-    context 'given an existing saved dataset' do 
+    context 'given an existing saved dataset' do
       it 'removes part of the dataset' do
         test_client.create_dataset_csv('ToRemove',"timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
         test_client.remove_dataset('ToRemove', { :start_date => '1-2-2017' })
         actual = test_client.get_dataset 'ToRemove'
-        expect(actual.data.length).to eql(1) 
+        expect(actual.data.length).to eql(1)
       end
     end
   end
   
   describe '#remove_dataset', :vcr => {:cassette_name => 'remove_dataset_cascade'} do
-    context 'given an existing saved dataset with completed sessions and cascade true' do 
+    context 'given an existing saved dataset with completed sessions and cascade true' do
       it 'removes the dataset and the sessions' do
         test_client.create_dataset_csv('ToRemove', "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31")
         session = test_client.create_forecast_session('ToRemove', '1-3-2017', '1-4-2017', 'foo')

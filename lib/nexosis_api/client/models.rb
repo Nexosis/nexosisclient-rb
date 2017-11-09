@@ -9,7 +9,7 @@ module NexosisApi
       # models created for this data source name.
       # @param query_options [Hash] limit by dates: begin_date and/or end_date
       # @note - query options dates can either be ISO 8601 compliant strings or Date objects
-      # @return [Array of NexosisApi::ModelSummary] - all models available within the query parameters
+      # @return [NexosisApi::PagedArray of NexosisApi::ModelSummary] - all models available within the query parameters
       def list_models(datasource_name = nil, page = 0, page_size = 50, query_options = {})
         model_url = '/models'
         query = {
@@ -22,11 +22,12 @@ module NexosisApi
         end
         query.store(dataSourceName: datasource_name) unless datasource_name.nil?
         response = self.class.get(model_url, headers: @headers, query: query)
-        if (response.success?)
-          response.parsed_response['items'].map { |item| NexosisApi::ModelSummary.new(item) }
-        else
-          raise HttpException.new("There was a problem listing models: #{response.code}.", "listing models with data source name #{datasource_name}", response)
-        end
+        raise HttpException.new("There was a problem listing models: #{response.code}.",
+                                "listing models with data source name #{datasource_name}",
+                                response) unless response.success?
+        NexosisApi::PagedArray.new(response.parsed_response,
+                                   response.parsed_response['items']
+                                   .map { |item| NexosisApi::ModelSummary.new(item) })
       end
 
       # Get the details of the particular model requested by id

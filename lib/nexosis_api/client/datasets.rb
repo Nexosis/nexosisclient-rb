@@ -29,14 +29,22 @@ module NexosisApi
       # Gets the list of data sets that have been saved to the system, optionally filtering by partial name match.
       #
       # @param partial_name [String] if provided, all datasets returned will contain this string
-      # @return [Array of NexosisApi::DatasetSummary] array of datasets found
-      def list_datasets(partial_name = '')
-        list_dataset_url = "/data?partialName=#{partial_name}"
-        response = self.class.get(list_dataset_url, headers: @headers)
+      # @param page [int] page number for items in list
+      # @param page_size [int] number of items in each page
+      # @return [NexosisApi::PagedArray of NexosisApi::DatasetSummary] array of datasets found
+      # @since 1.4 - added paging parameters
+      def list_datasets(partial_name = '', page = 0, page_size = 50)
+        list_dataset_url = '/data'
+        query = {
+          page: page,
+          pageSize: page_size
+        }
+        query['partialName'] = partial_name unless partial_name.empty?
+        response = self.class.get(list_dataset_url, headers: @headers, query: query)
         if response.success?
-          response.parsed_response['items'].map do |dr|
-            NexosisApi::DatasetSummary.new(dr)
-          end
+          NexosisApi::PagedArray.new(response.parsed_response,
+                                     response.parsed_response['items']
+                                     .map { |dr| NexosisApi::DatasetSummary.new(dr) })
         else
           raise HttpException.new("There was a problem listing datasets: #{response.code}.", "listing datasets with partial name #{partial_name}", response)
         end

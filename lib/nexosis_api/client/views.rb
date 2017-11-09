@@ -11,7 +11,7 @@ module NexosisApi
       # @param dataset_name [String] optionally limit results by dataset used in definition
       # @param page [Integer] optionally get results by non-zero page - defaults to 0
       # @param page_size [Integer] optionally limit page size - defaults to 50 (max: 1000)
-      # @return [Array of NexosisApi::ViewDefinition]
+      # @return [NexosisApi::PagedArray of NexosisApi::ViewDefinition]
       # @raise [NexosisApi::HttpException]
       def list_views(partial_name = '', dataset_name = '', page = 0, page_size = 50)
         url = '/views'
@@ -22,11 +22,9 @@ module NexosisApi
         query.store 'partialName', partial_name if partial_name.empty? == false
         query.store 'dataSetName', dataset_name if dataset_name.empty? == false
         response = self.class.get(url, headers: @headers, query: query)
-        if response.success?
-          response.parsed_response['items'].map do |definition|
-            NexosisApi::ViewDefinition.new(definition)
-          end
-        end
+        raise NexosisApi::HttpException('Could not retrieve list of views.', 'attempting list of views', response) unless response.success?
+        NexosisApi::PagedArray.new(response.parsed_response, response.parsed_response['items']
+                               .map { |definition| NexosisApi::ViewDefinition.new(definition) })
       end
 
       # Create a new view or update an existing one by name
