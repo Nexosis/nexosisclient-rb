@@ -2,35 +2,39 @@ module NexosisApi
   # Class for parsing the results of a session based request
   class Session
     def initialize(session_hash)
+      val_map = { 'resultInterval' => :@result_interval,
+                  'dataSourceName' => :@datasource_name,
+                  'modelId' => :@model_id,
+                  'sessionId' => :@session_id,
+                  'availablePredictionIntervals' => :@prediction_intervals,
+                  'startDate' => :@start_date,
+                  'endDate' => :@end_date }
       session_hash.each do |k, v|
         if (k == 'links')
-          links = Array.new
-          v.each { |l| links << NexosisApi::Link.new(l) }
-          instance_variable_set("@#{k}", links) unless v.nil?
-        elsif (k == 'isEstimate')
-          instance_variable_set('@is_estimate', v) unless v.nil?
+          @links = v.map { |l| NexosisApi::Link.new(l) }
         elsif (k == 'columns')
           @column_metadata = v.reject { |_key, value| value.nil? }
                               .map do |col_key, col_val|
                                 NexosisApi::Column.new(col_key, v[col_key])
                               end
-        elsif (k == 'resultInterval')
-          @result_interval = v
-        elsif (k == 'dataSourceName')
-          @datasource_name = v
-        elsif (k == 'modelId')
-          @model_id = v
         elsif (k == 'requestedDate')
           @requested_date = DateTime.parse(v)
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
+        instance_variable_set(val_map[k], v) unless val_map[k].nil?
       end
     end
 
     # identifier for this sesssion
     # @return [String]
+    # @deprecated use session_id instead
     attr_accessor :sessionId
+
+    # identifier for this sesssion
+    # @return [String]
+    # @since 1.4.0
+    attr_accessor :session_id
 
     # What type of analysis was run during this session
     # @return [String]
@@ -59,12 +63,24 @@ module NexosisApi
 
     # The start date of analysis in this session
     # @return [DateTime]
+    # @deprecated use start_date instead
     attr_accessor :startDate
 
     # The end date of analysis in this session
     # @return [DateTime]
+    # @deprecated use end_date instead
     attr_accessor :endDate
 
+    # The start date of analysis in this session
+    # @return [DateTime]
+    # @since 1.4.0
+    attr_accessor :start_date
+    
+    # The end date of analysis in this session
+    # @return [DateTime]
+    # @since 1.4.0
+    attr_accessor :end_date
+    
     # associated hypermedia
     # @return [Array of NexosisApi::Link]
     attr_accessor :links
@@ -99,8 +115,10 @@ module NexosisApi
     # to model endpoints - primarily the /models/{model_id}/predict endpoint.
     attr_accessor :model_id
 
-    # 
+    # An array of the prediction intervals available for this session's results
     # @return [Array]
+    # @note - by default the .5 interval will be returned in results. Consult
+    #    this list for other intervals which can be requested.
     # @since 1.4.0
     attr_accessor :prediction_intervals
   end

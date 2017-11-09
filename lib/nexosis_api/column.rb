@@ -40,6 +40,7 @@ module NexosisApi
                   'aggregation' => aggregation.to_s } }
     end
 
+    # allows json to be built for api requests
     def self.to_json(column_array)
       result = {}
       column_array.each { |col| result[col.to_hash.keys[0]] = col.to_hash.values[0] } 

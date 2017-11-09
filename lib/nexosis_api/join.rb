@@ -37,6 +37,7 @@ module NexosisApi
     # @return [Array of NexosisApi::Join] zero or more additional joins
     attr_accessor :joins
 
+    # provides a custom hash which can be converted to json matching api request
     def to_hash
       hash = join_target.to_hash
       if column_options.nil? == false
@@ -54,6 +55,7 @@ module NexosisApi
       hash
     end
 
+    # gets a json represenation which can be used in api request
     def to_json
       to_hash.to_json
     end

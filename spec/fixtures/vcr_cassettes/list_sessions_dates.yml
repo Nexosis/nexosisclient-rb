@@ -11,6 +11,8 @@ http_interactions:
       - api-key
       Content-Type:
       - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
   response:
     status:
       code: 200
@@ -21,14 +23,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Balance:
-      - 1315111.76 USD
+      - 1331598.47 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 18 Aug 2017 03:08:07 GMT
+      - Fri, 27 Oct 2017 15:04:48 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[]}'
+      string: '{"items":[],"pageNumber":0,"totalPages":0,"pageSize":50,"totalCount":0,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00&type=&page=0&pageSize=50"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00&type=&page=0&pageSize=50&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00&type=&page=0&pageSize=50&page=-1"}]}'
     http_version: 
-  recorded_at: Fri, 18 Aug 2017 03:08:07 GMT
+  recorded_at: Fri, 27 Oct 2017 15:05:00 GMT
 recorded_with: VCR 3.0.3

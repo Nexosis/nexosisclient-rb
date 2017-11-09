@@ -8,21 +8,25 @@ RSpec.configure do |config|
     handle_vcr(example)
   end
   config.before(:all) do
-    begin
-      data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
-      nts_data = JSON.load(File.open('spec/fixtures/dummydata.json'))
-      test_client.create_dataset_csv('TestRuby', data)
-      test_client.create_dataset_json('TestRuby_NTS', nts_data)
-    rescue Exception => eApi
-      puts eApi.message
+    if ENV['VCR_OFF']
+      begin
+        data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
+        nts_data = JSON.load(File.open('spec/fixtures/dummydata.json'))
+        test_client.create_dataset_csv('TestRuby', data)
+        test_client.create_dataset_json('TestRuby_NTS', nts_data)
+      rescue Exception => eApi
+        puts eApi.message
+      end
     end
   end
 
   config.after(:all) do
-    begin
-      test_client.remove_dataset('TestRuby', cascade: true)
-      test_client.remove_dataset('TestRuby_NTS', cascade: true)
-    rescue NexosisApi::HttpException
+    if ENV['VCR_OFF']
+      begin
+        test_client.remove_dataset('TestRuby', cascade: true)
+        test_client.remove_dataset('TestRuby_NTS', cascade: true)
+      rescue NexosisApi::HttpException
+      end
     end
   end
 end

@@ -124,11 +124,13 @@ module NexosisApi
       #
       # @param session_id [String] the Guid string returned in a previous session request
       # @param as_csv [Boolean] indicate whether results should be returned in csv format
+      # @param prediction_interval [Float] one of the available prediction intervals for the session.
       # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
-      def get_session_results(session_id, as_csv = false)
+      def get_session_results(session_id, as_csv = false, prediction_interval = nil)
         session_result_url = "/sessions/#{session_id}/results"
         @headers['Accept'] = 'text/csv' if as_csv
-        response = self.class.get(session_result_url, @options)
+        query = { predictionInterval: prediction_interval } unless prediction_interval.nil?
+        response = self.class.get(session_result_url, headers: @headers, query: query)
         @headers.delete('Accept')
 
         if (response.success?)
@@ -150,6 +152,12 @@ module NexosisApi
         raise HttpException.new("There was a problem getting the session: #{response.code}.", "getting session #{session_id}" ,response)
       end
 
+      # Create a new model based on a data source
+      #
+      # @param datasource_name [String] The datasource from which to build the model
+      # @param target_column [String] The column which will be predicted when using the model
+      # @param columns [Hash] column metadata to modify roles, imputation, or target.
+      # @since 1.3.0
       def create_model(datasource_name, target_column, columns = {})
         model_url = '/sessions/model'
         body = {

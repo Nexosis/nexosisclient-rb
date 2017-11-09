@@ -44,6 +44,7 @@ module NexosisApi
     # @since 1.3.0
     alias_method :timeseries?, :is_timeseries
 
+    # Provides a custom hash which matches json of api request
     def to_json
       hash = {}
       hash['dataSetName'] = dataset_name
