@@ -141,11 +141,51 @@ describe NexosisApi::Client::Sessions do
             {
               'timestamp' => '2017-01-05T00:00:00+00:00',
               'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-06T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-07T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-08T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-09T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-10T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-11T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-12T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-13T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-14T00:00:00+00:00',
+              'sales' => '4538.04'
+            },
+            {
+              'timestamp' => '2017-01-15T00:00:00+00:00',
+              'sales' => '4538.04'
             }
           ]
         }
         test_client.create_dataset_json(existing_dataset, json)
-        new_session = test_client.create_forecast_session(existing_dataset, '2017-01-06', '2017-01-10', 'sales')
+        new_session = test_client.create_forecast_session(existing_dataset, '2017-01-16', '2017-01-17', 'sales')
         test_client.remove_sessions :dataset_name => existing_dataset
         expect{ test_client.get_session(new_session.sessionId) }.to raise_error{ |error|
           expect(error).to be_a(NexosisApi::HttpException)
@@ -161,7 +201,7 @@ describe NexosisApi::Client::Sessions do
       it 'executes a session with a feature identified' do
         columns = []
         columns << NexosisApi::Column.new('transactions',{ 'dataType' => NexosisApi::ColumnType::NUMERIC, 'role' => NexosisApi::ColumnRole::FEATURE })
-        actual  = test_client.create_forecast_session('TestRuby', '2013-07-18', '2013-08-28', 'sales', 'day', columns)
+        actual  = test_client.create_forecast_session('TestRuby', '2014-04-08', '2014-05-08', 'sales', 'day', columns)
         expect(actual).to be_a(NexosisApi::SessionResponse)
         expect(actual.targetColumn).to eql('sales')
         expect(actual.column_metadata[2].role).to eql(NexosisApi::ColumnRole::FEATURE)
@@ -196,7 +236,7 @@ describe NexosisApi::Client::Sessions do
     context 'given a weekly forecast request' do
       it 'estimates the weekly period' do
         # 30 day span of time is only ~4 forecast requests, resulting in smaller estimate
-        actual = test_client.estimate_forecast_session('TestRuby', '01-22-2013', '02-22-2013', 'sales', NexosisApi::TimeInterval::WEEK)
+        actual = test_client.estimate_forecast_session('TestRuby', '04-22-2014', '05-22-2014', 'sales', NexosisApi::TimeInterval::WEEK)
         expect(actual.cost).to eql('0.01 USD')
       end
     end
