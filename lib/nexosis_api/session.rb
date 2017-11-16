@@ -133,5 +133,11 @@ module NexosisApi
     # A list of warning or error messages optionally returned from session
     # @return [Array of Message]
     attr_accessor :messages
+
+    # Whether classes were sampled as balanced in the context of a classification model
+    # @return [Boolean]
+    # @note - the default is true and has no means outside of classification
+    # @since 1.4.1
+    attr_accessor :balance
   end
 end

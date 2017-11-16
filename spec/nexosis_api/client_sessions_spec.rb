@@ -281,7 +281,7 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
-  describe '#get_confusion_matrix' do
+  describe '#get_confusion_matrix', vcr: { cassette_name: 'session_get_confusion_matrix' } do
     context 'given a classification result' do
       it 'returns confusion matrix' do
         available = test_client.list_sessions({}, 0, 10)
@@ -300,6 +300,15 @@ describe NexosisApi::Client::Sessions do
         expect(actual).to_not be_nil
         expect(actual.confusion_matrix).to be_a(Array)
         expect(actual.classes).to be_a(Array)
+      end
+    end
+  end
+
+  describe '#create_model', vcr: { cassette_name: 'session_unbalanced' } do
+    context 'given a request for unbalanced' do
+      it 'the request adds param' do
+        actual = test_client.create_model('TestRuby_NTS', 'target', {}, balance: false, prediction_domain: 'classification')
+        expect(actual.balance).to be(false)
       end
     end
   end
