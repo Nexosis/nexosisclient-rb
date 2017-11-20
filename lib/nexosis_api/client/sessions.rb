@@ -157,15 +157,19 @@ module NexosisApi
       # @param datasource_name [String] The datasource from which to build the model
       # @param target_column [String] The column which will be predicted when using the model
       # @param columns [Hash] column metadata to modify roles, imputation, or target.
+      # @param options [Hash] prediction_domain and or balanced indicator for classification
+      # @note - classifcation assumes balanced classes. The use of a 'balanced=false' option
+      # indicates that no attempt should be made to sample the classes in balanced fashion.
       # @since 1.3.0
-      def create_model(datasource_name, target_column, columns = {})
+      def create_model(datasource_name, target_column, columns = {}, options = { prediction_domain: 'regression' })
         model_url = '/sessions/model'
         body = {
           dataSourceName: datasource_name,
           targetColumn: target_column,
-          predictionDomain: 'regression',
+          predictionDomain: options[:prediction_domain].downcase,
           isEstimate: false
         }
+        body.store(:balance, options[:balance]) if options.include?(:balance) && body[:predictionDomain] == 'classification'
         body.store(columns: columns) unless columns.empty?
         response = self.class.post(model_url, headers: @headers, body: body.to_json)
         if response.success?
@@ -174,6 +178,18 @@ module NexosisApi
         else
           raise HttpException.new("There was a problem creating the model session: #{response.code}.", 'creating model session' ,response)
         end
+      end
+
+      # Get the confusion matrix for a completed classification session
+      # @param session_id [String] The unique id of the completed classification session
+      # @return [NexosisApi::ClassifierResult] a confusion matrix along with class labels and other session information.
+      # @since 1.4.1
+      # @note - This endpoint returns a 404 for requests of non-classification sessions
+      def get_confusion_matrix(session_id)
+        result_url = "/sessions/#{session_id}/results/confusionmatrix"
+        response = self.class.get(result_url, headers: @headers)
+        raise HttpException.new("There was a problem getting a confusion matrix for session #{session_id}", 'getting confusion matrix', response) unless response.success?
+        NexosisApi::ClassifierResult.new(response.parsed_response)
       end
 
       private
@@ -205,7 +221,7 @@ module NexosisApi
           session_hash = { 'session' => response.parsed_response }.merge(response.headers)
           NexosisApi::SessionResponse.new(session_hash)
         else
-          raise HttpException.new("Unable to create new #{type} session", "Create session for dataset #{dataset_name}",response)
+          raise HttpException.new("Unable to create new #{type} session", "Create session for dataset #{dataset_name}", response)
         end
       end
 

@@ -10,6 +10,17 @@ describe NexosisApi::Session do
       end
     end
   end
+
+  describe '#initialize' do
+    context 'given a hash of messages' do
+      it 'fills the messages array' do
+        target = NexosisApi::Session.new({'messages' => [{'severity': 'warning', 'message': 'this is a test'}]})
+        expect(target.messages).to_not be_nil
+        expect(target.messages[0].severity).to eql('warning')
+        expect(target.messages[0].message).to eql('this is a test')
+      end
+    end
+  end
 end
 
 describe NexosisApi::SessionResponse do
@@ -173,6 +184,21 @@ describe NexosisApi::PagedArray do
         expect(actual.page_size).to eql(10)
         expect(actual.item_total).to eql(20)
         expect(actual.links[0]).to be_a(NexosisApi::Link)
+      end
+    end
+  end
+
+  describe NexosisApi::ClassifierResult do
+    describe '#initialize' do
+      context 'given a confusion matrix result' do
+        it 'parses matrix and other session data' do
+          actual = NexosisApi::ClassifierResult.new({ 'sessionId' => '0000000000', 'classes':['label1', 'label2'], 'confusionMatrix':[[5, 0],[0, 5]] })
+          expect(actual.session_id).to eql('0000000000')
+          expect(actual.confusion_matrix).to_not be_nil
+          expect(actual.classes).to_not be_nil
+          expect(actual.confusion_matrix[0][1]).to eql(0)
+          expect(actual.classes[0]).to eql('label1')
+        end
       end
     end
   end

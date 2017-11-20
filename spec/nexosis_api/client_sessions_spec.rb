@@ -270,15 +270,46 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
-  #TODO: open back up when resolved.
-  # describe '#get_session_results' do
-  #   context 'given an available prediction interval' do
-  #     it 'sets the query parameter' do
-  #       available = test_client.list_sessions({}, 0, 10)
-  #       completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
-  #       actual = test_client.get_session_results completed.sessionId, false, '.5'
-  #       expect(actual).to_not be_nil
-  #     end
-  #   end
-  # end
+  describe '#get_session_results', vcr: { cassette_name: 'session_get_prediction_interval' } do
+    context 'given an available prediction interval' do
+      it 'sets the query parameter' do
+        available = test_client.list_sessions({}, 0, 10)
+        completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
+        actual = test_client.get_session_results completed.sessionId, false, '.5'
+        expect(actual).to_not be_nil
+      end
+    end
+  end
+
+  describe '#get_confusion_matrix', vcr: { cassette_name: 'session_get_confusion_matrix' } do
+    context 'given a classification result' do
+      it 'returns confusion matrix' do
+        available = test_client.list_sessions({}, 0, 10)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'classification' }.first
+        if (completed.nil?)
+          data = CSV.open('spec/fixtures/iris_data.csv', 'rb', headers: true)
+          test_client.create_dataset_csv('Iris', data)
+          completed = test_client.create_model('Iris', 'iris', {}, 'classification')
+          loop do
+            status_check = test_client.get_session completed.sessionId
+            break if (status_check.status == 'completed' || status_check.status == 'failed')
+            sleep 10
+          end
+        end
+        actual = test_client.get_confusion_matrix(completed.session_id)
+        expect(actual).to_not be_nil
+        expect(actual.confusion_matrix).to be_a(Array)
+        expect(actual.classes).to be_a(Array)
+      end
+    end
+  end
+
+  describe '#create_model', vcr: { cassette_name: 'session_unbalanced' } do
+    context 'given a request for unbalanced' do
+      it 'the request adds param' do
+        actual = test_client.create_model('TestRuby_NTS', 'target', {}, balance: false, prediction_domain: 'classification')
+        expect(actual.balance).to be(false)
+      end
+    end
+  end
 end

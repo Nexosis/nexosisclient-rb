@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=10&requestedAfterDate=&requestedBeforeDate=&type=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '20'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '18'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '124'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 16 Nov 2017 18:04:00 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"columns":{"observed":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"015fb6a7-1fd3-42c8-976c-2bad8babf47f","type":"forecast","status":"completed","availablePredictionIntervals":["0.5","0.8","0.95","0.99"],"startDate":"2008-09-01T00:00:00+00:00","endDate":"2008-09-30T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-11-13T18:32:06.867138+00:00","statusHistory":[{"date":"2017-11-13T18:32:06.867138+00:00","status":"requested"},{"date":"2017-11-13T18:32:08.9192374+00:00","status":"started"},{"date":"2017-11-13T18:32:33.6706269+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"123
+        daily observations were found in the dataset before 2008-09-30T00:00:00.0000000."}],"dataSourceName":"data-sessions-integration","dataSetName":"data-sessions-integration","targetColumn":"observed","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fb6a7-1fd3-42c8-976c-2bad8babf47f/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]},{"columns":{"observed":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"015fb6a7-2aeb-47a4-9474-d26027a1b248","type":"impact","status":"completed","eventName":"integration-test-analysis","availablePredictionIntervals":["0.5"],"startDate":"2008-08-01T00:00:00+00:00","endDate":"2008-08-31T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-11-13T18:32:09.707523+00:00","statusHistory":[{"date":"2017-11-13T18:32:09.707523+00:00","status":"requested"},{"date":"2017-11-13T18:32:11.5760249+00:00","status":"started"},{"date":"2017-11-13T18:32:35.2110715+00:00","status":"completed"}],"extraParameters":{"event":"integration-test-analysis"},"messages":[{"severity":"informational","message":"123
+        daily observations were found in the dataset  before 2008-08-31T00:00:00.0000000Z."}],"dataSourceName":"data-sessions-integration","dataSetName":"data-sessions-integration","targetColumn":"observed","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fb6a7-2aeb-47a4-9474-d26027a1b248/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/data-sessions-integration"}]},{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015fbad0-2602-4f4b-8bb8-c49487272284","type":"model","status":"completed","predictionDomain":"classification","balance":true,"availablePredictionIntervals":["0.5"],"modelId":"ea3818ae-ce0c-42e4-bceb-58ec416d26b7","requestedDate":"2017-11-14T13:55:24.288885+00:00","statusHistory":[{"date":"2017-11-14T13:55:24.288885+00:00","status":"requested"},{"date":"2017-11-14T13:55:24.1312688+00:00","status":"started"},{"date":"2017-11-14T13:58:41.9180333+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"150
+        observations were found in the dataset."}],"dataSourceName":"Iris","dataSetName":"Iris","targetColumn":"iris","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-2602-4f4b-8bb8-c49487272284/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Iris"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/ea3818ae-ce0c-42e4-bceb-58ec416d26b7"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-2602-4f4b-8bb8-c49487272284/results/confusionmatrix"}]},{"columns":{"DepthofWin":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"BlackKingFile":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"BlackKingRank":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"WhiteKingFile":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"WhiteKingRank":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"WhiteRookFile":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"WhiteRookRank":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015fbad0-6980-470c-a46a-454b75cfa374","type":"model","status":"completed","predictionDomain":"classification","balance":true,"availablePredictionIntervals":["0.5"],"modelId":"90baddfa-bd8d-4dee-aa1c-e26f337dee3c","requestedDate":"2017-11-14T13:55:41.567138+00:00","statusHistory":[{"date":"2017-11-14T13:55:41.567138+00:00","status":"requested"},{"date":"2017-11-14T13:55:41.6516556+00:00","status":"started"},{"date":"2017-11-14T15:51:27.8323025+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"28056
+        observations were found in the dataset."}],"dataSourceName":"Chess","dataSetName":"Chess","targetColumn":"DepthOfWin","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-6980-470c-a46a-454b75cfa374/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Chess"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/90baddfa-bd8d-4dee-aa1c-e26f337dee3c"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-6980-470c-a46a-454b75cfa374/results/confusionmatrix"}]},{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numericMeasure","role":"feature","imputation":"mode","aggregation":"mean"},"sepal_len":{"dataType":"numericMeasure","role":"feature","imputation":"mode","aggregation":"sum"},"petal_width":{"dataType":"numericMeasure","role":"feature","imputation":"mode","aggregation":"sum"},"sepal_width":{"dataType":"numericMeasure","role":"feature","imputation":"mode","aggregation":"mode"}},"sessionId":"015fbad7-7a37-4b5a-a382-16a2492d9adf","type":"model","status":"failed","predictionDomain":"classification","balance":true,"availablePredictionIntervals":["0.5"],"requestedDate":"2017-11-14T14:03:24.59728+00:00","statusHistory":[{"date":"2017-11-14T14:03:24.59728+00:00","status":"requested"},{"date":"2017-11-14T14:03:24.4244292+00:00","status":"started"},{"date":"2017-11-14T14:03:25.0234807+00:00","status":"failed"}],"extraParameters":{},"messages":[{"severity":"warning","message":"Target
+        class ''versicolor'' is only specified on 1 record(s) in the dataset. Nexosis
+        requires a minimum of 5 records per class for the class to be included in
+        a model. Therefore, the model we generate will not consider this class."},{"severity":"warning","message":"Target
+        class ''setosa'' is only specified on 1 record(s) in the dataset. Nexosis
+        requires a minimum of 5 records per class for the class to be included in
+        a model. Therefore, the model we generate will not consider this class."},{"severity":"warning","message":"Target
+        class ''virginica'' is only specified on 1 record(s) in the dataset. Nexosis
+        requires a minimum of 5 records per class for the class to be included in
+        a model. Therefore, the model we generate will not consider this class."},{"severity":"error","message":"Dataset
+        does not have any valid target classes. At least 2 target classes are required
+        to build a model."}],"dataSourceName":"IrisTooSmall","dataSetName":"IrisTooSmall","targetColumn":"iris","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad7-7a37-4b5a-a382-16a2492d9adf/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/IrisTooSmall"}]},{"columns":{"DepthofWin":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"BlackKingFile":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"BlackKingRank":{"dataType":"numeric","role":"feature","imputation":"mode","aggregation":"sum"},"WhiteKingFile":{"dataType":"string","role":"none","imputation":"mode","aggregation":"mode"},"WhiteKingRank":{"dataType":"numeric","role":"feature","imputation":"mode","aggregation":"sum"},"WhiteRookFile":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"WhiteRookRank":{"dataType":"numeric","role":"feature","imputation":"mode","aggregation":"sum"}},"sessionId":"015fbc38-c6fb-4b5b-b2e1-8513d7197b88","type":"model","status":"completed","predictionDomain":"classification","balance":true,"availablePredictionIntervals":["0.5"],"modelId":"00dc069b-11a2-410c-b7b7-b678a94a07f4","requestedDate":"2017-11-14T20:29:18.45674+00:00","statusHistory":[{"date":"2017-11-14T20:29:18.45674+00:00","status":"requested"},{"date":"2017-11-14T20:29:19.533577+00:00","status":"started"},{"date":"2017-11-14T22:21:53.9393567+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"28056
+        observations were found in the dataset."}],"dataSourceName":"Chess","dataSetName":"Chess","targetColumn":"DepthOfWin","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbc38-c6fb-4b5b-b2e1-8513d7197b88/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Chess"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/00dc069b-11a2-410c-b7b7-b678a94a07f4"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbc38-c6fb-4b5b-b2e1-8513d7197b88/results/confusionmatrix"}]},{"columns":{"A":{"dataType":"numeric","role":"feature","imputation":"mode","aggregation":"mode"},"B":{"dataType":"numeric","role":"feature","imputation":"mode","aggregation":"mode"},"Result":{"dataType":"numeric","role":"target","imputation":"mode","aggregation":"mode"}},"sessionId":"015fbffe-e8ac-4e30-830f-9bdb5d4b379f","type":"model","status":"completed","predictionDomain":"classification","balance":true,"availablePredictionIntervals":["0.5"],"modelId":"ee97e8ab-6d9e-41a7-965b-d49cee702dd6","requestedDate":"2017-11-15T14:04:34.859091+00:00","statusHistory":[{"date":"2017-11-15T14:04:34.859091+00:00","status":"requested"},{"date":"2017-11-15T14:04:35.0364397+00:00","status":"started"},{"date":"2017-11-15T14:06:19.0803925+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"40
+        observations were found in the dataset."}],"dataSourceName":"Binary","dataSetName":"Binary","targetColumn":"Result","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbffe-e8ac-4e30-830f-9bdb5d4b379f/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Binary"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/ee97e8ab-6d9e-41a7-965b-d49cee702dd6"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbffe-e8ac-4e30-830f-9bdb5d4b379f/results/confusionmatrix"}]},{"columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015fc0a2-b770-467c-9aad-f912750fcaea","type":"impact","status":"completed","eventName":"MyEvent","availablePredictionIntervals":["0.5"],"startDate":"2015-05-01T00:00:00+00:00","endDate":"2015-05-10T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-11-15T17:03:30.158135+00:00","statusHistory":[{"date":"2017-11-15T17:03:30.158135+00:00","status":"requested"},{"date":"2017-11-15T17:03:33.4248267+00:00","status":"started"},{"date":"2017-11-15T17:15:17.1583114+00:00","status":"completed"}],"extraParameters":{"event":"MyEvent"},"messages":[{"severity":"informational","message":"857
+        daily observations were found in the dataset  before 2015-05-10T00:00:00.0000000Z."}],"dataSourceName":"Location-A","dataSetName":"Location-A","targetColumn":"sales","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fc0a2-b770-467c-9aad-f912750fcaea/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Location-A"}]},{"columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015fc0ae-c8dc-4129-860d-30e8431bf34b","type":"impact","status":"completed","eventName":"MyEventWeekly","availablePredictionIntervals":["0.5"],"startDate":"2015-07-01T00:00:00+00:00","endDate":"2015-07-22T00:00:00+00:00","resultInterval":"week","requestedDate":"2017-11-15T17:16:41.051057+00:00","statusHistory":[{"date":"2017-11-15T17:16:41.051057+00:00","status":"requested"},{"date":"2017-11-15T17:16:43.5060399+00:00","status":"started"},{"date":"2017-11-15T17:17:27.869154+00:00","status":"completed"}],"extraParameters":{"event":"MyEventWeekly"},"messages":[{"severity":"informational","message":"930
+        weekly observations were found in the dataset  before 2015-07-22T00:00:00.0000000Z."}],"dataSourceName":"Location-A","dataSetName":"Location-A","targetColumn":"sales","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fc0ae-c8dc-4129-860d-30e8431bf34b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/Location-A"}]},{"columns":{"iphone":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"android":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"015fc12e-67df-4edd-b1f7-c321b01d732b","type":"impact","status":"completed","eventName":"iOS2","availablePredictionIntervals":["0.5"],"startDate":"2008-06-01T00:00:00+00:00","endDate":"2008-09-01T00:00:00+00:00","resultInterval":"month","requestedDate":"2017-11-15T19:36:04.829929+00:00","statusHistory":[{"date":"2017-11-15T19:36:04.829929+00:00","status":"requested"},{"date":"2017-11-15T19:36:07.8171288+00:00","status":"started"},{"date":"2017-11-15T19:43:29.5369341+00:00","status":"completed"}],"extraParameters":{"event":"iOS2"},"messages":[{"severity":"informational","message":"153
+        monthly observations were found in the dataset  before 2008-09-01T00:00:00.0000000Z."}],"dataSourceName":"iPhone","dataSetName":"iPhone","targetColumn":"iphone","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015fc12e-67df-4edd-b1f7-c321b01d732b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/iPhone"}]}],"pageNumber":0,"totalPages":1,"pageSize":10,"totalCount":10,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=10"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=10&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=10&page=0"}]}'
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:04:01 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/015fbad0-2602-4f4b-8bb8-c49487272284/results/confusionmatrix
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Session-Status:
+      - Completed
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '20'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '18'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '124'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 16 Nov 2017 18:04:00 GMT
+    body:
+      encoding: UTF-8
+      string: '{"classes":["setosa","versicolor","virginica"],"confusionMatrix":[[10,0,0],[0,10,0],[0,1,9]],"sessionId":"015fbad0-2602-4f4b-8bb8-c49487272284","type":"model","status":"completed","predictionDomain":"classification","balance":true,"availablePredictionIntervals":["0.5"],"modelId":"ea3818ae-ce0c-42e4-bceb-58ec416d26b7","requestedDate":"2017-11-14T13:55:24.288885+00:00","statusHistory":[{"date":"2017-11-14T13:55:24.288885+00:00","status":"requested"},{"date":"2017-11-14T13:55:24.1312688+00:00","status":"started"},{"date":"2017-11-14T13:58:41.9180333+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"150
+        observations were found in the dataset."}],"dataSourceName":"Iris","dataSetName":"Iris","targetColumn":"iris","isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-2602-4f4b-8bb8-c49487272284/results/confusionmatrix"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/ea3818ae-ce0c-42e4-bceb-58ec416d26b7"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-2602-4f4b-8bb8-c49487272284/results/confusionmatrix"},{"rel":"prediction-interval:0.5","href":"https://api.uat.nexosisdev.com/v1/sessions/015fbad0-2602-4f4b-8bb8-c49487272284?predictionInterval=0.5"}]}'
+    http_version: 
+  recorded_at: Thu, 16 Nov 2017 18:04:01 GMT
+recorded_with: VCR 3.0.3

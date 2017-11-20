@@ -8,7 +8,8 @@ module NexosisApi
                   'sessionId' => :@session_id,
                   'availablePredictionIntervals' => :@prediction_intervals,
                   'startDate' => :@start_date,
-                  'endDate' => :@end_date }
+                  'endDate' => :@end_date,
+                  'predictionDomain' => :@prediction_domain }
       session_hash.each do |k, v|
         if (k == 'links')
           @links = v.map { |l| NexosisApi::Link.new(l) }
@@ -19,6 +20,8 @@ module NexosisApi
                               end
         elsif (k == 'requestedDate')
           @requested_date = DateTime.parse(v)
+        elsif (k == 'messages')
+          @messages = v.map { |m| NexosisApi::Message.new(m) } unless v.empty?
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
@@ -121,5 +124,20 @@ module NexosisApi
     #    this list for other intervals which can be requested.
     # @since 1.4.0
     attr_accessor :prediction_intervals
+
+    # The type of model if a model creation session
+    # @return [String]
+    # @since 1.4.1
+    attr_accessor :prediction_domain
+
+    # A list of warning or error messages optionally returned from session
+    # @return [Array of Message]
+    attr_accessor :messages
+
+    # Whether classes were sampled as balanced in the context of a classification model
+    # @return [Boolean]
+    # @note - the default is true and has no means outside of classification
+    # @since 1.4.1
+    attr_accessor :balance
   end
 end

@@ -16,6 +16,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.0.0'
   spec.summary = "Ruby client for working with the Nexosis API"
-  spec.version = '1.4.0'
+  spec.version = '1.4.1'
   spec.metadata["yard.run"] = "yri"
 end
