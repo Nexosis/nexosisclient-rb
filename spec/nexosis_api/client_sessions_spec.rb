@@ -12,30 +12,12 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
-  describe '#estimate_forecast_session', :vcr  => {:cassette_name => 'estimate_forecast_session'} do
-    context 'given an existing dataset name' do
-      it 'returns a session response with cost' do
-        actual = test_client.estimate_forecast_session('TestRuby', '2014-05-20', '2014-06-20', 'sales')
-        expect(actual.cost).to eql('0.01 USD')
-      end
-    end
-  end
-
   describe '#create_impact_session', :vcr  => {:cassette_name => 'create_impact_session'} do
     context 'given an existing dataset name' do
       it 'returns a started session' do
         actual = test_client.create_impact_session('TestRuby', '05-01-2014', '05-10-2014', 'test event', 'sales')
         expect(actual).to be_instance_of(NexosisApi::SessionResponse)
         expect(actual.type).to eql('impact')
-      end
-    end
-  end
-
-  describe '#estimate_impact_session', :vcr  => {:cassette_name => 'estimate_impact_session'} do
-    context 'given an existing dataset name' do
-      it 'returns a session response with cost' do
-        actual = test_client.estimate_impact_session('TestRuby', '05-01-2014', '05-10-2014', 'test event', 'sales')
-        expect(actual.cost).to eql('0.01 USD')
       end
     end
   end
@@ -228,26 +210,6 @@ describe NexosisApi::Client::Sessions do
           expect(error.code).to eql(400)
           expect(error.message).to include("The value 'seconds' is not valid")
          }
-      end
-    end
-  end
-
-  describe '#estimate_forecast_session',:vcr => {:cassette_name => 'estimate_forecast_weekly'} do
-    context 'given a weekly forecast request' do
-      it 'estimates the weekly period' do
-        # 30 day span of time is only ~4 forecast requests, resulting in smaller estimate
-        actual = test_client.estimate_forecast_session('TestRuby', '04-22-2014', '05-22-2014', 'sales', NexosisApi::TimeInterval::WEEK)
-        expect(actual.cost).to eql('0.01 USD')
-      end
-    end
-  end
-
-  describe '#estimate_impact_session',:vcr => {:cassette_name => 'estimate_impact_weekly'} do
-    context 'given a weekly impact request' do
-      it 'estimates the weekly period' do
-        # 30 day span of time is only ~4 forecast requests, resulting in smaller estimate
-        actual = test_client.estimate_impact_session('TestRuby', '05-01-2014', '05-10-2014', 'test event', 'sales', NexosisApi::TimeInterval::WEEK)
-        expect(actual.cost).to eql('0.01 USD')
       end
     end
   end
