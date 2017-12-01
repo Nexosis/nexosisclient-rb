@@ -64,7 +64,7 @@ describe NexosisApi::Client::Sessions do
       it 'returns an array of all sessions with that event' do
         actual = test_client.list_sessions :event_name=>'test event'
         expect(actual).to be_a(Array)
-        actual_map = actual.map { |s| s.extraParameters['event'] }
+        actual_map = actual.map { |s| s.extra_parameters['event'] }
         expect(actual_map).to all( be_a(String).and include('test') )
       end
     end
@@ -310,7 +310,7 @@ describe NexosisApi::Client::Sessions do
     context 'given a request for unbalanced' do
       it 'the request adds param' do
         actual = test_client.create_model('TestRuby_NTS', 'target', {}, balance: false, prediction_domain: 'classification')
-        expect(actual.balance).to be(false)
+        expect(actual.extra_parameters['balance']).to be(false)
       end
     end
   end

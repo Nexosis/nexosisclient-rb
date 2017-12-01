@@ -129,7 +129,7 @@ describe NexosisApi::Client::Datasets do
       end
     end
   end
-  
+
   describe '#remove_dataset', :vcr => {:cassette_name => 'remove_dataset_cascade'} do
     context 'given an existing saved dataset with completed sessions and cascade true' do
       it 'removes the dataset and the sessions' do
@@ -154,7 +154,7 @@ describe NexosisApi::Client::Datasets do
   describe '#create_dataset_csv', :vcr => {:cassette_name => 'create_csv_notimestamp'} do
     context 'given a csv with no distinct timestamp column' do
       it 'creates the dataset and infers column' do
-        data = CSV.open('spec/fixtures/notimestamp.csv','rb', headers: true)
+        data = CSV.open('spec/fixtures/notimestamp.csv', 'rb', headers: true)
         actual = test_client.create_dataset_csv 'TestRuby_NoTimestamp', data
         expect(actual).to be_a(NexosisApi::DatasetSummary)
         expect(actual.column_metadata.any? { |md| md.role == :timestamp }).to be(true)

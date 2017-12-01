@@ -9,7 +9,8 @@ module NexosisApi
                   'availablePredictionIntervals' => :@prediction_intervals,
                   'startDate' => :@start_date,
                   'endDate' => :@end_date,
-                  'predictionDomain' => :@prediction_domain }
+                  'predictionDomain' => :@prediction_domain,
+                  'extraParameters' => :@extra_parameters }
       session_hash.each do |k, v|
         if (k == 'links')
           @links = v.map { |l| NexosisApi::Link.new(l) }
@@ -53,7 +54,8 @@ module NexosisApi
 
     # reserved for future extensions
     # @return [Hash]
-    attr_accessor :extraParameters
+    # @note - included 'balance' parameter for classification models
+    attr_accessor :extra_parameters
     
     # the dataset used in this session
     # @return [String]
@@ -133,11 +135,5 @@ module NexosisApi
     # A list of warning or error messages optionally returned from session
     # @return [Array of Message]
     attr_accessor :messages
-
-    # Whether classes were sampled as balanced in the context of a classification model
-    # @return [Boolean]
-    # @note - the default is true and has no means outside of classification
-    # @since 1.4.1
-    attr_accessor :balance
   end
 end

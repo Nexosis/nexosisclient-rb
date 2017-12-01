@@ -169,7 +169,7 @@ module NexosisApi
           predictionDomain: options[:prediction_domain].downcase,
           isEstimate: false
         }
-        body.store(:balance, options[:balance]) if options.include?(:balance) && body[:predictionDomain] == 'classification'
+        body.store(:extraParameters, { balance: options[:balance] }) if options.include?(:balance) && body[:predictionDomain] == 'classification'
         body.store(columns: columns) unless columns.empty?
         response = self.class.post(model_url, headers: @headers, body: body.to_json)
         if response.success?
