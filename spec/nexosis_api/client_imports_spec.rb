@@ -63,4 +63,30 @@ describe NexosisApi::Client::Imports do
       end
     end
   end
+
+  describe '#import_from_azure' do
+    context 'given a connection string' do
+      it 'imports file from blob storage' do
+        expect(false).to be(true)
+      end
+    end
+  end
+
+  describe '#import_from_url' do
+    context 'given a url' do
+      it 'imports file from endpoint' do
+        expect(false).to be(true)
+      end
+    end
+  end
+
+  describe '#import_from_secure_s3' do
+    context 'given a private bucket and creds' do
+      it 'imports file using creds' do
+        expect(false).to be(true)
+      end
+    end
+  end
+
+  
 end
