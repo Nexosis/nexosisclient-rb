@@ -22,7 +22,7 @@ describe NexosisApi::Client::Models do
         session = test_client.create_model('TestRuby_NTS', 'target')
         if (@model_id.nil?)
           loop do
-            status_check = test_client.get_session session.sessionId
+            status_check = test_client.get_session session.session_id
             @model_id = status_check.model_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
             sleep 10
@@ -52,7 +52,7 @@ describe NexosisApi::Client::Models do
         session = test_client.create_model('TestRuby_NTS', 'target')
         model_id = session.model_id
         loop do
-          status_check = test_client.get_session session.sessionId
+          status_check = test_client.get_session session.session_id
           model_id = status_check.model_id
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 10
@@ -100,7 +100,7 @@ describe NexosisApi::Client::Models do
         if (@model_id.nil?)
           session = test_client.create_model('TestRuby_NTS', 'target')
           loop do
-            status_check = test_client.get_session session.sessionId
+            status_check = test_client.get_session session.session_id
             @model_id = status_check.model_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
             sleep 10

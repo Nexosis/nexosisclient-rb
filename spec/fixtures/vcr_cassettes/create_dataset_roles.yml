@@ -217,17 +217,29 @@ http_interactions:
       - application/json; charset=utf-8
       Location:
       - http://gateway.uat.nexosisdev.com/data/TestRuby_JsonMetadata
-      Nexosis-Request-Cost:
-      - 0.01 USD
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '48'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '135'
       Nexosis-Account-Balance:
-      - 1315087.02 USD
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
       Date:
-      - Fri, 06 Oct 2017 17:51:36 GMT
+      - Mon, 11 Dec 2017 21:36:01 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"TestRuby_JsonMetadata","isTimeSeries":true,"columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}}}'
+      string: '{"dataSetName":"TestRuby_JsonMetadata","dataSetSize":6279,"isTimeSeries":true,"columns":{"sales":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timeStamp":{"dataType":"date","role":"timestamp"},"transactions":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_JsonMetadata"}]}'
     http_version: 
-  recorded_at: Fri, 06 Oct 2017 17:51:36 GMT
+  recorded_at: Mon, 11 Dec 2017 21:36:01 GMT
 - request:
     method: delete
     uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_JsonMetadata?cascade=model
@@ -248,15 +260,27 @@ http_interactions:
     headers:
       Content-Length:
       - '0'
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '47'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '135'
       Nexosis-Account-Balance:
-      - 1315087.02 USD
+      - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 06 Oct 2017 17:51:37 GMT
+      - Mon, 11 Dec 2017 21:36:01 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 06 Oct 2017 17:51:36 GMT
+  recorded_at: Mon, 11 Dec 2017 21:36:01 GMT
 recorded_with: VCR 3.0.3

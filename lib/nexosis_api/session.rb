@@ -10,7 +10,8 @@ module NexosisApi
                   'startDate' => :@start_date,
                   'endDate' => :@end_date,
                   'predictionDomain' => :@prediction_domain,
-                  'extraParameters' => :@extra_parameters }
+                  'extraParameters' => :@extra_parameters,
+                  'targetColumn' => :@target_column }
       session_hash.each do |k, v|
         if (k == 'links')
           @links = v.map { |l| NexosisApi::Link.new(l) }
@@ -26,14 +27,9 @@ module NexosisApi
         else
           instance_variable_set("@#{k}", v) unless v.nil?
         end
-        instance_variable_set(val_map[k], v) unless val_map[k].nil?
+        instance_variable_set(val_map[k.to_s], v) unless val_map[k.to_s].nil?
       end
     end
-
-    # identifier for this sesssion
-    # @return [String]
-    # @deprecated use session_id instead
-    attr_accessor :sessionId
 
     # identifier for this sesssion
     # @return [String]
@@ -44,37 +40,22 @@ module NexosisApi
     # @return [String]
     attr_accessor :type
 
-    # Is this session requested, estimated, started, or completed
+    # Is this session requested, started, or completed
     # @return [String]
     attr_accessor :status
 
     # Date and status of each status this session has entered
     # @return [Hash]
-    attr_accessor :statusHistory
+    attr_accessor :status_history
 
     # reserved for future extensions
     # @return [Hash]
     # @note - included 'balance' parameter for classification models
     attr_accessor :extra_parameters
-    
-    # the dataset used in this session
-    # @return [String]
-    # @deprecated - Use the @datasource_name property instead
-    attr_accessor :dataSetName
 
     # The column in the dataset for which this session ran predictions
     # @return [String]
-    attr_accessor :targetColumn
-
-    # The start date of analysis in this session
-    # @return [DateTime]
-    # @deprecated use start_date instead
-    attr_accessor :startDate
-
-    # The end date of analysis in this session
-    # @return [DateTime]
-    # @deprecated use end_date instead
-    attr_accessor :endDate
+    attr_accessor :target_column
 
     # The start date of analysis in this session
     # @return [DateTime]
@@ -89,10 +70,6 @@ module NexosisApi
     # associated hypermedia
     # @return [Array of NexosisApi::Link]
     attr_accessor :links
-
-    # Is this session an estimate only session
-    # @return [Boolean]
-    attr_accessor :is_estimate
 
     # The column descriptors for the data in this session
     #    will reflect either the metadata sent in, defaults form dataset, or inferred values

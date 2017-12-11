@@ -78,19 +78,7 @@ module NexosisApi
       #    For instance if your data includes many recoreds per hour, then you could request hour, day, or any other result interval.
       #    However, if your data includes only a few records per day or fewer, then a request for an hourly result interval will produce poor results.
       def create_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
-        create_session(dataset_name, start_date, end_date, target_column, false, nil, 'forecast', result_interval, column_metadata)
-      end
-
-      # Estimate the cost of a forecast from data already saved to the API.
-      #
-      # @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-      # @param start_date [DateTime] The starting date of the forecast period. Can be ISO 8601 string. 
-      # @param end_date [DateTime] The ending date of the forecast period. Can be ISO 8601 string.
-      # @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
-      # @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-      # @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-      def estimate_forecast_session(dataset_name, start_date, end_date, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-        create_session(dataset_name, start_date, end_date, target_column, true, nil, 'forecast', result_interval)
+        create_session(dataset_name, start_date, end_date, target_column, nil, 'forecast', result_interval, column_metadata)
       end
 
       # Analyze impact for an event with data already saved to the API.
@@ -104,20 +92,7 @@ module NexosisApi
       # @param column_metadata [Array of NexosisApi::Column] (optional) - specification for how to handle columns if different from existing metadata on dataset 
       # @return [NexosisApi::SessionResponse] providing information about the sesssion
       def create_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
-        create_session(dataset_name, start_date, end_date, target_column, false, event_name, 'impact', result_interval, column_metadata)
-      end
-
-      # Estimate the cost of impact analysis for an event with data already saved to the API.
-      #
-      # @param dataset_name [String] The name of the saved data set that has the data to forecast on.
-      # @param start_date [DateTime] The starting date of the impactful event. Can be ISO 8601 string. 
-      # @param end_date [DateTime] The ending date of the impactful event. Can be ISO 8601 string.
-      # @param event_name [String] The name of the event.
-      # @param target_column [String] The name of the column for which you want predictions. Nil if defined in dataset.
-      # @param result_interval [NexosisApi::TimeInterval] (optional) - The date/time interval (e.g. Day, Hour) at which predictions should be generated. So, if Hour is specified for this parameter you will get a Result record for each hour between startDate and endDate. If unspecified, we’ll generate predictions at a Day interval.
-      # @return [NexosisApi::SessionResponse] providing information about the sesssion, including the cost
-      def estimate_impact_session(dataset_name, start_date, end_date, event_name, target_column = nil, result_interval = NexosisApi::TimeInterval::DAY)
-        create_session(dataset_name, start_date, end_date, target_column, true, event_name, 'impact', result_interval)
+        create_session(dataset_name, start_date, end_date, target_column, event_name, 'impact', result_interval, column_metadata)
       end
 
       # Get the results of the session.
@@ -157,7 +132,7 @@ module NexosisApi
       # @param datasource_name [String] The datasource from which to build the model
       # @param target_column [String] The column which will be predicted when using the model
       # @param columns [Hash] column metadata to modify roles, imputation, or target.
-      # @param options [Hash] prediction_domain and or balanced indicator for classification
+      # @param options [Hash] prediction_domain and or balance (true or false) indicator for classification
       # @note - classifcation assumes balanced classes. The use of a 'balanced=false' option
       # indicates that no attempt should be made to sample the classes in balanced fashion.
       # @since 1.3.0
@@ -166,8 +141,7 @@ module NexosisApi
         body = {
           dataSourceName: datasource_name,
           targetColumn: target_column,
-          predictionDomain: options[:prediction_domain].downcase,
-          isEstimate: false
+          predictionDomain: options[:prediction_domain].downcase
         }
         body.store(:extraParameters, { balance: options[:balance] }) if options.include?(:balance) && body[:predictionDomain] == 'classification'
         body.store(columns: columns) unless columns.empty?
@@ -195,13 +169,12 @@ module NexosisApi
       private
 
       # @private
-      def create_session(dataset_name, start_date, end_date, target_column = nil, is_estimate=false, event_name = nil, type = 'forecast', result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
+      def create_session(dataset_name, start_date, end_date, target_column = nil, event_name = nil, type = 'forecast', result_interval = NexosisApi::TimeInterval::DAY, column_metadata = nil)
         session_url = "/sessions/#{type}"
         query = {
           'targetColumn' => target_column.to_s,
           'startDate' => start_date.to_s,
           'endDate' => end_date.to_s,
-          'isestimate' => is_estimate.to_s,
           'resultInterval' => result_interval.to_s
         }
         query['dataSetName'] = dataset_name.to_s unless dataset_name.to_s.empty?

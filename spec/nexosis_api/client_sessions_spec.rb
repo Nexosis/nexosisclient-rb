@@ -37,11 +37,11 @@ describe NexosisApi::Client::Sessions do
       it 'returns the results of the session analysis' do
         session = test_client.create_forecast_session('TestRuby', '2014-05-20', '2014-05-25', 'sales')
         loop do
-          status_check = test_client.get_session session.sessionId
+          status_check = test_client.get_session session.session_id
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 5
         end
-        actual = test_client.get_session_results session.sessionId
+        actual = test_client.get_session_results session.session_id
         expect(actual).to be_a(NexosisApi::SessionResult)
         expect(actual.data).not_to be_empty
       end
@@ -53,7 +53,7 @@ describe NexosisApi::Client::Sessions do
       it 'returns an array of all sessions with that dataset' do
         actual = test_client.list_sessions :dataset_name=>'TestRuby'
         expect(actual).to be_a(Array)
-        actual_map = actual.map { |s| s.dataSetName }
+        actual_map = actual.map { |s| s.datasource_name }
         expect(actual_map).to all( be_a(String).and include('TestRuby') )
       end
     end
@@ -169,7 +169,7 @@ describe NexosisApi::Client::Sessions do
         test_client.create_dataset_json(existing_dataset, json)
         new_session = test_client.create_forecast_session(existing_dataset, '2017-01-16', '2017-01-17', 'sales')
         test_client.remove_sessions :dataset_name => existing_dataset
-        expect{ test_client.get_session(new_session.sessionId) }.to raise_error{ |error|
+        expect{ test_client.get_session(new_session.session_id) }.to raise_error{ |error|
           expect(error).to be_a(NexosisApi::HttpException)
           expect(error.code).to eql(404)
         }
@@ -185,7 +185,7 @@ describe NexosisApi::Client::Sessions do
         columns << NexosisApi::Column.new('transactions',{ 'dataType' => NexosisApi::ColumnType::NUMERIC, 'role' => NexosisApi::ColumnRole::FEATURE })
         actual  = test_client.create_forecast_session('TestRuby', '2014-04-08', '2014-05-08', 'sales', 'day', columns)
         expect(actual).to be_a(NexosisApi::SessionResponse)
-        expect(actual.targetColumn).to eql('sales')
+        expect(actual.target_column).to eql('sales')
         expect(actual.column_metadata[2].role).to eql(NexosisApi::ColumnRole::FEATURE)
       end
     end
@@ -228,12 +228,12 @@ describe NexosisApi::Client::Sessions do
     context 'given a page number' do
       it 'should return next result set' do
         both = test_client.list_sessions({}, 0, 2)
-        id1 = both[0].sessionId
-        id2 = both[1].sessionId
+        id1 = both[0].session_id
+        id2 = both[1].session_id
         page_one = test_client.list_sessions({},0,1)
-        expect(page_one[0].sessionId).to eql(id1)
+        expect(page_one[0].session_id).to eql(id1)
         page_two = test_client.list_sessions({},1,1)
-        expect(page_two[0].sessionId).to eql(id2)
+        expect(page_two[0].session_id).to eql(id2)
       end
     end
   end
@@ -277,7 +277,7 @@ describe NexosisApi::Client::Sessions do
       it 'sets the query parameter' do
         available = test_client.list_sessions({}, 0, 10)
         completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
-        actual = test_client.get_session_results completed.sessionId, false, '.5'
+        actual = test_client.get_session_results completed.session_id, false, '.5'
         expect(actual).to_not be_nil
       end
     end
@@ -293,7 +293,7 @@ describe NexosisApi::Client::Sessions do
           test_client.create_dataset_csv('Iris', data)
           completed = test_client.create_model('Iris', 'iris', {}, 'classification')
           loop do
-            status_check = test_client.get_session completed.sessionId
+            status_check = test_client.get_session completed.session_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
             sleep 10
           end

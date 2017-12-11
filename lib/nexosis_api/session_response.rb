@@ -1,28 +1,33 @@
 require 'nexosis_api/session'
 
 module NexosisApi
-  #Class to parse the results from a new session
+  # Class to parse the results from a new session
   class SessionResponse < Session
     def initialize(forecast_hash)
+      val_map = {
+        'Nexosis-Account-DataSetCount-Allotted' => :@datasets_allotted,
+        'Nexosis-Account-DataSetCount-Current' => :@datasets_current,
+        'Nexosis-Account-PredictionCount-Allotted' => :@predictions_allotted,
+        'Nexosis-Account-PredictionCount-Current' => :@predictions_current,
+        'Nexosis-Account-SessionCount-Allotted' => :@sessions_allotted,
+        'Nexosis-Account-SessionCount-Current' => :@sessions_current
+      }
       forecast_hash.each do |k, v|
-        if(k == 'session')
+        if (k == 'session')
           super(v) unless v.nil?
-        elsif(k == 'nexosis-request-cost')
-          instance_variable_set('@cost', v[0]) unless v.nil?
-        elsif(k == 'nexosis-account-balance')
-          instance_variable_set('@account_balance', v[0]) unless v.nil?
-        elsif(k == 'balance')
-          @balance = v
+        else
+          instance_variable_set(val_map[k], v) unless val_map[k].nil?
         end
       end
     end
 
-    # The cost of this session with currency identifier
-    # @return [String]
-    attr_accessor :cost
-
-    # Remaining balance after charge for this session
-    # @return [String]
-    attr_accessor :account_balance
+    attr_reader :datasets_allotted
+    attr_reader :datasets_allotted
+    attr_reader :datasets_current
+    attr_reader :predictions_allotted
+    attr_reader :predictions_current
+    attr_reader :sessions_allotted
+    attr_reader :sessions_current
+    
   end
 end

@@ -17,11 +17,11 @@ RSpec.configure do |config|
       rescue Exception => eApi
         puts eApi.message
       end
-    end
+   end
   end
 
   config.after(:all) do
-    if ENV['VCR_OFF'] == false
+  if ENV['VCR_OFF'] == false
       begin
         test_client.remove_dataset('TestRuby', cascade: true)
         test_client.remove_dataset('TestRuby_NTS', cascade: true)
