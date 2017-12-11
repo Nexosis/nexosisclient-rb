@@ -87,7 +87,7 @@ module NexosisApi
       # If folders have been used this will contain the full path within the container.
       # @param column_metadata [Array of NexosisApi::Column] description of each column in target dataset. Optional.
       # @return [NexosisApi::ImportsResponse]
-      # @since 1.5.0
+      # @since 2.0.0
       # @note the connection string provided will be encrypted at the server, used once, and then removed from storage.
       def import_from_azure(dataset_name, connection_string, container, blob_name, column_metadata = [])
         raise ArgumentError, 'dataset_name was not provided and is not optional ' unless dataset_name.empty? == false
@@ -119,7 +119,7 @@ module NexosisApi
       # @return [NexosisApi::ImportsResponse]
       # @note imports depend on file extensions, so use a content type indicator if json or csv cannot be inferred.
       # @note Urls protected by basic auth can be accessed if given a userid and password in options
-      # @since 1.5.0
+      # @since 2.0.0
       def import_from_url(dataset_name, url, column_metadata = [], options = {})
         raise ArgumentError, 'dataset_name was not provided and is not optional ' unless dataset_name.empty? == false
         raise ArgumentError, 'url was not provided and is not optional ' unless url.empty? == false
