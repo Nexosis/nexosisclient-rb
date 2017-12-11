@@ -30,7 +30,7 @@ module NexosisApi
     # @return [String]
     attr_accessor :import_id
 
-    # Currently always s3
+    # Where the import was requested from - S3, Azure, or Url
     # @return [String]
     attr_accessor :type, :s3 
     

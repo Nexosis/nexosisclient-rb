@@ -36,10 +36,12 @@ module NexosisApi
       # @param bucket_name [String] the AWS S3 bucket name in which the path will be found
       # @param path [String] the path within the bucket (usually file name)
       # @param region [String] the region in which your bucket exists. Defaults to us-east-1
+      # @param credentials [Hash] :access_key_id and :secret_access_key for user with rights to read the target file.
       # @param column_metadata [Array of NexosisApi::Column] description of each column in target dataset. Optional.
       # @return [NexosisApi::ImportsResponse]
       # @see http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region for information on region names
-      def import_from_s3(dataset_name, bucket_name, path, region = 'us-east-1', column_metadata = [])
+      # @note If credentials are provided they will be encrypted at the server, used once, and then removed from storage.
+      def import_from_s3(dataset_name, bucket_name, path, region = 'us-east-1', credentials = {}, column_metadata = [])
         raise ArgumentError, 'dataset_name was not provided and is not optional ' unless dataset_name.to_s.empty? == false
         raise ArgumentError, 'bucket_name was not provided and is not optional ' unless bucket_name.to_s.empty? == false
         raise ArgumentError, 'path was not provided and is not optional ' unless path.to_s.empty? == false
@@ -52,10 +54,12 @@ module NexosisApi
           'region' => region,
           'columns' => column_json
         }
+        body['accessKeyId'] = credentials[:access_key_id] unless credentials[:access_key_id].nil?
+        body['secretAccessKey'] = credentials[:secret_access_key] unless credentials[:secret_access_key].nil?
         response = self.class.post(s3_import_url, headers: @headers, body: body.to_json)
         raise HttpException.new("There was a problem importing from s3: #{response.code}.",
-                                 "uploading dataset from s3 #{dataset_name}",
-                                 response) unless response.success?
+                                "uploading dataset from s3 #{dataset_name}",
+                                response) unless response.success?
         NexosisApi::ImportsResponse.new(response.parsed_response)
       end
 
@@ -84,12 +88,13 @@ module NexosisApi
       # @param column_metadata [Array of NexosisApi::Column] description of each column in target dataset. Optional.
       # @return [NexosisApi::ImportsResponse]
       # @since 1.5.0
+      # @note the connection string provided will be encrypted at the server, used once, and then removed from storage.
       def import_from_azure(dataset_name, connection_string, container, blob_name, column_metadata = [])
         raise ArgumentError, 'dataset_name was not provided and is not optional ' unless dataset_name.empty? == false
         raise ArgumentError, 'connection_string was not provided and is not optional ' unless connection_string.empty? == false
         raise ArgumentError, 'container was not provided and is not optional ' unless container.empty? == false
         raise ArgumentError, 'blob_name was not provided and is not optional ' unless blob_name.empty? == false
-        azure_url = 'imports/azure'
+        azure_url = '/imports/azure'
         column_json = Column.to_json(column_metadata)
         body = {
           'dataSetName' => dataset_name,

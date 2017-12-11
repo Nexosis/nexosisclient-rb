@@ -34,6 +34,10 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.filter_sensitive_data('api-key') { ENV['NEXOSIS_API_TESTKEY'] }
+  config.filter_sensitive_data('<sas_token>') { ENV['AZURE_TEST_TOKEN'] }
+  config.filter_sensitive_data('<aws_test_secret>') { ENV['AWS_TEST_IAM_SECRETKEY'] }
+  config.filter_sensitive_data('<aws_test_key>') { ENV['AWS_TEST_IAM_ACCESSKEY'] }
+  config.filter_sensitive_data('<blob_endpoint>') { ENV['AZURE_TEST_STORAGE_URI'] }
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.allow_http_connections_when_no_cassette = true
