@@ -1,4 +1,3 @@
-require 'nexosis_api/algorithm_run'
 require 'nexosis_api/algorithm_contestant'
 require 'nexosis_api/algorithm'
 require 'nexosis_api/calendar_jointarget'
