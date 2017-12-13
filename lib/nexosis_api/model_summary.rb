@@ -23,7 +23,7 @@ module NexosisApi
         elsif (k == 'metrics')
           @metrics = v.reject { |_key, value| value.nil? }
                       .map do |col_key, col_val|
-                        NexosisApi::Metric.new(name: col_key, value: col_val)
+                        NexosisApi::Metric.new(col_key, col_val)
                       end
         elsif (k == 'sessionId')
           @session_id = v

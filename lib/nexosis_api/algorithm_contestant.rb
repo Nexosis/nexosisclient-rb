@@ -2,20 +2,16 @@ module NexosisApi
   # Class to parse results of an algorithm run
   # @since 2.0.0
   class AlgorithmContestant
-    def initialize(run_hash)
-      run_hash.each do |k, v|
-        if k == 'metrics'
-          metric_set = []
-          v.each { |m| metric_set << NexosisApi::Metric.new(m) unless m.nil? }
-          instance_variable_set("@#{k}", metric_set)
-        elsif k == 'links'
-          link_set = []
-          v.each { |l| link_set << NexosisApi::Link.new(l) unless l.nil? }
-          instance_variable_set("@#{k}", link_set)
-        elsif k == 'dataSourceProperties'
+    def initialize(contestant_hash)
+      contestant_hash.each do |k, v|
+        if k.to_s == 'links'
+          instance_variable_set("@#{k}", v.map { |l| NexosisApi::Link.new(l) unless l.nil? })
+        elsif k.to_s == 'dataSourceProperties'
           @datasource_properties = v
-        else
+        elsif k.to_s == 'algorithm'
           instance_variable_set("@#{k}", NexosisApi::Algorithm.new(v)) unless v.nil?
+        else
+          instance_variable_set("@#{k}", v)
         end
       end
     end
@@ -25,7 +21,7 @@ module NexosisApi
 
     # Identifier of algorithm run
     # @return [NexosisApi::Algorithm]
-    attr_accessor :algorithm        
+    attr_accessor :algorithm
 
     # Name and value for metrics calculated for this algorithm
     # @return [Hash]

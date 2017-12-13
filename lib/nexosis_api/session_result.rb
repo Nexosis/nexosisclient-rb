@@ -6,7 +6,7 @@ module NexosisApi
         if k.to_s == 'metrics' && session_hash['type'] == 'impact'
           instance_variable_set("@#{k}", NexosisApi::ImpactMetric.new(v)) unless v.nil?
         elsif k.to_s == 'metrics'
-          @metrics = v.map { |key, value| NexosisApi::Metric.new( { 'name' => key.to_s, 'value' => value } ) } unless v.nil?
+          @metrics = v.map { |key, value| NexosisApi::Metric.new(key.to_s, value) } unless v.nil?
         elsif k.to_s == 'data'
           @data = v
         end

@@ -1,19 +1,14 @@
 module NexosisApi
   # Class to parse algorithm metrics from model results
   class Metric
-    def initialize(metric_hash)
-      metric_hash.each do |k, v|
-        instance_variable_set("@#{k}", v) unless v.nil?
-      end
+    def initialize(name, value)
+      @name = name
+      @value = value
     end
 
     # Friendly name of the metric
     # @return [String]
     attr_accessor :name
-
-    # Identifier for metric type
-    # @return [String]
-    attr_accessor :code
 
     # Calculated metric
     # @return [Float]

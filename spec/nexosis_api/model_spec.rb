@@ -208,6 +208,14 @@ describe NexosisApi::Algorithm do
   describe '#initialize' do
     context 'given an algorithm hash' do
       it 'creates new object initialized with values' do
+        algo_hash = { 'name': 'SVC Sigmoid',
+                      'description': 'Support Vector Classification using Sigmoid kernel',
+                      'key': 'svc_sigmoid' }
+        target = NexosisApi::Algorithm.new(algo_hash)
+        expect(target).to_not be_nil
+        expect(target.key).to eql('svc_sigmoid')
+        expect(target.description).to eql('Support Vector Classification using Sigmoid kernel')
+        expect(target.name).to eql('SVC Sigmoid')
       end
     end
   end
@@ -217,6 +225,11 @@ describe NexosisApi::AlgorithmContestant do
   describe '#initialize' do
     context 'given a contestant hash' do
       it 'creates new object initialized with values' do
+        target = NexosisApi::AlgorithmContestant.new(contestant_hash)
+        expect(target.id).to eql('01604c19-60a6-4dbc-a8b6-68fadbe180d4')
+        expect(target).to_not be_nil
+        expect(target.metrics.length).to be(5)
+        expect(target.datasource_properties.length).to be(2)
       end
     end
   end
@@ -226,6 +239,17 @@ describe NexosisApi::SessionContest do
   describe '#initialize' do
     context 'given a contest hash' do
       it 'creates new object initialized with values' do
+        contest_hash = session_hash
+        contest_hash['championMetric'] = 'macroAverageF1Score'
+        contest_hash['champion'] = contestant_hash
+        contest_hash['contestants'] = contestant_array
+        target = NexosisApi::SessionContest.new(contest_hash)
+        expect(target).to_not be_nil
+        expect(target.session_id).to eql('015ca6f7-ca42-49de-9601-f5493a03cbfa')
+        expect(target.champion).to be_a(NexosisApi::AlgorithmContestant)
+        expect(target.contestants).to be_a(Array)
+        expect(target.contestants.length).to be(2)
+        expect(target.champion_metric).to eql('macroAverageF1Score')
       end
     end
   end
@@ -235,6 +259,29 @@ describe NexosisApi::SessionSelectionMetrics do
   describe '#initialize' do
     context 'given selection hash' do
       it 'creates new object initialized with values' do
+        metric_hash = session_hash
+        metric_hash['metricSets'] = [
+          {
+            'dataSetProperties' => [
+              'Imputed',
+              'Scaled'
+            ],
+            'metrics' => {
+              'coefficientOfVariation': 0.74325743456980464,
+              'mean': 4.514492753623192,
+              'observationCount': 138,
+              'trainingCount': 111,
+              'standardDeviation': 3.3554303024419467,
+              'featureCount': 3,
+              'testCount': 27
+            }
+          }
+        ]
+        target = NexosisApi::SessionSelectionMetrics.new(metric_hash)
+        expect(target).to_not be_nil
+        expect(target.session_id).to eql('015ca6f7-ca42-49de-9601-f5493a03cbfa')
+        expect(target.dataset_properties.length).to eql(2)
+        expect(target.metrics.length).to eql(7)
       end
     end
   end
@@ -258,4 +305,72 @@ def session_hash
     'endDate': '2017-02-22T00:00:00+00:00',
     'callbackUrl': nil,
     'resultInterval': nil }
+end
+
+def contestant_array
+  [
+    {
+      'id': '01604c19-60a6-4dbc-a8b6-68fadbe180d4',
+      'algorithm': {
+        'name': 'Neural Net Tanh',
+        'description': 'Neural Network using Hyperbolic Tangent activation function',
+        'key': 'nn_tanh_classification'
+      },
+      'dataSourceProperties': [
+        'Imputed',
+        'Scaled'
+      ],
+      'metrics': {
+        'macroAverageF1Score': 0.66868686868686877,
+        'accuracy': 0.77777777777777779,
+        'macroAveragePrecision': 0.69393939393939386,
+        'macroAverageRecall': 0.69696969696969691,
+        'matthewsCorrelationCoefficient': 0.75047428290868912
+      },
+      'links': []
+    },
+    {
+      'id': '01604c17-810c-42d0-9332-6db306cca7ef',
+      'algorithm': {
+        'name': 'SVC Sigmoid',
+        'description': 'Support Vector Classification using Sigmoid kernel',
+        'key': 'svc_sigmoid'
+      },
+      'dataSourceProperties': [
+        'Imputed',
+        'Scaled'
+      ],
+      'metrics': {
+        'macroAverageF1Score': 0.64848484848484855,
+        'accuracy': 0.70370370370370372,
+        'macroAveragePrecision': 0.70454545454545459,
+        'macroAverageRecall': 0.63636363636363635,
+        'matthewsCorrelationCoefficient': 0.67033049633031272
+      },
+      'links': []
+    }
+  ]
+end
+
+def contestant_hash
+  {
+    'id': '01604c19-60a6-4dbc-a8b6-68fadbe180d4',
+    'algorithm': {
+      'name': 'Neural Net Tanh',
+      'description': 'Neural Network using Hyperbolic Tangent activation function',
+      'key': 'nn_tanh_classification'
+    },
+    'dataSourceProperties': [
+      'Imputed',
+      'Scaled'
+    ],
+    'metrics': {
+      'macroAverageF1Score': 0.66868686868686877,
+      'accuracy': 0.77777777777777779,
+      'macroAveragePrecision': 0.69393939393939386,
+      'macroAverageRecall': 0.69696969696969691,
+      'matthewsCorrelationCoefficient': 0.75047428290868912
+    },
+    'links': []
+  }
 end
