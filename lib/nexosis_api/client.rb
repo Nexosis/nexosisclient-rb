@@ -68,6 +68,15 @@ module NexosisApi
       response.headers['nexosis-account-balance']
     end
 
+    # Provide access to read or modify the api key
+    # @return [String]
+    # @since 2.0.0
+    def api_key(value)
+      @api_key = value unless value.nil?
+      @headers['api-key'] = @api_key
+      @api_key
+    end
+
     private
 
     # @private

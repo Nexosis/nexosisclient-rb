@@ -1,0 +1,160 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=5&requestedAfterDate=&requestedBeforeDate=&type=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - "<elevated_api_key>"
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '50'
+      Nexosis-Account-Datasetcount-Current:
+      - '3'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Predictioncount-Current:
+      - '0'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '350'
+      Nexosis-Account-Sessioncount-Current:
+      - '2'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 13 Dec 2017 20:27:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"0160515d-8ada-4825-b93a-03f514ab247b","type":"model","status":"completed","predictionDomain":"classification","availablePredictionIntervals":[],"modelId":"9b3e8ab4-758b-4946-8866-88e0c3f350f2","requestedDate":"2017-12-13T19:32:53.076451+00:00","statusHistory":[{"date":"2017-12-13T19:32:53.076451+00:00","status":"requested"},{"date":"2017-12-13T19:32:53.1765393+00:00","status":"started"},{"date":"2017-12-13T19:34:22.7901572+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"150
+        observations were found in the dataset."}],"dataSourceName":"iris","dataSetName":"iris","targetColumn":"iris","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/iris"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/9b3e8ab4-758b-4946-8866-88e0c3f350f2"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/results/confusionmatrix"}]}],"pageNumber":0,"totalPages":1,"pageSize":5,"totalCount":1,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5&page=0"}]}'
+    http_version: 
+  recorded_at: Wed, 13 Dec 2017 20:27:36 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/contestants
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - "<elevated_api_key>"
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '50'
+      Nexosis-Account-Datasetcount-Current:
+      - '3'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Predictioncount-Current:
+      - '0'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '350'
+      Nexosis-Account-Sessioncount-Current:
+      - '2'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 13 Dec 2017 20:27:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"id":"0160515d-cf2c-4d04-a794-5f3ac451ef76","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[]},{"id":"0160515d-be22-4dd2-9768-8a70aebd3de3","algorithm":{"name":"SVC
+        Polynomial","description":"Support Vector Classification using Polynomial
+        kernel","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[]},{"id":"0160515d-b428-462d-827c-b85abc3ea872","algorithm":{"name":"Logistic
+        Regression with Lasso regularization","description":"Logistic Regression with
+        Lasso regularization","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-b3c9-4f7b-b6af-6b6bb2cb6b13","algorithm":{"name":"Logistic
+        Regression with Ridge regularization","description":"Logistic Regression with
+        Ridge regularization","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-b795-47e3-8107-07c4fbf398b5","algorithm":{"name":"Naive
+        Bayes Classifier","description":"Naive Bayes Classifier","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515e-b657-4174-8e9d-5467ec9a6837","algorithm":{"name":"Neural
+        Net ReLU","description":"Neural Network using Rectified Linear Unit activation
+        function","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515e-cfd0-4f17-bf7f-a2207d9ae758","algorithm":{"name":"Neural
+        Net Sigmoid","description":"Neural Network using Sigmoid activation function","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515e-b82b-452a-8f32-ed0a51b02d5d","algorithm":{"name":"Neural
+        Net Tanh","description":"Neural Network using Hyperbolic Tangent activation
+        function","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-bae6-4f0a-a8ea-76e507545067","algorithm":{"name":"Random
+        Forest","description":"Random Forest","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-cb81-4d6c-b0a8-e28a1e7af515","algorithm":{"name":"SVC
+        Linear","description":"Support Vector Classification using Linear kernel","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-ce72-49f6-ae05-01077cc9eea5","algorithm":{"name":"SVC
+        RBF","description":"Support Vector Classification using Radial Basis Function
+        (Gaussian) kernel","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-e5ad-4b5d-9179-1bd8d3b61202","algorithm":{"name":"SVC
+        Sigmoid","description":"Support Vector Classification using Sigmoid kernel","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-d522-4247-aaa4-3792aff594c0","algorithm":{"name":"XGBoost
+        L1","description":"eXtreme Gradient Boosting with Lasso regularization","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]},{"id":"0160515d-d870-4e35-becf-689e534e65c8","algorithm":{"name":"XGBoost
+        L2","description":"eXtreme Gradient Boosting with Ridge regularization","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":0.96658312447786132,"accuracy":0.96666666666666667,"macroAveragePrecision":0.96969696969696972,"macroAverageRecall":0.96666666666666667,"matthewsCorrelationCoefficient":0.95158730269420344},"links":[]}]}'
+    http_version: 
+  recorded_at: Wed, 13 Dec 2017 20:27:37 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/contestants/0160515d-cf2c-4d04-a794-5f3ac451ef76
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - "<elevated_api_key>"
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '50'
+      Nexosis-Account-Datasetcount-Current:
+      - '3'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Predictioncount-Current:
+      - '0'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '350'
+      Nexosis-Account-Sessioncount-Current:
+      - '2'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 13 Dec 2017 20:27:36 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"iris":"versicolor","petal_len":"4","sepal_len":"5.5","iris:actual":"versicolor","petal_width":"1.3","sepal_width":"2.5"},{"iris":"versicolor","petal_len":"4.5","sepal_len":"5.6","iris:actual":"versicolor","petal_width":"1.5","sepal_width":"3"},{"iris":"versicolor","petal_len":"3.5","sepal_len":"5","iris:actual":"versicolor","petal_width":"1","sepal_width":"2"},{"iris":"versicolor","petal_len":"4.1","sepal_len":"5.8","iris:actual":"versicolor","petal_width":"1","sepal_width":"2.7"},{"iris":"versicolor","petal_len":"3.3","sepal_len":"4.9","iris:actual":"versicolor","petal_width":"1","sepal_width":"2.4"},{"iris":"versicolor","petal_len":"4.8","sepal_len":"5.9","iris:actual":"versicolor","petal_width":"1.8","sepal_width":"3.2"},{"iris":"versicolor","petal_len":"4.7","sepal_len":"6.3","iris:actual":"versicolor","petal_width":"1.6","sepal_width":"3.3"},{"iris":"versicolor","petal_len":"4.7","sepal_len":"6.7","iris:actual":"versicolor","petal_width":"1.5","sepal_width":"3.1"},{"iris":"versicolor","petal_len":"4.1","sepal_len":"5.7","iris:actual":"versicolor","petal_width":"1.3","sepal_width":"2.8"},{"iris":"versicolor","petal_len":"4.2","sepal_len":"5.7","iris:actual":"versicolor","petal_width":"1.2","sepal_width":"3"},{"iris":"setosa","petal_len":"1.4","sepal_len":"5.1","iris:actual":"setosa","petal_width":"0.3","sepal_width":"3.5"},{"iris":"setosa","petal_len":"1.7","sepal_len":"5.1","iris:actual":"setosa","petal_width":"0.5","sepal_width":"3.3"},{"iris":"setosa","petal_len":"1.6","sepal_len":"4.7","iris:actual":"setosa","petal_width":"0.2","sepal_width":"3.2"},{"iris":"setosa","petal_len":"1.4","sepal_len":"4.6","iris:actual":"setosa","petal_width":"0.2","sepal_width":"3.2"},{"iris":"setosa","petal_len":"1.3","sepal_len":"4.7","iris:actual":"setosa","petal_width":"0.2","sepal_width":"3.2"},{"iris":"setosa","petal_len":"1.7","sepal_len":"5.4","iris:actual":"setosa","petal_width":"0.4","sepal_width":"3.9"},{"iris":"setosa","petal_len":"1.1","sepal_len":"4.3","iris:actual":"setosa","petal_width":"0.1","sepal_width":"3"},{"iris":"setosa","petal_len":"1.6","sepal_len":"5","iris:actual":"setosa","petal_width":"0.6","sepal_width":"3.5"},{"iris":"setosa","petal_len":"1.5","sepal_len":"4.6","iris:actual":"setosa","petal_width":"0.2","sepal_width":"3.1"},{"iris":"setosa","petal_len":"1.5","sepal_len":"5.4","iris:actual":"setosa","petal_width":"0.2","sepal_width":"3.7"},{"iris":"virginica","petal_len":"5.9","sepal_len":"6.8","iris:actual":"virginica","petal_width":"2.3","sepal_width":"3.2"},{"iris":"virginica","petal_len":"4.9","sepal_len":"6.1","iris:actual":"virginica","petal_width":"1.8","sepal_width":"3"},{"iris":"virginica","petal_len":"6.4","sepal_len":"7.9","iris:actual":"virginica","petal_width":"2","sepal_width":"3.8"},{"iris":"virginica","petal_len":"5.8","sepal_len":"6.7","iris:actual":"virginica","petal_width":"1.8","sepal_width":"2.5"},{"iris":"virginica","petal_len":"5.6","sepal_len":"6.7","iris:actual":"virginica","petal_width":"2.4","sepal_width":"3.1"},{"iris":"virginica","petal_len":"5.6","sepal_len":"6.4","iris:actual":"virginica","petal_width":"2.1","sepal_width":"2.8"},{"iris":"virginica","petal_len":"5.1","sepal_len":"6.5","iris:actual":"virginica","petal_width":"2","sepal_width":"3.2"},{"iris":"virginica","petal_len":"6.1","sepal_len":"7.4","iris:actual":"virginica","petal_width":"1.9","sepal_width":"2.8"},{"iris":"virginica","petal_len":"5","sepal_len":"6.3","iris:actual":"virginica","petal_width":"1.9","sepal_width":"2.5"},{"iris":"virginica","petal_len":"5.8","sepal_len":"6.5","iris:actual":"virginica","petal_width":"2.2","sepal_width":"3"}],"pageNumber":0,"totalPages":1,"pageSize":1000,"totalCount":30,"id":"0160515d-cf2c-4d04-a794-5f3ac451ef76","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":""},"dataSourceProperties":["Imputed","Scaled"],"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/contestants/0160515d-cf2c-4d04-a794-5f3ac451ef76"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/contestants/0160515d-cf2c-4d04-a794-5f3ac451ef76"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/contestants/0160515d-cf2c-4d04-a794-5f3ac451ef76?page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/contestants/0160515d-cf2c-4d04-a794-5f3ac451ef76?page=0"}]}'
+    http_version: 
+  recorded_at: Wed, 13 Dec 2017 20:27:37 GMT
+recorded_with: VCR 3.0.3

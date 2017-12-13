@@ -35,5 +35,9 @@ module NexosisApi
     # @return [Array]
     attr_reader :datasource_properties
 
+    # The test dataset used to score the algo
+    # @return [Array of Hash] columnname: value hash of each observation row in test set
+    # @note - may be nil when reviewing contestant lists
+    attr_reader :data
   end
 end
