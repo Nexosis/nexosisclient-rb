@@ -1,6 +1,7 @@
 module NexosisApi
-  # Class to parse the model data results from a session 
-  class AlgorithmSelection
+  # Class to parse the algorithm contestants from a session
+  # @since 2.0.0
+  class SessionContest < Session
     def initialize(data_hash)
       data_hash.each do |k, v|
         if k == 'champion'
@@ -9,26 +10,17 @@ module NexosisApi
           contestant_array = []
           v.each { |c| contestant_array << NexosisApi::AlgorithmRun.new(c) }
           instance_variable_set("@#{k}", contestant_array)
-        else
-          instance_variable_set("@#{k}", v) unless v.nil?
         end
       end
+      super(data_hash.reject { |key, _v| key == 'champion' || key == 'contestants' })
     end
 
-    # The date on which this algo was selected as champion
-    # @return [DateTime]
-    attr_accessor :date
-
-    # The session which selected the algorithm
-    # @return [String] session identifier
-    attr_accessor :sessionId
-
     # The champion algorithm used
-    # @return [NexosisApi::AlgorithmRun]
+    # @return [NexosisApi::AlgorithmContestant]
     attr_accessor :champion
 
     # All other algorithms which competed
-    # @return [Array of NexosisApi::AlgorithmRun]
+    # @return [Array of NexosisApi::AlgorithmContestant]
     attr_accessor :contestants
   end
 end

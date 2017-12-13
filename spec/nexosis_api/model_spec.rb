@@ -4,7 +4,7 @@ describe NexosisApi::Session do
   describe '#initialize' do
     context 'given a hash with session values' do
       it 'creates an instance with those values' do
-        target = NexosisApi::Session.new({'sessionId':'015ca6f7-ca42-49de-9601-f5493a03cbfa','type':'forecast','status':'completed','requestedDate':'2017-06-14T14:17:56.012548+00:00','statusHistory':[{'date':'2017-06-14T14:17:56.012548+00:00','status':'requested'},{'date':'2017-06-14T14:17:57.0034498+00:00','status':'started'},{'date':'2017-06-14T14:18:05.1763039+00:00','status':'completed'}],'extraParameters':{},'columns':{},'dataSourceName':'RubyTest','targetColumn':'sales','startDate':'2017-01-22T00:00:00+00:00','endDate':'2017-02-22T00:00:00+00:00','callbackUrl':nil, 'resultInterval':nil})
+        target = NexosisApi::Session.new(session_hash)
         expect(target).to_not be_nil
         expect(target.datasource_name).to eql('RubyTest')
       end
@@ -55,8 +55,7 @@ describe NexosisApi::SessionResult do
           'meanAbsoluteError': '15990.948459514153',
           'meanAbsolutePercentError': '0.092227013821557124',
           'rootMeanSquareError': '29872.102288912662'
-        }, 'data': []}
-        
+        }, 'data': [] }
         target = NexosisApi::SessionResult.new(session_hash)
         expect(target.metrics).to_not be_nil
         expect(target.metrics[0].name).to eql('meanAbsoluteError')
@@ -203,4 +202,60 @@ describe NexosisApi::PagedArray do
       end
     end
   end
+end
+
+describe NexosisApi::Algorithm do
+  describe '#initialize' do
+    context 'given an algorithm hash' do
+      it 'creates new object initialized with values' do
+      end
+    end
+  end
+end
+
+describe NexosisApi::AlgorithmContestant do
+  describe '#initialize' do
+    context 'given a contestant hash' do
+      it 'creates new object initialized with values' do
+      end
+    end
+  end
+end
+
+describe NexosisApi::SessionContest do
+  describe '#initialize' do
+    context 'given a contest hash' do
+      it 'creates new object initialized with values' do
+      end
+    end
+  end
+end
+
+describe NexosisApi::SessionSelectionMetrics do
+  describe '#initialize' do
+    context 'given selection hash' do
+      it 'creates new object initialized with values' do
+      end
+    end
+  end
+end
+
+private
+
+def session_hash
+  { 'sessionId': '015ca6f7-ca42-49de-9601-f5493a03cbfa',
+    'type': 'forecast',
+    'status': 'completed',
+    'requestedDate': '2017-06-14T14:17:56.012548+00:00',
+    'statusHistory': [{ 'date': '2017-06-14T14:17:56.012548+00:00', 'status': 'requested' },
+                      { 'date': '2017-06-14T14:17:57.0034498+00:00', 'status': 'started' },
+                      { 'date': '2017-06-14T14:18:05.1763039+00:00', 'status': 'completed' }],
+    'extraParameters': {},
+    'columns': {},
+    'dataSourceName': 'RubyTest',
+    'targetColumn': 'sales',
+    'startDate': '2017-01-22T00:00:00+00:00',
+    'endDate': '2017-02-22T00:00:00+00:00',
+    'callbackUrl': nil,
+    'resultInterval': nil }
 end

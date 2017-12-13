@@ -1,5 +1,5 @@
 require 'nexosis_api/algorithm_run'
-require 'nexosis_api/algorithm_selection'
+require 'nexosis_api/algorithm_contestant'
 require 'nexosis_api/algorithm'
 require 'nexosis_api/calendar_jointarget'
 require 'nexosis_api/classifier_result'
@@ -21,12 +21,15 @@ require 'nexosis_api/metric'
 require 'nexosis_api/model_summary'
 require 'nexosis_api/paged_array'
 require 'nexosis_api/predict_response'
+require 'nexosis_api/session_contest'
 require 'nexosis_api/session_response'
 require 'nexosis_api/session_result'
+require 'nexosis_api/session_selection_metrics'
 require 'nexosis_api/session'
 require 'nexosis_api/time_interval'
 require 'nexosis_api/view_definition'
 require 'nexosis_api/view_data'
+require 'nexosis_api/client/contest'
 require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
 require 'nexosis_api/client/imports'
@@ -43,6 +46,7 @@ module NexosisApi
     include Client::Imports
     include Client::Views
     include Client::Models
+    include Client::Contest
 
     def initialize(options = {})
       raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
