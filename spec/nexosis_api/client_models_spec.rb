@@ -25,7 +25,7 @@ describe NexosisApi::Client::Models do
             status_check = test_client.get_session session.session_id
             @model_id = status_check.model_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 10
+            sleep 5
           end
         end
         actual = test_client.get_model(@model_id)
@@ -55,7 +55,7 @@ describe NexosisApi::Client::Models do
           status_check = test_client.get_session session.session_id
           model_id = status_check.model_id
           break if (status_check.status == 'completed' || status_check.status == 'failed')
-          sleep 10
+          sleep 5
         end
         test_client.remove_model(model_id)
         expect{test_client.get_model(model_id)}.to raise_error{ |error|
@@ -103,7 +103,7 @@ describe NexosisApi::Client::Models do
             status_check = test_client.get_session session.session_id
             @model_id = status_check.model_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 10
+            sleep 5
           end
         end
         data = JSON.parse('[{"feature": "15"}]')

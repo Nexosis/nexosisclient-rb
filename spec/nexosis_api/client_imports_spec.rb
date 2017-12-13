@@ -13,7 +13,7 @@ describe NexosisApi::Client::Imports do
         expect(actual).to be_a(NexosisApi::ImportsResponse)
         expect(actual.status).to eql('requested')
         expect(actual.column_metadata[1].role).to eql(NexosisApi::ColumnRole::TARGET)
-        sleep 20
+        sleep 5
         begin
           test_client.remove_dataset('TestRuby_JsonImport', { cascade: true})
         rescue Exception

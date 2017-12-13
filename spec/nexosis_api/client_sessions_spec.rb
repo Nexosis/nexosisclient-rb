@@ -295,7 +295,7 @@ describe NexosisApi::Client::Sessions do
           loop do
             status_check = test_client.get_session completed.session_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 10
+            sleep 5
           end
         end
         actual = test_client.get_confusion_matrix(completed.session_id)
