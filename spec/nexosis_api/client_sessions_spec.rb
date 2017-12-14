@@ -44,6 +44,7 @@ describe NexosisApi::Client::Sessions do
         actual = test_client.get_session_results session.session_id
         expect(actual).to be_a(NexosisApi::SessionResult)
         expect(actual.data).not_to be_empty
+        expect(actual.status_history).to be_a(Array)
       end
     end
   end
