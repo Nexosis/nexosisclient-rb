@@ -54,8 +54,8 @@ module NexosisApi
           'region' => region,
           'columns' => column_json
         }
-        body['accessKeyId'] = credentials[:access_key_id] unless credentials[:access_key_id].nil?
-        body['secretAccessKey'] = credentials[:secret_access_key] unless credentials[:secret_access_key].nil?
+        body['accessKeyId'] = credentials[:access_key_id] unless credentials.nil? || credentials[:access_key_id].nil?
+        body['secretAccessKey'] = credentials[:secret_access_key] unless credentials.nil? || credentials[:secret_access_key].nil?
         response = self.class.post(s3_import_url, headers: @headers, body: body.to_json)
         raise HttpException.new("There was a problem importing from s3: #{response.code}.",
                                 "uploading dataset from s3 #{dataset_name}",
