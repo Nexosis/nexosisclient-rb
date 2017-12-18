@@ -4,16 +4,12 @@ describe NexosisApi::Client::Views do
 
   before(:all) do
     # load another dataset to use in right side of joins
-    if ENV['VCR_OFF'] == true
-      data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
-      test_client.create_dataset_csv('TestRuby_Right', data)
-    end
+    data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
+    test_client.create_dataset_csv('TestRuby_Right', data)
   end
 
   after(:all) do
-    if ENV['VCR_OFF'] == true
-      test_client.remove_dataset('TestRuby_Right', cascade_view: true)
-    end
+    test_client.remove_dataset('TestRuby_Right', cascade_view: true)
   end
 
   describe '#list_views', :vcr => {:cassette_name => 'list_views'} do
