@@ -22,11 +22,10 @@ RSpec.configure do |config|
 
   config.after(:all) do
   if ENV['VCR_OFF']
-      begin
+    begin
         test_client.remove_dataset('TestRuby', cascade: true)
         test_client.remove_dataset('TestRuby_NTS', cascade: true)
-      rescue NexosisApi::HttpException
-      end
+    rescue NexosisApi::HttpException
     end
   end
 end
