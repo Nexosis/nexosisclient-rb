@@ -1,0 +1,232 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/v1/imports/azure
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"AzureImportRuby","connectionString":"BlobEndpoint=<blob_endpoint>;SharedAccessSignature=<sas_token>","container":"datatest","blob":"mpg/auto-mpg.data.json","columns":{}}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Import-Status:
+      - Requested
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '45'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '110'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Mon, 11 Dec 2017 16:48:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"importId":"01604679-e5c2-4141-8361-d15f981cef1a","type":"azure","status":"requested","dataSetName":"AzureImportRuby","parameters":{"connectionString":"redacted","container":"datatest","blob":"mpg/auto-mpg.data.json"},"requestedDate":"2017-12-11T16:48:01.986565+00:00","statusHistory":[{"date":"2017-12-11T16:48:01.986565+00:00","status":"requested"}],"messages":[],"columns":{},"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/imports/azure"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/AzureImportRuby"}]}'
+    http_version: 
+  recorded_at: Mon, 11 Dec 2017 16:48:02 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/imports/01604679-e5c2-4141-8361-d15f981cef1a
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Import-Status:
+      - Requested
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '45'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '110'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Mon, 11 Dec 2017 16:48:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"importId":"01604679-e5c2-4141-8361-d15f981cef1a","type":"azure","status":"requested","dataSetName":"AzureImportRuby","parameters":{"connectionString":"redacted","container":"datatest","blob":"mpg/auto-mpg.data.json"},"requestedDate":"2017-12-11T16:48:01.986565+00:00","statusHistory":[{"date":"2017-12-11T16:48:01.986565+00:00","status":"requested"}],"messages":[],"columns":{},"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/imports/01604679-e5c2-4141-8361-d15f981cef1a"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/AzureImportRuby"}]}'
+    http_version: 
+  recorded_at: Mon, 11 Dec 2017 16:48:02 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/imports/01604679-e5c2-4141-8361-d15f981cef1a
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Import-Status:
+      - Completed
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '46'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '110'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Mon, 11 Dec 2017 16:48:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"importId":"01604679-e5c2-4141-8361-d15f981cef1a","type":"azure","status":"completed","dataSetName":"AzureImportRuby","parameters":{"connectionString":"redacted","container":"datatest","blob":"mpg/auto-mpg.data.json"},"requestedDate":"2017-12-11T16:48:01.986565+00:00","statusHistory":[{"date":"2017-12-11T16:48:01.986565+00:00","status":"requested"},{"date":"2017-12-11T16:48:04.7528394+00:00","status":"started"},{"date":"2017-12-11T16:48:05.744956+00:00","status":"completed"}],"messages":[],"columns":{},"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/imports/01604679-e5c2-4141-8361-d15f981cef1a"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/AzureImportRuby"}]}'
+    http_version: 
+  recorded_at: Mon, 11 Dec 2017 16:48:07 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=AzureImportRuby
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '46'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '110'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Mon, 11 Dec 2017 16:48:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"dataSetName":"AzureImportRuby","dataSetSize":20618,"isTimeSeries":false,"columns":{"MPG":{"dataType":"numericMeasure","role":"target","imputation":"mean","aggregation":"mean"},"Make":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Name":{"dataType":"string","role":"none","imputation":"mode","aggregation":"mode"},"Origin":{"dataType":"numeric","role":"feature","imputation":"mode","aggregation":"sum"},"Weight":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"Cylinders":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"ModelYear":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Horsepower":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"Acceleration":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"Displacement":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/AzureImportRuby"}]}],"pageNumber":0,"totalPages":1,"pageSize":50,"totalCount":1,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=AzureImportRuby"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=AzureImportRuby&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/data?page=0&pageSize=50&partialName=AzureImportRuby&page=0"}]}'
+    http_version: 
+  recorded_at: Mon, 11 Dec 2017 16:48:08 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/data/AzureImportRuby
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Datasetcount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Datasetcount-Current:
+      - '45'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Predictioncount-Current:
+      - '11'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '2147483647'
+      Nexosis-Account-Sessioncount-Current:
+      - '110'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Mon, 11 Dec 2017 16:48:08 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 11 Dec 2017 16:48:08 GMT
+recorded_with: VCR 3.0.3

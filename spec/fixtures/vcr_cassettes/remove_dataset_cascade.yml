@@ -25,29 +25,29 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '24'
+      - '48'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '93'
+      - '136'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:40:55 GMT
+      - Mon, 11 Dec 2017 21:38:16 GMT
     body:
       encoding: UTF-8
-      string: '{"dataSetName":"ToRemove","dataSetSize":246,"isTimeSeries":true,"columns":{"timestamp":{"dataType":"date","role":"timestamp"},"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
+      string: '{"dataSetName":"ToRemove","dataSetSize":492,"isTimeSeries":true,"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:40:57 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:16 GMT
 - request:
     method: post
-    uri: https://api.uat.nexosisdev.com/v1/sessions/forecast?dataSetName=ToRemove&endDate=1-17-2017&isestimate=false&resultInterval=day&startDate=1-16-2017&targetColumn=foo
+    uri: https://api.uat.nexosisdev.com/v1/sessions/forecast?dataSetName=ToRemove&endDate=1-17-2017&resultInterval=day&startDate=1-16-2017&targetColumn=foo
     body:
       encoding: UTF-8
       string: '""'
@@ -70,29 +70,29 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '24'
+      - '48'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '137'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:40:55 GMT
+      - Mon, 11 Dec 2017 21:38:16 GMT
     body:
       encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"requested","predictionDomain":"forecast","availablePredictionIntervals":["0.5"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"}],"extraParameters":{},"messages":[],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
+      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"01604783-a02d-4a04-b5fd-71326a2a95b2","type":"forecast","status":"requested","predictionDomain":"forecast","availablePredictionIntervals":["0.5"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-11T21:38:16.747435+00:00","statusHistory":[{"date":"2017-12-11T21:38:16.747435+00:00","status":"requested"}],"extraParameters":{},"messages":[],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/01604783-a02d-4a04-b5fd-71326a2a95b2/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:40:57 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:16 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
+    uri: https://api.uat.nexosisdev.com/v1/sessions/01604783-a02d-4a04-b5fd-71326a2a95b2
     body:
       encoding: US-ASCII
       string: ''
@@ -117,277 +117,32 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '24'
+      - '48'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '137'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:40:55 GMT
+      - Mon, 11 Dec 2017 21:38:38 GMT
     body:
       encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.5"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"}],"extraParameters":{},"messages":[],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
-    http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:40:58 GMT
-- request:
-    method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Session-Status:
-      - Started
-      Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Datasetcount-Current:
-      - '24'
-      Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Predictioncount-Current:
-      - '10'
-      Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Sessioncount-Current:
-      - '94'
-      Nexosis-Account-Balance:
-      - 0.00 USD
-      Nexosis-Request-Cost:
-      - 0.00 USD
-      Date:
-      - Fri, 01 Dec 2017 17:41:01 GMT
-    body:
-      encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.5"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
-        daily observations were found in the dataset before 2017-01-17T23:59:59.9999999Z."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
-    http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:03 GMT
-- request:
-    method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Session-Status:
-      - Started
-      Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Datasetcount-Current:
-      - '24'
-      Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Predictioncount-Current:
-      - '10'
-      Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Sessioncount-Current:
-      - '94'
-      Nexosis-Account-Balance:
-      - 0.00 USD
-      Nexosis-Request-Cost:
-      - 0.00 USD
-      Date:
-      - Fri, 01 Dec 2017 17:41:06 GMT
-    body:
-      encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.5"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
+      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"01604783-a02d-4a04-b5fd-71326a2a95b2","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.01","0.05","0.2","0.5","0.8","0.95","0.99"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-11T21:38:16.747435+00:00","statusHistory":[{"date":"2017-12-11T21:38:16.747435+00:00","status":"requested"},{"date":"2017-12-11T21:38:16.9299985+00:00","status":"started"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
         daily observations were found in the dataset before 2017-01-17T23:59:59.9999999Z."},{"severity":"warning","message":"This
         data source has too few data points for reliable predictions to be made. The
-        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
+        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/01604783-a02d-4a04-b5fd-71326a2a95b2/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:08 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:38 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Session-Status:
-      - Started
-      Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Datasetcount-Current:
-      - '24'
-      Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Predictioncount-Current:
-      - '10'
-      Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Sessioncount-Current:
-      - '94'
-      Nexosis-Account-Balance:
-      - 0.00 USD
-      Nexosis-Request-Cost:
-      - 0.00 USD
-      Date:
-      - Fri, 01 Dec 2017 17:41:12 GMT
-    body:
-      encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.5"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
-        daily observations were found in the dataset before 2017-01-17T23:59:59.9999999Z."},{"severity":"warning","message":"This
-        data source has too few data points for reliable predictions to be made. The
-        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
-    http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:14 GMT
-- request:
-    method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Session-Status:
-      - Started
-      Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Datasetcount-Current:
-      - '24'
-      Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Predictioncount-Current:
-      - '10'
-      Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Sessioncount-Current:
-      - '94'
-      Nexosis-Account-Balance:
-      - 0.00 USD
-      Nexosis-Request-Cost:
-      - 0.00 USD
-      Date:
-      - Fri, 01 Dec 2017 17:41:17 GMT
-    body:
-      encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.01","0.05","0.2","0.5","0.8","0.95","0.99"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
-        daily observations were found in the dataset before 2017-01-17T23:59:59.9999999Z."},{"severity":"warning","message":"This
-        data source has too few data points for reliable predictions to be made. The
-        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
-    http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:19 GMT
-- request:
-    method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Session-Status:
-      - Started
-      Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Datasetcount-Current:
-      - '24'
-      Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Predictioncount-Current:
-      - '10'
-      Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
-      Nexosis-Account-Sessioncount-Current:
-      - '94'
-      Nexosis-Account-Balance:
-      - 0.00 USD
-      Nexosis-Request-Cost:
-      - 0.00 USD
-      Date:
-      - Fri, 01 Dec 2017 17:41:23 GMT
-    body:
-      encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"started","predictionDomain":"forecast","availablePredictionIntervals":["0.01","0.05","0.2","0.5","0.8","0.95","0.99"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
-        daily observations were found in the dataset before 2017-01-17T23:59:59.9999999Z."},{"severity":"warning","message":"This
-        data source has too few data points for reliable predictions to be made. The
-        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
-    http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:25 GMT
-- request:
-    method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
+    uri: https://api.uat.nexosisdev.com/v1/sessions/01604783-a02d-4a04-b5fd-71326a2a95b2
     body:
       encoding: US-ASCII
       string: ''
@@ -412,29 +167,29 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '24'
+      - '48'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '137'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:41:28 GMT
+      - Mon, 11 Dec 2017 21:38:43 GMT
     body:
       encoding: UTF-8
-      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"0160132a-c2dd-4076-861a-85d214cd8a77","type":"forecast","status":"completed","predictionDomain":"forecast","availablePredictionIntervals":["0.01","0.05","0.2","0.5","0.8","0.95","0.99"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-01T17:40:57.691659+00:00","statusHistory":[{"date":"2017-12-01T17:40:57.691659+00:00","status":"requested"},{"date":"2017-12-01T17:40:57.8514435+00:00","status":"started"},{"date":"2017-12-01T17:41:26.4115078+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
+      string: '{"columns":{"foo":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"timestamp":{"dataType":"date","role":"timestamp"}},"sessionId":"01604783-a02d-4a04-b5fd-71326a2a95b2","type":"forecast","status":"completed","predictionDomain":"forecast","availablePredictionIntervals":["0.01","0.05","0.2","0.5","0.8","0.95","0.99"],"startDate":"2017-01-16T00:00:00+00:00","endDate":"2017-01-17T00:00:00+00:00","resultInterval":"day","requestedDate":"2017-12-11T21:38:16.747435+00:00","statusHistory":[{"date":"2017-12-11T21:38:16.747435+00:00","status":"requested"},{"date":"2017-12-11T21:38:16.9299985+00:00","status":"started"},{"date":"2017-12-11T21:38:41.2583376+00:00","status":"completed"}],"extraParameters":{},"messages":[{"severity":"informational","message":"15
         daily observations were found in the dataset before 2017-01-17T23:59:59.9999999Z."},{"severity":"warning","message":"This
         data source has too few data points for reliable predictions to be made. The
-        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
+        results of this session should be carefully analyzed for accuracy."}],"dataSourceName":"ToRemove","dataSetName":"ToRemove","targetColumn":"foo","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/01604783-a02d-4a04-b5fd-71326a2a95b2/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/ToRemove"}]}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:30 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:43 GMT
 - request:
     method: delete
     uri: https://api.uat.nexosisdev.com/v1/data/ToRemove?cascade=model
@@ -458,26 +213,26 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '23'
+      - '47'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '137'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:41:28 GMT
+      - Mon, 11 Dec 2017 21:38:43 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:31 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:43 GMT
 - request:
     method: get
     uri: https://api.uat.nexosisdev.com/v1/data/ToRemove?page=0&pageSize=50
@@ -507,30 +262,30 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '23'
+      - '47'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '137'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:41:28 GMT
+      - Mon, 11 Dec 2017 21:38:43 GMT
     body:
       encoding: UTF-8
       string: '{"statusCode":404,"message":"Item of type dataSet with identifier ToRemove
         was not found","errorType":"NotFound","errorDetails":{"itemType":"dataSet","itemId":"ToRemove","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:31 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:44 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160132a-c2dd-4076-861a-85d214cd8a77
+    uri: https://api.uat.nexosisdev.com/v1/sessions/01604783-a02d-4a04-b5fd-71326a2a95b2
     body:
       encoding: US-ASCII
       string: ''
@@ -559,25 +314,25 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '2147483647'
       Nexosis-Account-Datasetcount-Current:
-      - '23'
+      - '47'
       Nexosis-Account-Predictioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '11'
       Nexosis-Account-Sessioncount-Allotted:
       - '2147483647'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '137'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:41:29 GMT
+      - Mon, 11 Dec 2017 21:38:43 GMT
     body:
       encoding: UTF-8
-      string: '{"statusCode":404,"message":"Item of type session with identifier 0160132a-c2dd-4076-861a-85d214cd8a77
-        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"0160132a-c2dd-4076-861a-85d214cd8a77","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
+      string: '{"statusCode":404,"message":"Item of type session with identifier 01604783-a02d-4a04-b5fd-71326a2a95b2
+        was not found","errorType":"NotFound","errorDetails":{"itemType":"session","itemId":"01604783-a02d-4a04-b5fd-71326a2a95b2","companyId":"36774fba-a391-4078-af36-b5adf6a17a87"}}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:41:31 GMT
+  recorded_at: Mon, 11 Dec 2017 21:38:44 GMT
 recorded_with: VCR 3.0.3

@@ -136,7 +136,7 @@ describe NexosisApi::Client::Datasets do
         test_client.create_dataset_csv('ToRemove', "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31\r\n1-3-2017,345.31\r\n1-4-2017,345.31\r\n1-5-2017,345.31\r\n1-6-2017,345.31\r\n1-7-2017,345.31\r\n1-8-2017,345.31\r\n1-9-2017,345.31\r\n1-10-2017,345.31\r\n1-11-2017,345.31\r\n1-12-2017,345.31\r\n1-13-2017,345.31\r\n1-14-2017,345.31\r\n1-15-2017,345.31")
         session = test_client.create_forecast_session('ToRemove', '1-16-2017', '1-17-2017', 'foo')
         loop do
-          status_check = test_client.get_session session.sessionId
+          status_check = test_client.get_session session.session_id
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 5
         end
@@ -144,7 +144,7 @@ describe NexosisApi::Client::Datasets do
         expect{test_client.get_dataset 'ToRemove'}.to raise_error { |error|
           expect(error.code).to eql(404)
         }
-        expect{test_client.get_session session.sessionId}.to raise_error {|error|
+        expect{test_client.get_session session.session_id}.to raise_error {|error|
           expect(error.code).to eql(404)
         }
       end
