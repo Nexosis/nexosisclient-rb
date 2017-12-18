@@ -1,11 +1,10 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.2
-  - 2.3
   - 2.4
-  - jruby
 sudo: false
 matrix:
   allow_failures:
     - rvm: jruby
+env:
+    - VCR_OFF="true"
