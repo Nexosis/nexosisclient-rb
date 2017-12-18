@@ -62,7 +62,7 @@ module NexosisApi
     def get_account_quotas()
       session_url = '/sessions?page=0&pageSize=1'
       response = self.class.get(session_url, @options)
-      response.headers.select { |k, _v| k.to_s.end_with? 'current' }
+      response.headers.select { |k, _v| k.to_s.start_with? 'nexosis-account' }
     end
 
     # Provide access to read or modify the api key
