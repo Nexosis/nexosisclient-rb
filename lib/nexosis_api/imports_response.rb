@@ -44,11 +44,6 @@ module NexosisApi
     # @since 1.3.0
     attr_accessor :statusHistory
 
-    # echo back the dataset name provided
-    # @return [String]
-    # @deprecated use datasource_name instead
-    attr_accessor :dataSetName
-
     # echo back the name of the data source uploaded
     # @return [String]
     # @since 1.3.0
