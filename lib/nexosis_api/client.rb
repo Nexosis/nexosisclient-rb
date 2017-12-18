@@ -1,5 +1,4 @@
-require 'nexosis_api/algorithm_run'
-require 'nexosis_api/algorithm_selection'
+require 'nexosis_api/algorithm_contestant'
 require 'nexosis_api/algorithm'
 require 'nexosis_api/calendar_jointarget'
 require 'nexosis_api/classifier_result'
@@ -21,12 +20,15 @@ require 'nexosis_api/metric'
 require 'nexosis_api/model_summary'
 require 'nexosis_api/paged_array'
 require 'nexosis_api/predict_response'
+require 'nexosis_api/session_contest'
 require 'nexosis_api/session_response'
 require 'nexosis_api/session_result'
+require 'nexosis_api/session_selection_metrics'
 require 'nexosis_api/session'
 require 'nexosis_api/time_interval'
 require 'nexosis_api/view_definition'
 require 'nexosis_api/view_data'
+require 'nexosis_api/client/contest'
 require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
 require 'nexosis_api/client/imports'
@@ -43,6 +45,7 @@ module NexosisApi
     include Client::Imports
     include Client::Views
     include Client::Models
+    include Client::Contest
 
     def initialize(options = {})
       raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false
@@ -53,15 +56,22 @@ module NexosisApi
       @options = { headers: @headers, format: :json }
     end
 
-    # Gets the current account balance.
+    # Gets the quota stats for the account
     #
-    # @return [String] a string with the numeric balance and currency identifier postfix - 10.0 USD
-    # @example Get account balance
-    #   client.get_account_balance
-    def get_account_balance()
-      session_url = '/sessions'
+    # @return [Hash] a hash of quota values and current values
+    def get_account_quotas()
+      session_url = '/sessions?page=0&pageSize=1'
       response = self.class.get(session_url, @options)
-      response.headers['nexosis-account-balance']
+      response.headers.select { |k, _v| k.to_s.end_with? 'current' }
+    end
+
+    # Provide access to read or modify the api key
+    # @return [String]
+    # @since 2.0.0
+    def api_key(value)
+      @api_key = value unless value.nil?
+      @headers['api-key'] = @api_key
+      @api_key
     end
 
     private

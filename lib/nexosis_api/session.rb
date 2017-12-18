@@ -11,7 +11,8 @@ module NexosisApi
                   'endDate' => :@end_date,
                   'predictionDomain' => :@prediction_domain,
                   'extraParameters' => :@extra_parameters,
-                  'targetColumn' => :@target_column }
+                  'targetColumn' => :@target_column,
+                  'statusHistory' => :@status_history }
       session_hash.each do |k, v|
         if (k == 'links')
           @links = v.map { |l| NexosisApi::Link.new(l) }
@@ -45,7 +46,8 @@ module NexosisApi
     attr_accessor :status
 
     # Date and status of each status this session has entered
-    # @return [Hash]
+    # @return [Array of Hash]
+    # @note - each status object in array is form { date: 'date', status: 'status' }
     attr_accessor :status_history
 
     # reserved for future extensions

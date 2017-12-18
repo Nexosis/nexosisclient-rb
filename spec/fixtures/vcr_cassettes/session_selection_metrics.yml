@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=5&requestedAfterDate=&requestedBeforeDate=&type=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - "<elevated_api_key>"
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '50'
+      Nexosis-Account-Datasetcount-Current:
+      - '3'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Predictioncount-Current:
+      - '0'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '350'
+      Nexosis-Account-Sessioncount-Current:
+      - '2'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 13 Dec 2017 20:31:22 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"0160515d-8ada-4825-b93a-03f514ab247b","type":"model","status":"completed","predictionDomain":"classification","availablePredictionIntervals":[],"modelId":"9b3e8ab4-758b-4946-8866-88e0c3f350f2","requestedDate":"2017-12-13T19:32:53.076451+00:00","statusHistory":[{"date":"2017-12-13T19:32:53.076451+00:00","status":"requested"},{"date":"2017-12-13T19:32:53.1765393+00:00","status":"started"},{"date":"2017-12-13T19:34:22.7901572+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"150
+        observations were found in the dataset."}],"dataSourceName":"iris","dataSetName":"iris","targetColumn":"iris","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/iris"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/9b3e8ab4-758b-4946-8866-88e0c3f350f2"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/results/confusionmatrix"}]}],"pageNumber":0,"totalPages":1,"pageSize":5,"totalCount":1,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5&page=0"}]}'
+    http_version: 
+  recorded_at: Wed, 13 Dec 2017 20:31:22 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/selection
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - "<elevated_api_key>"
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/1.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '50'
+      Nexosis-Account-Datasetcount-Current:
+      - '3'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Predictioncount-Current:
+      - '0'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '350'
+      Nexosis-Account-Sessioncount-Current:
+      - '2'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 13 Dec 2017 20:31:22 GMT
+    body:
+      encoding: UTF-8
+      string: '{"metricSets":[{"dataSetProperties":["Imputed","Scaled"],"metrics":{"coefficientOfVariation":0.81923192051904092,"mean":0.99999999999999944,"observationCount":150.0,"trainingCount":120.0,"standardDeviation":0.81923192051904048,"featureCount":4.0,"testCount":30.0}}],"sessionId":"0160515d-8ada-4825-b93a-03f514ab247b","type":"model","status":"completed","predictionDomain":"classification","availablePredictionIntervals":[],"modelId":"9b3e8ab4-758b-4946-8866-88e0c3f350f2","requestedDate":"2017-12-13T19:32:53.076451+00:00","statusHistory":[{"date":"2017-12-13T19:32:53.076451+00:00","status":"requested"},{"date":"2017-12-13T19:32:53.1765393+00:00","status":"started"},{"date":"2017-12-13T19:34:22.7901572+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"150
+        observations were found in the dataset."}],"dataSourceName":"iris","dataSetName":"iris","targetColumn":"iris","links":[]}'
+    http_version: 
+  recorded_at: Wed, 13 Dec 2017 20:31:22 GMT
+recorded_with: VCR 3.0.3

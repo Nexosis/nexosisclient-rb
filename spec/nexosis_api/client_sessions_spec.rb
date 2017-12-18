@@ -44,6 +44,7 @@ describe NexosisApi::Client::Sessions do
         actual = test_client.get_session_results session.session_id
         expect(actual).to be_a(NexosisApi::SessionResult)
         expect(actual.data).not_to be_empty
+        expect(actual.status_history).to be_a(Array)
       end
     end
   end
@@ -295,7 +296,7 @@ describe NexosisApi::Client::Sessions do
           loop do
             status_check = test_client.get_session completed.session_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 10
+            sleep 5
           end
         end
         actual = test_client.get_confusion_matrix(completed.session_id)

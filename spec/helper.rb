@@ -17,7 +17,7 @@ RSpec.configure do |config|
       rescue Exception => eApi
         puts eApi.message
       end
-   end
+    end
   end
 
   config.after(:all) do
@@ -38,6 +38,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<aws_test_secret>') { ENV['AWS_TEST_IAM_SECRETKEY'] }
   config.filter_sensitive_data('<aws_test_key>') { ENV['AWS_TEST_IAM_ACCESSKEY'] }
   config.filter_sensitive_data('<blob_endpoint>') { ENV['AZURE_TEST_STORAGE_URI'] }
+  config.filter_sensitive_data('<elevated_api_key>') { ENV['NEXOSIS_PAID_API_TESTKEY'] }
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.allow_http_connections_when_no_cassette = true
