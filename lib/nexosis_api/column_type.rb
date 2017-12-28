@@ -15,5 +15,9 @@ module NexosisApi
 
     # Indicates a number which is not countable, or is not 'ordinal scaled' but 'ratio' or 'interval' scaled - i.e. a device measurement  
     NUMERICMEASURE = :numericmeasure
+
+    # free-form text field.
+    # @note differs from string primarily in how the data will be prepared for analysis. Nominal values belong in string. Text to be analyzed as speech, writing, etc. belongs in text field.
+    TEXT = :text
   end
 end
