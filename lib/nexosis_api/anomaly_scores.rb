@@ -1,7 +1,7 @@
 require 'nexosis_api/session_response'
 module NexosisApi
   # class to hold the parsed results of an anomalyScores request
-  # @since 2.0.1
+  # @since 2.1.0
   class AnomalyScores < SessionResponse
     def initialize(result_hash)
       @data = NexosisApi::PagedArray.new(result_hash, result_hash['data'])

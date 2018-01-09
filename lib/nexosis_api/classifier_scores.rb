@@ -1,7 +1,7 @@
 require 'nexosis_api/session_response'
 module NexosisApi
   # class to hold parsed results of classifier scores request
-  # @since 2.0.1
+  # @since 2.1.0
   class ClassifierScores < SessionResponse
     def initialize(classify_scores)
       props = %w[data metrics classes]
