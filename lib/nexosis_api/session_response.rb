@@ -12,13 +12,9 @@ module NexosisApi
         'Nexosis-Account-SessionCount-Allotted' => :@sessions_allotted,
         'Nexosis-Account-SessionCount-Current' => :@sessions_current
       }
-      forecast_hash.each do |k, v|
-        if (k == 'session')
-          super(v) unless v.nil?
-        else
-          instance_variable_set(val_map[k], v) unless val_map[k].nil?
-        end
-      end
+      super(forecast_hash['session']) unless forecast_hash['session'].nil?
+      super(forecast_hash.reject { |k, _v| k.to_s.downcase.start_with? 'nexosis-account' }) if forecast_hash['session'].nil?
+      val_map.each { |k, _v| instance_variable_set(val_map[k], forecast_hash[k]) }
     end
 
     attr_reader :datasets_allotted
@@ -28,6 +24,6 @@ module NexosisApi
     attr_reader :predictions_current
     attr_reader :sessions_allotted
     attr_reader :sessions_current
-    
+
   end
 end

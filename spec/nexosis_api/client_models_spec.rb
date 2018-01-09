@@ -113,4 +113,33 @@ describe NexosisApi::Client::Models do
       end
     end
   end
+
+  describe '#predict', vcr: { cassette_name: 'predict_with_scores' } do
+    context 'given a classification model and flag' do
+      it 'returns scores for each class' do
+        available = test_client.list_models('iris')
+        completed = available.first unless available.empty?
+        completed = create_class_test_model if completed.nil?
+        actual = test_client.predict(completed.model_id,
+                                     { petal_len:	3.6, sepal_len: 5.6, petal_width: 1.3, sepal_width: 2.9 },
+                                     includeClassScores: true)
+        expect(actual).to be_a(NexosisApi::PredictResponse)
+        expect(actual.predictions.first['iris:versicolor'].to_i).to eql(1)
+      end
+    end
+  end
+
+  private
+
+  def create_class_test_model
+    data = CSV.open('spec/fixtures/iris_data.csv', 'rb', headers: true)
+    test_client.create_dataset_csv('Iris', data)
+    completed = test_client.create_model('Iris', 'iris', {}, 'classification')
+    loop do
+      status_check = test_client.get_session completed.session_id
+      break if (status_check.status == 'completed' || status_check.status == 'failed')
+      sleep 5
+    end
+    completed
+  end
 end

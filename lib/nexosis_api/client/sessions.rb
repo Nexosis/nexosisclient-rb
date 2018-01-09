@@ -14,6 +14,7 @@ module NexosisApi
       # @param page [Integer] optionally provide a page number for paging. Defaults to 0 (first page).
       # @param pageSize [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
       # @return [NexosisApi::PagedArray of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
+      # @raise [NexosisApi::HttpException]
       # @note query parameters hash members are dataset_name, event_name, requested_before_date, and requested_after_date. 
       #    After and before dates refer to the session requested date.
       # @example query for just one dataset
@@ -41,6 +42,8 @@ module NexosisApi
 
       # Remove a session
       # @param session_id [String] required session identifier
+      # @raise [NexosisApi::HttpException]
+      # @raise [ArgumentError]
       def remove_session(session_id)
         if (session_id.to_s.empty?)
           raise ArgumentError 'session_id cannot be empty or nil'
@@ -53,6 +56,7 @@ module NexosisApi
 
       # Remove sessions that have been run. All query options are optional and will be used to limit the sessions removed.
       # @param query_options [Hash] optionally provide query parametes to limit the set of sessions removed.
+      # @raise [NexosisApi::HttpException]
       # @note query parameters hash members are type, dataset_name, event_name, start_date, and end_date.
       #    Start and end dates refer to the session requested date.
       #    Results are not removed but then can only be accessed by dataset name
@@ -101,6 +105,7 @@ module NexosisApi
       # @param as_csv [Boolean] indicate whether results should be returned in csv format
       # @param prediction_interval [Float] one of the available prediction intervals for the session.
       # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
+      # @raise [NexosisApi::HttpException]
       def get_session_results(session_id, as_csv = false, prediction_interval = nil)
         session_result_url = "/sessions/#{session_id}/results"
         @headers['Accept'] = 'text/csv' if as_csv
@@ -120,6 +125,7 @@ module NexosisApi
       #
       # @param session_id [String] the Guid string returned in a previous session request
       # @return [NexosisApi::Session] a Session object populated with the session's data
+      # @raise [NexosisApi::HttpException]
       def get_session(session_id)
         session_url = "/sessions/#{session_id}"
         response = self.class.get(session_url, @options)
@@ -133,7 +139,9 @@ module NexosisApi
       # @param target_column [String] The column which will be predicted when using the model
       # @param columns [Hash] column metadata to modify roles, imputation, or target.
       # @param options [Hash] prediction_domain and or balance (true or false) indicator for classification
-      # @note - classifcation assumes balanced classes. The use of a 'balanced=false' option
+      # @return [NexosisApi::SessionResponse]
+      # @raise [NexosisApi::HttpException]
+      # @note - classifcation assumes balanced classes. The use of a 'balance=false' option
       # indicates that no attempt should be made to sample the classes in balanced fashion.
       # @since 1.3.0
       def create_model(datasource_name, target_column, columns = {}, options = { prediction_domain: 'regression' })
@@ -154,16 +162,89 @@ module NexosisApi
         end
       end
 
+      # Create a new model based on a data source
+      #
+      # @param datasource_name [String] The datasource from which to build the model
+      # @param columns [Hash] column metadata to modify roles, imputation, or target.
+      # @param data_contains_anomalies [Boolean] Whether or not the source dataset contains anomalies (default is true)
+      # @return [NexosisApi::SessionResponse]
+      # @raise [NexosisApi::HttpException]
+      # @since 2.1.0
+      # @note The anomalies model session results will contain the anomalous observations when the session is complete.
+      def create_anomalies_model(datasource_name, columns = {}, data_contains_anomalies = true)
+        model_url = '/sessions/model'
+        body = {
+          dataSourceName: datasource_name,
+          predictionDomain: 'anomalies',
+          extraParameters: {
+            'containsAnomalies': data_contains_anomalies
+          },
+          columns: columns
+        }
+        response = self.class.post(model_url, headers: @headers, body: body.to_json)
+        raise HttpException.new("There was a problem creating the model session: #{response.code}.", 'creating anomaly model session' ,response) unless response.success?
+        NexosisApi::SessionResponse.new(response.parsed_response.merge(response.headers))
+      end
+
+      # Create a new model based on a data source
+      #
+      # @param datasource_name [String] The datasource from which to build the model
+      # @param target_column [String] The column which will be predicted when using the model
+      # @param columns [Hash] column metadata to modify roles, imputation, or target.
+      # @param balance [Boolean] Whether or not to balance classes during model building (default is true)
+      # @return [NexosisApi::SessionResponse]
+      # @raise [NexosisApi::HttpException]
+      # @since 2.1.0
+      # @note The anomalies model session results will contain the anomalous observations when the session is complete.
+      def create_classification_model(datasource_name, target_column, columns = {}, balance = true)
+        return create_model(datasource_name, target_column, columns, prediction_domain: 'classification', balance: balance)
+      end
+
       # Get the confusion matrix for a completed classification session
       # @param session_id [String] The unique id of the completed classification session
       # @return [NexosisApi::ClassifierResult] a confusion matrix along with class labels and other session information.
+      # @raise [NexosisApi::HttpException]
       # @since 1.4.1
       # @note - This endpoint returns a 404 for requests of non-classification sessions
       def get_confusion_matrix(session_id)
         result_url = "/sessions/#{session_id}/results/confusionmatrix"
         response = self.class.get(result_url, headers: @headers)
         raise HttpException.new("There was a problem getting a confusion matrix for session #{session_id}", 'getting confusion matrix', response) unless response.success?
-        NexosisApi::ClassifierResult.new(response.parsed_response)
+        NexosisApi::ClassifierResult.new(response.parsed_response.merge(response.headers))
+      end
+
+      # Get the observation anomaly score for a completed anomalies session
+      # @param session_id [String] The unique id of the completed anomalies session
+      # @return [NexosisApi::ScoreResult] A session result with a list of each observation and score per column.
+      # @raise [NexosisApi::HttpException]
+      # @since 2.1.0
+      # @note - This endpoint returns a 404 for requests of non-anomalies sessions
+      def get_anomaly_scores(session_id, page = 0, page_size = 50)
+        score_url = "/sessions/#{session_id}/results/anomalyScores"
+        query = {
+          page: page,
+          pageSize: page_size
+        }
+        response = self.class.get(score_url, headers: @headers, query: query)
+        raise HttpException.new("There was a problem getting the anomaly scores for session #{session_id}", 'getting anomaly scores', response) unless response.success?
+        NexosisApi::AnomalyScores.new(response.parsed_response.merge(response.headers))
+      end
+
+      # Get the observation class score for a completed classification session
+      # @param session_id [String] The unique id of the completed classification session
+      # @return [NexosisApi::ScoreResult] A session result with a list of each observation and score per column.
+      # @raise [NexosisApi::HttpException]
+      # @since 2.1.0
+      # @note - This endpoint returns a 404 for requests of non-classification sessions
+      def get_class_scores(session_id, page = 0, page_size = 50)
+        score_url = "/sessions/#{session_id}/results/classScores"
+        query = {
+          page: page,
+          pageSize: page_size
+        }
+        response = self.class.get(score_url, headers: @headers, query: query)
+        raise HttpException.new("There was a problem getting the class scores for session #{session_id}", 'getting class scores', response) unless response.success?
+        NexosisApi::ClassifierScores.new(response.parsed_response.merge(response.headers))
       end
 
       private

@@ -287,6 +287,58 @@ describe NexosisApi::SessionSelectionMetrics do
   end
 end
 
+describe NexosisApi::AnomalyScores do
+  describe '#initialize' do
+    context 'given a score hash' do
+      it 'creates a new object initialized with values' do
+        score_hash = session_hash
+        score_hash['data'] = [{
+          'anomaly': '0.07749305',
+          'feat1': '-0.24746'
+        },
+        {
+          'anomaly': '0.06584757',
+          'feat1': '0.30979'
+        }]
+        score_hash['metrics'] = { 'percentAnomalies' => 0.10014 }
+        target = NexosisApi::AnomalyScores.new(score_hash)
+        expect(target.data.length).to eql(2)
+        expect(target.percent_anomalies).to eql(0.10014)
+        expect(target.session_id).to eql('015ca6f7-ca42-49de-9601-f5493a03cbfa')
+      end
+    end
+  end
+end
+
+describe NexosisApi::ClassifierScores do
+  describe '#initialize' do
+    context 'given a score hash' do
+      it 'creates a new object initialized with values' do
+        score_hash = session_hash
+        score_hash['data'] = [{
+          'target': 'someclass',
+          'target:someclass': '7.6',
+          'target:otherclass': '5.1',
+          'target:anotherclass': '2.2'
+        },
+        {
+          'target': 'anotherclass',
+          'target:someclass': '2.6',
+          'target:otherclass': '5.1',
+          'target:anotherclass': '6.2'
+        }]
+        score_hash['metrics'] = { 'macroAverageF1Score' => 0.924 }
+        score_hash['classes'] = ['someclass', 'otherclass', 'anotherclass']
+        target = NexosisApi::ClassifierScores.new(score_hash)
+        expect(target.data.length).to eql(2)
+        expect(target.metrics.length).to eql(1)
+        expect(target.classes.length).to eql(3)
+        expect(target.session_id).to eql('015ca6f7-ca42-49de-9601-f5493a03cbfa')
+      end
+    end
+  end
+end
+
 private
 
 def session_hash

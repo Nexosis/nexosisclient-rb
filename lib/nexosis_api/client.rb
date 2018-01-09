@@ -1,7 +1,9 @@
 require 'nexosis_api/algorithm_contestant'
 require 'nexosis_api/algorithm'
+require 'nexosis_api/anomaly_scores'
 require 'nexosis_api/calendar_jointarget'
 require 'nexosis_api/classifier_result'
+require 'nexosis_api/classifier_scores'
 require 'nexosis_api/column'
 require 'nexosis_api/column_options'
 require 'nexosis_api/column_role'
@@ -52,7 +54,7 @@ module NexosisApi
       @api_key = options[:api_key]
       self.class.base_uri options[:base_uri] unless options[:base_uri].nil?
       @headers = { 'api-key' => @api_key, 'Content-Type' => 'application/json',
-                   'User-Agent' => 'Nexosis-Ruby-API-Client/1.2' }
+                   'User-Agent' => 'Nexosis-Ruby-API-Client/2.1' }
       @options = { headers: @headers, format: :json }
     end
 

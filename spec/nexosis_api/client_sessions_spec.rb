@@ -289,16 +289,7 @@ describe NexosisApi::Client::Sessions do
       it 'returns confusion matrix' do
         available = test_client.list_sessions({}, 0, 10)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'classification' }.first
-        if (completed.nil?)
-          data = CSV.open('spec/fixtures/iris_data.csv', 'rb', headers: true)
-          test_client.create_dataset_csv('Iris', data)
-          completed = test_client.create_model('Iris', 'iris', {}, 'classification')
-          loop do
-            status_check = test_client.get_session completed.session_id
-            break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 5
-          end
-        end
+        completed = create_class_test_model if completed.nil?
         actual = test_client.get_confusion_matrix(completed.session_id)
         expect(actual).to_not be_nil
         expect(actual.confusion_matrix).to be_a(Array)
@@ -307,12 +298,70 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
-  describe '#create_model', vcr: { cassette_name: 'session_unbalanced' } do
+  describe '#create_classification_model', vcr: { cassette_name: 'session_unbalanced' } do
     context 'given a request for unbalanced' do
       it 'the request adds param' do
-        actual = test_client.create_model('TestRuby_NTS', 'target', {}, balance: false, prediction_domain: 'classification')
+        actual = test_client.create_classification_model('TestRuby_NTS', 'target', {}, false)
         expect(actual.extra_parameters['balance']).to be(false)
       end
     end
+  end
+
+  describe '#create_anomalies_model', vcr: { cassette_name: 'model_anomalies' } do
+    context 'given an anomaly data source' do
+      it 'starts an anomalies session' do
+        actual = test_client.create_anomalies_model('TestRuby_NTS')
+        expect(actual.prediction_domain).to eql('anomalies')
+      end
+    end
+  end
+
+  describe '#get_anomaly_scores', vcr: { cassette_name: 'anomaly_scores' } do
+    context 'given a completed anomalies session' do
+      it 'pulls back scores from session' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'anomalies' }.first
+        if (completed.nil?)
+          completed = test_client.create_anomalies_model('TestRuby_NTS', {}, true)
+          loop do
+            status_check = test_client.get_session completed.session_id
+            break if (status_check.status == 'completed' || status_check.status == 'failed')
+            sleep 5
+          end
+        end
+        actual = test_client.get_anomaly_scores(completed.session_id)
+        expect(actual).to be_a(NexosisApi::AnomalyScores)
+        expect(actual.percent_anomalies).to be_within(0.09).of(0.1)
+        expect(actual.data.length).to be <= 50
+      end
+    end
+  end
+
+  describe '#get_classification_scores', vcr: { cassette_name: 'class_scores' } do
+    context 'given a finished classification session' do
+      it 'returns classification scores' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'classification' }.first
+        completed = create_class_test_model if completed.nil?
+        actual = test_client.get_class_scores(completed.session_id)
+        expect(actual).to be_a(NexosisApi::ClassifierScores)
+        expect(actual.classes).to_not be_empty
+        expect(actual.metrics).to_not be_empty
+      end
+    end
+  end
+
+  private
+
+  def create_class_test_model
+    data = CSV.open('spec/fixtures/iris_data.csv', 'rb', headers: true)
+    test_client.create_dataset_csv('Iris', data)
+    completed = test_client.create_model('Iris', 'iris', {}, 'classification')
+    loop do
+      status_check = test_client.get_session completed.session_id
+      break if (status_check.status == 'completed' || status_check.status == 'failed')
+      sleep 5
+    end
+    completed
   end
 end
