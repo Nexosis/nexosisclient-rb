@@ -32,16 +32,18 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
-  describe '#get_session_results', :vcr  => {:cassette_name => 'get_session_results'} do
-    context 'given the id of an completed session' do 
+  describe '#get_session_result_data', :vcr  => {:cassette_name => 'get_session_results'} do
+    context 'given the id of an completed session' do
       it 'returns the results of the session analysis' do
-        session = test_client.create_forecast_session('TestRuby', '2014-05-20', '2014-05-25', 'sales')
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'forecast' }.first
+        completed = test_client.create_forecast_session('TestRuby', '2014-05-20', '2014-05-25', 'sales') if completed.nil?
         loop do
-          status_check = test_client.get_session session.session_id
+          status_check = test_client.get_session completed.session_id
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 5
         end
-        actual = test_client.get_session_results session.session_id
+        actual = test_client.get_session_result_data completed.session_id
         expect(actual).to be_a(NexosisApi::SessionResult)
         expect(actual.data).not_to be_empty
         expect(actual.status_history).to be_a(Array)
@@ -273,12 +275,12 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
-  describe '#get_session_results', vcr: { cassette_name: 'session_get_prediction_interval' } do
+  describe '#get_session_result_data', vcr: { cassette_name: 'session_get_prediction_interval' } do
     context 'given an available prediction interval' do
       it 'sets the query parameter' do
         available = test_client.list_sessions({}, 0, 10)
         completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
-        actual = test_client.get_session_results completed.session_id, false, '.5'
+        actual = test_client.get_session_result_data completed.session_id, 0, 50, { prediction_interval: '.5' }
         expect(actual).to_not be_nil
       end
     end

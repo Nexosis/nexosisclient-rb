@@ -106,15 +106,29 @@ module NexosisApi
       # @param prediction_interval [Float] one of the available prediction intervals for the session.
       # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
       # @raise [NexosisApi::HttpException]
+      # @deprecated
       def get_session_results(session_id, as_csv = false, prediction_interval = nil)
+        get_session_result_data(session_id, 0, 50, {as_csv: as_csv, prediction_interval: prediction_interval})
+      end
+
+      # Get the results of the session.
+      #
+      # @param session_id [String] the Guid string returned in a previous session request
+      # @param page [Integer] optionally provide a page number for paging. Defaults to 0 (first page).
+      # @param pageSize [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
+      # @param options [Hash] as_csv [Boolean] to indicate whether results should be returned in csv format; prediction_interval [Float] one of the available prediction intervals for the session.
+      # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
+      # @raise [NexosisApi::HttpException]
+      # @since 2.1.0
+      def get_session_result_data(session_id, page = 0, page_size = 50, options = {})
         session_result_url = "/sessions/#{session_id}/results"
-        @headers['Accept'] = 'text/csv' if as_csv
-        query = { predictionInterval: prediction_interval } unless prediction_interval.nil?
+        @headers['Accept'] = 'text/csv' if options[:as_csv]
+        query = { 'page' => page, 'pageSize' => page_size }
+        query.store('predictionInterval', options[:prediction_interval]) unless options[:prediction_interval].nil?
         response = self.class.get(session_result_url, headers: @headers, query: query)
         @headers.delete('Accept')
-
         if (response.success?)
-          return response.body if as_csv
+          return response.body if options[:as_csv]
           NexosisApi::SessionResult.new(response.parsed_response)
         else
           raise HttpException.new("There was a problem getting the session: #{response.code}.", "get results for session #{session_id}" ,response)
