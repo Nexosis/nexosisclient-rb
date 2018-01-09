@@ -29,7 +29,7 @@ module NexosisApi
           begin
             instance_variable_set("@#{k}", v) unless v.nil?
           rescue
-            puts "could not set variable for key: #{k}"
+            # header value not set - exception swallowed.
           end
         end
         instance_variable_set(val_map[k.to_s], v) unless val_map[k.to_s].nil?

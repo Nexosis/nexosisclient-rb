@@ -302,6 +302,8 @@ describe NexosisApi::AnomalyScores do
         }]
         score_hash['metrics'] = { 'percentAnomalies' => 0.10014 }
         target = NexosisApi::AnomalyScores.new(score_hash)
+        expect(target.data).to be_a(NexosisApi::PagedArray)
+        expect(target.data.page_number).to eql(0)
         expect(target.data.length).to eql(2)
         expect(target.percent_anomalies).to eql(0.10014)
         expect(target.session_id).to eql('015ca6f7-ca42-49de-9601-f5493a03cbfa')
@@ -330,6 +332,8 @@ describe NexosisApi::ClassifierScores do
         score_hash['metrics'] = { 'macroAverageF1Score' => 0.924 }
         score_hash['classes'] = ['someclass', 'otherclass', 'anotherclass']
         target = NexosisApi::ClassifierScores.new(score_hash)
+        expect(target.data).to be_a(NexosisApi::PagedArray)
+        expect(target.data.page_number).to eql(0)
         expect(target.data.length).to eql(2)
         expect(target.metrics.length).to eql(1)
         expect(target.classes.length).to eql(3)
@@ -356,7 +360,11 @@ def session_hash
     'startDate': '2017-01-22T00:00:00+00:00',
     'endDate': '2017-02-22T00:00:00+00:00',
     'callbackUrl': nil,
-    'resultInterval': nil }
+    'resultInterval': nil,
+    'pageNumber': 0,
+    'totalPages': 369,
+    'pageSize': 10,
+    'totalCount': 3685 }
 end
 
 def contestant_array
