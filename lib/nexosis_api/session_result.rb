@@ -8,7 +8,7 @@ module NexosisApi
         elsif k.to_s == 'metrics'
           @metrics = v.map { |key, value| NexosisApi::Metric.new(key.to_s, value) } unless v.nil?
         elsif k.to_s == 'data'
-          @data = v
+          @data = NexosisApi::PagedArray.new(session_hash, v)
         end
       end
       super(session_hash.reject { |k, _v| k.to_s == 'data' || k.to_s == 'metrics' })
@@ -19,7 +19,7 @@ module NexosisApi
     attr_accessor :metrics
 
     # The result data in a hash with the name of the target column
-    # @return [Array of Hash]
+    # @return [NexosisApi::PagedArray of Hash]
     # @note When retrieving a model creation session this field
     # will contain the test data and results.
     attr_accessor :data

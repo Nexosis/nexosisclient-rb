@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.uat.nexosisdev.com/v1/sessions/model
     body:
       encoding: UTF-8
-      string: '{"dataSourceName":"TestRuby_NTS","targetColumn":"target","predictionDomain":"classification","isEstimate":false,"extraParameters":{"balance":false}}'
+      string: '{"dataSourceName":"TestRuby_NTS","targetColumn":"target","predictionDomain":"classification","extraParameters":{"balance":false}}'
     headers:
       Api-Key:
       - api-key
@@ -23,26 +23,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
+      - '10000'
       Nexosis-Account-Datasetcount-Current:
       - '25'
       Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
+      - '10000000'
       Nexosis-Account-Predictioncount-Current:
-      - '10'
+      - '127'
       Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
+      - '100000'
       Nexosis-Account-Sessioncount-Current:
-      - '94'
+      - '8'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 01 Dec 2017 17:36:21 GMT
+      - Tue, 09 Jan 2018 15:29:26 GMT
     body:
       encoding: UTF-8
-      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"01601326-942f-403f-b66b-14ba71c9e99f","type":"model","status":"requested","predictionDomain":"classification","availablePredictionIntervals":["0.5"],"requestedDate":"2017-12-01T17:36:23.5979+00:00","statusHistory":[{"date":"2017-12-01T17:36:23.5979+00:00","status":"requested"}],"extraParameters":{"balance":false},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/01601326-942f-403f-b66b-14ba71c9e99f/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}'
+      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"0160db8a-5b6c-420c-8edc-803082976c3f","type":"model","status":"requested","predictionDomain":"classification","availablePredictionIntervals":[],"requestedDate":"2018-01-09T15:29:25.86518+00:00","statusHistory":[{"date":"2018-01-09T15:29:25.86518+00:00","status":"requested"}],"extraParameters":{"balance":false},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160db8a-5b6c-420c-8edc-803082976c3f/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}'
     http_version: 
-  recorded_at: Fri, 01 Dec 2017 17:36:23 GMT
+  recorded_at: Tue, 09 Jan 2018 15:29:26 GMT
 recorded_with: VCR 3.0.3

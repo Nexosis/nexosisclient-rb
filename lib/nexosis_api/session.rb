@@ -26,7 +26,11 @@ module NexosisApi
         elsif (k == 'messages')
           @messages = v.map { |m| NexosisApi::Message.new(m) } unless v.empty?
         else
-          instance_variable_set("@#{k}", v) unless v.nil?
+          begin
+            instance_variable_set("@#{k}", v) unless v.nil?
+          rescue
+            # header value not set - exception swallowed.
+          end
         end
         instance_variable_set(val_map[k.to_s], v) unless val_map[k.to_s].nil?
       end

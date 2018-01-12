@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/models?dataSourceName=iris&page=0&pageSize=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '25'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '68'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '8'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Tue, 09 Jan 2018 19:28:23 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"modelId":"8f807970-6d89-44b7-99eb-535b069aba8f","sessionId":"0160c147-7bb2-4a04-88d0-f6a1bdb36e18","predictionDomain":"classification","dataSourceName":"Iris","createdDate":"2018-01-04T13:06:56.1875355+00:00","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":"knn"},"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[{"rel":"train","href":"https://api.uat.nexosisdev.com/v1/sessions/0160c147-7bb2-4a04-88d0-f6a1bdb36e18"}]}],"pageNumber":0,"totalPages":1,"pageSize":50,"totalCount":1,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/models?page=0&pageSize=50&dataSourceName=iris"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/models?page=0&pageSize=50&dataSourceName=iris&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/models?page=0&pageSize=50&dataSourceName=iris&page=0"}]}'
+    http_version: 
+  recorded_at: Tue, 09 Jan 2018 19:28:23 GMT
+- request:
+    method: post
+    uri: https://api.uat.nexosisdev.com/v1/models/8f807970-6d89-44b7-99eb-535b069aba8f/predict
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"petal_len":3.6,"sepal_len":5.6,"petal_width":1.3,"sepal_width":2.9}],"extraParameters":{"includeClassScores":true}}'
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '25'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '69'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '8'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Tue, 09 Jan 2018 19:28:26 GMT
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"petal_len":"3.6","sepal_len":"5.6","petal_width":"1.3","sepal_width":"2.9","iris":"versicolor","iris:setosa":"0","iris:versicolor":"1","iris:virginica":"0"}],"messages":[],"modelId":"8f807970-6d89-44b7-99eb-535b069aba8f","sessionId":"0160c147-7bb2-4a04-88d0-f6a1bdb36e18","predictionDomain":"classification","dataSourceName":"Iris","createdDate":"2018-01-04T13:06:56.1875355+00:00","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":"knn"},"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[]}'
+    http_version: 
+  recorded_at: Tue, 09 Jan 2018 19:28:25 GMT
+recorded_with: VCR 3.0.3
