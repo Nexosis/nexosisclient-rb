@@ -41,6 +41,7 @@ describe NexosisApi::Client::Sessions do
         loop do
           status_check = test_client.get_session completed.session_id
           break if (status_check.status == 'completed' || status_check.status == 'failed')
+          puts 'waiting in get_session_results'
           sleep 5
         end
         actual = test_client.get_session_result_data completed.session_id
@@ -258,7 +259,7 @@ describe NexosisApi::Client::Sessions do
   describe '#create_model', :vcr => {:cassette_name => 'create_model_session'} do
     context 'given a non-timeseries datasource' do
       it 'starts a session to create a model' do
-        actual = test_client.create_model('TestRuby_NTS', 'target')
+        actual = test_client.create_model('TestRuby_NTS', 'profit')
         expect(actual).to be_a(NexosisApi::SessionResponse)
       end
     end
@@ -280,8 +281,10 @@ describe NexosisApi::Client::Sessions do
       it 'sets the query parameter' do
         available = test_client.list_sessions({}, 0, 10)
         completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
-        actual = test_client.get_session_result_data completed.session_id, 0, 50, { prediction_interval: '.5' }
-        expect(actual).to_not be_nil
+        unless (completed.nil?)
+          actual = test_client.get_session_result_data completed.session_id, 0, 50, { prediction_interval: '.5' }
+          expect(actual).to_not be_nil
+        end
       end
     end
   end
@@ -303,7 +306,7 @@ describe NexosisApi::Client::Sessions do
   describe '#create_classification_model', vcr: { cassette_name: 'session_unbalanced' } do
     context 'given a request for unbalanced' do
       it 'the request adds param' do
-        actual = test_client.create_classification_model('TestRuby_NTS', 'target', {}, false)
+        actual = test_client.create_classification_model('TestRuby_NTS', 'profit', {}, false)
         expect(actual.extra_parameters['balance']).to be(false)
       end
     end
@@ -328,6 +331,7 @@ describe NexosisApi::Client::Sessions do
           loop do
             status_check = test_client.get_session completed.session_id
             break if (status_check.status == 'completed' || status_check.status == 'failed')
+            puts 'waiting in anomaly_scores'
             sleep 5
           end
         end
@@ -362,6 +366,7 @@ describe NexosisApi::Client::Sessions do
     loop do
       status_check = test_client.get_session completed.session_id
       break if (status_check.status == 'completed' || status_check.status == 'failed')
+      puts 'waiting in create_class_test_model'
       sleep 5
     end
     completed

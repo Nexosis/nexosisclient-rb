@@ -81,7 +81,7 @@ module NexosisApi
       # @raise [NexosisApi::HttpException]
       # @raise [ArgumentError]
       def remove_model(model_id)
-        raise ArgumentError, 'Deleting a model requires that model_id be specified and it is currently empty.' if model_id.empty?
+        raise ArgumentError, 'Deleting a model requires that model_id be specified and it is currently empty.' if model_id.nil? || model_id.empty?
         delete_url = "/models/#{model_id}"
         response = self.class.delete(delete_url, @options)
         unless (response.success?)

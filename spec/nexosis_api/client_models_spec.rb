@@ -3,7 +3,6 @@ require 'csv'
 require 'json'
 
 describe NexosisApi::Client::Models do
-
   attr_accessor :model_id
 
   describe '#list_models', :vcr => { :cassette_name => 'list_models' } do
@@ -16,21 +15,14 @@ describe NexosisApi::Client::Models do
     end
   end
 
-  describe '#get_model', :vcr => { :cassette_name => 'get_a_model' } do
+  describe '#get_model', vcr: { cassette_name: 'get_a_model' } do
     context 'given an existing model' do
       it 'returns a model summary' do
-        session = test_client.create_model('TestRuby_NTS', 'target')
-        if (@model_id.nil?)
-          loop do
-            status_check = test_client.get_session session.session_id
-            @model_id = status_check.model_id
-            break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 5
-          end
-        end
-        actual = test_client.get_model(@model_id)
+        models = test_client.list_models
+        model = create_class_test_model if models.nil?
+        model = models.first unless models.nil?
+        actual = test_client.get_model(model.model_id)
         expect(actual).to_not be_nil
-        expect(actual.datasource_name).to eql('TestRuby_NTS')
       end
     end
   end
@@ -41,6 +33,9 @@ describe NexosisApi::Client::Models do
         expect{ test_client.remove_model('') }.to raise_error{ |error|
           expect(error).to be_a(ArgumentError)
         }
+        expect{ test_client.remove_model() }.to raise_error{ |error|
+          expect(error).to be_a(ArgumentError)
+        }
       end
     end
   end
@@ -49,19 +44,16 @@ describe NexosisApi::Client::Models do
     context 'given a model id' do
       it 'removes the model' do
         # create a model to remove
-        session = test_client.create_model('TestRuby_NTS', 'target')
-        model_id = session.model_id
-        loop do
-          status_check = test_client.get_session session.session_id
-          model_id = status_check.model_id
-          break if (status_check.status == 'completed' || status_check.status == 'failed')
-          sleep 5
+        models = test_client.list_models('iris')
+        model = create_class_test_model if models.empty?
+        model = models.first unless models.nil?
+        unless (model.nil?)
+          test_client.remove_model(model.model_id)
+          expect{test_client.get_model(model.model_id)}.to raise_error{ |error|
+            expect(error).to be_a(NexosisApi::HttpException)
+            expect(error.code).to eql(404)
+          }
         end
-        test_client.remove_model(model_id)
-        expect{test_client.get_model(model_id)}.to raise_error{ |error|
-          expect(error).to be_a(NexosisApi::HttpException)
-          expect(error.code).to eql(404)
-        }
       end
     end
   end
@@ -94,22 +86,19 @@ describe NexosisApi::Client::Models do
     end
   end
 
-  describe '#predict', :vcr => { :cassette_name => 'predict_from_model' } do
+  describe '#predict', vcr: { cassette_name: 'predict_from_model' } do
     context 'given a trained model and features' do
       it 'predicts values' do
         if (@model_id.nil?)
-          session = test_client.create_model('TestRuby_NTS', 'target')
-          loop do
-            status_check = test_client.get_session session.session_id
-            @model_id = status_check.model_id
-            break if (status_check.status == 'completed' || status_check.status == 'failed')
-            sleep 5
-          end
+          available = test_client.list_models('iris')
+          completed = available.first unless available.empty?
+          completed = create_class_test_model if completed.nil?
+          @model_id = completed.model_id
         end
-        data = JSON.parse('[{"feature": "15"}]')
+        data = JSON.parse('[{"sepal_len":5.1,"sepal_width":3.5,"petal_len":1.4,"petal_width":0.2}]')
         actual = test_client.predict @model_id, data
         expect(actual).to_not be_nil
-        expect(actual.predictions[0]['target'].to_f).to be > 0
+        expect(actual.predictions[0]['iris']).to eql('setosa')
       end
     end
   end
@@ -120,11 +109,13 @@ describe NexosisApi::Client::Models do
         available = test_client.list_models('iris')
         completed = available.first unless available.empty?
         completed = create_class_test_model if completed.nil?
-        actual = test_client.predict(completed.model_id,
+        unless completed.nil?
+          actual = test_client.predict(completed.model_id,
                                      { petal_len:	3.6, sepal_len: 5.6, petal_width: 1.3, sepal_width: 2.9 },
                                      includeClassScores: true)
-        expect(actual).to be_a(NexosisApi::PredictResponse)
-        expect(actual.predictions.first['iris:versicolor'].to_i).to eql(1)
+          expect(actual).to be_a(NexosisApi::PredictResponse)
+          expect(actual.predictions.first['iris:versicolor'].to_i).to eql(1)
+        end
       end
     end
   end
@@ -134,10 +125,11 @@ describe NexosisApi::Client::Models do
   def create_class_test_model
     data = CSV.open('spec/fixtures/iris_data.csv', 'rb', headers: true)
     test_client.create_dataset_csv('Iris', data)
-    completed = test_client.create_model('Iris', 'iris', {}, 'classification')
+    completed = test_client.create_model('Iris', 'iris', {}, prediction_domain: 'classification')
     loop do
       status_check = test_client.get_session completed.session_id
       break if (status_check.status == 'completed' || status_check.status == 'failed')
+      puts 'waiting in create_class_test_model'
       sleep 5
     end
     completed

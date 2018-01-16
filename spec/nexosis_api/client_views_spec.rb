@@ -18,7 +18,10 @@ describe NexosisApi::Client::Views do
   end
 
   after(:all) do
-    test_client.remove_dataset('TestRuby_Right', cascade_view: true)
+    begin
+      test_client.remove_dataset('TestRuby_Right', cascade_view: true)
+    rescue
+    end
   end
 
   describe '#list_views', :vcr => {:cassette_name => 'list_views'} do

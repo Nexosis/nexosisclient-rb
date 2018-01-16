@@ -11,7 +11,7 @@ RSpec.configure do |config|
     if ENV['VCR_OFF']
       begin
         data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
-        nts_data = JSON.load(File.open('spec/fixtures/dummydata.json'))
+        nts_data = JSON.load(File.open('spec/fixtures/50startups.json'))
         test_client.create_dataset_csv('TestRuby', data)
         test_client.create_dataset_json('TestRuby_NTS', nts_data)
       rescue Exception => eApi
@@ -21,11 +21,12 @@ RSpec.configure do |config|
   end
 
   config.after(:all) do
-  if ENV['VCR_OFF']
-    begin
+    if ENV['VCR_OFF']
+      begin
         test_client.remove_dataset('TestRuby', cascade: true)
         test_client.remove_dataset('TestRuby_NTS', cascade: true)
-    rescue NexosisApi::HttpException
+      rescue NexosisApi::HttpException
+      end
     end
   end
 end

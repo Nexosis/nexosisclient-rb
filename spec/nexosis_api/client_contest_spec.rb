@@ -2,27 +2,6 @@ require 'helper'
 
 describe NexosisApi::Client::Contest do
 
-  before(:all) do
-    test_client.api_key(paid_api_key)
-  end
-
-  after(:all) do
-    test_client.api_key(test_api_key)
-  end
-
-  describe '#get_session_contest', vcr: { cassette_name: 'session_contest_fail' } do
-    context 'given a community api key' do
-      it 'raises unauthorized' do
-        test_client.api_key(test_api_key)
-        expect{ test_client.get_session_contest(existing_session) }.to raise_error { |error|
-          expect(error).to be_a(NexosisApi::HttpException)
-          expect(error.message).to start_with('Plan Upgrade Required')
-        }
-        test_client.api_key(paid_api_key)
-      end
-    end
-  end
-
   describe '#get_session_contest', vcr: { cassette_name: 'session_contest' } do
     context 'given a completed session' do
       it 'provides lists of algos' do

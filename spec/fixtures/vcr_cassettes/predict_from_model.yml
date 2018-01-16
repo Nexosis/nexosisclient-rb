@@ -1,41 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.uat.nexosisdev.com/v1/sessions/model
-    body:
-      encoding: UTF-8
-      string: '{"dataSourceName":"TestRuby_NTS","targetColumn":"target","predictionDomain":"regression","isEstimate":false}'
-    headers:
-      Api-Key:
-      - api-key
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json; charset=utf-8
-      Nexosis-Request-Cost:
-      - 0.00 USD
-      Nexosis-Account-Balance:
-      - 1315086.63 USD
-      Date:
-      - Fri, 06 Oct 2017 19:35:17 GMT
-    body:
-      encoding: UTF-8
-      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015ef32f-4d19-4114-8968-5686a2bc23fb","type":"model","status":"requested","predictionDomain":"regression","requestedDate":"2017-10-06T19:35:17.017638+00:00","statusHistory":[{"date":"2017-10-06T19:35:17.017638+00:00","status":"requested"}],"extraParameters":{},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015ef32f-4d19-4114-8968-5686a2bc23fb/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"}]}'
-    http_version: 
-  recorded_at: Fri, 06 Oct 2017 19:35:17 GMT
-- request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/015ef32f-4d19-4114-8968-5686a2bc23fb
+    uri: https://api.uat.nexosisdev.com/v1/models?dataSourceName=iris&page=0&pageSize=50
     body:
       encoding: US-ASCII
       string: ''
@@ -45,7 +12,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
+      - Nexosis-Ruby-API-Client/2.1
   response:
     status:
       code: 200
@@ -55,32 +22,44 @@ http_interactions:
       - chunked
       Content-Type:
       - application/json; charset=utf-8
-      Nexosis-Session-Status:
-      - Completed
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '25'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '716'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '73'
       Nexosis-Account-Balance:
-      - 1315086.63 USD
+      - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 06 Oct 2017 19:35:59 GMT
+      - Tue, 16 Jan 2018 19:05:48 GMT
     body:
       encoding: UTF-8
-      string: '{"columns":{"key":{"dataType":"numeric","role":"key","imputation":"zeroes","aggregation":"sum"},"target":{"dataType":"numeric","role":"target","imputation":"zeroes","aggregation":"sum"},"feature":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"015ef32f-4d19-4114-8968-5686a2bc23fb","type":"model","status":"completed","predictionDomain":"regression","modelId":"9ec879d7-d1ca-40b9-9f28-f0dc1a53f625","requestedDate":"2017-10-06T19:35:17.017638+00:00","statusHistory":[{"date":"2017-10-06T19:35:17.017638+00:00","status":"requested"},{"date":"2017-10-06T19:35:19.0316064+00:00","status":"started"},{"date":"2017-10-06T19:35:55.5478433+00:00","status":"completed"}],"extraParameters":{},"messages":[],"dataSourceName":"TestRuby_NTS","dataSetName":"TestRuby_NTS","targetColumn":"target","isEstimate":false,"links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/015ef32f-4d19-4114-8968-5686a2bc23fb/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/9ec879d7-d1ca-40b9-9f28-f0dc1a53f625"}]}'
+      string: '{"items":[{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"modelId":"20eede36-509f-4717-bef0-7ee150bb476b","sessionId":"0160ffc8-54a3-4a88-a60c-889152f1dd7e","predictionDomain":"classification","dataSourceName":"Iris","createdDate":"2018-01-16T16:37:21.2611376+00:00","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":"knn"},"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[{"rel":"train","href":"https://api.uat.nexosisdev.com/v1/sessions/0160ffc8-54a3-4a88-a60c-889152f1dd7e"}]},{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"modelId":"ce8fb89b-b4f9-4876-9900-987ca0f60da3","sessionId":"0160fbcd-2537-40bf-85fe-b2ddc031aaa5","predictionDomain":"classification","dataSourceName":"Iris","createdDate":"2018-01-15T21:51:15.8415677+00:00","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":"knn"},"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[{"rel":"train","href":"https://api.uat.nexosisdev.com/v1/sessions/0160fbcd-2537-40bf-85fe-b2ddc031aaa5"}]}],"pageNumber":0,"totalPages":1,"pageSize":50,"totalCount":2,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/models?page=0&pageSize=50&dataSourceName=iris"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/models?page=0&pageSize=50&dataSourceName=iris&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/models?page=0&pageSize=50&dataSourceName=iris&page=0"}]}'
     http_version: 
-  recorded_at: Fri, 06 Oct 2017 19:35:58 GMT
+  recorded_at: Tue, 16 Jan 2018 19:05:48 GMT
 - request:
     method: post
-    uri: https://api.uat.nexosisdev.com/v1/models/9ec879d7-d1ca-40b9-9f28-f0dc1a53f625/predict
+    uri: https://api.uat.nexosisdev.com/v1/models/20eede36-509f-4717-bef0-7ee150bb476b/predict
     body:
       encoding: UTF-8
-      string: '{"data":[{"feature":"15"}]}'
+      string: '{"data":[{"sepal_len":5.1,"sepal_width":3.5,"petal_len":1.4,"petal_width":0.2}],"extraParameters":{}}'
     headers:
       Api-Key:
       - api-key
       Content-Type:
       - application/json
       User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
+      - Nexosis-Ruby-API-Client/2.1
   response:
     status:
       code: 200
@@ -90,16 +69,28 @@ http_interactions:
       - chunked
       Content-Type:
       - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '25'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '717'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '73'
       Nexosis-Account-Balance:
-      - 1315086.63 USD
+      - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Fri, 06 Oct 2017 19:36:01 GMT
+      - Tue, 16 Jan 2018 19:05:59 GMT
     body:
       encoding: UTF-8
-      string: '{"data":[{"feature":"15","target":"15.0232192500001"}],"messages":[],"modelId":"9ec879d7-d1ca-40b9-9f28-f0dc1a53f625","sessionId":"015ef32f-4d19-4114-8968-5686a2bc23fb","predictionDomain":"regression","dataSourceName":"TestRuby_NTS","createdDate":"2017-10-06T19:35:48.8600428+00:00","algorithm":{"name":"Lasso
-        Regression","description":"Lasso Regression","key":"lasso"},"metrics":{}}'
+      string: '{"data":[{"sepal_len":"5.1","sepal_width":"3.5","petal_len":"1.4","petal_width":"0.2","iris":"setosa"}],"messages":[],"modelId":"20eede36-509f-4717-bef0-7ee150bb476b","sessionId":"0160ffc8-54a3-4a88-a60c-889152f1dd7e","predictionDomain":"classification","dataSourceName":"Iris","createdDate":"2018-01-16T16:37:21.2611376+00:00","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":"knn"},"metrics":{"macroAverageF1Score":1.0,"accuracy":1.0,"macroAveragePrecision":1.0,"macroAverageRecall":1.0,"matthewsCorrelationCoefficient":1.0},"links":[]}'
     http_version: 
-  recorded_at: Fri, 06 Oct 2017 19:36:00 GMT
+  recorded_at: Tue, 16 Jan 2018 19:05:59 GMT
 recorded_with: VCR 3.0.3
