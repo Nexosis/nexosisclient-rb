@@ -95,10 +95,12 @@ describe NexosisApi::Client::Models do
           completed = create_class_test_model if completed.nil?
           @model_id = completed.model_id
         end
-        data = JSON.parse('[{"sepal_len":5.1,"sepal_width":3.5,"petal_len":1.4,"petal_width":0.2}]')
-        actual = test_client.predict @model_id, data
-        expect(actual).to_not be_nil
-        expect(actual.predictions[0]['iris']).to eql('setosa')
+        unless @model_id.nil?
+          data = JSON.parse('[{"sepal_len":5.1,"sepal_width":3.5,"petal_len":1.4,"petal_width":0.2}]')
+          actual = test_client.predict @model_id, data
+          expect(actual).to_not be_nil
+          expect(actual.predictions[0]['iris']).to eql('setosa')
+        end
       end
     end
   end

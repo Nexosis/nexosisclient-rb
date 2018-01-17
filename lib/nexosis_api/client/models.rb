@@ -61,8 +61,8 @@ module NexosisApi
       # @note For a classification model you may include the extra parameter 'includeClassScores' to
       #    get scores back for each class, not just the chosen class.
       def predict(model_id, feature_data, extra_parameters = {})
-        raise ArgumentError, 'Running predictions requires that model_id be specified and it is currently empty.' if model_id.empty?
-        raise ArgumentError, 'Running predictions requires that feature_data be specified and it is currently empty.' if feature_data.empty?
+        raise ArgumentError, 'Running predictions requires that model_id be specified and it is currently empty.' if model_id.nil? || model_id.empty?
+        raise ArgumentError, 'Running predictions requires that feature_data be specified and it is currently empty.' if feature_data.nil? || feature_data.empty?
         predict_url = "/models/#{model_id}/predict"
         feature_data = [feature_data] unless feature_data.kind_of?(Array)
         response = self.class.post(predict_url, headers: @headers, body: { 'data': feature_data, 'extraParameters': extra_parameters }.to_json)
