@@ -357,6 +357,20 @@ describe NexosisApi::VocabularySummary do
   end
 end
 
+describe NexosisApi::VocabularyWord do
+  describe '#initialize' do
+    context 'given a vocab hash' do
+      it 'creates a new object initialized with values' do
+        target = NexosisApi::PagedArray.new(vocabulary_word_list,
+                                        vocabulary_word_list['items']
+                                        .map { |word| NexosisApi::VocabularyWord.new(word) })
+        expect(target[0]).to be_a(NexosisApi::VocabularyWord)
+        expect(target.length).to eql(2)
+        expect(target[0].text).to eql('thank')
+      end
+    end
+  end
+end
 
 private
 
@@ -464,3 +478,31 @@ def vocabulary_summary_hash
     }]
   }
 end
+
+def vocabulary_word_list
+  {
+    'items'=> [
+      {
+        'text': 'thank',
+        'type': 'word',
+        'rank': 8
+      }, {
+        'text': 'just',
+        'type': 'word',
+        'rank': 9
+      }
+    ],
+    'pageNumber': 0,
+    'totalPages': 1423,
+    'pageSize': 10,
+    'totalCount': 14228,
+    'links': [{
+      'rel': 'self',
+      'href': 'https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?type=Word&page=0&pageSize=10'
+    }, {
+      'rel': 'first',
+      'href': 'https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?type=Word&page=0&pageSize=10&page=0'
+    }]
+  }
+end
+
