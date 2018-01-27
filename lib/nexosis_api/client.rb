@@ -30,11 +30,13 @@ require 'nexosis_api/session'
 require 'nexosis_api/time_interval'
 require 'nexosis_api/view_definition'
 require 'nexosis_api/view_data'
+require 'nexosis_api/vocabulary_summary'
 require 'nexosis_api/client/contest'
 require 'nexosis_api/client/sessions'
 require 'nexosis_api/client/datasets'
 require 'nexosis_api/client/imports'
 require 'nexosis_api/client/views'
+require 'nexosis_api/client/vocabulary'
 require 'nexosis_api/client/models'
 
 module NexosisApi
@@ -48,6 +50,7 @@ module NexosisApi
     include Client::Views
     include Client::Models
     include Client::Contest
+    include Client::Vocabulary
 
     def initialize(options = {})
       raise ArgumentError, 'api_key was not defined' unless options[:api_key].nil? == false

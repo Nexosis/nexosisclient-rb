@@ -343,6 +343,21 @@ describe NexosisApi::ClassifierScores do
   end
 end
 
+describe NexosisApi::VocabularySummary do
+  describe '#initialize' do
+    context 'given a vocab hash' do
+      it 'creates a new object initialized with values' do
+        target = NexosisApi::VocabularySummary.new(vocabulary_summary_hash)
+        expect(target.datasource_name).to eql('TestDS')
+        expect(target.links[0].rel).to eql('words')
+        expect(target.column_name).to eql('text')
+        expect(target.datasource_type).to eql('dataSet')
+      end
+    end
+  end
+end
+
+
 private
 
 def session_hash
@@ -432,5 +447,20 @@ def contestant_hash
       'matthewsCorrelationCoefficient': 0.75047428290868912
     },
     'links': []
+  }
+end
+
+def vocabulary_summary_hash
+  {
+    'id': '6e0d9884-a5a5-4a30-b9f1-fea8380be51e',
+    'dataSourceName': 'TestDS',
+    'columnName': 'text',
+    'dataSourceType': 'dataSet',
+    'createdOnDate': '2018-01-22T19:25:18.6662961+00:00',
+    'createdBySessionId': '01611f54-7568-4a52-8693-a6c3d77b3964',
+    'links' => [{
+      'rel': 'words',
+      'href': 'https://ml.nexosis.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e'
+    }]
   }
 end
