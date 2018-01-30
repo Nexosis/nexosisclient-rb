@@ -343,6 +343,35 @@ describe NexosisApi::ClassifierScores do
   end
 end
 
+describe NexosisApi::VocabularySummary do
+  describe '#initialize' do
+    context 'given a vocab hash' do
+      it 'creates a new object initialized with values' do
+        target = NexosisApi::VocabularySummary.new(vocabulary_summary_hash)
+        expect(target.datasource_name).to eql('TestDS')
+        expect(target.links[0].rel).to eql('words')
+        expect(target.column_name).to eql('text')
+        expect(target.datasource_type).to eql('dataSet')
+      end
+    end
+  end
+end
+
+describe NexosisApi::VocabularyWord do
+  describe '#initialize' do
+    context 'given a vocab hash' do
+      it 'creates a new object initialized with values' do
+        target = NexosisApi::PagedArray.new(vocabulary_word_list,
+                                        vocabulary_word_list['items']
+                                        .map { |word| NexosisApi::VocabularyWord.new(word) })
+        expect(target[0]).to be_a(NexosisApi::VocabularyWord)
+        expect(target.length).to eql(2)
+        expect(target[0].text).to eql('thank')
+      end
+    end
+  end
+end
+
 private
 
 def session_hash
@@ -434,3 +463,46 @@ def contestant_hash
     'links': []
   }
 end
+
+def vocabulary_summary_hash
+  {
+    'id': '6e0d9884-a5a5-4a30-b9f1-fea8380be51e',
+    'dataSourceName': 'TestDS',
+    'columnName': 'text',
+    'dataSourceType': 'dataSet',
+    'createdOnDate': '2018-01-22T19:25:18.6662961+00:00',
+    'createdBySessionId': '01611f54-7568-4a52-8693-a6c3d77b3964',
+    'links' => [{
+      'rel': 'words',
+      'href': 'https://ml.nexosis.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e'
+    }]
+  }
+end
+
+def vocabulary_word_list
+  {
+    'items'=> [
+      {
+        'text': 'thank',
+        'type': 'word',
+        'rank': 8
+      }, {
+        'text': 'just',
+        'type': 'word',
+        'rank': 9
+      }
+    ],
+    'pageNumber': 0,
+    'totalPages': 1423,
+    'pageSize': 10,
+    'totalCount': 14228,
+    'links': [{
+      'rel': 'self',
+      'href': 'https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?type=Word&page=0&pageSize=10'
+    }, {
+      'rel': 'first',
+      'href': 'https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?type=Word&page=0&pageSize=10&page=0'
+    }]
+  }
+end
+

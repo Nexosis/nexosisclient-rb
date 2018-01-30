@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/vocabulary?page=0&pageSize=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '31'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '1045'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '100'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Sat, 27 Jan 2018 23:26:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"id":"6e0d9884-a5a5-4a30-b9f1-fea8380be51e","dataSourceName":"AirlineTweets","columnName":"text","dataSourceType":"dataSet","createdOnDate":"2018-01-22T19:25:18.6662961+00:00","createdBySessionId":"01611f54-7568-4a52-8693-a6c3d77b3964","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e"}]},{"id":"69994d84-429d-4ba9-8151-98f16dcb30c9","dataSourceName":"AirlineTweets_Reduced","columnName":"text","dataSourceType":"dataSet","createdOnDate":"2018-01-26T13:25:29.2002864+00:00","createdBySessionId":"016132a4-c8d0-47f2-ac9c-3658f50828cc","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/69994d84-429d-4ba9-8151-98f16dcb30c9"}]},{"id":"b6e4345f-b114-45ca-a7a7-ad90748459be","dataSourceName":"AirlineTweets_Reduced","columnName":"text","dataSourceType":"dataSet","createdOnDate":"2018-01-26T14:27:43.2422546+00:00","createdBySessionId":"016132dd-d0b7-4901-aa46-72b41c47280b","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/b6e4345f-b114-45ca-a7a7-ad90748459be"}]},{"id":"03586d9e-4619-4ba1-89c6-a82c369da91d","dataSourceName":"AirlineTweets_Reduced","columnName":"text","dataSourceType":"dataSet","createdOnDate":"2018-01-26T14:27:49.0800497+00:00","createdBySessionId":"016132dd-e86e-4af5-8cd8-4f3fe34cf5ee","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/03586d9e-4619-4ba1-89c6-a82c369da91d"}]},{"id":"9995ad8b-37c9-480e-a4de-a43537d2e120","dataSourceName":"AirlineTweets_Unnamed","columnName":"text","dataSourceType":"dataSet","createdOnDate":"2018-01-26T16:29:22.8838003+00:00","createdBySessionId":"0161334d-3537-42d8-a23e-858976d61723","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/9995ad8b-37c9-480e-a4de-a43537d2e120"}]},{"id":"a837ed7f-d65a-409f-acf0-5ade2cd49bd3","dataSourceName":"sentiment","columnName":"content","dataSourceType":"dataSet","createdOnDate":"2018-01-19T13:54:58.5985211+00:00","createdBySessionId":"01610eb3-0393-407f-98ad-a60d1b0a90c3","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/a837ed7f-d65a-409f-acf0-5ade2cd49bd3"}]},{"id":"0f28aa47-5993-471e-8f9b-917b0bf3a7c4","dataSourceName":"shortanswer1","columnName":"EssayText","dataSourceType":"dataSet","createdOnDate":"2018-01-19T17:27:29.0162183+00:00","createdBySessionId":"01610f75-c40f-4a35-96d4-d005508b7bbf","links":[{"rel":"words","href":"https://api.uat.nexosisdev.com/v1/vocabulary/0f28aa47-5993-471e-8f9b-917b0bf3a7c4"}]}],"pageNumber":0,"totalPages":1,"pageSize":50,"totalCount":7,"links":[]}'
+    http_version: 
+  recorded_at: Sat, 27 Jan 2018 23:26:12 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?page=0&pageSize=50&type=word
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '31'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '1045'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '100'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Sat, 27 Jan 2018 23:26:10 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"6e0d9884-a5a5-4a30-b9f1-fea8380be51e","items":[{"text":"united","type":"word","rank":0},{"text":"flight","type":"word","rank":1},{"text":"usairways","type":"word","rank":2},{"text":"americanair","type":"word","rank":3},{"text":"jetblue","type":"word","rank":4},{"text":"southwestair","type":"word","rank":5},{"text":"thanks","type":"word","rank":6},{"text":"http","type":"word","rank":7},{"text":"thank","type":"word","rank":8},{"text":"just","type":"word","rank":9},{"text":"service","type":"word","rank":10},{"text":"cancelled","type":"word","rank":11},{"text":"help","type":"word","rank":12},{"text":"time","type":"word","rank":13},{"text":"customer","type":"word","rank":14},{"text":"virginamerica","type":"word","rank":15},{"text":"hold","type":"word","rank":16},{"text":"hours","type":"word","rank":17},{"text":"flights","type":"word","rank":18},{"text":"plane","type":"word","rank":19},{"text":"amp","type":"word","rank":20},{"text":"customer
+        service","type":"word","rank":21},{"text":"need","type":"word","rank":22},{"text":"delayed","type":"word","rank":23},{"text":"hour","type":"word","rank":24},{"text":"gate","type":"word","rank":25},{"text":"flightled","type":"word","rank":26},{"text":"cancelled
+        flightled","type":"word","rank":27},{"text":"don","type":"word","rank":28},{"text":"got","type":"word","rank":29},{"text":"ve","type":"word","rank":30},{"text":"bag","type":"word","rank":31},{"text":"airline","type":"word","rank":32},{"text":"like","type":"word","rank":33},{"text":"phone","type":"word","rank":34},{"text":"guys","type":"word","rank":35},{"text":"today","type":"word","rank":36},{"text":"fly","type":"word","rank":37},{"text":"late","type":"word","rank":38},{"text":"did","type":"word","rank":39},{"text":"dm","type":"word","rank":40},{"text":"waiting","type":"word","rank":41},{"text":"know","type":"word","rank":42},{"text":"airport","type":"word","rank":43},{"text":"way","type":"word","rank":44},{"text":"great","type":"word","rank":45},{"text":"trying","type":"word","rank":46},{"text":"going","type":"word","rank":47},{"text":"flying","type":"word","rank":48},{"text":"day","type":"word","rank":49}],"pageNumber":0,"totalPages":285,"pageSize":50,"totalCount":14228,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?page=0&pageSize=50&type=word"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?page=0&pageSize=50&type=word&page=0"},{"rel":"next","href":"https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?page=0&pageSize=50&type=word&page=1"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/vocabulary/6e0d9884-a5a5-4a30-b9f1-fea8380be51e?page=0&pageSize=50&type=word&page=284"}]}'
+    http_version: 
+  recorded_at: Sat, 27 Jan 2018 23:26:13 GMT
+recorded_with: VCR 3.0.3
