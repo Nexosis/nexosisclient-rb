@@ -114,6 +114,20 @@ module NexosisApi
         return if response.success?
         raise HttpException.new("There was a problem removing the dataset: #{response.code}.", "removing dataset #{dataset_name}", response)
       end
+      
+      # Get per column statistics for data in the given dataset
+      # @param dataset_name [String] the name of the dataset for which to retrieve stats
+      # @since 2.3.0
+      # @note The stats will be a hash per column with a structure like: {'columns': 'column_name': { 'max': 1, 'min': 0 }}
+      # @note Common stats returned include 'max', 'min', 'stddev', 'variance', 'median'
+      def get_column_stats(dataset_name)
+        raise ArgumentError, 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
+        dataset_stats_url = "/data/#{dataset_name}/stats"
+        response = self.class.get(dataset_stats_url,
+                                     headers: @headers)
+        return response.parsed_response if response.success?
+        raise HttpException.new("There was a problem getting stats for the dataset: #{response.code}.", "getting stats for dataset #{dataset_name}", response)
+      end
 
       private
 
@@ -124,7 +138,8 @@ module NexosisApi
         headers = { 'api-key' => @api_key, 'Content-Type' => content_type }
         response = self.class.put(dataset_url, headers: headers, body: content)
         if response.success?
-          NexosisApi::DatasetSummary.new(response)
+          summary = NexosisApi::DatasetSummary.new(response)
+          summary
         else
           raise HttpException.new("There was a problem uploading the dataset: #{response.code}.", "uploading dataset #{dataset_name}", response)
         end
