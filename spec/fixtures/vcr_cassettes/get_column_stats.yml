@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/data/TestRuby_NTS/stats
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/2.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '26'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '70'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '13'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Thu, 15 Feb 2018 19:16:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"TestRuby_NTS","columns":[{"florida":{"errors":0.0,"max":1.0,"mean":0.32,"median":0.0,"min":0.0,"non_numeric":0.0,"row_count":50.0,"stddev":0.471212,"variance":0.222041}},{"ny":{"errors":0.0,"max":1.0,"mean":0.34,"median":0.0,"min":0.0,"non_numeric":0.0,"row_count":50.0,"stddev":0.478518,"variance":0.22898}},{"profit":{"errors":0.0,"max":192261.83,"mean":112012.6392,"median":107978.19,"min":14681.4,"non_numeric":0.0,"row_count":50.0,"stddev":40306.180338,"variance":1624588173.4112079}},{"r.d.spend":{"errors":0.0,"max":165349.2,"mean":73721.6156,"median":73051.08,"min":0.0,"non_numeric":0.0,"row_count":50.0,"stddev":45902.256482,"variance":2107017150.1675439}},{"marketing.spend":{"errors":0.0,"max":471784.1,"mean":211025.0978,"median":212716.24,"min":0.0,"non_numeric":0.0,"row_count":50.0,"stddev":122290.310726,"variance":14954920097.423788}},{"cali":{"errors":0.0,"max":1.0,"mean":0.34,"median":0.0,"min":0.0,"non_numeric":0.0,"row_count":50.0,"stddev":0.478518,"variance":0.22898}},{"administration":{"errors":0.0,"max":182645.56,"mean":121344.6396,"median":122699.795,"min":51283.14,"non_numeric":0.0,"row_count":50.0,"stddev":28017.802755,"variance":784997271.245469}}]}'
+    http_version: 
+  recorded_at: Thu, 15 Feb 2018 19:16:04 GMT
+recorded_with: VCR 3.0.3

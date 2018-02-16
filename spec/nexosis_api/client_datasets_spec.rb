@@ -185,4 +185,14 @@ describe NexosisApi::Client::Datasets do
       end
     end
   end
+
+  describe '#get_column_stats', :vcr => {:cassette_name => 'get_column_stats'} do
+    context 'given an existing dataset' do
+      it 'returns calculated stats per column' do
+        actual = test_client.get_column_stats('TestRuby_NTS')
+        expect(actual).to_not be_nil
+        expect(actual['columns']).to_not be_nil
+      end
+    end
+  end
 end
