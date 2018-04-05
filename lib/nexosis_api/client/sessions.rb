@@ -302,6 +302,17 @@ module NexosisApi
         NexosisApi::AnomalyDistances.new(response.parsed_response.merge(response.headers))
       end
 
+      def get_timeseries_outliers(session_id, page_number = 0, page_size = 50)
+        outlier_url = "/sessions/#{session_id}/results/outliers"
+        query = {
+          page: page_number,
+          pageSize: page_size
+        }
+        response = self.class.get(outlier_url, headers: @headers, query: query)
+        raise HttpException.new("There was a problem getting the outliers for session #{session_id}", 'getting outliers', response) unless response.success?
+        NexosisApi::TimeseriesOutliers.new(response.parsed_response.merge(response.headers))
+      end
+
       private
 
       # @private

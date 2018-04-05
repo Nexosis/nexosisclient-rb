@@ -384,6 +384,21 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
+  describe '#get_timeseries_outliers', vcr: { cassette_name: 'timeseries_outliers' } do
+    context 'given a finished session' do
+      it 'returns feature importance scores' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'forecast' }.first
+        unless completed.nil?
+          actual = test_client.get_timeseries_outliers(completed.session_id)
+          expect(actual).to be_a(NexosisApi::TimeseriesOutliers)
+          expect(actual.data).to_not be_empty
+          expect((actual.data.map &:actual).length).to be > 0
+        end
+      end
+    end
+  end
+
   private
 
   def create_class_test_model

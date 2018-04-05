@@ -430,6 +430,36 @@ describe NexosisApi::AnomalyDistances do
   end
 end
 
+describe NexosisApi::Outlier do
+  describe '#initialize' do
+    context 'given a record hash of outlier' do
+      it 'creates a new outlier with values' do
+        actual = NexosisApi::Outlier.new('timeStamp': '1/5/2014 12:00:00 AM',
+                                         'sales:actual': '229.09',
+                                         'sales:smooth': '1743.42167102697')
+        expect(actual).to_not be_nil
+        expect(actual.smoothed).to eql(1743.42167102697)
+        expect(actual.actual).to eql(229.09)
+        expect(actual.timestamp).to eql(DateTime.parse('1/5/2014 12:00:00 AM'))
+      end
+    end
+  end
+end
+
+describe NexosisApi::TimeseriesOutliers do
+  describe '#initialize' do
+    context 'given an outlier response hash' do
+      it 'creates a new outliers object with values' do
+        actual = NexosisApi::TimeseriesOutliers.new(outliers_hash)
+        expect(actual).to_not be_nil
+        expect(actual.data.length).to eql(2)
+        expect(actual.data.total_pages).to eql(1)
+        expect(actual.session_id).to eql('01626ca6-56b2-417a-8ea1-6b05bbe389c6')
+      end
+    end
+  end
+end
+
 private
 
 def session_hash
@@ -699,6 +729,74 @@ def distance_hash
         {
             'rel': 'data',
             'href': 'https://api.uat.nexosisdev.com/internal/data/Wine'
+        }
+    ]
+}
+end
+
+def outliers_hash
+  {
+    'data': [
+        {
+            'timeStamp': '1/5/2014 12:00:00 AM',
+            'sales:actual': '229.09',
+            'sales:smooth': '1743.42167102697'
+        },
+        {
+            'timeStamp': '1/6/2014 12:00:00 AM',
+            'sales:actual': '0',
+            'sales:smooth': '1920.29538270229'
+        }
+    ],
+    'pageNumber': 0,
+    'totalPages': 1,
+    'pageSize': 2,
+    'totalCount': 2,
+    'sessionId': '01626ca6-56b2-417a-8ea1-6b05bbe389c6',
+    'type': 'forecast',
+    'status': 'completed',
+    'predictionDomain': 'forecast',
+    'supportsFeatureImportance': true,
+    'availablePredictionIntervals': [
+        '0.2',
+        '0.5',
+        '0.8'
+    ],
+    'startDate': '2016-10-10T00:00:00+00:00',
+    'endDate': '2016-11-10T00:00:00+00:00',
+    'resultInterval': 'day',
+    'requestedDate': '2018-03-28T12:47:43.219102+00:00',
+    'statusHistory': [
+        {
+            'date': '2018-03-28T12:47:43.219102+00:00',
+            'status': 'requested'
+        },
+        {
+            'date': '2018-03-28T12:49:02.1659862+00:00',
+            'status': 'started'
+        },
+        {
+            'date': '2018-03-28T13:04:04.8297598+00:00',
+            'status': 'completed'
+        }
+    ],
+    'extraParameters': {},
+    'messages': [
+    ],
+    'name': 'Forecast on LocationAFull',
+    'dataSourceName': 'LocationAFull',
+    'dataSetName': 'LocationAFull',
+    'targetColumn': 'sales',
+    'algorithm': {
+        'name': 'Additive Model, Weekly + Annual',
+        'description': 'Forecasts time series in a way robust to outliers, missing data, and dramatic changes to time series, with a weekly + annual seasonal component',
+        'key': 'PROPHET+W+A'
+    },
+    'isEstimate': false,
+    'links': [
+        {
+            'rel': 'data',
+            'href': 'https://api.uat.nexosisdev.com/internal/data/LocationAFull'
         }
     ]
 }
