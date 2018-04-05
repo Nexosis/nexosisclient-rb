@@ -12,7 +12,8 @@ module NexosisApi
                   'predictionDomain' => :@prediction_domain,
                   'extraParameters' => :@extra_parameters,
                   'targetColumn' => :@target_column,
-                  'statusHistory' => :@status_history }
+                  'statusHistory' => :@status_history,
+                  'supportsFeatureImportance' => :@supports_feature_importance}
       session_hash.each do |k, v|
         if (k == 'links')
           @links = v.map { |l| NexosisApi::Link.new(l) }
@@ -118,5 +119,10 @@ module NexosisApi
     # A list of warning or error messages optionally returned from session
     # @return [Array of Message]
     attr_accessor :messages
+
+    # Identifies if this session will provide feature importance scores when completed
+    # @return [Boolean]
+    # @since 2.4.0
+    attr_reader :supports_feature_importance
   end
 end

@@ -357,6 +357,19 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
+  describe '#get_feature_importance', vcr: { cassette_name: 'feature_importance' } do
+    context 'given a finished session' do
+      it 'returns feature importance scores' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.supports_feature_importance == true }.first
+        completed = create_class_test_model if completed.nil?
+        actual = test_client.get_feature_importance(completed.session_id)
+        expect(actual).to be_a(NexosisApi::FeatureImportance)
+        expect(actual.scores).to_not be_empty
+      end
+    end
+  end
+
   private
 
   def create_class_test_model

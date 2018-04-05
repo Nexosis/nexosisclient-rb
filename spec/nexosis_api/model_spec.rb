@@ -372,6 +372,28 @@ describe NexosisApi::VocabularyWord do
   end
 end
 
+describe NexosisApi::FeatureImportance do
+  describe '#initialize' do
+    context 'given a feature importance hash' do
+      it 'creates a new object initialized with values' do
+        target = NexosisApi::FeatureImportance.new(feature_importance_hash)
+        expect(target).to_not be_nil
+        expect(target.session_id).to eql('016291b7-d8e0-40be-818d-09d8cea3c4d1')
+        expect(target.status_history.length).to eql(3)
+        expect(target.scores.keys.map &:to_s).to eql(['petal_len', 'sepal_len', 'petal_width', 'sepal_width'])
+      end
+    end
+
+    context 'given a string keyed hash' do
+      it 'still find feature importance scores' do
+        target = NexosisApi::FeatureImportance.new({'featureImportance' => {'foo': 1.0 }})
+        expect(target.scores).to_not be_nil
+      end
+    end
+  end
+end
+
+
 private
 
 def session_hash
@@ -506,3 +528,63 @@ def vocabulary_word_list
   }
 end
 
+def feature_importance_hash 
+  {
+    'featureImportance': {
+        'petal_len': 1,
+        'sepal_len': 0.59862634386248159,
+        'petal_width': 1,
+        'sepal_width': 0.32464203040032896
+    },
+    'pageNumber': 0,
+    'totalPages': 0,
+    'pageSize': 0,
+    'totalCount': 0,
+    'sessionId': '016291b7-d8e0-40be-818d-09d8cea3c4d1',
+    'type': 'model',
+    'status': 'completed',
+    'predictionDomain': 'classification',
+    'supportsFeatureImportance': true,
+    'availablePredictionIntervals': [],
+    'modelId': '4d9fdf0d-6f98-4317-b85f-a8548d38ee89',
+    'requestedDate': '2018-04-04T17:32:47.681627+00:00',
+    'statusHistory': [
+        {
+            'date': '2018-04-04T17:32:47.681627+00:00',
+            'status': 'requested'
+        },
+        {
+            'date': '2018-04-04T17:32:47.9512586+00:00',
+            'status': 'started'
+        },
+        {
+            'date': '2018-04-04T17:41:54.1412943+00:00',
+            'status': 'completed'
+        }
+    ],
+    'extraParameters': {
+        'balance': true
+    },
+    'messages': [
+        {
+            'severity': 'informational',
+            'message': '2237 observations were found in the dataset.'
+        }
+    ],
+    'name': 'Classification on Iris',
+    'dataSourceName': 'Iris',
+    'dataSetName': 'Iris',
+    'targetColumn': 'iris',
+    'algorithm': {
+        'name': 'K-Nearest Neighbors',
+        'description': 'K-Nearest Neighbors',
+        'key': ''
+    },
+    'isEstimate': false,
+    'links': [
+        {
+            'rel': 'data',
+            'href': 'https://api.uat.nexosisdev.com/v1/data/Iris'
+        }]
+  }
+end

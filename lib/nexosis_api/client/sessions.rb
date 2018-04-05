@@ -246,19 +246,40 @@ module NexosisApi
 
       # Get the observation class score for a completed classification session
       # @param session_id [String] The unique id of the completed classification session
+      # @param page_number [Integer] zero-based page number of results to retrieve
+      # @param page_size [Integer] Count of results to retrieve in each page (max 1000).
       # @return [NexosisApi::ScoreResult] A session result with a list of each observation and score per column.
       # @raise [NexosisApi::HttpException]
       # @since 2.1.0
       # @note - This endpoint returns a 404 for requests of non-classification sessions
-      def get_class_scores(session_id, page = 0, page_size = 50)
+      def get_class_scores(session_id, page_number = 0, page_size = 50)
         score_url = "/sessions/#{session_id}/results/classScores"
         query = {
-          page: page,
+          page: page_number,
           pageSize: page_size
         }
         response = self.class.get(score_url, headers: @headers, query: query)
         raise HttpException.new("There was a problem getting the class scores for session #{session_id}", 'getting class scores', response) unless response.success?
         NexosisApi::ClassifierScores.new(response.parsed_response.merge(response.headers))
+      end
+
+      # Get a feature importance score for each column in the data source used in a session
+      # @param session_id [String] The unique id of the completed session
+      # @param page_number [Integer] zero-based page number of results to retrieve
+      # @param page_size [Integer] Count of results to retrieve in each page (max 1000).
+      # @since 2.4.0
+      # @note The score returned here is calculated before algorithm selection and so is not algorithm specific. For algorithms 
+      # that can return internal scores you need to use the champion endpoints.
+      # @note Those sessions which will provide scores have the supports_feature_importance attribute set True. Others will 404 at this endpoint.
+      def get_feature_importance(session_id, page_number = 0, page_size = 50)
+        score_url = "/sessions/#{session_id}/results/featureimportance"
+        query = {
+          page: page_number,
+          pageSize: page_size
+        }
+        response = self.class.get(score_url, headers: @headers, query: query)
+        raise HttpException.new("There was a problem getting the feature importance scores for session #{session_id}", 'getting feature importance', response) unless response.success?
+        NexosisApi::FeatureImportance.new(response.parsed_response.merge(response.headers))
       end
 
       private
