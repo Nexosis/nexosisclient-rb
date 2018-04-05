@@ -393,6 +393,42 @@ describe NexosisApi::FeatureImportance do
   end
 end
 
+describe NexosisApi::DistanceMetric do
+  describe '#initialize' do
+    context 'given a single metric row' do
+      it 'creates a new metric object with values' do
+        distance_row = {
+          'anomaly': '0.0287059555836055',
+          'Ash': '2.45',
+          'Hue': '0.64',
+          'Alcohol': '13.71',
+          'ODRatio': '1.74',
+          'Proline': '740',
+          'mahalanobis_distance': '102.301222289665'
+        }
+        actual = NexosisApi::DistanceMetric.new(distance_row)
+        expect(actual).to_not be_nil
+        expect(actual.anomaly_score).to eql(0.0287059555836055)
+        expect(actual.distance).to eql(102.301222289665)
+        expect(actual.data.length).to eql(5)
+      end
+    end
+  end
+end
+
+describe NexosisApi::AnomalyDistances do
+  describe '#initialize' do
+    context 'given a distance response hash' do
+      it 'creates a new distance objects with values' do
+        actual = NexosisApi::AnomalyDistances.new(distance_hash)
+        expect(actual).to_not be_nil
+        expect(actual.data.length).to eql(2)
+        expect(actual.data.total_pages).to eql(89)
+        expect(actual.session_id).to eql('01623eba-7d13-46ba-801f-45205ea96106')
+      end
+    end
+  end
+end
 
 private
 
@@ -587,4 +623,83 @@ def feature_importance_hash
             'href': 'https://api.uat.nexosisdev.com/v1/data/Iris'
         }]
   }
+end
+
+def distance_hash
+  {
+    'metrics': {
+        'percentAnomalies': 0.10112359550561797
+    },
+    'data': [
+        {
+            'anomaly': '0.0487072268545709',
+            'Ash': '2',
+            'Hue': '0.93',
+            'Alcohol': '12',
+            'ODRatio': '3.05',
+            'Proline': '564',
+            'mahalanobis_distance': '143.312589889491'
+        },
+        {
+            'anomaly': '0.000317797613019206',
+            'Ash': '2.28',
+            'Hue': '1.25',
+            'Alcohol': '12.33',
+            'ODRatio': '1.67',
+            'Proline': '680',
+            'mahalanobis_distance': '156.112291933161'
+        }
+    ],
+    'pageNumber': 0,
+    'totalPages': 89,
+    'pageSize': 2,
+    'totalCount': 178,
+    'sessionId': '01623eba-7d13-46ba-801f-45205ea96106',
+    'type': 'model',
+    'status': 'completed',
+    'predictionDomain': 'anomalies',
+    'supportsFeatureImportance': false,
+    'availablePredictionIntervals': [],
+    'modelId': '1d557a30-f78e-434a-b52f-4abafd183da3',
+    'requestedDate': '2018-03-19T14:47:11.856205+00:00',
+    'statusHistory': [
+        {
+            'date': '2018-03-19T14:47:11.856205+00:00',
+            'status': 'requested'
+        },
+        {
+            'date': '2018-03-19T14:47:12.2708536+00:00',
+            'status': 'started'
+        },
+        {
+            'date': '2018-03-19T14:47:33.505159+00:00',
+            'status': 'completed'
+        }
+    ],
+    'extraParameters': {
+        'containsAnomalies': true
+    },
+    'messages': [
+        {
+            'severity': 'informational',
+            'message': '178 observations were found in the dataset.'
+        }
+    ],
+    'name': 'WineNoTarget',
+    'dataSourceName': 'Wine',
+    'dataSetName': 'Wine',
+    'targetColumn': 'anomaly',
+    'algorithm': {
+      'name': 'Isolation Forest',
+      'description': 'Isolation Forest Outlier Detection',
+      'key': 'isolation_forest_anomalies'
+    },
+    'isEstimate': false,
+    'links': [
+        {
+            'rel': 'data',
+            'href': 'https://api.uat.nexosisdev.com/internal/data/Wine'
+        }
+    ]
+}
 end

@@ -115,7 +115,7 @@ module NexosisApi
       #
       # @param session_id [String] the Guid string returned in a previous session request
       # @param page [Integer] optionally provide a page number for paging. Defaults to 0 (first page).
-      # @param pageSize [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
+      # @param page_size [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
       # @param options [Hash] as_csv [Boolean] to indicate whether results should be returned in csv format; prediction_interval [Float] one of the available prediction intervals for the session.
       # @return [NexosisApi::SessionResult] SessionResult if parsed, String of csv data otherwise
       # @raise [NexosisApi::HttpException]
@@ -267,19 +267,39 @@ module NexosisApi
       # @param session_id [String] The unique id of the completed session
       # @param page_number [Integer] zero-based page number of results to retrieve
       # @param page_size [Integer] Count of results to retrieve in each page (max 1000).
+      # @return [NexosisApi::FeatureImportance]
       # @since 2.4.0
       # @note The score returned here is calculated before algorithm selection and so is not algorithm specific. For algorithms 
       # that can return internal scores you need to use the champion endpoints.
       # @note Those sessions which will provide scores have the supports_feature_importance attribute set True. Others will 404 at this endpoint.
       def get_feature_importance(session_id, page_number = 0, page_size = 50)
-        score_url = "/sessions/#{session_id}/results/featureimportance"
+        importance_url = "/sessions/#{session_id}/results/featureimportance"
         query = {
           page: page_number,
           pageSize: page_size
         }
-        response = self.class.get(score_url, headers: @headers, query: query)
+        response = self.class.get(importance_url, headers: @headers, query: query)
         raise HttpException.new("There was a problem getting the feature importance scores for session #{session_id}", 'getting feature importance', response) unless response.success?
         NexosisApi::FeatureImportance.new(response.parsed_response.merge(response.headers))
+      end
+
+      # Get per result distance metric for anomaly detection sessions.
+      # @param session_id [String] The unique id of the completed session
+      # @param page_number [Integer] zero-based page number of results to retrieve
+      # @param page_size [Integer] Count of results to retrieve in each page (max 1000).
+      # @return [NexosisApi::AnomalyDistances]
+      # @since 2.4.0
+      # @note This method will return 404 when the session for the given session id does not have a prediction domain of 'anomalies'
+      # @see https://en.wikipedia.org/wiki/Mahalanobis_distance
+      def get_distance_metrics(session_id, page_number = 0, page_size = 50)
+        distance_url = "/sessions/#{session_id}/results/mahalanobisdistances"
+        query = {
+          page: page_number,
+          pageSize: page_size
+        }
+        response = self.class.get(distance_url, headers: @headers, query: query)
+        raise HttpException.new("There was a problem getting the distance metrics for session #{session_id}", 'getting distance metrics', response) unless response.success?
+        NexosisApi::AnomalyDistances.new(response.parsed_response.merge(response.headers))
       end
 
       private
