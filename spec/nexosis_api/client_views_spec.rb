@@ -12,9 +12,9 @@ describe NexosisApi::Client::Views do
   after(:all) do
     if ENV['VCR_OFF'] == true
       test_client.remove_dataset('TestRuby_Right', cascade_view: true)
+      data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
+      test_client.create_dataset_csv('TestRuby_Right', data)
     end
-    data = CSV.open('spec/fixtures/sampledata.csv', 'rb', headers: true)
-    test_client.create_dataset_csv('TestRuby_Right', data)
   end
 
   after(:all) do
