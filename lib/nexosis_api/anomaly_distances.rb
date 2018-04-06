@@ -6,7 +6,7 @@ module NexosisApi
     def initialize(distance_data)
       data = distance_data.fetch(:data) { |k| distance_data.fetch(k.to_s) }
       @data = NexosisApi::PagedArray.new(distance_data, data.map { |v| NexosisApi::DistanceMetric.new(v) })
-      super(distance_data.reject { |k, _v| k.to_s.casecmp? 'data' })
+      super(distance_data.reject { |k, _v| k.to_s.casecmp('data').zero? })
     end
 
     # array of metrics providing the distance along with standard anomaly result

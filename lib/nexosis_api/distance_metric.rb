@@ -6,7 +6,7 @@ module NexosisApi
       failover = ->(k) { metric_hash.fetch(k.to_s) }
       @anomaly_score = metric_hash.fetch(:anomaly, &failover).to_f
       @distance = metric_hash.fetch(:mahalanobis_distance, &failover).to_f
-      @data = metric_hash.reject { |k, _v| (k.to_s.casecmp? 'mahalanobis_distance') || (k.to_s.casecmp? 'anomaly') }
+      @data = metric_hash.reject { |k, _v| (k.to_s.casecmp('mahalanobis_distance').zero?) || (k.to_s.casecmp('anomaly').zero?) }
     end
 
     # The anomaly score determining if this entry is an anomaly

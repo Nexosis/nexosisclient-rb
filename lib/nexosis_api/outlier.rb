@@ -6,8 +6,8 @@ module NexosisApi
   # @since 2.4.0
   class Outlier
     def initialize(outlier_hash)
-      match_smooth = ->(k, _v) { k.match?(/:smooth/) }
-      match_actual = ->(k, _v) { k.match?(/:actual/) }
+      match_smooth = ->(k, _v) { !k.match(/:smooth/).nil? }
+      match_actual = ->(k, _v) { !k.match(/:actual/).nil? }
       @timestamp = DateTime.parse(outlier_hash.fetch(:timeStamp) { |k| outlier_hash.fetch(k.to_s) })
       @smoothed = outlier_hash.select(&match_smooth).first[1].to_f if outlier_hash.any? &match_smooth
       @actual = outlier_hash.select(&match_actual).first[1].to_f if outlier_hash.any? &match_actual

@@ -8,7 +8,7 @@ module NexosisApi
     def initialize(outlier_hash)
       data = outlier_hash.fetch(:data) { |k| outlier_hash.fetch(k.to_s) }
       @data = NexosisApi::PagedArray.new(outlier_hash, data.map { |v| NexosisApi::Outlier.new(v) })
-      super(outlier_hash.reject { |k, _v| k.to_s.casecmp? 'data' })
+      super(outlier_hash.reject { |k, _v| k.to_s.casecmp('data').zero? })
     end
 
     # The set of outlier values found in the given sessions dataset
