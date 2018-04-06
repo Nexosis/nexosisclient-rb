@@ -33,13 +33,14 @@ module NexosisApi
       # @param page_size [int] number of items in each page
       # @return [NexosisApi::PagedArray of NexosisApi::DatasetSummary] array of datasets found
       # @since 1.4 - added paging parameters
-      def list_datasets(partial_name = '', page = 0, page_size = 50)
+      # @since 2.5 - added multiple query options
+      def list_datasets(query_options = {}, page = 0, page_size = 50)
         list_dataset_url = '/data'
         query = {
           page: page,
           pageSize: page_size
         }
-        query['partialName'] = partial_name unless partial_name.empty?
+        query['partialName'] = query_options[:partial_name] if query_options.key? :'partial_name'
         response = self.class.get(list_dataset_url, headers: @headers, query: query)
         if response.success?
           NexosisApi::PagedArray.new(response.parsed_response,
