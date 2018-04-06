@@ -1,8 +1,6 @@
 module NexosisApi
   # Class to hold the parse results of an outlier response
-  # @note When Nexosis runs a time-series forecast, a smoothed dataset is created in addition
-  # to the original. These outlier values represent those which were modified in that smoothed
-  # dataset.
+  # @note When Nexosis runs a time-series forecast, a smoothed dataset is created in addition to the original. These outlier values represent those which were modified in that smoothed dataset.
   # @since 2.4.0
   class TimeseriesOutliers < SessionResponse
     def initialize(outlier_hash)
