@@ -372,6 +372,94 @@ describe NexosisApi::VocabularyWord do
   end
 end
 
+describe NexosisApi::FeatureImportance do
+  describe '#initialize' do
+    context 'given a feature importance hash' do
+      it 'creates a new object initialized with values' do
+        target = NexosisApi::FeatureImportance.new(feature_importance_hash)
+        expect(target).to_not be_nil
+        expect(target.session_id).to eql('016291b7-d8e0-40be-818d-09d8cea3c4d1')
+        expect(target.status_history.length).to eql(3)
+        expect(target.scores.keys.map &:to_s).to eql(['petal_len', 'sepal_len', 'petal_width', 'sepal_width'])
+      end
+    end
+
+    context 'given a string keyed hash' do
+      it 'still find feature importance scores' do
+        target = NexosisApi::FeatureImportance.new({'featureImportance' => {'foo': 1.0 }})
+        expect(target.scores).to_not be_nil
+      end
+    end
+  end
+end
+
+describe NexosisApi::DistanceMetric do
+  describe '#initialize' do
+    context 'given a single metric row' do
+      it 'creates a new metric object with values' do
+        distance_row = {
+          'anomaly': '0.0287059555836055',
+          'Ash': '2.45',
+          'Hue': '0.64',
+          'Alcohol': '13.71',
+          'ODRatio': '1.74',
+          'Proline': '740',
+          'mahalanobis_distance': '102.301222289665'
+        }
+        actual = NexosisApi::DistanceMetric.new(distance_row)
+        expect(actual).to_not be_nil
+        expect(actual.anomaly_score).to eql(0.0287059555836055)
+        expect(actual.distance).to eql(102.301222289665)
+        expect(actual.data.length).to eql(5)
+      end
+    end
+  end
+end
+
+describe NexosisApi::AnomalyDistances do
+  describe '#initialize' do
+    context 'given a distance response hash' do
+      it 'creates a new distance objects with values' do
+        actual = NexosisApi::AnomalyDistances.new(distance_hash)
+        expect(actual).to_not be_nil
+        expect(actual.data.length).to eql(2)
+        expect(actual.data.total_pages).to eql(89)
+        expect(actual.session_id).to eql('01623eba-7d13-46ba-801f-45205ea96106')
+      end
+    end
+  end
+end
+
+describe NexosisApi::Outlier do
+  describe '#initialize' do
+    context 'given a record hash of outlier' do
+      it 'creates a new outlier with values' do
+        actual = NexosisApi::Outlier.new('timeStamp': '1/5/2014 12:00:00 AM',
+                                         'sales:actual': '229.09',
+                                         'sales:smooth': '1743.42167102697')
+        expect(actual).to_not be_nil
+        expect(actual.smoothed).to eql(1743.42167102697)
+        expect(actual.actual).to eql(229.09)
+        expect(actual.timestamp).to eql(DateTime.parse('1/5/2014 12:00:00 AM'))
+      end
+    end
+  end
+end
+
+describe NexosisApi::TimeseriesOutliers do
+  describe '#initialize' do
+    context 'given an outlier response hash' do
+      it 'creates a new outliers object with values' do
+        actual = NexosisApi::TimeseriesOutliers.new(outliers_hash)
+        expect(actual).to_not be_nil
+        expect(actual.data.length).to eql(2)
+        expect(actual.data.total_pages).to eql(1)
+        expect(actual.session_id).to eql('01626ca6-56b2-417a-8ea1-6b05bbe389c6')
+      end
+    end
+  end
+end
+
 private
 
 def session_hash
@@ -506,3 +594,210 @@ def vocabulary_word_list
   }
 end
 
+def feature_importance_hash 
+  {
+    'featureImportance': {
+        'petal_len': 1,
+        'sepal_len': 0.59862634386248159,
+        'petal_width': 1,
+        'sepal_width': 0.32464203040032896
+    },
+    'pageNumber': 0,
+    'totalPages': 0,
+    'pageSize': 0,
+    'totalCount': 0,
+    'sessionId': '016291b7-d8e0-40be-818d-09d8cea3c4d1',
+    'type': 'model',
+    'status': 'completed',
+    'predictionDomain': 'classification',
+    'supportsFeatureImportance': true,
+    'availablePredictionIntervals': [],
+    'modelId': '4d9fdf0d-6f98-4317-b85f-a8548d38ee89',
+    'requestedDate': '2018-04-04T17:32:47.681627+00:00',
+    'statusHistory': [
+        {
+            'date': '2018-04-04T17:32:47.681627+00:00',
+            'status': 'requested'
+        },
+        {
+            'date': '2018-04-04T17:32:47.9512586+00:00',
+            'status': 'started'
+        },
+        {
+            'date': '2018-04-04T17:41:54.1412943+00:00',
+            'status': 'completed'
+        }
+    ],
+    'extraParameters': {
+        'balance': true
+    },
+    'messages': [
+        {
+            'severity': 'informational',
+            'message': '2237 observations were found in the dataset.'
+        }
+    ],
+    'name': 'Classification on Iris',
+    'dataSourceName': 'Iris',
+    'dataSetName': 'Iris',
+    'targetColumn': 'iris',
+    'algorithm': {
+        'name': 'K-Nearest Neighbors',
+        'description': 'K-Nearest Neighbors',
+        'key': ''
+    },
+    'isEstimate': false,
+    'links': [
+        {
+            'rel': 'data',
+            'href': 'https://api.uat.nexosisdev.com/v1/data/Iris'
+        }]
+  }
+end
+
+def distance_hash
+  {
+    'metrics': {
+        'percentAnomalies': 0.10112359550561797
+    },
+    'data': [
+        {
+            'anomaly': '0.0487072268545709',
+            'Ash': '2',
+            'Hue': '0.93',
+            'Alcohol': '12',
+            'ODRatio': '3.05',
+            'Proline': '564',
+            'mahalanobis_distance': '143.312589889491'
+        },
+        {
+            'anomaly': '0.000317797613019206',
+            'Ash': '2.28',
+            'Hue': '1.25',
+            'Alcohol': '12.33',
+            'ODRatio': '1.67',
+            'Proline': '680',
+            'mahalanobis_distance': '156.112291933161'
+        }
+    ],
+    'pageNumber': 0,
+    'totalPages': 89,
+    'pageSize': 2,
+    'totalCount': 178,
+    'sessionId': '01623eba-7d13-46ba-801f-45205ea96106',
+    'type': 'model',
+    'status': 'completed',
+    'predictionDomain': 'anomalies',
+    'supportsFeatureImportance': false,
+    'availablePredictionIntervals': [],
+    'modelId': '1d557a30-f78e-434a-b52f-4abafd183da3',
+    'requestedDate': '2018-03-19T14:47:11.856205+00:00',
+    'statusHistory': [
+        {
+            'date': '2018-03-19T14:47:11.856205+00:00',
+            'status': 'requested'
+        },
+        {
+            'date': '2018-03-19T14:47:12.2708536+00:00',
+            'status': 'started'
+        },
+        {
+            'date': '2018-03-19T14:47:33.505159+00:00',
+            'status': 'completed'
+        }
+    ],
+    'extraParameters': {
+        'containsAnomalies': true
+    },
+    'messages': [
+        {
+            'severity': 'informational',
+            'message': '178 observations were found in the dataset.'
+        }
+    ],
+    'name': 'WineNoTarget',
+    'dataSourceName': 'Wine',
+    'dataSetName': 'Wine',
+    'targetColumn': 'anomaly',
+    'algorithm': {
+      'name': 'Isolation Forest',
+      'description': 'Isolation Forest Outlier Detection',
+      'key': 'isolation_forest_anomalies'
+    },
+    'isEstimate': false,
+    'links': [
+        {
+            'rel': 'data',
+            'href': 'https://api.uat.nexosisdev.com/internal/data/Wine'
+        }
+    ]
+}
+end
+
+def outliers_hash
+  {
+    'data': [
+        {
+            'timeStamp': '1/5/2014 12:00:00 AM',
+            'sales:actual': '229.09',
+            'sales:smooth': '1743.42167102697'
+        },
+        {
+            'timeStamp': '1/6/2014 12:00:00 AM',
+            'sales:actual': '0',
+            'sales:smooth': '1920.29538270229'
+        }
+    ],
+    'pageNumber': 0,
+    'totalPages': 1,
+    'pageSize': 2,
+    'totalCount': 2,
+    'sessionId': '01626ca6-56b2-417a-8ea1-6b05bbe389c6',
+    'type': 'forecast',
+    'status': 'completed',
+    'predictionDomain': 'forecast',
+    'supportsFeatureImportance': true,
+    'availablePredictionIntervals': [
+        '0.2',
+        '0.5',
+        '0.8'
+    ],
+    'startDate': '2016-10-10T00:00:00+00:00',
+    'endDate': '2016-11-10T00:00:00+00:00',
+    'resultInterval': 'day',
+    'requestedDate': '2018-03-28T12:47:43.219102+00:00',
+    'statusHistory': [
+        {
+            'date': '2018-03-28T12:47:43.219102+00:00',
+            'status': 'requested'
+        },
+        {
+            'date': '2018-03-28T12:49:02.1659862+00:00',
+            'status': 'started'
+        },
+        {
+            'date': '2018-03-28T13:04:04.8297598+00:00',
+            'status': 'completed'
+        }
+    ],
+    'extraParameters': {},
+    'messages': [
+    ],
+    'name': 'Forecast on LocationAFull',
+    'dataSourceName': 'LocationAFull',
+    'dataSetName': 'LocationAFull',
+    'targetColumn': 'sales',
+    'algorithm': {
+        'name': 'Additive Model, Weekly + Annual',
+        'description': 'Forecasts time series in a way robust to outliers, missing data, and dramatic changes to time series, with a weekly + annual seasonal component',
+        'key': 'PROPHET+W+A'
+    },
+    'isEstimate': false,
+    'links': [
+        {
+            'rel': 'data',
+            'href': 'https://api.uat.nexosisdev.com/internal/data/LocationAFull'
+        }
+    ]
+}
+end

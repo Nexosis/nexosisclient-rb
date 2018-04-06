@@ -357,6 +357,48 @@ describe NexosisApi::Client::Sessions do
     end
   end
 
+  describe '#get_feature_importance', vcr: { cassette_name: 'feature_importance' } do
+    context 'given a finished session' do
+      it 'returns feature importance scores' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.supports_feature_importance == true }.first
+        completed = create_class_test_model if completed.nil?
+        actual = test_client.get_feature_importance(completed.session_id)
+        expect(actual).to be_a(NexosisApi::FeatureImportance)
+        expect(actual.scores).to_not be_empty
+      end
+    end
+  end
+
+  describe '#get_distance_metrics', vcr: { cassette_name: 'anomaly_distances' } do
+    context 'given a finished session' do
+      it 'returns feature importance scores' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'anomalies' }.first
+        completed = create_anomaly_test_model if completed.nil?
+        actual = test_client.get_distance_metrics(completed.session_id)
+        expect(actual).to be_a(NexosisApi::AnomalyDistances)
+        expect(actual.data).to_not be_empty
+        expect((actual.data.map &:distance).length).to be > 10
+      end
+    end
+  end
+
+  describe '#get_timeseries_outliers', vcr: { cassette_name: 'timeseries_outliers' } do
+    context 'given a finished session' do
+      it 'returns feature importance scores' do
+        available = test_client.list_sessions({}, 0, 20)
+        completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'forecast' }.first
+        unless completed.nil?
+          actual = test_client.get_timeseries_outliers(completed.session_id)
+          expect(actual).to be_a(NexosisApi::TimeseriesOutliers)
+          expect(actual.data).to_not be_empty
+          expect((actual.data.map &:actual).length).to be > 0
+        end
+      end
+    end
+  end
+
   private
 
   def create_class_test_model
@@ -368,6 +410,19 @@ describe NexosisApi::Client::Sessions do
       break if (status_check.status == 'completed' || status_check.status == 'failed')
       puts 'waiting in create_class_test_model'
       sleep 5
+    end
+    completed
+  end
+
+  def create_anomaly_test_model
+    data = CSV.open('spec/fixtures/cardio.csv', 'rb', headers: true)
+    test_client.create_dataset_csv('Cardio_Test', data)
+    completed = test_client.create_anomalies_model('Cardio_Test')
+    loop do
+      status_check = test_client.get_session completed.session_id
+      break if (status_check.status == 'completed' || status_check.status == 'failed')
+      puts 'waiting in create_anomaly_test_model'
+      sleep 10
     end
     completed
   end

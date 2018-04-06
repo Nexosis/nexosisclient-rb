@@ -34,7 +34,7 @@ module NexosisApi
     attr_reader :created_on
 
     # The unique id of the session for which this vocabulary was built.
-    # @reutn [String]
+    # @return [String]
     attr_reader :created_by_session
 
     # hypermedia related to this vocabulary
