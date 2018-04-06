@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=20&requestedAfterDate=&requestedBeforeDate=&type=
+    uri: https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=20
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '10000'
       Nexosis-Account-Datasetcount-Current:
-      - '42'
+      - '41'
       Nexosis-Account-Predictioncount-Allotted:
       - '10000000'
       Nexosis-Account-Predictioncount-Current:
@@ -39,7 +39,7 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Thu, 05 Apr 2018 21:56:19 GMT
+      - Fri, 06 Apr 2018 13:22:49 GMT
     body:
       encoding: UTF-8
       string: '{"items":[{"columns":{"Age":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Sex":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Fare":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Parch":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"SibSp":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Pclass":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"Embarked":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Survived":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"}},"sessionId":"016291d3-9b5c-4bbe-905a-014e6d69c680","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"c4d2ba94-63e2-4109-86d8-884e4de6ce1f","requestedDate":"2018-04-04T18:03:06.941098+00:00","statusHistory":[{"date":"2018-04-04T18:03:06.941098+00:00","status":"requested"},{"date":"2018-04-04T18:03:35.5352427+00:00","status":"started"},{"date":"2018-04-04T19:17:10.07077+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"warning","message":"You
@@ -131,9 +131,9 @@ http_interactions:
         observations were found in the dataset."}],"name":"GetDistance","dataSourceName":"Wine","dataSetName":"Wine","targetColumn":"anomaly","algorithm":{"name":"Isolation
         Forest","description":"Isolation Forest Outlier Detection","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/01621b00-c568-4a50-9f2d-3f244d0913ee"}]},{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"sepal_len":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"petal_width":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"sepal_width":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"}},"sessionId":"01621ade-c047-41eb-90ab-ee4720934930","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"4de9f9e1-09be-4f08-b039-3cb3c2ce9321","requestedDate":"2018-03-12T15:40:28.536766+00:00","statusHistory":[{"date":"2018-03-12T15:40:28.536766+00:00","status":"requested"},{"date":"2018-03-12T15:40:28.6163911+00:00","status":"started"},{"date":"2018-03-12T15:41:57.9915563+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"2087
         observations were found in the dataset."}],"name":"Classification on Iris","dataSourceName":"Iris","dataSetName":"Iris","targetColumn":"iris","algorithm":{"name":"K-Nearest
-        Neighbors","description":"K-Nearest Neighbors","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/01621ade-c047-41eb-90ab-ee4720934930"}]}],"pageNumber":0,"totalPages":3,"pageSize":20,"totalCount":45,"links":[{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=20&page=0"},{"rel":"next","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=20&page=1"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=20&page=2"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=20"}]}'
+        Neighbors","description":"K-Nearest Neighbors","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/01621ade-c047-41eb-90ab-ee4720934930"}]}],"pageNumber":0,"totalPages":3,"pageSize":20,"totalCount":45,"links":[{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=20&page=0"},{"rel":"next","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=20&page=1"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=20&page=2"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=20"}]}'
     http_version: 
-  recorded_at: Thu, 05 Apr 2018 21:56:19 GMT
+  recorded_at: Fri, 06 Apr 2018 13:22:50 GMT
 - request:
     method: get
     uri: https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/results/outliers?page=0&pageSize=50
@@ -161,7 +161,7 @@ http_interactions:
       Nexosis-Account-Datasetcount-Allotted:
       - '10000'
       Nexosis-Account-Datasetcount-Current:
-      - '42'
+      - '41'
       Nexosis-Account-Predictioncount-Allotted:
       - '10000000'
       Nexosis-Account-Predictioncount-Current:
@@ -175,7 +175,7 @@ http_interactions:
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Thu, 05 Apr 2018 21:56:19 GMT
+      - Fri, 06 Apr 2018 13:22:50 GMT
     body:
       encoding: UTF-8
       string: '{"data":[{"timeStamp":"1/5/2014 12:00:00 AM","sales:actual":"229.09","sales:smooth":"1743.42167102697"},{"timeStamp":"1/6/2014
@@ -187,5 +187,5 @@ http_interactions:
         to outliers, missing data, and dramatic changes to time series, with a weekly
         + annual seasonal component","key":""},"isEstimate":false,"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/LocationAFull"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/results/outliers?page=0&pageSize=50&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/results/outliers?page=0&pageSize=50&page=0"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/results/outliers?page=0&pageSize=50"},{"rel":"prediction-interval:0.2","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6?predictionInterval=0.2"},{"rel":"prediction-interval:0.5","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6?predictionInterval=0.5"},{"rel":"prediction-interval:0.8","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6?predictionInterval=0.8"},{"rel":"contest","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/contest"},{"rel":"featureImportance","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/results/featureimportance"},{"rel":"outliers","href":"https://api.uat.nexosisdev.com/v1/sessions/01626ca6-56b2-417a-8ea1-6b05bbe389c6/results/outliers"},{"rel":"vocabularies","href":"https://api.uat.nexosisdev.com/v1/vocabulary?createdFromSession=01626ca6-56b2-417a-8ea1-6b05bbe389c6"}]}'
     http_version: 
-  recorded_at: Thu, 05 Apr 2018 21:56:19 GMT
+  recorded_at: Fri, 06 Apr 2018 13:22:50 GMT
 recorded_with: VCR 3.0.3

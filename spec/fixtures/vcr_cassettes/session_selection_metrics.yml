@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=5&requestedAfterDate=&requestedBeforeDate=&type=
+    uri: https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=5
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Api-Key:
-      - "<elevated_api_key>"
+      - api-key
       Content-Type:
       - application/json
       User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
+      - Nexosis-Ruby-API-Client/2.1
   response:
     status:
       code: 200
@@ -23,42 +23,74 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Datasetcount-Allotted:
-      - '50'
+      - '10000'
       Nexosis-Account-Datasetcount-Current:
-      - '3'
+      - '41'
       Nexosis-Account-Predictioncount-Allotted:
-      - '100000'
+      - '10000000'
       Nexosis-Account-Predictioncount-Current:
-      - '0'
+      - '14'
       Nexosis-Account-Sessioncount-Allotted:
-      - '350'
+      - '100000'
       Nexosis-Account-Sessioncount-Current:
-      - '2'
+      - '11'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 13 Dec 2017 20:31:22 GMT
+      - Fri, 06 Apr 2018 14:01:46 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_len":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"petal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"},"sepal_width":{"dataType":"numeric","role":"feature","imputation":"zeroes","aggregation":"sum"}},"sessionId":"0160515d-8ada-4825-b93a-03f514ab247b","type":"model","status":"completed","predictionDomain":"classification","availablePredictionIntervals":[],"modelId":"9b3e8ab4-758b-4946-8866-88e0c3f350f2","requestedDate":"2017-12-13T19:32:53.076451+00:00","statusHistory":[{"date":"2017-12-13T19:32:53.076451+00:00","status":"requested"},{"date":"2017-12-13T19:32:53.1765393+00:00","status":"started"},{"date":"2017-12-13T19:34:22.7901572+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"150
-        observations were found in the dataset."}],"dataSourceName":"iris","dataSetName":"iris","targetColumn":"iris","links":[{"rel":"results","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/results"},{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/iris"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/9b3e8ab4-758b-4946-8866-88e0c3f350f2"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/results/confusionmatrix"}]}],"pageNumber":0,"totalPages":1,"pageSize":5,"totalCount":1,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=&requestedBeforeDate=&type=&page=0&pageSize=5&page=0"}]}'
+      string: '{"items":[{"columns":{"Age":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Sex":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Fare":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Parch":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"SibSp":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Pclass":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"Embarked":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Survived":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"}},"sessionId":"016291d3-9b5c-4bbe-905a-014e6d69c680","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"c4d2ba94-63e2-4109-86d8-884e4de6ce1f","requestedDate":"2018-04-04T18:03:06.941098+00:00","statusHistory":[{"date":"2018-04-04T18:03:06.941098+00:00","status":"requested"},{"date":"2018-04-04T18:03:35.5352427+00:00","status":"started"},{"date":"2018-04-04T19:17:10.07077+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Parch'', which may have unintended
+        consequences since the column contains string values"},{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Pclass'', which may have unintended
+        consequences since the column contains string values"},{"severity":"informational","message":"1781
+        observations were found in the dataset."}],"name":"Classification on titanic","dataSourceName":"titanic","dataSetName":"titanic","targetColumn":"Survived","algorithm":{"name":"XGBoost
+        L1","description":"eXtreme Gradient Boosting with Lasso regularization","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680"}]},{"columns":{"iris":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"},"petal_len":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"sepal_len":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"petal_width":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"},"sepal_width":{"dataType":"numericMeasure","role":"feature","imputation":"mean","aggregation":"mean"}},"sessionId":"016291b7-d8e0-40be-818d-09d8cea3c4d1","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"4d9fdf0d-6f98-4317-b85f-a8548d38ee89","requestedDate":"2018-04-04T17:32:47.681627+00:00","statusHistory":[{"date":"2018-04-04T17:32:47.681627+00:00","status":"requested"},{"date":"2018-04-04T17:32:47.9512586+00:00","status":"started"},{"date":"2018-04-04T17:41:54.1412943+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"2237
+        observations were found in the dataset."}],"name":"Classification on Iris","dataSourceName":"Iris","dataSetName":"Iris","targetColumn":"iris","algorithm":{"name":"K-Nearest
+        Neighbors","description":"K-Nearest Neighbors","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/016291b7-d8e0-40be-818d-09d8cea3c4d1"}]},{"columns":{"text":{"dataType":"text","role":"feature"},"section_name":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"}},"sessionId":"016290ce-878c-4092-b97c-f642a50d92cd","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"ff9e4b38-9ad3-451f-a91a-6c423cb40920","requestedDate":"2018-04-04T13:17:56.968206+00:00","statusHistory":[{"date":"2018-04-04T13:17:56.968206+00:00","status":"requested"},{"date":"2018-04-04T13:18:02.1459395+00:00","status":"started"},{"date":"2018-04-04T14:21:36.9541943+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"warning","message":"Target
+        class ''job market'' is only specified on 2 record(s) in the dataset. Nexosis
+        requires a minimum of 5 records per class for the class to be included in
+        a model. Therefore, the model we generate will not consider this class."},{"severity":"warning","message":"Target
+        class ''style'' is only specified on 2 record(s) in the dataset. Nexosis requires
+        a minimum of 5 records per class for the class to be included in a model.
+        Therefore, the model we generate will not consider this class."},{"severity":"warning","message":"Target
+        class ''universal'' is only specified on 3 record(s) in the dataset. Nexosis
+        requires a minimum of 5 records per class for the class to be included in
+        a model. Therefore, the model we generate will not consider this class."},{"severity":"informational","message":"2193
+        observations were found in the dataset."}],"name":"Classification on NYT Articles","dataSourceName":"NYT
+        Articles","dataSetName":"NYT Articles","targetColumn":"section_name","algorithm":{"name":"Logistic
+        Regression with Lasso regularization","description":"Logistic Regression with
+        Lasso regularization","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/016290ce-878c-4092-b97c-f642a50d92cd"}]},{"columns":{"Age":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Sex":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Fare":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Parch":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"SibSp":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Pclass":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"Embarked":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Survived":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"}},"sessionId":"01628c61-1d53-4142-aedf-21911e725824","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"77e94a6d-20e1-4bb1-b471-edb5342c14db","requestedDate":"2018-04-03T16:39:57.406239+00:00","statusHistory":[{"date":"2018-04-03T16:39:57.406239+00:00","status":"requested"},{"date":"2018-04-03T16:40:00.9252923+00:00","status":"started"},{"date":"2018-04-03T17:03:32.4959899+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Parch'', which may have unintended
+        consequences since the column contains string values"},{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Pclass'', which may have unintended
+        consequences since the column contains string values"},{"severity":"informational","message":"1781
+        observations were found in the dataset."}],"name":"Classification on titanic","dataSourceName":"titanic","dataSetName":"titanic","targetColumn":"Survived","algorithm":{"name":"XGBoost
+        L1","description":"eXtreme Gradient Boosting with Lasso regularization","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/01628c61-1d53-4142-aedf-21911e725824"}]},{"columns":{"Age":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Sex":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Fare":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Parch":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"SibSp":{"dataType":"numeric","role":"feature","imputation":"mean","aggregation":"mean"},"Pclass":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mean"},"Embarked":{"dataType":"string","role":"feature","imputation":"mode","aggregation":"mode"},"Survived":{"dataType":"string","role":"target","imputation":"mode","aggregation":"mode"}},"sessionId":"01626e34-6c3d-4ef1-a44f-8884e565b39c","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"beb7e64a-5f66-4463-9df3-007f49ad3539","requestedDate":"2018-03-28T20:02:32.079447+00:00","statusHistory":[{"date":"2018-03-28T20:02:32.079447+00:00","status":"requested"},{"date":"2018-03-28T20:02:32.5065039+00:00","status":"started"},{"date":"2018-03-28T20:29:05.7533527+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Parch'', which may have unintended
+        consequences since the column contains string values"},{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Pclass'', which may have unintended
+        consequences since the column contains string values"},{"severity":"informational","message":"1781
+        observations were found in the dataset."}],"name":"Classification on Titanic","dataSourceName":"Titanic","dataSetName":"Titanic","targetColumn":"Survived","algorithm":{"name":"XGBoost
+        L1","description":"eXtreme Gradient Boosting with Lasso regularization","key":""},"isEstimate":false,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/01626e34-6c3d-4ef1-a44f-8884e565b39c"}]}],"pageNumber":0,"totalPages":9,"pageSize":5,"totalCount":45,"links":[{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=5&page=0"},{"rel":"next","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=5&page=1"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=5&page=8"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=5"}]}'
     http_version: 
-  recorded_at: Wed, 13 Dec 2017 20:31:22 GMT
+  recorded_at: Fri, 06 Apr 2018 14:01:47 GMT
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions/0160515d-8ada-4825-b93a-03f514ab247b/contest/selection
+    uri: https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680/contest/selection
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Api-Key:
-      - "<elevated_api_key>"
+      - api-key
       Content-Type:
       - application/json
       User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
+      - Nexosis-Ruby-API-Client/2.1
   response:
     status:
       code: 200
@@ -69,27 +101,32 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Datasetcount-Allotted:
-      - '50'
+      - '10000'
       Nexosis-Account-Datasetcount-Current:
-      - '3'
+      - '41'
       Nexosis-Account-Predictioncount-Allotted:
-      - '100000'
+      - '10000000'
       Nexosis-Account-Predictioncount-Current:
-      - '0'
+      - '14'
       Nexosis-Account-Sessioncount-Allotted:
-      - '350'
+      - '100000'
       Nexosis-Account-Sessioncount-Current:
-      - '2'
+      - '11'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Wed, 13 Dec 2017 20:31:22 GMT
+      - Fri, 06 Apr 2018 14:01:47 GMT
     body:
       encoding: UTF-8
-      string: '{"metricSets":[{"dataSetProperties":["Imputed","Scaled"],"metrics":{"coefficientOfVariation":0.81923192051904092,"mean":0.99999999999999944,"observationCount":150.0,"trainingCount":120.0,"standardDeviation":0.81923192051904048,"featureCount":4.0,"testCount":30.0}}],"sessionId":"0160515d-8ada-4825-b93a-03f514ab247b","type":"model","status":"completed","predictionDomain":"classification","availablePredictionIntervals":[],"modelId":"9b3e8ab4-758b-4946-8866-88e0c3f350f2","requestedDate":"2017-12-13T19:32:53.076451+00:00","statusHistory":[{"date":"2017-12-13T19:32:53.076451+00:00","status":"requested"},{"date":"2017-12-13T19:32:53.1765393+00:00","status":"started"},{"date":"2017-12-13T19:34:22.7901572+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"informational","message":"150
-        observations were found in the dataset."}],"dataSourceName":"iris","dataSetName":"iris","targetColumn":"iris","links":[]}'
+      string: '{"metricSets":[{"dataSetProperties":["Imputed","Scaled"],"metrics":{"coefficientOfVariation":1.2667684008861582,"mean":0.38405390230207753,"observationCount":1781.0,"trainingCount":1425.0,"standardDeviation":0.48650734767329157,"featureCount":18.0,"testCount":356.0}}],"sessionId":"016291d3-9b5c-4bbe-905a-014e6d69c680","type":"model","status":"completed","predictionDomain":"classification","supportsFeatureImportance":true,"availablePredictionIntervals":[],"modelId":"c4d2ba94-63e2-4109-86d8-884e4de6ce1f","requestedDate":"2018-04-04T18:03:06.941098+00:00","statusHistory":[{"date":"2018-04-04T18:03:06.941098+00:00","status":"requested"},{"date":"2018-04-04T18:03:35.5352427+00:00","status":"started"},{"date":"2018-04-04T19:17:10.07077+00:00","status":"completed"}],"extraParameters":{"balance":true},"messages":[{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Parch'', which may have unintended
+        consequences since the column contains string values"},{"severity":"warning","message":"You
+        specified aggregation ''mean'' for column ''Pclass'', which may have unintended
+        consequences since the column contains string values"},{"severity":"informational","message":"1781
+        observations were found in the dataset."}],"name":"Classification on titanic","dataSourceName":"titanic","dataSetName":"titanic","targetColumn":"Survived","algorithm":{"name":"XGBoost
+        L1","description":"eXtreme Gradient Boosting with Lasso regularization","key":""},"isEstimate":false,"links":[{"rel":"data","href":"https://api.uat.nexosisdev.com/v1/data/titanic"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680/contest/selection"},{"rel":"model","href":"https://api.uat.nexosisdev.com/v1/models/c4d2ba94-63e2-4109-86d8-884e4de6ce1f"},{"rel":"contest","href":"https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680/contest"},{"rel":"confusionMatrix","href":"https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680/results/confusionmatrix"},{"rel":"featureImportance","href":"https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680/results/featureimportance"},{"rel":"classScores","href":"https://api.uat.nexosisdev.com/v1/sessions/016291d3-9b5c-4bbe-905a-014e6d69c680/results/classscores"},{"rel":"vocabularies","href":"https://api.uat.nexosisdev.com/v1/vocabulary?createdFromSession=016291d3-9b5c-4bbe-905a-014e6d69c680"}]}'
     http_version: 
-  recorded_at: Wed, 13 Dec 2017 20:31:22 GMT
+  recorded_at: Fri, 06 Apr 2018 14:01:48 GMT
 recorded_with: VCR 3.0.3
