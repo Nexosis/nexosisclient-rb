@@ -510,6 +510,20 @@ describe NexosisApi::SessionListQuery do
         expect(actual.event_name).to eql('bar')
       end
     end
+
+    context 'given dates' do
+      it 'queries those dates' do
+        query = NexosisApi::SessionListQuery.new(requested_before_date: DateTime.new(2007, 11, 19, 8, 37, 48, '-06:00'))
+        actual = query.query_parameters
+        expect(actual[:requestedBeforeDate]).to eql('2007-11-19T08:37:48-06:00')
+      end
+    end
+
+    context 'given an invalid option' do
+      it 'raises an argument error' do
+        expect{ NexosisApi::SessionListQuery.new(not_found_option: 'causes exception') }.to raise_error(ArgumentError)
+      end
+    end
   end
 end
 
@@ -517,10 +531,11 @@ describe NexosisApi::ModelListQuery do
   describe '#query_parameters' do
     context 'given a filled query object' do
       it 'gets hash of super and instance values' do
-        target = NexosisApi::ModelListQuery.new({page_number: 1, datasource_name: 'test-dataset', created_after_date: '1/14/2017'})
+        target = NexosisApi::ModelListQuery.new({page_number: 1, datasource_name: 'test-dataset', created_after_date: '14/1/2017'})
         actual = target.query_parameters
         expect(actual[:dataSourceName]).to eql('test-dataset')
         expect(actual[:pageSize]).to eql(50)
+        expect(actual[:createdAfterDate]).to eql('2017-01-14T00:00:00+00:00')
       end
     end
 

@@ -1,8 +1,10 @@
 module NexosisApi
+  require 'date'
   # Class to hold general query options for list requests
   # @since 3.0.0
   class ListQuery
-    def initialize(options = { 'page_number': 0, 'page_size': 50 })
+    def initialize(options = { 'page_number': 0, 'page_size': 50 }, *additional_keys)
+      assert_valid_keys(options, :page_number, :page_size, :sort_order, :sort_by, additional_keys)
       @page_number = options.key?(:page_number) ? options[:page_number] : 0
       @page_size = options.key?(:page_size) ? options[:page_size] : 50
       @sort_order = NexosisApi::SortOrder.const_get(options[:sort_order].upcase) if options.key? :sort_order
@@ -35,6 +37,23 @@ module NexosisApi
     # @return [String]
     # @note - each entity has different possibilities. See the api doc links on each list type for more information.
     attr_accessor :sort_by
+
+    private
+
+    def date_string(date_field)
+      raise ArgumentError, 'date_field was not provided and is not optional ' if date_field.to_s.empty?
+      date = DateTime.parse(date_field.to_s)
+      date.strftime('%FT%T%:z')
+    end
+
+    def assert_valid_keys(options, *valid_keys)
+      valid_keys.flatten!
+      options.keys.each do |k|
+        unless valid_keys.include?(k)
+          raise ArgumentError.new("Unknown key: #{k.inspect}. Valid keys are: #{valid_keys.map(&:inspect).join(', ')}")
+        end
+      end
+    end
   end
 
   # class to hold the query options for list datasets
@@ -43,8 +62,9 @@ module NexosisApi
   # @note - sort by properties include dataSetName, dataSetSize, rowCount, dateCreated, and lastModified
   class DatasetListQuery < ListQuery
     def initialize(options = {})
+      
       @partial_name = options[:partial_name] if options.key? :partial_name
-      super(options)
+      super(options, :partial_name)
     end
 
     # A hash suitable for using as the query portion of an HTTP request to the API
@@ -70,7 +90,7 @@ module NexosisApi
       @model_id = options[:model_id] if options.key? :model_id
       @requested_after_date = options[:requested_after_date] if options.key? :requested_after_date
       @requested_before_date = options[:requested_before_date] if options.key? :requested_before_date
-      super(options)
+      super(options, :datasource_name, :event_name, :model_id, :requested_after_date, :requested_before_date)
     end
 
     # A hash suitable for using as the query portion of an HTTP request to the API
@@ -80,8 +100,8 @@ module NexosisApi
       parm_hash.store(:dataSourceName, @datasource_name) unless @datasource_name.nil?
       parm_hash.store(:eventName, @event_name) unless @event_name.nil?
       parm_hash.store(:modelId, @model_id) unless @model_id.nil?
-      parm_hash.store(:requestedAfterDate, @requested_after_date) unless @requested_after_date.nil?
-      parm_hash.store(:requestedBeforeDate, @requested_before_date) unless @requested_before_date.nil?
+      parm_hash.store(:requestedAfterDate, date_string(@requested_after_date)) unless @requested_after_date.nil?
+      parm_hash.store(:requestedBeforeDate, date_string(@requested_before_date)) unless @requested_before_date.nil?
       self.to_hash.merge(parm_hash)
     end
 
@@ -115,7 +135,7 @@ module NexosisApi
       @datasource_name = options[:datasource_name] if options.key? :datasource_name
       @created_after_date = options[:created_after_date] if options.key? :created_after_date
       @created_before_date = options[:created_before_date] if options.key? :created_before_date
-      super(options)
+      super(options, :datasource_name, :created_after_date, :created_before_date)
     end
 
     # A hash suitable for using as the query portion of an HTTP request to the API
@@ -123,8 +143,8 @@ module NexosisApi
     def query_parameters
       parm_hash = {}
       parm_hash.store(:dataSourceName, @datasource_name) unless @datasource_name.nil?
-      parm_hash.store(:createdAfterDate, @created_after_date) unless @created_after_date.nil?
-      parm_hash.store(:createdBeforeDate, @created_before_date) unless @created_before_date.nil?
+      parm_hash.store(:createdAfterDate, date_string(@created_after_date)) unless @created_after_date.nil?
+      parm_hash.store(:createdBeforeDate, date_string(@created_before_date)) unless @created_before_date.nil?
       self.to_hash.merge(parm_hash)
     end
 
@@ -150,7 +170,7 @@ module NexosisApi
       @dataset_name = options[:dataset_name] if options.key? :dataset_name
       @requested_after_date = options[:requested_after_date] if options.key? :requested_after_date
       @requested_before_date = options[:requested_before_date] if options.key? :requested_before_date
-      super(options)
+      super(options, :dataset_name, :requested_after_date, :requested_before_date)
     end
 
     # A hash suitable for using as the query portion of an HTTP request to the API
@@ -158,8 +178,8 @@ module NexosisApi
     def query_parameters
       parm_hash = {}
       parm_hash.store(:dataSourceName, @dataset_name) unless @dataset_name.nil?
-      parm_hash.store(:requestedAfterDate, @requested_after_date) unless @requested_after_date.nil?
-      parm_hash.store(:requestedBeforeDate, @requested_before_date) unless @requested_before_date.nil?
+      parm_hash.store(:requestedAfterDate, date_string(@requested_after_date)) unless @requested_after_date.nil?
+      parm_hash.store(:requestedBeforeDate, date_string(@requested_before_date)) unless @requested_before_date.nil?
       self.to_hash.merge(parm_hash)
     end
 
