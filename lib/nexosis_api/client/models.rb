@@ -5,24 +5,14 @@ module NexosisApi
     module Models
       # List all models created in your company, optionally filtered by query parameters
       #
-      # @param datasource_name [String] optionally limit to those
-      # models created for this data source name.
-      # @param query_options [Hash] limit by dates: begin_date and/or end_date
+      # @param model_list_query [NexosisApi::ModelListQuery] optionally limit query results by the given parameters
       # @note - query options dates can either be ISO 8601 compliant strings or Date objects.
       # @return [NexosisApi::PagedArray of NexosisApi::ModelSummary] - all models available within the query parameters
       # @raise [NexosisApi::HttpException]
-      def list_models(datasource_name = nil, page = 0, page_size = 50, query_options = {})
+      # @since 3.0.0 - all query parameters use list query class
+      def list_models(model_list_query = NexosisApi::ModelListQuery.new)
         model_url = '/models'
-        query = {
-          page: page,
-          pageSize: page_size
-        }
-        unless query_options.empty?
-          query.store('createdBeforeDate', query_options['end_date']) unless query_options['end_date'].nil?
-          query.store('createdAfterDate', query_options['begin_date']) unless query_options['begin_date'].nil?
-        end
-        query.store('dataSourceName', datasource_name) unless datasource_name.nil?
-        response = self.class.get(model_url, headers: @headers, query: query)
+        response = self.class.get(model_url, headers: @headers, query: model_list_query.query_parameters)
         raise HttpException.new("There was a problem listing models: #{response.code}.",
                                 "listing models with data source name #{datasource_name}",
                                 response) unless response.success?
