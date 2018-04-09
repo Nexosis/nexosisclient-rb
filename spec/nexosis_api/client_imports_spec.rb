@@ -77,7 +77,7 @@ describe NexosisApi::Client::Imports do
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 5
         end
-        dataset = test_client.list_datasets(ds_name)
+        dataset = test_client.list_datasets NexosisApi::DatasetListQuery.new(partial_name: ds_name)
         expect(dataset.length).to be > 0
         test_client.remove_dataset(ds_name)
       end
@@ -95,7 +95,7 @@ describe NexosisApi::Client::Imports do
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 5
         end
-        dataset = test_client.list_datasets(ds_name)
+        dataset = test_client.list_datasets NexosisApi::DatasetListQuery.new(partial_name: ds_name)
         expect(dataset.length).to be > 0
         test_client.remove_dataset(ds_name)
       end
@@ -121,7 +121,7 @@ describe NexosisApi::Client::Imports do
           break if (status_check.status == 'completed' || status_check.status == 'failed')
           sleep 5
         end
-        dataset = test_client.list_datasets(ds_name)
+        dataset = test_client.list_datasets NexosisApi::DatasetListQuery.new(partial_name: ds_name)
         expect(dataset.length).to be > 0
         test_client.remove_dataset(ds_name)
       end

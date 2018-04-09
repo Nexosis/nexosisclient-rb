@@ -10,9 +10,7 @@ module NexosisApi
 
       # List sessions previously submitted
       #
-      # @param query_options [Hash] optionally provide query parameters to limit the search of sessions. 
-      # @param page [Integer] optionally provide a page number for paging. Defaults to 0 (first page).
-      # @param pageSize [Integer] optionally provide a page size to limit the total number of results. Defaults to 50, max 1000
+      # @param session_list_query [NexosisApi::SessionListQuery] optionally provide query parameters to limit the search of sessions.
       # @return [NexosisApi::PagedArray of NexosisApi::SessionResponse] with all sessions matching the query or all if no query
       # @raise [NexosisApi::HttpException]
       # @note query parameters hash members are dataset_name, event_name, model_id, 
@@ -21,21 +19,11 @@ module NexosisApi
       # @example query for just one dataset
       #   sessions = NexosisApi.client.list_sessions :dataset_name => 'MyDataset'
       # @see https://developers.nexosis.com/docs/services/98847a3fbbe64f73aa959d3cededb3af/operations/sessions-list-all?
-      def list_sessions(query_options = {}, page = 0, pageSize = 50)
+      def list_sessions(session_list_query = NexosisApi::SessionListQuery.new)
         sessions_url = '/sessions'
-        query = {'page' => page,
-          'pageSize' => pageSize
-        }
-        query.store('dataSetName', query_options[:dataset_name]) if query_options.key? :'dataset_name'
-        query.store('eventName', query_options[:event_name]) if query_options.key? :'event_name'
-        query.store('requestedAfterDate', query_options[:requested_after_date]) if query_options.key? :'requested_after_date'
-        query.store('requestedBeforeDate', query_options[:requested_before_date]) if query_options.key? :'requested_before_date'
-        query.store('modelId', query_options[:model_id]) if query_options.key? :'model_id'
-        query.store('type', query_options[:type]) if query_options.key? :'type'
-          
-        response = self.class.get(sessions_url, headers: @headers, query: query)
+        response = self.class.get(sessions_url, headers: @headers, query: session_list_query.query_parameters)
         raise HttpException.new('Could not retrieve sessions',
-                                "Get all sessions with query #{query_options}",
+                                "Get all sessions with query #{session_list_query.query_parameters}",
                                 response) unless response.success?
         NexosisApi::PagedArray.new(response.parsed_response, response.parsed_response['items'].map do |session_hash|
           response_hash = { 'session' => session_hash }.merge(response.headers)

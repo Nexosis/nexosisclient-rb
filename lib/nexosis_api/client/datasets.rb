@@ -28,20 +28,15 @@ module NexosisApi
 
       # Gets the list of data sets that have been saved to the system, optionally filtering by partial name match.
       #
-      # @param partial_name [String] if provided, all datasets returned will contain this string
-      # @param page [int] page number for items in list
-      # @param page_size [int] number of items in each page
+      # @param dataset_list_query [NexosisApi::DatasetListQuery] Defines options for limiting list query results.
       # @return [NexosisApi::PagedArray of NexosisApi::DatasetSummary] array of datasets found
-      # @since 1.4 - added paging parameters
-      # @since 2.5 - added multiple query options
-      def list_datasets(query_options = {}, page = 0, page_size = 50)
+      # @since 1.4.0 - added paging parameters
+      # @since 2.5.0 - added multiple query options
+      # @since 3.0.0 - use list query instead of differing parms
+      # @note a default list query will use page=0 and pageSize=50 in the query
+      def list_datasets(dataset_list_query = NexosisApi::DatasetListQuery.new)
         list_dataset_url = '/data'
-        query = {
-          page: page,
-          pageSize: page_size
-        }
-        query['partialName'] = query_options[:partial_name] if query_options.key? :'partial_name'
-        response = self.class.get(list_dataset_url, headers: @headers, query: query)
+        response = self.class.get(list_dataset_url, headers: @headers, query: dataset_list_query.query_parameters)
         if response.success?
           NexosisApi::PagedArray.new(response.parsed_response,
                                      response.parsed_response['items']
