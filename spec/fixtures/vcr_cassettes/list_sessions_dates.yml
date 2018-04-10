@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&page=0&pageSize=50&requestedAfterDate=2017-06-14T00:00:00%2B00:00&requestedBeforeDate=2017-06-30T00:00:00%2B00:00&type=
+    uri: https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=50&requestedAfterDate=2017-06-14T00:00:00%2B00:00&requestedBeforeDate=2017-06-30T00:00:00%2B00:00
     body:
       encoding: US-ASCII
       string: ''
@@ -12,7 +12,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - Nexosis-Ruby-API-Client/1.2
+      - Nexosis-Ruby-API-Client/2.1
   response:
     status:
       code: 200
@@ -23,26 +23,28 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Nexosis-Account-Datasetcount-Allotted:
-      - '2147483647'
+      - '10000'
       Nexosis-Account-Datasetcount-Current:
-      - '47'
+      - '41'
       Nexosis-Account-Predictioncount-Allotted:
-      - '2147483647'
+      - '10000000'
       Nexosis-Account-Predictioncount-Current:
-      - '11'
+      - '98'
       Nexosis-Account-Sessioncount-Allotted:
-      - '2147483647'
+      - '100000'
       Nexosis-Account-Sessioncount-Current:
-      - '129'
+      - '19'
+      Nexosis-Account-Datasetsize-Allotted:
+      - '500000000'
       Nexosis-Account-Balance:
       - 0.00 USD
       Nexosis-Request-Cost:
       - 0.00 USD
       Date:
-      - Mon, 11 Dec 2017 19:07:43 GMT
+      - Mon, 09 Apr 2018 18:46:34 GMT
     body:
       encoding: UTF-8
-      string: '{"items":[],"pageNumber":0,"totalPages":0,"pageSize":50,"totalCount":0,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00&type=&page=0&pageSize=50"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00&type=&page=0&pageSize=50&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSetName=&eventName=&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00&type=&page=0&pageSize=50&page=-1"}]}'
+      string: '{"items":[],"pageNumber":0,"totalPages":0,"pageSize":50,"totalCount":0,"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/sessions?page=0&pageSize=50&requestedAfterDate=2017-06-14T00%3A00%3A00%2B00%3A00&requestedBeforeDate=2017-06-30T00%3A00%3A00%2B00%3A00"}]}'
     http_version: 
-  recorded_at: Mon, 11 Dec 2017 19:07:43 GMT
+  recorded_at: Mon, 09 Apr 2018 18:46:35 GMT
 recorded_with: VCR 3.0.3

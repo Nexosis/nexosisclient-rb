@@ -51,7 +51,7 @@ describe NexosisApi::Client::Datasets do
   describe '#list_datasets', :vcr => {:cassette_name => 'list_datasets_partial'} do
     context 'given existing saved datasets' do
       it 'returns a list dataset summaries containing the partial name' do
-        actual = test_client.list_datasets 'Ruby'
+        actual = test_client.list_datasets NexosisApi::DatasetListQuery.new(partial_name: 'Ruby')
         expect(actual).to be_a(Array)
         actual.each do |ds|
           expect(ds).to be_a(NexosisApi::DatasetSummary)

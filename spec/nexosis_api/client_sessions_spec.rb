@@ -35,7 +35,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_session_result_data', :vcr  => {:cassette_name => 'get_session_results'} do
     context 'given the id of an completed session' do
       it 'returns the results of the session analysis' do
-        available = test_client.list_sessions({}, 0, 20)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 20)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'forecast' }.first
         completed = test_client.create_forecast_session('TestRuby', '2014-05-20', '2014-05-25', 'sales') if completed.nil?
         loop do
@@ -55,7 +55,7 @@ describe NexosisApi::Client::Sessions do
   describe 'list_sessions', :vcr  => {:cassette_name => 'list_sessions_dataset'} do
     context 'given a request with a dataset name' do
       it 'returns an array of all sessions with that dataset' do
-        actual = test_client.list_sessions :dataset_name=>'TestRuby'
+        actual = test_client.list_sessions NexosisApi::SessionListQuery.new(datasource_name: 'TestRuby')
         expect(actual).to be_a(Array)
         actual_map = actual.map { |s| s.datasource_name }
         expect(actual_map).to all( be_a(String).and include('TestRuby') )
@@ -66,7 +66,7 @@ describe NexosisApi::Client::Sessions do
   describe '#list_sessions', :vcr  => {:cassette_name => 'list_sessions_eventname'} do
     context 'given a request with an event name' do
       it 'returns an array of all sessions with that event' do
-        actual = test_client.list_sessions :event_name=>'test event'
+        actual = test_client.list_sessions NexosisApi::SessionListQuery.new(event_name: 'test event')
         expect(actual).to be_a(Array)
         actual_map = actual.map { |s| s.extra_parameters['event'] }
         expect(actual_map).to all( be_a(String).and include('test') )
@@ -79,11 +79,11 @@ describe NexosisApi::Client::Sessions do
       it 'returns an array of all sessions within that time frame' do
         start_date = DateTime.strptime('6-14-2017', '%m-%d-%Y')
         end_date = DateTime.strptime('6-30-2017', '%m-%d-%Y')
-        actual = test_client.list_sessions :requested_after_date => start_date, :requested_before_date => end_date
+        actual = test_client.list_sessions NexosisApi::SessionListQuery.new(requested_after_date: start_date, requested_before_date: end_date)
         expect(actual).to be_a(Array)
         actual.each do |sr|
-          requested_date = DateTime.parse(sr.statusHistory.select {|v| v.has_value? 'requested'}[0]['date'])
-          expect(requested_date).to be_between(start_date,end_date).inclusive
+          requested_date = DateTime.parse(sr.status_history.select {|v| v.has_value? 'requested'}[0]['date'])
+          expect(requested_date).to be_between(start_date, end_date).inclusive
         end
       end
     end
@@ -221,7 +221,7 @@ describe NexosisApi::Client::Sessions do
   describe '#list_sessions',:vcr => {:cassette_name => 'list_sessions_pagesize'} do
     context 'given a page size' do
       it 'should return lte that size' do
-        actual = test_client.list_sessions({}, 0, 3)
+        actual = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 3)
         expect(actual).to be_a(Array)
         expect(actual.size).to eql(3)
       end
@@ -231,12 +231,12 @@ describe NexosisApi::Client::Sessions do
   describe '#list_sessions',:vcr => {:cassette_name => 'list_sessions_paged'} do
     context 'given a page number' do
       it 'should return next result set' do
-        both = test_client.list_sessions({}, 0, 2)
+        both = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 2)
         id1 = both[0].session_id
         id2 = both[1].session_id
-        page_one = test_client.list_sessions({},0,1)
+        page_one = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 1)
         expect(page_one[0].session_id).to eql(id1)
-        page_two = test_client.list_sessions({},1,1)
+        page_two = test_client.list_sessions NexosisApi::SessionListQuery.new(page_number: 1, page_size: 1)
         expect(page_two[0].session_id).to eql(id2)
       end
     end
@@ -279,7 +279,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_session_result_data', vcr: { cassette_name: 'session_get_prediction_interval' } do
     context 'given an available prediction interval' do
       it 'sets the query parameter' do
-        available = test_client.list_sessions({}, 0, 10)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 10)
         completed = available.select { |s| s.status == 'completed' && s.type == 'forecast' }.first
         unless (completed.nil?)
           actual = test_client.get_session_result_data completed.session_id, 0, 50, { prediction_interval: '.5' }
@@ -292,7 +292,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_confusion_matrix', vcr: { cassette_name: 'session_get_confusion_matrix' } do
     context 'given a classification result' do
       it 'returns confusion matrix' do
-        available = test_client.list_sessions({}, 0, 10)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 10)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'classification' }.first
         completed = create_class_test_model if completed.nil?
         actual = test_client.get_confusion_matrix(completed.session_id)
@@ -324,7 +324,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_anomaly_scores', vcr: { cassette_name: 'anomaly_scores' } do
     context 'given a completed anomalies session' do
       it 'pulls back scores from session' do
-        available = test_client.list_sessions({}, 0, 20)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 20)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'anomalies' }.first
         if (completed.nil?)
           completed = test_client.create_anomalies_model('TestRuby_NTS', {}, true)
@@ -346,7 +346,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_classification_scores', vcr: { cassette_name: 'class_scores' } do
     context 'given a finished classification session' do
       it 'returns classification scores' do
-        available = test_client.list_sessions({}, 0, 20)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 20)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'classification' }.first
         completed = create_class_test_model if completed.nil?
         actual = test_client.get_class_scores(completed.session_id)
@@ -360,7 +360,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_feature_importance', vcr: { cassette_name: 'feature_importance' } do
     context 'given a finished session' do
       it 'returns feature importance scores' do
-        available = test_client.list_sessions({}, 0, 20)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 20)
         completed = available.select { |s| s.status == 'completed' && s.supports_feature_importance == true }.first
         completed = create_class_test_model if completed.nil?
         actual = test_client.get_feature_importance(completed.session_id)
@@ -373,7 +373,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_distance_metrics', vcr: { cassette_name: 'anomaly_distances' } do
     context 'given a finished session' do
       it 'returns feature importance scores' do
-        available = test_client.list_sessions({}, 0, 20)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 20)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'anomalies' }.first
         completed = create_anomaly_test_model if completed.nil?
         actual = test_client.get_distance_metrics(completed.session_id)
@@ -387,7 +387,7 @@ describe NexosisApi::Client::Sessions do
   describe '#get_timeseries_outliers', vcr: { cassette_name: 'timeseries_outliers' } do
     context 'given a finished session' do
       it 'returns feature importance scores' do
-        available = test_client.list_sessions({}, 0, 20)
+        available = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 20)
         completed = available.select { |s| s.status == 'completed' && s.prediction_domain == 'forecast' }.first
         unless completed.nil?
           actual = test_client.get_timeseries_outliers(completed.session_id)

@@ -61,7 +61,7 @@ private
 
 def existing_session
   if @session_id.nil?
-    sessions = test_client.list_sessions({}, 0, 5)
+    sessions = test_client.list_sessions NexosisApi::SessionListQuery.new(page_size: 5)
     completed = sessions.select { |s| s.status == 'completed' }.first
     @session_id = completed.session_id
   end

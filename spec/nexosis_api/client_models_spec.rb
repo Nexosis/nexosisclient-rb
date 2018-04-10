@@ -44,7 +44,7 @@ describe NexosisApi::Client::Models do
     context 'given a model id' do
       it 'removes the model' do
         # create a model to remove
-        models = test_client.list_models('iris')
+        models = test_client.list_models NexosisApi::ModelListQuery.new(datasource_name: 'iris')
         model = create_class_test_model if models.empty?
         model = models.first unless models.nil?
         unless (model.nil?)
@@ -90,7 +90,7 @@ describe NexosisApi::Client::Models do
     context 'given a trained model and features' do
       it 'predicts values' do
         if (@model_id.nil?)
-          available = test_client.list_models('iris')
+          available = test_client.list_models NexosisApi::ModelListQuery.new(datasource_name: 'iris')
           completed = available.first unless available.empty?
           completed = create_class_test_model if completed.nil?
           @model_id = completed.model_id
@@ -108,7 +108,7 @@ describe NexosisApi::Client::Models do
   describe '#predict', vcr: { cassette_name: 'predict_with_scores' } do
     context 'given a classification model and flag' do
       it 'returns scores for each class' do
-        available = test_client.list_models('iris')
+        available = test_client.list_models NexosisApi::ModelListQuery.new(datasource_name: 'iris')
         completed = available.first unless available.empty?
         completed = create_class_test_model if completed.nil?
         unless completed.nil?

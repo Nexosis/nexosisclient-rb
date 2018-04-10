@@ -460,6 +460,95 @@ describe NexosisApi::TimeseriesOutliers do
   end
 end
 
+describe NexosisApi::ListQuery do
+  describe '#initialize' do
+    context 'given a list query hash' do
+      it 'creates a new query object' do
+        query = { 'page_size': 10, 'page_number': 1, 'sort_by': 'foo', 'sort_order': 'asc' }
+        actual = NexosisApi::ListQuery.new(query)
+        expect(actual.page_number).to eql(1)
+        expect(actual.page_size).to eql(10)
+        expect(actual.sort_by).to eql('foo')
+        expect(actual.sort_order).to eql(NexosisApi::SortOrder::ASC)
+      end
+    end
+  end
+
+  describe '#page_size' do
+    context 'when setting a property' do
+      it 'overrides initial values' do
+        target = NexosisApi::ListQuery.new()
+        original = target.page_size
+        target.page_size = 5
+        expect(original).to_not eql(5)
+      end
+    end
+  end
+
+  describe '#to_hash' do
+    context 'given only some properties' do
+      it 'provides a hash with only those props' do
+        target = NexosisApi::ListQuery.new(sort_by: 'foo')
+        actual = target.to_hash
+        expect(actual.length).to eql(3)
+        expect(actual.fetch(:sortBy)).to eql('foo')
+      end
+    end
+  end
+end
+
+describe NexosisApi::SessionListQuery do
+  describe '#initialize' do
+    context 'given a list query hash' do
+      it 'creates a new query object' do
+        query = { 'sort_by': 'foo', 'sort_order': 'desc', 'event_name': 'bar' }
+        actual = NexosisApi::SessionListQuery.new(query)
+        expect(actual.page_number).to eql(0)
+        expect(actual.page_size).to eql(50)
+        expect(actual.sort_by).to eql('foo')
+        expect(actual.sort_order).to eql(NexosisApi::SortOrder::DESC)
+        expect(actual.event_name).to eql('bar')
+      end
+    end
+
+    context 'given dates' do
+      it 'queries those dates' do
+        query = NexosisApi::SessionListQuery.new(requested_before_date: DateTime.new(2007, 11, 19, 8, 37, 48, '-06:00'))
+        actual = query.query_parameters
+        expect(actual[:requestedBeforeDate]).to eql('2007-11-19T08:37:48-06:00')
+      end
+    end
+
+    context 'given an invalid option' do
+      it 'raises an argument error' do
+        expect{ NexosisApi::SessionListQuery.new(not_found_option: 'causes exception') }.to raise_error(ArgumentError)
+      end
+    end
+  end
+end
+
+describe NexosisApi::ModelListQuery do
+  describe '#query_parameters' do
+    context 'given a filled query object' do
+      it 'gets hash of super and instance values' do
+        target = NexosisApi::ModelListQuery.new({page_number: 1, datasource_name: 'test-dataset', created_after_date: '14/1/2017'})
+        actual = target.query_parameters
+        expect(actual[:dataSourceName]).to eql('test-dataset')
+        expect(actual[:pageSize]).to eql(50)
+        expect(actual[:createdAfterDate]).to eql('2017-01-14T00:00:00+00:00')
+      end
+    end
+
+    context 'given no parameters' do
+      it 'doesnt put key in hash' do
+        target = NexosisApi::ModelListQuery.new(page_number: 1)
+        actual = target.query_parameters
+        expect(actual[:dataSourceName]).to be_nil
+      end
+    end
+  end
+end
+
 private
 
 def session_hash
