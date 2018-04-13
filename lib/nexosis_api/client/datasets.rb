@@ -94,7 +94,7 @@ module NexosisApi
       #    NexosisApi.client.remove_dataset('mydataset', {:cascade_forecast => true})
       def remove_dataset(dataset_name, filter_options = {})
         raise ArgumentError, 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
-        dataset_remove_url = "/data/#{dataset_name}"
+        dataset_remove_url = "/data/#{URI.escape(dataset_name)}"
         query = {}
         if filter_options.empty? == false
           cascade_query = create_cascade_options(filter_options)
@@ -102,7 +102,6 @@ module NexosisApi
           query['startDate'] = [filter_options[:start_date].to_s] unless filter_options[:start_date].nil?
           query['endDate'] = [filter_options[:end_date].to_s] unless filter_options[:end_date].nil?
         end
-        # normalizer = proc { |query_set| query_set.map { |key, value| value.map { |v| "#{key}=#{v}" } }.join('&') }
         response = self.class.delete(dataset_remove_url,
                                      headers: @headers,
                                      query: query,
