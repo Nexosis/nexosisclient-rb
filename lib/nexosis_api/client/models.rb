@@ -14,7 +14,7 @@ module NexosisApi
         model_url = '/models'
         response = self.class.get(model_url, headers: @headers, query: model_list_query.query_parameters)
         raise HttpException.new("There was a problem listing models: #{response.code}.",
-                                "listing models with data source name #{datasource_name}",
+                                "listing models with data source name #{model_list_query.datasource_name}",
                                 response) unless response.success?
         NexosisApi::PagedArray.new(response.parsed_response,
                                    response.parsed_response['items']

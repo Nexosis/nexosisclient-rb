@@ -42,7 +42,7 @@ module NexosisApi
                                      response.parsed_response['items']
                                      .map { |dr| NexosisApi::DatasetSummary.new(dr) })
         else
-          raise HttpException.new("There was a problem listing datasets: #{response.code}.", "listing datasets with partial name #{partial_name}", response)
+          raise HttpException.new("There was a problem listing datasets: #{response.code}.", "listing datasets with partial name #{dataset_list_query.partial_name}", response)
         end
       end
 

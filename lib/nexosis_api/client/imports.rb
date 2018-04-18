@@ -19,7 +19,7 @@ module NexosisApi
                                      response.parsed_response['items']
                                      .map { |i| NexosisApi::ImportsResponse.new(i) })
         else
-          raise HttpException.new("There was a problem getting the imports: #{response.code}.", "uploading dataset from s3 #{dataset_name}", response)
+          raise HttpException.new("There was a problem getting the imports: #{response.code}.", "listing imports with query #{import_list_query.query_parameters}", response)
         end
       end
 
