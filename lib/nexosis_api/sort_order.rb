@@ -3,9 +3,9 @@ module NexosisApi
   # @since 3.0.0
   module SortOrder
     # Order results ascending according to type sort
-    ASC = :string
+    ASC = :asc
 
     # Order results descending according to type sort
-    DESC = :string
+    DESC = :desc
   end
 end
