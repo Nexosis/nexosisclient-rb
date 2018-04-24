@@ -7,7 +7,7 @@ module NexosisApi
       super(session_hash.reject { |k, _v| k.to_s.casecmp('featureimportance').zero? })
     end
 
-    # A paged 
+    # A paged array of scores where each element of the array is a hash of {feature: score}
     # @return NexosisApi::PagedArray
     attr_reader :scores
   end
