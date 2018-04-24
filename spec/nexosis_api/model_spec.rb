@@ -381,7 +381,7 @@ describe NexosisApi::FeatureImportance do
         expect(target.session_id).to eql('016291b7-d8e0-40be-818d-09d8cea3c4d1')
         expect(target.status_history.length).to eql(3)
         expect(target.scores).to be_a(NexosisApi::PagedArray)
-        expect(target.scores.map{|i| i.keys}.flatten.map &:to_s).to eql(['petal_len', 'sepal_len', 'petal_width', 'sepal_width'])
+        expect(target.scores.to_h.keys.map &:to_s).to eql(['petal_len', 'sepal_len', 'petal_width', 'sepal_width'])
       end
     end
 
