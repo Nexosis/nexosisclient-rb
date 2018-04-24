@@ -124,5 +124,10 @@ module NexosisApi
     # @return [Boolean]
     # @since 2.4.0
     attr_reader :supports_feature_importance
+
+    # Friendly name to give the session
+    # @return [String]
+    # @since 3.0.4
+    attr_accessor :name
   end
 end
