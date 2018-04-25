@@ -94,6 +94,18 @@ describe NexosisApi::Client::Datasets do
       end
     end
   end
+
+  describe '#get_detaset', :vcr => {:cassette_name => 'use_dataset_name_with_spaces'} do
+    context 'given a space in dataset name' do
+      it 'properly handles the url' do
+        dataset_name = 'I have spaces'
+        test_client.create_dataset_csv(dataset_name, "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31\r\n1-3-2017,345.31\r\n1-4-2017,345.31\r\n1-5-2017,345.31\r\n1-6-2017,345.31\r\n1-7-2017,345.31\r\n1-8-2017,345.31\r\n1-9-2017,345.31\r\n1-10-2017,345.31\r\n1-11-2017,345.31\r\n1-12-2017,345.31\r\n1-13-2017,345.31\r\n1-14-2017,345.31\r\n1-15-2017,345.31")
+        actual = test_client.get_dataset(dataset_name)
+        expect(actual).to_not be_nil
+        test_client.remove_dataset(dataset_name)
+      end
+    end
+  end
   
   describe '#get_dataset_csv', :vcr => {:cassette_name => 'get_datasets_data_csv'} do
     context 'given an existing saved dataset' do

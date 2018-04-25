@@ -117,7 +117,7 @@ module NexosisApi
       # @note Common stats returned include 'max', 'min', 'stddev', 'variance', 'median'
       def get_column_stats(dataset_name)
         raise ArgumentError, 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
-        dataset_stats_url = "/data/#{dataset_name}/stats"
+        dataset_stats_url = "/data/#{URI.escape(dataset_name)}/stats"
         response = self.class.get(dataset_stats_url,
                                      headers: @headers)
         return response.parsed_response if response.success?
@@ -129,7 +129,7 @@ module NexosisApi
       # @private
       def create_dataset(dataset_name, content, content_type)
         raise ArgumentError, 'dataset_name was not provided and is not optional ' if dataset_name.to_s.empty?
-        dataset_url = "/data/#{dataset_name}"
+        dataset_url = "/data/#{URI.escape(dataset_name)}"
         headers = { 'api-key' => @api_key, 'Content-Type' => content_type }
         response = self.class.put(dataset_url, headers: headers, body: content)
         if response.success?
@@ -144,7 +144,7 @@ module NexosisApi
       def get_dataset_internal(dataset_name, page_number = 0, page_size = 50, query_options = {}, content_type = 'application/json')
         raise ArgumentError, 'page size must be <= 1000 items per page' unless page_size <= 1000
         raise ArgumentError, 'dataset_name was not provided and is not optional' unless dataset_name.to_s.empty? == false
-        dataset_url = "/data/#{dataset_name}"
+        dataset_url = "/data/#{URI.escape(dataset_name)}"
         headers = { 'api-key' => @api_key, 'Accept' => content_type }
         self.class.get(dataset_url, headers: headers,
                                     query: create_query(page_number, page_size, query_options),

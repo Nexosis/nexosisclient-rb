@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces
+    body:
+      encoding: UTF-8
+      string: "timestamp,foo\r\n1-1-2017,223.33\r\n1-2-2017,345.31\r\n1-3-2017,345.31\r\n1-4-2017,345.31\r\n1-5-2017,345.31\r\n1-6-2017,345.31\r\n1-7-2017,345.31\r\n1-8-2017,345.31\r\n1-9-2017,345.31\r\n1-10-2017,345.31\r\n1-11-2017,345.31\r\n1-12-2017,345.31\r\n1-13-2017,345.31\r\n1-14-2017,345.31\r\n1-15-2017,345.31"
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - text/csv
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://gateway.uat.nexosisdev.com/data/I%20have%20spaces
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '36'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '728'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '51'
+      Nexosis-Account-Datasetsize-Allotted:
+      - '500000000'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 25 Apr 2018 19:01:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"I have spaces","dataSetSize":246,"dateCreated":"2018-04-25T19:01:01.067232+00:00","lastModified":"2018-04-25T19:01:01.067694+00:00","columnCount":2,"isTimeSeries":true,"columns":{"timestamp":{"dataType":"date","role":"timestamp"},"foo":{"dataType":"numericMeasure","role":"target","imputation":"mean","aggregation":"mean"}},"messages":[],"links":[{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces"}]}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 19:01:01 GMT
+- request:
+    method: get
+    uri: https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces?page=0&pageSize=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '36'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '728'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '51'
+      Nexosis-Account-Datasetsize-Allotted:
+      - '500000000'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 25 Apr 2018 19:01:01 GMT
+    body:
+      encoding: UTF-8
+      string: '{"dataSetName":"I have spaces","dataSetSize":246,"isTimeSeries":true,"dateCreated":"2018-04-25T19:01:01.067232+00:00","lastModified":"2018-04-25T19:01:01.067694+00:00","rowCount":15,"columns":{"foo":{"dataType":"numericMeasure","role":"target","imputation":"mean","aggregation":"mean"},"timestamp":{"dataType":"date","role":"timestamp"}},"messages":[],"data":[{"foo":"223.33","timestamp":"1-1-2017"},{"foo":"345.31","timestamp":"1-2-2017"},{"foo":"345.31","timestamp":"1-3-2017"},{"foo":"345.31","timestamp":"1-4-2017"},{"foo":"345.31","timestamp":"1-5-2017"},{"foo":"345.31","timestamp":"1-6-2017"},{"foo":"345.31","timestamp":"1-7-2017"},{"foo":"345.31","timestamp":"1-8-2017"},{"foo":"345.31","timestamp":"1-9-2017"},{"foo":"345.31","timestamp":"1-10-2017"},{"foo":"345.31","timestamp":"1-11-2017"},{"foo":"345.31","timestamp":"1-12-2017"},{"foo":"345.31","timestamp":"1-13-2017"},{"foo":"345.31","timestamp":"1-14-2017"},{"foo":"345.31","timestamp":"1-15-2017"}],"pageNumber":0,"totalPages":1,"pageSize":50,"totalCount":15,"links":[{"rel":"imports","href":"https://api.uat.nexosisdev.com/v1/imports?dataSetName=I+have+spaces"},{"rel":"views","href":"https://api.uat.nexosisdev.com/v1/views?dataSetName=I+have+spaces"},{"rel":"stats","href":"https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces/stats"},{"rel":"sessions","href":"https://api.uat.nexosisdev.com/v1/sessions?dataSourceName=I+have+spaces"},{"rel":"models","href":"https://api.uat.nexosisdev.com/v1/models?dataSourceName=I+have+spaces"},{"rel":"vocabularies","href":"https://api.uat.nexosisdev.com/v1/vocabulary?dataSource=I+have+spaces"},{"rel":"first","href":"https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces?page=0&pageSize=50&page=0"},{"rel":"last","href":"https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces?page=0&pageSize=50&page=0"},{"rel":"self","href":"https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces?page=0&pageSize=50"}]}'
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 19:01:01 GMT
+- request:
+    method: delete
+    uri: https://api.uat.nexosisdev.com/v1/data/I%20have%20spaces
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Api-Key:
+      - api-key
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Nexosis-Ruby-API-Client/2.1
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Content-Length:
+      - '0'
+      Nexosis-Account-Datasetcount-Allotted:
+      - '10000'
+      Nexosis-Account-Datasetcount-Current:
+      - '35'
+      Nexosis-Account-Predictioncount-Allotted:
+      - '10000000'
+      Nexosis-Account-Predictioncount-Current:
+      - '728'
+      Nexosis-Account-Sessioncount-Allotted:
+      - '100000'
+      Nexosis-Account-Sessioncount-Current:
+      - '51'
+      Nexosis-Account-Datasetsize-Allotted:
+      - '500000000'
+      Nexosis-Account-Balance:
+      - 0.00 USD
+      Nexosis-Request-Cost:
+      - 0.00 USD
+      Date:
+      - Wed, 25 Apr 2018 19:01:01 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 25 Apr 2018 19:01:01 GMT
+recorded_with: VCR 3.0.3
